@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "title": "Red",
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "color": "#F5520A",
+          "name": "Primary",
+          "slug": "primary"
+        },
+        {
+          "color": "#281810",
+          "name": "Base",
+          "slug": "base"
+        },
+        {
+          "color": "#fff",
+          "name": "Contrast",
+          "slug": "contrast"
+        },
+        {
+          "color": "#fff",
+          "name": "Contrast / Two",
+          "slug": "contrast-2"
+        },
+        {
+          "color": "#ffffff",
+          "name": "Link Color",
+          "slug": "link-color"
+        }
+      ]
+    }
+  }
+}
