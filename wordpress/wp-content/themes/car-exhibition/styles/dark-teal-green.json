@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "title": "Dark Teal Green",
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "color": "#7934D3",
+          "name": "Primary",
+          "slug": "primary"
+        },
+        {
+          "color": "#1F1629",
+          "name": "Base",
+          "slug": "base"
+        },
+        {
+          "color": "#fff",
+          "name": "Contrast",
+          "slug": "contrast"
+        },
+        {
+          "color": "#fff",
+          "name": "Contrast / Two",
+          "slug": "contrast-2"
+        },
+        {
+          "color": "#ffffff",
+          "name": "Link Color",
+          "slug": "link-color"
+        }
+      ]
+    }
+  }
+}

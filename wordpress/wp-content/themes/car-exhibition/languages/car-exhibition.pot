@@ -1,0 +1,1381 @@
+# Copyright (C) 2026 classictemplate
+# This file is distributed under the GNU General Public License v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Car Exhibition 0.1.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/car-exhibition\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-02-02T11:17:14+05:30\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: car-exhibition\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Car Exhibition"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://www.theclassictemplates.com/products/car-exhibition"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "The Car Exhibition theme is a sleek, modern, and highly responsive theme designed specifically for auto shows, car expos, automobile events, luxury car exhibitions, classic vehicle displays, and supercar showcases, making it suitable for autocare brands and high-performance showcases featuring superchargers and advanced automotive technology. Whether you are organizing a local car exhibition, luxury car show, or vintage car event, this theme provides the perfect platform to showcase vehicles in a professional and visually engaging way, including services like vehicle support and car evacuation solutions when needed. With its intuitive design, easy customization options, and responsive layout, the theme ensures your car exhibition website looks stunning across desktops, tablets, and smartphones. Built with advanced features, the Car Exhibition theme allows you to create beautiful galleries for supercars, vintage cars, concept vehicles, and sports cars. Organize car events, display schedules, and highlight featured exhibitors with seamless integration of event listings, registration forms, and vehicle catalogs using Contact Form 7. The theme’s drag-and-drop page builder makes it simple to design pages without coding knowledge. Key features include car image galleries, interactive vehicle catalogs, countdown timers, and event registration forms. SEO-friendly and optimized for speed, this theme helps your car exhibition website rank higher on search engines. Perfect for car expo organizers, automobile dealers, auto bloggers, and classic car clubs, this Car Exhibition theme enhances visitor engagement with integrated social sharing, newsletter subscriptions, and blog sections for the latest car news. From luxury supercars to vintage collections, your car exhibition will have an online showcase that captivates every visitor."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "classictemplate"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://www.theclassictemplates.com/"
+msgstr ""
+
+#: functions.php:60
+msgid "https://www.theclassictemplates.com/products/auto-expo-wordpress-theme"
+msgstr ""
+
+#: functions.php:63
+#: inc/customizer.php:16
+msgid "About Car Exhibition"
+msgstr ""
+
+#: functions.php:66
+msgid "https://www.theclassictemplates.com/collections/best-wordpress-templates"
+msgstr ""
+
+#: functions.php:69
+msgid "https://wordpress.org/support/theme/car-exhibition/"
+msgstr ""
+
+#: functions.php:72
+msgid "https://wordpress.org/support/theme/car-exhibition/reviews/"
+msgstr ""
+
+#: functions.php:75
+msgid "https://live.theclassictemplates.com/car-exhibition-pro/"
+msgstr ""
+
+#: functions.php:78
+msgid "https://live.theclassictemplates.com/demo/docs/car-exhibition-free/"
+msgstr ""
+
+#: functions.php:81
+msgid "https://www.theclassictemplates.com/products/wordpress-theme-bundle"
+msgstr ""
+
+#. translators: 1: Theme name.
+#: inc/addon.php:17
+#: inc/addon.php:31
+msgid "Welcome to %1$s"
+msgstr ""
+
+#: inc/addon.php:18
+msgid "Theme Info"
+msgstr ""
+
+#: inc/addon.php:34
+msgid "Do you want to configure this theme? Look no further, our easy-to-follow theme documentation will walk you through it."
+msgstr ""
+
+#: inc/addon.php:43
+msgid "Free Theme Documentation"
+msgstr ""
+
+#: inc/addon.php:44
+msgid "Need more details? Please check our complete and detailed documentation for full theme setup."
+msgstr ""
+
+#: inc/addon.php:46
+msgid "Documentation"
+msgstr ""
+
+#: inc/addon.php:51
+msgid "Need Help?"
+msgstr ""
+
+#: inc/addon.php:52
+msgid "Go to our support forum to help you out in case of queries and doubts regarding our theme."
+msgstr ""
+
+#: inc/addon.php:54
+msgid "Contact Us"
+msgstr ""
+
+#: inc/addon.php:62
+msgid "Pro version of our theme"
+msgstr ""
+
+#: inc/addon.php:63
+msgid "Are you excited for our theme? Then we will proceed for pro version of theme."
+msgstr ""
+
+#: inc/addon.php:65
+#: inc/addon.php:103
+msgid "Get Premium"
+msgstr ""
+
+#: inc/addon.php:70
+msgid "Leave us a review"
+msgstr ""
+
+#: inc/addon.php:71
+msgid "Are you enjoying our theme? We would love to hear your feedback."
+msgstr ""
+
+#: inc/addon.php:73
+msgid "Rate This Theme"
+msgstr ""
+
+#: inc/addon.php:84
+msgid "WordPress Theme Bundle"
+msgstr ""
+
+#: inc/addon.php:85
+msgid "Get access to a collection of 100+ stunning WordPress themes for just $99 — featuring designs for every business niche!"
+msgstr ""
+
+#: inc/addon.php:87
+msgid "Get Bundle at 20% OFF"
+msgstr ""
+
+#. translators: %s: Theme name.
+#: inc/addon.php:97
+msgid "Getting started with %s"
+msgstr ""
+
+#: inc/addon.php:104
+#: inc/notice/notice.php:243
+msgid "View Demo"
+msgstr ""
+
+#: inc/addon.php:105
+msgid "Bundle of 100+ Themes at $99"
+msgstr ""
+
+#. translators: 1: Theme name, 2: Author name, 3: Call to action text.
+#: inc/addon.php:120
+msgid "%1$s is proudly brought to you by %2$s. If you like this theme, %3$s :)"
+msgstr ""
+
+#: inc/addon.php:123
+msgid "Rate it"
+msgstr ""
+
+#: inc/addon.php:123
+msgctxt "If you like this theme, rate it"
+msgid "rate it"
+msgstr ""
+
+#: inc/customizer.php:28
+#: inc/notice/notice.php:237
+msgid "Upgrade Pro"
+msgstr ""
+
+#: inc/customizer.php:30
+msgid "Premium Demo"
+msgstr ""
+
+#: inc/customizer.php:32
+msgid "Rate Us"
+msgstr ""
+
+#: inc/customizer.php:34
+msgid "Support Forum"
+msgstr ""
+
+#: inc/customizer.php:36
+msgid "Theme Page"
+msgstr ""
+
+#: inc/customizer.php:38
+msgid "Theme Documentation"
+msgstr ""
+
+#: inc/notice/notice.php:51
+#: inc/notice/notice.php:99
+#: inc/tgm/tgm.php:9
+msgid "Contact Form 7"
+msgstr ""
+
+#: inc/notice/notice.php:56
+#: inc/notice/notice.php:104
+#: inc/tgm/tgm.php:23
+msgid "Classic Blog Grid"
+msgstr ""
+
+#: inc/notice/notice.php:61
+#: inc/notice/notice.php:109
+#: inc/tgm/tgm.php:16
+msgid "Essential Blocks"
+msgstr ""
+
+#. translators: 1: Theme name, 2: Theme version.
+#: inc/notice/notice.php:233
+msgid "Welcome to %1$s %2$s"
+msgstr ""
+
+#: inc/notice/notice.php:235
+msgid "Get Started With Theme By Clicking On Getting Started."
+msgstr ""
+
+#: inc/notice/notice.php:239
+msgid "Get started"
+msgstr ""
+
+#: inc/notice/notice.php:241
+msgid "Free Doc"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:340
+msgid "Install Required Plugins"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:341
+msgid "Install Plugins"
+msgstr ""
+
+#. translators: %s: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:343
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#. translators: %s: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:345
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:346
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:348
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:354
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:360
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:366
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:372
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:378
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:383
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:388
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:393
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:398
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:399
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:400
+#: inc/tgm/class-tgm-plugin-activation.php:3311
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:401
+#: inc/tgm/class-tgm-plugin-activation.php:3103
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:403
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:405
+msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
+msgstr ""
+
+#. translators: 1: dashboard link.
+#: inc/tgm/class-tgm-plugin-activation.php:407
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:408
+msgid "Dismiss this notice"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:409
+msgid "There are one or more required or recommended plugins to install, update or activate."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:410
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:616
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:617
+msgid "Update Required"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:735
+msgid "Set the parent_slug config variable instead."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:1042
+msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:1042
+#: inc/tgm/class-tgm-plugin-activation.php:1052
+msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:1052
+msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:1243
+#: inc/tgm/class-tgm-plugin-activation.php:3099
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#. translators: %s: version number
+#: inc/tgm/class-tgm-plugin-activation.php:2112
+msgid "TGMPA v%s"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2421
+msgid "Required"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2424
+msgid "Recommended"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2440
+msgid "WordPress Repository"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2443
+msgid "External Source"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2446
+msgid "Pre-Packaged"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2463
+msgid "Not Installed"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2467
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2469
+msgid "Active"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2475
+msgid "Required Update not Available"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2478
+msgid "Requires Update"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2481
+msgid "Update recommended"
+msgstr ""
+
+#. translators: 1: install status, 2: update status
+#: inc/tgm/class-tgm-plugin-activation.php:2490
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2536
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2540
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2544
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2548
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2630
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2638
+msgid "Installed version:"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2646
+msgid "Minimum required version:"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2658
+msgid "Available version:"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2681
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2695
+msgid "Plugin"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2696
+msgid "Source"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2697
+msgid "Type"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2701
+msgid "Version"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2702
+msgid "Status"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/tgm/class-tgm-plugin-activation.php:2751
+msgid "Install %2$s"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/tgm/class-tgm-plugin-activation.php:2756
+msgid "Update %2$s"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/tgm/class-tgm-plugin-activation.php:2762
+msgid "Activate %2$s"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2834
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2867
+msgid "Install"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2873
+msgid "Update"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2876
+msgid "Activate"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2907
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2909
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2950
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2952
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3059
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3085
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3310
+msgid "Plugin activation failed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/tgm/class-tgm-plugin-activation.php:3655
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#. translators: 1: plugin name, 2: error message.
+#: inc/tgm/class-tgm-plugin-activation.php:3658
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3660
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3664
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3666
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3667
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/tgm/class-tgm-plugin-activation.php:3669
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3672
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3674
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3675
+msgid "All installations have been completed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/tgm/class-tgm-plugin-activation.php:3677
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3682
+msgid "Show Details"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3682
+msgid "Hide Details"
+msgstr ""
+
+#: patterns/404.php
+msgctxt "Pattern title"
+msgid "404"
+msgstr ""
+
+#: patterns/404.php:13
+msgid "404: Page Not Disco-vered"
+msgstr ""
+
+#: patterns/404.php:17
+msgid "Looks like the dance floor is empty here! This page has done a disappearing act. Head back to the main stage by clicking the navigation links, and let's keep the party going!"
+msgstr ""
+
+#: patterns/404.php:24
+msgid "Go to home page"
+msgstr ""
+
+#: patterns/archive.php
+msgctxt "Pattern title"
+msgid "Archive"
+msgstr ""
+
+#: patterns/archive.php:42
+#: patterns/blog-left.php:47
+#: patterns/blog-right.php:43
+#: patterns/post.php:43
+#: patterns/search.php:43
+msgid "No posts found"
+msgstr ""
+
+#: patterns/banner.php
+msgctxt "Pattern title"
+msgid "Banner"
+msgstr ""
+
+#: patterns/banner.php:22
+#: patterns/banner.php:57
+msgid "Where Innovation Meets the Road"
+msgstr ""
+
+#: patterns/banner.php:64
+msgid "City / Venue"
+msgstr ""
+
+#: patterns/banner.php:65
+msgid "Select Expo Location"
+msgstr ""
+
+#: patterns/banner.php:71
+msgid "Event Days"
+msgstr ""
+
+#: patterns/banner.php:72
+msgid "Choose Date "
+msgstr ""
+
+#: patterns/banner.php:78
+msgid "Exhibitor / Category"
+msgstr ""
+
+#: patterns/banner.php:79
+msgid "Select Category "
+msgstr ""
+
+#: patterns/banner.php:85
+msgid "Pass Type"
+msgstr ""
+
+#: patterns/banner.php:86
+msgid "Choose Pass "
+msgstr ""
+
+#: patterns/blog-left.php
+msgctxt "Pattern title"
+msgid "Blog Left"
+msgstr ""
+
+#: patterns/blog-right.php
+msgctxt "Pattern title"
+msgid "Blog Right"
+msgstr ""
+
+#: patterns/cart.php
+msgctxt "Pattern title"
+msgid "Cart"
+msgstr ""
+
+#: patterns/cart.php:17
+msgid "You may be interested in…"
+msgstr ""
+
+#: patterns/cart.php:75
+msgid "Your cart is currently empty!"
+msgstr ""
+
+#: patterns/cart.php:83
+msgid "New in store"
+msgstr ""
+
+#: patterns/checkout.php
+msgctxt "Pattern title"
+msgid "Checkout"
+msgstr ""
+
+#: patterns/cover-archive.php
+msgctxt "Pattern title"
+msgid "Cover Archive"
+msgstr ""
+
+#: patterns/cover-blog-left.php
+msgctxt "Pattern title"
+msgid "Cover Blog Left"
+msgstr ""
+
+#: patterns/cover-blog-left.php:9
+msgid "Blog Left Sidebar"
+msgstr ""
+
+#: patterns/cover-index.php
+msgctxt "Pattern title"
+msgid "Cover Index"
+msgstr ""
+
+#: patterns/cover-index.php:9
+msgid "Blog"
+msgstr ""
+
+#: patterns/cover-search.php
+msgctxt "Pattern title"
+msgid "Cover Search"
+msgstr ""
+
+#: patterns/cover-single-page.php
+msgctxt "Pattern title"
+msgid "Cover Single Page"
+msgstr ""
+
+#: patterns/cover-single-post.php
+msgctxt "Pattern title"
+msgid "Cover Single Post"
+msgstr ""
+
+#: patterns/cover-single-title.php
+msgctxt "Pattern title"
+msgid "Cover Single Title"
+msgstr ""
+
+#: patterns/driving-section.php
+msgctxt "Pattern title"
+msgid "Driving Section"
+msgstr ""
+
+#: patterns/driving-section.php:15
+msgid "Smart Tech &amp; Future Mobility"
+msgstr ""
+
+#: patterns/driving-section.php:19
+msgid "Explore AI-driven vehicles, EV charging, and next-gen driving solutions."
+msgstr ""
+
+#: patterns/driving-section.php:34
+msgid "AI in Driving"
+msgstr ""
+
+#: patterns/driving-section.php:38
+msgid "Autonomous systems for safer, smarter rides — featuring self-learning algorithms, adaptive cruise control, lane assistance, and fully driverless capabilities for the future of mobility."
+msgstr ""
+
+#: patterns/driving-section.php:43
+#: patterns/driving-section.php:67
+#: patterns/driving-section.php:91
+#: patterns/driving-section.php:115
+msgid "Read More"
+msgstr ""
+
+#: patterns/driving-section.php:58
+msgid "Next-Gen EV Charging"
+msgstr ""
+
+#: patterns/driving-section.php:62
+msgid "Wireless & ultra-fast charging breakthroughs — explore 350kW superchargers, inductive charging pads, and sustainable grid integrations that cut charging time dramatically."
+msgstr ""
+
+#: patterns/driving-section.php:82
+msgid "Smart Navigation"
+msgstr ""
+
+#: patterns/driving-section.php:86
+msgid "AI-powered real-time routing & traffic prediction — delivering seamless journeys with live updates, predictive analytics, and integration with connected city infrastructure."
+msgstr ""
+
+#: patterns/driving-section.php:106
+msgid "AR Dashboards"
+msgstr ""
+
+#: patterns/driving-section.php:110
+msgid "Augmented reality windshields & driver assist tech — transforming driving with heads-up holographic displays, 3D navigation overlays, and immersive safety alerts."
+msgstr ""
+
+#: patterns/event-section.php
+msgctxt "Pattern title"
+msgid "Event Section"
+msgstr ""
+
+#: patterns/event-section.php:15
+msgid "What’s Next at AutoSphere"
+msgstr ""
+
+#: patterns/event-section.php:19
+msgid "Don’t miss the thrilling showcases, launches, and interactive experiences ahead."
+msgstr ""
+
+#: patterns/event-section.php:34
+msgid "Event 1: Supercar Showcase"
+msgstr ""
+
+#: patterns/event-section.php:38
+#: patterns/event-section.php:82
+#: patterns/event-section.php:126
+msgid "New hypercar reveal with live demo."
+msgstr ""
+
+#: patterns/event-section.php:43
+#: patterns/event-section.php:87
+#: patterns/event-section.php:131
+msgid "October 15, 2025"
+msgstr ""
+
+#: patterns/event-section.php:47
+#: patterns/event-section.php:91
+#: patterns/event-section.php:135
+msgid " 11:00 AM – 2:00 PM"
+msgstr ""
+
+#: patterns/event-section.php:53
+#: patterns/event-section.php:97
+#: patterns/event-section.php:141
+msgid "Starting from $120"
+msgstr ""
+
+#: patterns/event-section.php:57
+#: patterns/event-section.php:101
+#: patterns/event-section.php:145
+msgid "Main Hall, New York"
+msgstr ""
+
+#: patterns/event-section.php:64
+#: patterns/event-section.php:108
+#: patterns/event-section.php:152
+msgid "27"
+msgstr ""
+
+#: patterns/event-section.php:64
+#: patterns/event-section.php:108
+#: patterns/event-section.php:152
+msgid "Days"
+msgstr ""
+
+#: patterns/event-section.php:64
+#: patterns/event-section.php:108
+#: patterns/event-section.php:152
+msgid "10"
+msgstr ""
+
+#: patterns/event-section.php:64
+#: patterns/event-section.php:108
+#: patterns/event-section.php:152
+msgid "Hours"
+msgstr ""
+
+#: patterns/event-section.php:64
+#: patterns/event-section.php:108
+#: patterns/event-section.php:152
+msgid "45"
+msgstr ""
+
+#: patterns/event-section.php:64
+#: patterns/event-section.php:108
+#: patterns/event-section.php:152
+msgid "Minutes"
+msgstr ""
+
+#: patterns/event-section.php:64
+#: patterns/event-section.php:108
+#: patterns/event-section.php:152
+msgid "05"
+msgstr ""
+
+#: patterns/event-section.php:64
+#: patterns/event-section.php:108
+#: patterns/event-section.php:152
+msgid "Seconds"
+msgstr ""
+
+#: patterns/event-section.php:78
+msgid "Event 2: Tech Innovation Talk"
+msgstr ""
+
+#: patterns/event-section.php:122
+msgid "Event 3: Test Drive Experience"
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Footer"
+msgstr ""
+
+#: patterns/footer.php:18
+msgid "AutoSphere Expo is the global stage for automotive innovation, connecting industry leaders, tech pioneers, and enthusiasts. From smart mobility to next-gen EVs, we showcase the breakthroughs shaping the future of driving."
+msgstr ""
+
+#: patterns/footer.php:22
+#: patterns/header.php:21
+msgid "+1234567890"
+msgstr ""
+
+#: patterns/footer.php:26
+msgid "autospher@example.com"
+msgstr ""
+
+#: patterns/footer.php:30
+msgid "AutoSphere Expo Center 1200 Innovation Drive Frankfurt, Germany"
+msgstr ""
+
+#: patterns/footer.php:36
+msgid "quick links"
+msgstr ""
+
+#: patterns/footer.php:57
+msgid "Help & Support"
+msgstr ""
+
+#: patterns/footer.php:62
+msgid "Contact"
+msgstr ""
+
+#: patterns/footer.php:66
+msgid "Visitor Info"
+msgstr ""
+
+#: patterns/footer.php:70
+msgid "Travel & Hotels"
+msgstr ""
+
+#: patterns/footer.php:74
+msgid "Registration Help"
+msgstr ""
+
+#: patterns/footer.php:78
+msgid "Privacy Policy"
+msgstr ""
+
+#: patterns/footer.php:85
+msgid "social media"
+msgstr ""
+
+#: patterns/footer.php:103
+msgid "Car Exhibition Theme"
+msgstr ""
+
+#: patterns/footer.php:103
+msgid " By Classic Templates"
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern title"
+msgid "Header"
+msgstr ""
+
+#: patterns/header.php:27
+msgid "AutoExpo@example.com"
+msgstr ""
+
+#: patterns/header.php:33
+msgid "Limited VIP Passes – Reserve Yours Today!"
+msgstr ""
+
+#: patterns/header.php:70
+msgid "Get Tickets"
+msgstr ""
+
+#: patterns/post.php
+msgctxt "Pattern title"
+msgid "Post"
+msgstr ""
+
+#: patterns/search.php
+msgctxt "Pattern title"
+msgid "Search"
+msgstr ""
+
+#: patterns/sidebar.php
+msgctxt "Pattern title"
+msgid "Sidebar"
+msgstr ""
+
+#: patterns/sidebar.php:11
+msgid "Search"
+msgstr ""
+
+#: patterns/sidebar.php:19
+msgid "Latest Posts"
+msgstr ""
+
+#: patterns/sidebar.php:27
+msgid "Categories"
+msgstr ""
+
+#: patterns/sidebar.php:35
+msgid "Tags"
+msgstr ""
+
+#: patterns/single-post-left-sidebar.php
+msgctxt "Pattern title"
+msgid "Single Post Left Sidebar"
+msgstr ""
+
+#: patterns/single-post-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Single Post Right Sidebar"
+msgstr ""
+
+#: patterns/single-post.php
+msgctxt "Pattern title"
+msgid "Single Post"
+msgstr ""
+
+#: styles/blue-and-green.json
+msgctxt "Style variation name"
+msgid "Blue And Green"
+msgstr ""
+
+#: styles/blue-and-green.json
+#: styles/dark-teal-green.json
+#: styles/forest-green.json
+#: styles/olive-green.json
+#: styles/red.json
+#: styles/royal-purple.json
+#: theme.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr ""
+
+#: styles/blue-and-green.json
+#: styles/dark-teal-green.json
+#: styles/forest-green.json
+#: styles/olive-green.json
+#: styles/red.json
+#: styles/royal-purple.json
+#: theme.json
+msgctxt "Color name"
+msgid "Base"
+msgstr ""
+
+#: styles/blue-and-green.json
+#: styles/dark-teal-green.json
+#: styles/forest-green.json
+#: styles/olive-green.json
+#: styles/red.json
+#: styles/royal-purple.json
+#: theme.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr ""
+
+#: styles/blue-and-green.json
+#: styles/dark-teal-green.json
+#: styles/forest-green.json
+#: styles/olive-green.json
+#: styles/red.json
+#: styles/royal-purple.json
+#: theme.json
+msgctxt "Color name"
+msgid "Contrast / Two"
+msgstr ""
+
+#: styles/blue-and-green.json
+#: styles/dark-teal-green.json
+#: styles/forest-green.json
+#: styles/olive-green.json
+#: styles/red.json
+#: styles/royal-purple.json
+#: theme.json
+msgctxt "Color name"
+msgid "Link Color"
+msgstr ""
+
+#: styles/dark-teal-green.json
+msgctxt "Style variation name"
+msgid "Dark Teal Green"
+msgstr ""
+
+#: styles/forest-green.json
+msgctxt "Style variation name"
+msgid "Forest Green"
+msgstr ""
+
+#: styles/olive-green.json
+msgctxt "Style variation name"
+msgid "Olive Green"
+msgstr ""
+
+#: styles/red.json
+msgctxt "Style variation name"
+msgid "Red"
+msgstr ""
+
+#: styles/royal-purple.json
+msgctxt "Style variation name"
+msgid "Royal Purple"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Natural"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Deep"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Sharp"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Outlined"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Crisp"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Black and white"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Black and sandstone"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Black and rust"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Black and sage"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Black and pastel blue"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft beige to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft sandstone to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft rust to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft sage to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft mint to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical soft pewter to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard beige to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard sandstone to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard rust to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard sage to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard mint to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical hard pewter to white"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Slider Bg"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Btn Bg"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Section Background"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "6"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Montserrat"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra Extra Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post Meta"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (No Title / Feature Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page With Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page with wide Image"
+msgstr ""
