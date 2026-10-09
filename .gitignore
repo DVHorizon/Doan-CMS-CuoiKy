@@ -24,6 +24,4 @@ TestResults.xml
 
 # Docker & Environment variables
 .env
-.env.*
-*.env
 *.log
