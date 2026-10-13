@@ -8159,3 +8159,373 @@ RESPONSIVE STYLESHEET
 .wp-block-social-links {
   flex-wrap: wrap !important;
 }
+
+/* ==========================================================================
+   CUSTOM PLAN DO SEE FOOTER STYLES (Newsletter & Centered Footer)
+   ========================================================================== */
+
+/* 1. Newsletter Section (Exact match with screenshot) */
+.jos-footer-newsletter-section,
+.wp-block-legacy-widget .jos-footer-newsletter-section,
+.widget_jobscout_newsletter_widget {
+  background-color: #ea6b1d !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.jos-footer-newsletter-section {
+  padding: 30px 0;
+}
+
+.jos-newsletter-bar {
+  width: 100%;
+  background-color: #ea6b1d !important;
+  padding: 24px 20px;
+  box-sizing: border-box;
+}
+
+.jos-newsletter-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  box-sizing: border-box;
+}
+
+.jos-newsletter-left {
+  flex: 0 0 auto;
+}
+
+.jos-newsletter-heading {
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  font-size: 21px;
+  font-weight: 700;
+  color: #ffffff !important;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+}
+
+.jos-newsletter-heading span {
+  color: #ffffff !important;
+}
+
+.jos-newsletter-right {
+  flex: 1;
+  max-width: 650px;
+}
+
+.jos-newsletter-form {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 15px !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.jos-newsletter-input-box {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  background-color: #ffffff !important;
+  border-radius: 2px !important;
+  padding: 0 14px !important;
+  height: 44px !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+.jos-newsletter-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: 10px !important;
+  flex-shrink: 0 !important;
+  line-height: 1 !important;
+}
+
+.jos-newsletter-input {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  color: #333333 !important;
+  font-size: 13.5px !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+.jos-newsletter-input::placeholder {
+  color: #999999 !important;
+  font-size: 13.5px !important;
+}
+
+.jos-newsletter-btn {
+  flex: 0 0 auto !important;
+  height: 44px !important;
+  background-color: #ea6b1d !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  padding: 0 24px !important;
+  border-radius: 2px !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
+}
+
+.jos-newsletter-btn:hover {
+  background-color: #ffffff !important;
+  color: #ea6b1d !important;
+  border-color: #ffffff !important;
+}
+
+/* Fix trong khung xem trước của WordPress Admin Widgets */
+.wp-block-legacy-widget .jos-newsletter-bar {
+  border-radius: 4px;
+}
+.wp-block-legacy-widget .jos-newsletter-btn {
+  background-color: #ea6b1d !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 860px) {
+  .jos-newsletter-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .jos-newsletter-right {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .jos-newsletter-form {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .jos-newsletter-input-box {
+    width: 100% !important;
+  }
+
+  .jos-newsletter-btn {
+    width: 100% !important;
+  }
+}
+
+
+
+.jos-brand-footer-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Brand Title / Logo */
+.jos-brand-title-wrap {
+  margin-bottom: 28px;
+}
+
+.jos-brand-link {
+  text-decoration: none !important;
+  display: inline-block;
+}
+
+.jos-brand-name {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111111;
+  letter-spacing: -0.5px;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.jos-footer-logo {
+  max-height: 50px;
+  width: auto;
+  display: block;
+}
+
+/* Menu horizontal */
+.jos-footer-nav-wrap {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.jos-footer-menu {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.jos-footer-menu li {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.jos-footer-menu li a {
+  font-size: 13px;
+  font-weight: 700;
+  color: #222222 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.jos-footer-menu li a:hover {
+  color: #e8631b !important;
+}
+
+/* Social Media Icons (Rounded colors) */
+.jos-social-icons-wrap {
+  margin-top: 8px;
+}
+
+.jos-social-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.jos-social-list li {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.jos-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+.jos-social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  opacity: 0.95;
+}
+
+.jos-social-facebook {
+  background-color: #4a6ea9;
+}
+
+.jos-social-google {
+  background-color: #ea4335;
+}
+
+.jos-social-line {
+  background-color: #00c300;
+}
+
+.jos-social-twitter {
+  background-color: #4da7de;
+}
+
+/* 3. Bottom Black Copyright Bar */
+.site-footer .footer-b {
+  background: #1c1815 !important;
+  padding: 14px 0 !important;
+  border-top: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.site-footer .footer-b .container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.site-footer .footer-b .copyright {
+  text-align: center !important;
+  width: 100% !important;
+  color: #a39a93 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  letter-spacing: 0.2px;
+}
+
+.site-footer .footer-b .copyright span.copyright-text {
+  color: #a39a93 !important;
+}
+
+.site-footer .footer-b a {
+  color: #c4bbb4 !important;
+  text-decoration: none !important;
+}
+
+.site-footer .footer-b a:hover {
+  color: #ffffff !important;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jos-newsletter-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .jos-newsletter-form-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .jos-newsletter-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .jos-input-group {
+    width: 100%;
+  }
+
+  .jos-submit-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .jos-footer-menu {
+    gap: 18px;
+  }
+}

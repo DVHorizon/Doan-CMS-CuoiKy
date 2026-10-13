@@ -57,6 +57,7 @@ require get_template_directory() . '/inc/customizer/customizer.php';
  * Widgets
  */
 require get_template_directory() . '/inc/widgets.php';
+require get_template_directory() . '/inc/custom-footer-widgets.php';
 
 /**
  * Metabox

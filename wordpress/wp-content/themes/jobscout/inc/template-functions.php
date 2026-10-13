@@ -500,6 +500,22 @@ if( ! function_exists( 'jobscout_footer_top' ) ) :
  * Footer Top
 */
 function jobscout_footer_top(){    
+    // 1. Dải Newsletter màu cam
+    if( is_active_sidebar( 'footer-newsletter' ) ){ ?>
+        <div class="jos-footer-newsletter-section">
+            <?php dynamic_sidebar( 'footer-newsletter' ); ?>
+        </div>
+    <?php }
+
+    // 2. Chân trang căn giữa (Brand + Menu + Social)
+    if( is_active_sidebar( 'footer-centered' ) ){ ?>
+        <div class="jos-footer-centered-section">
+            <div class="container">
+                <?php dynamic_sidebar( 'footer-centered' ); ?>
+            </div>
+        </div>
+    <?php }
+
     $footer_sidebars = array( 'footer-one', 'footer-two', 'footer-three', 'footer-four' );
     $active_sidebars = array();
     $sidebar_count   = 0;
