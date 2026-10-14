@@ -1,78 +1,114 @@
 <?php
 /**
- * Blog Section
+ * Blog Section - NEWEST BLOG ENTRIES
  * 
  * @package JobScout
  */
 
-$blog_heading = get_theme_mod( 'blog_section_title', __( 'Latest Articles', 'jobscout' ) );
-$sub_title    = get_theme_mod( 'blog_section_subtitle', __( 'We will help you find it. We are your first step to becoming everything you want to be.', 'jobscout' ) );
-$blog         = get_option( 'page_for_posts' );
-$label        = get_theme_mod( 'blog_view_all', __( 'See More Posts', 'jobscout' ) );
-$hide_author  = get_theme_mod( 'ed_post_author', false );
-$hide_date    = get_theme_mod( 'ed_post_date', false );
-$ed_blog      = get_theme_mod( 'ed_blog', true );
+$news_page_url = home_url( '/news/' );
 
 $args = array(
     'post_type'           => 'post',
     'post_status'         => 'publish',
-    'posts_per_page'      => 3,
+    'posts_per_page'      => 4,
+    'orderby'             => 'date',
+    'order'               => 'DESC',
     'ignore_sticky_posts' => true
 );
 
-$qry = new WP_Query( $args );
+$blog_query = new WP_Query( $args );
 
-if( $ed_blog && ( $blog_heading || $sub_title || $qry->have_posts() ) ){ ?>
-<section id="blog-section" class="article-section">
-	<div class="container">
-        <?php 
-            if( $blog_heading ) echo '<h2 class="section-title">' . esc_html( $blog_heading ) . '</h2>';
-            if( $sub_title ) echo '<div class="section-desc">' . wpautop( wp_kses_post( $sub_title ) ) . '</div>'; 
-        ?>
-        
-        <?php if( $qry->have_posts() ){ ?>
-           <div class="article-wrap">
-    			<?php 
-                while( $qry->have_posts() ){
-                    $qry->the_post(); ?>
-                    <article class="post">
-        				<figure class="post-thumbnail">
-                            <a href="<?php the_permalink(); ?>" class="post-thumbnail">
-                            <?php 
-                                if( has_post_thumbnail() ){
-                                    the_post_thumbnail( 'jobscout-blog', array( 'itemprop' => 'image' ) );
-                                }else{ 
-                                    jobscout_fallback_svg_image( 'jobscout-blog' ); 
-                                }                            
-                            ?>                        
+// Fallback sample cards if needed
+$sample_posts = array(
+    array(
+        'title'   => 'Project Development',
+        'desc'    => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        'img'     => get_template_directory_uri() . '/images/blog_1.jpg',
+    ),
+    array(
+        'title'   => 'Restaurant & Hotel Management And Operations',
+        'desc'    => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        'img'     => get_template_directory_uri() . '/images/1c.jpg',
+    ),
+    array(
+        'title'   => 'Hospitality Consulting',
+        'desc'    => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        'img'     => get_template_directory_uri() . '/images/2cl.jpg',
+    ),
+    array(
+        'title'   => 'Venue And Interior Design',
+        'desc'    => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        'img'     => get_template_directory_uri() . '/images/2cr.jpg',
+    ),
+);
+?>
+
+<section id="newest-blog-section" class="custom-blog-section">
+    <div class="blog-section-container">
+        <h2 class="section-heading-title">NEWEST BLOG ENTRIES</h2>
+
+        <div class="blog-entries-grid">
+            <?php 
+            if ( $blog_query->have_posts() ) {
+                $idx = 0;
+                while ( $blog_query->have_posts() ) {
+                    $blog_query->the_post();
+                    $post_id = get_the_ID();
+                    $thumb_url = '';
+                    
+                    if ( has_post_thumbnail( $post_id ) ) {
+                        $thumb_url = get_the_post_thumbnail_url( $post_id, 'medium' );
+                    }
+                    if ( empty( $thumb_url ) ) {
+                        $thumb_url = $sample_posts[ $idx % 4 ]['img'];
+                    }
+                    
+                    $excerpt = get_the_excerpt();
+                    if ( empty( $excerpt ) ) {
+                        $excerpt = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+                    } else {
+                        $excerpt = wp_trim_words( $excerpt, 18, '...' );
+                    }
+                    ?>
+                    <article class="blog-card-item">
+                        <div class="blog-card-thumb-wrap">
+                            <a href="<?php the_permalink(); ?>">
+                                <img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php the_title_attribute(); ?>" class="blog-card-thumb">
                             </a>
-                        </figure>
-                        <header class="entry-header">
-                            <div class="entry-meta">
-                                <?php 
-                                    if( ! $hide_author ) jobscout_posted_by(); 
-                                    if( ! $hide_date ) jobscout_posted_on();
-                                ?> 
-                            </div>
-                            <h3 class="entry-title">
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-card-title">
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                             </h3>
-                        </header>
-        			</article>			
-        			<?php 
+                            <p class="blog-card-excerpt"><?php echo esc_html( $excerpt ); ?></p>
+                            <a href="<?php the_permalink(); ?>" class="blog-read-more-link">Read More</a>
+                        </div>
+                    </article>
+                    <?php
+                    $idx++;
                 }
                 wp_reset_postdata();
-                ?>
-    		</div><!-- .article-wrap -->
-    		
-            <?php if( $blog && $label ){ ?>
-                <div class="btn-wrap">
-        			<a href="<?php the_permalink( $blog ); ?>" class="btn"><?php echo esc_html( $label ); ?></a>
-        		</div>
-            <?php } ?>
-        
-        <?php } ?>
-	</div>
+            } else {
+                foreach ( $sample_posts as $sp ) {
+                    ?>
+                    <article class="blog-card-item">
+                        <div class="blog-card-thumb-wrap">
+                            <a href="<?php echo esc_url( $news_page_url ); ?>">
+                                <img src="<?php echo esc_url( $sp['img'] ); ?>" alt="<?php echo esc_attr( $sp['title'] ); ?>" class="blog-card-thumb">
+                            </a>
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-card-title">
+                                <a href="<?php echo esc_url( $news_page_url ); ?>"><?php echo esc_html( $sp['title'] ); ?></a>
+                            </h3>
+                            <p class="blog-card-excerpt"><?php echo esc_html( $sp['desc'] ); ?></p>
+                            <a href="<?php echo esc_url( $news_page_url ); ?>" class="blog-read-more-link">Read More</a>
+                        </div>
+                    </article>
+                    <?php
+                }
+            }
+            ?>
+        </div>
+    </div>
 </section>
-<?php 
-}
