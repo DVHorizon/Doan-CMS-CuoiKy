@@ -119,6 +119,9 @@ if( ! function_exists( 'jobscout_site_branding' ) ) :
 function jobscout_site_branding( $responsive = false ){ 
     $site_title          = get_bloginfo( 'name', 'display' );
     $description         = get_bloginfo( 'description', 'display' );
+    if( empty( $description ) ){
+        $description = 'RECRUITING';
+    }
     if( ( function_exists( 'has_custom_logo' ) && has_custom_logo() ) && ( ! empty( $site_title ) || ! empty(  $description  ) ) ){
        $branding_class = ' logo-text';                                                                                                                          
     } else {
@@ -146,13 +149,12 @@ function jobscout_site_branding( $responsive = false ){
                 }
             }
 
-            $description = get_bloginfo( 'description', 'display' );
             if ( $description || is_customize_preview() ){ ?>
-                <p class="site-description" itemprop="description"><?php echo $description; ?></p>
+                <p class="site-description recruiting-tagline" itemprop="description"><?php echo esc_html( $description ); ?></p>
             <?php
 
             }
-            echo '</div><!-- .site-title-wrap -->'
+            echo '</div><!-- .site-title-wrap -->';
         ?>
     </div>
     <?php
@@ -165,8 +167,14 @@ if( ! function_exists( 'jobscout_primary_nagivation' ) ) :
 */
 function jobscout_primary_nagivation(){ 
 
-    $post_job_label  = get_theme_mod( 'post_job_label', __( 'Post Jobs', 'jobscout' ) );
-    $post_job_url    = get_theme_mod( 'post_job_url', '#' );
+    $post_job_label  = get_theme_mod( 'post_job_label', __( 'SUBMIT JOB', 'jobscout' ) );
+    $post_job_url    = get_theme_mod( 'post_job_url', home_url( '/post-a-job/' ) );
+    if( empty( $post_job_label ) ){
+        $post_job_label = __( 'SUBMIT JOB', 'jobscout' );
+    }
+    if( empty( $post_job_url ) || $post_job_url === '#' ){
+        $post_job_url = home_url( '/post-a-job/' );
+    }
     ?>
     	<nav id="site-navigation" class="main-navigation" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
         <button class="toggle-btn" data-toggle-target=".main-menu-modal" data-toggle-body-class="showing-main-menu-modal" aria-expanded="false" data-set-focus=".close-main-nav-toggle">

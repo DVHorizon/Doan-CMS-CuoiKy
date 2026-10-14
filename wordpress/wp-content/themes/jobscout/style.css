@@ -8531,6 +8531,658 @@ RESPONSIVE STYLESHEET
 }
 
 /* ==========================================================================
+   CUSTOM HEADER (STICKY, LOGO + RECRUITING, ACTIVE UNDERLINE, ORANGE CTA)
+   ========================================================================== */
+
+/* 1. Global Sticky Header */
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  background-color: #ffffff !important;
+  z-index: 99999 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  border-bottom: 1px solid #eeeeee !important;
+  transition: all 0.3s ease;
+}
+
+.admin-bar .site-header {
+  top: 32px !important;
+}
+
+@media screen and (max-width: 782px) {
+  .admin-bar .site-header {
+    top: 46px !important;
+  }
+}
+
+/* Hide top secondary bar */
+.site-header .header-t {
+  display: none !important;
+}
+
+/* Base Branding (Logo + Tagline) */
+.site-header .header-main .site-branding {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+}
+
+.site-header .header-main .site-branding .site-title {
+  margin: 0 !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.3px !important;
+}
+
+.site-header .header-main .site-branding .site-title a {
+  color: #111827 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.site-header .header-main .site-branding .site-title a:hover {
+  color: #ea580c !important;
+}
+
+.site-header .header-main .site-branding .site-description,
+.site-header .header-main .site-branding .recruiting-tagline {
+  margin: 3px 0 0 0 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: #4b5563 !important;
+  line-height: 1.2 !important;
+  display: block !important;
+}
+
+.site-header .site-branding.logo-text {
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+/* ==========================================================================
+   2. DESKTOP HEADER (Screen width >= 1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .site-header .header-main {
+    padding: 16px 0 !important;
+    background-color: #ffffff !important;
+  }
+
+  .site-header .header-main > .container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .site-header .header-main .site-branding {
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  .site-header .header-main .site-branding .site-title {
+    font-size: 24px !important;
+  }
+
+  .site-header .header-main .site-branding .site-description,
+  .site-header .header-main .site-branding .recruiting-tagline {
+    font-size: 11px !important;
+    letter-spacing: 2.5px !important;
+  }
+
+  .site-header .site-branding .site-logo img {
+    max-height: 48px !important;
+    width: auto !important;
+    display: block !important;
+  }
+
+  .site-header .header-main .menu-wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 36px !important;
+    width: auto !important;
+    flex: 1 1 auto !important;
+  }
+
+  .site-header .menu-wrap .main-navigation {
+    width: auto !important;
+    display: block !important;
+  }
+
+  .site-header .main-navigation .toggle-btn {
+    display: none !important;
+  }
+
+  .site-header .main-navigation ul.nav-menu,
+  .site-header .main-navigation ul#primary-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 6px !important;
+  }
+
+  .site-header .main-navigation ul li {
+    position: relative !important;
+    display: inline-block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .site-header .main-navigation ul li a {
+    position: relative !important;
+    display: block !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #1f2937 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.6px !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+  }
+
+  .site-header .main-navigation ul li a:hover {
+    color: #111827 !important;
+  }
+
+  /* Active & Hover Underline (Desktop) */
+  .site-header .main-navigation ul li a::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0px !important;
+    left: 16px !important;
+    right: 16px !important;
+    height: 3px !important;
+    background-color: transparent !important;
+    border-radius: 2px !important;
+    transition: background-color 0.25s ease, transform 0.25s ease !important;
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+
+  .site-header .main-navigation ul li:hover > a::after {
+    background-color: #ea580c !important;
+    transform: scaleX(1) !important;
+  }
+
+  .site-header .main-navigation ul li.current-menu-item > a::after,
+  .site-header .main-navigation ul li.current_page_item > a::after,
+  .site-header .main-navigation ul li.current-menu-ancestor > a::after,
+  .site-header .main-navigation ul li.current_page_ancestor > a::after,
+  .site-header .main-navigation ul li.active > a::after {
+    background-color: #ea580c !important;
+    transform: scaleX(1) !important;
+  }
+
+  .site-header .main-navigation ul li.current-menu-item > a,
+  .site-header .main-navigation ul li.current_page_item > a {
+    color: #111827 !important;
+  }
+
+  /* Desktop SUBMIT JOB Button */
+  .site-header .menu-wrap .btn-wrap {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .site-header .menu-wrap .btn-wrap a.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #ea580c !important;
+    background: #ea580c !important;
+    color: #ffffff !important;
+    padding: 12px 24px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    border-radius: 3px !important;
+    border: none !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.28) !important;
+    transition: all 0.25s ease !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+  }
+
+  .site-header .menu-wrap .btn-wrap a.btn:hover {
+    background-color: #c2410c !important;
+    background: #c2410c !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4) !important;
+  }
+}
+
+/* ==========================================================================
+   3. MOBILE & TABLET HEADER (Screen width <= 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .site-header .header-main {
+    padding: 10px 0 !important;
+    background-color: #ffffff !important;
+  }
+
+  .site-header .header-main > .container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* CRITICAL: HIDE horizontal desktop menu on mobile */
+  .site-header .header-main .main-navigation ul,
+  .site-header .header-main .main-navigation ul#primary-menu,
+  .site-header .header-main .main-navigation ul.nav-menu {
+    display: none !important;
+  }
+
+  /* Mobile Branding */
+  .site-header .header-main .site-branding {
+    flex: 1 1 auto !important;
+    max-width: calc(100% - 170px) !important;
+    width: auto !important;
+  }
+
+  .site-header .header-main .site-branding .site-title {
+    font-size: 17px !important;
+    line-height: 1.2 !important;
+  }
+
+  .site-header .header-main .site-branding .site-description,
+  .site-header .header-main .site-branding .recruiting-tagline {
+    font-size: 9px !important;
+    letter-spacing: 1.6px !important;
+    margin-top: 2px !important;
+  }
+
+  .site-header .site-branding .site-logo img {
+    max-height: 34px !important;
+    width: auto !important;
+    display: block !important;
+  }
+
+  /* Mobile Menu Wrap: holds compact Submit button + hamburger toggle */
+  .site-header .header-main .menu-wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  .site-header .menu-wrap .main-navigation {
+    width: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+  }
+
+  /* Compact SUBMIT JOB Button on Mobile Header */
+  .site-header .menu-wrap .btn-wrap {
+    display: block !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+
+  .site-header .menu-wrap .btn-wrap a.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #ea580c !important;
+    background: #ea580c !important;
+    color: #ffffff !important;
+    padding: 7px 11px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-radius: 3px !important;
+    border: none !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25) !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Hamburger Toggle Button */
+  .site-header .main-navigation .toggle-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 6px !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    gap: 4px !important;
+    box-sizing: border-box !important;
+    position: static !important;
+  }
+
+  .site-header .main-navigation .toggle-btn .toggle-bar {
+    display: block !important;
+    width: 18px !important;
+    height: 2px !important;
+    background-color: #1e293b !important;
+    border-radius: 2px !important;
+    position: static !important;
+    margin: 0 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .site-header .main-navigation .toggle-btn:hover {
+    background-color: #f1f5f9 !important;
+  }
+
+  .site-header .main-navigation .toggle-btn:hover .toggle-bar {
+    background-color: #ea580c !important;
+  }
+
+  /* ========================================================================
+     Off-canvas Sliding Navigation Drawer & Admin-bar fixes
+     ======================================================================== */
+  /* Prevent background site from shifting horizontally */
+  body.menu-active .site {
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    transform: none !important;
+  }
+
+  .responsive-nav {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 320px !important;
+    max-width: 86vw !important;
+    height: 100% !important;
+    height: 100vh !important;
+    background: #ffffff !important;
+    z-index: 999999 !important;
+    box-shadow: -6px 0 30px rgba(0, 0, 0, 0.18) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 1 !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .menu-active .responsive-nav {
+    transform: translateX(0) !important;
+  }
+
+  /* Admin-bar compatibility for drawer */
+  .admin-bar .responsive-nav {
+    top: 46px !important;
+    height: calc(100vh - 46px) !important;
+  }
+
+  @media screen and (min-width: 783px) {
+    .admin-bar .responsive-nav {
+      top: 32px !important;
+      height: calc(100vh - 32px) !important;
+    }
+  }
+
+  /* RESET old JobScout relative offsets that caused overlapping */
+  .responsive-nav .nav-top,
+  .admin-bar .responsive-nav .nav-top {
+    top: 0 !important;
+    position: relative !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 16px 20px !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    background: #ffffff !important;
+    flex-shrink: 0 !important;
+    z-index: 5 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .responsive-nav .nav-top .site-branding {
+    flex: 1 1 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .responsive-nav .nav-top .site-branding .site-title {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+
+  .responsive-nav .nav-top .site-branding .site-description,
+  .responsive-nav .nav-top .site-branding .recruiting-tagline {
+    font-size: 9.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.8px !important;
+    color: #4b5563 !important;
+    margin-top: 2px !important;
+    line-height: 1.2 !important;
+  }
+
+  .responsive-nav .nav-top .site-logo img {
+    max-height: 38px !important;
+    width: auto !important;
+    display: block !important;
+  }
+
+  /* Close Button in nav-top */
+  .responsive-nav .close-btn,
+  .responsive-nav .close,
+  .admin-bar .responsive-nav .close-btn,
+  .admin-bar .responsive-nav .close {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    background: #f1f5f9 !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 50% !important;
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    margin: 0 0 0 12px !important;
+    padding: 0 !important;
+    transition: all 0.2s ease !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav .close-btn:hover,
+  .responsive-nav .close:hover {
+    background: #fee2e2 !important;
+    border-color: #fca5a5 !important;
+  }
+
+  .responsive-nav .close-btn .bar,
+  .responsive-nav .close .bar {
+    position: absolute !important;
+    width: 14px !important;
+    height: 2px !important;
+    background: #334155 !important;
+    border-radius: 2px !important;
+    top: 50% !important;
+    left: 50% !important;
+    margin-left: -7px !important;
+    margin-top: -1px !important;
+    transition: background 0.2s ease !important;
+  }
+
+  .responsive-nav .close-btn .bar:first-child,
+  .responsive-nav .close .bar:first-child {
+    transform: rotate(45deg) !important;
+  }
+
+  .responsive-nav .close-btn .bar:last-child,
+  .responsive-nav .close .bar:last-child {
+    transform: rotate(-45deg) !important;
+  }
+
+  .responsive-nav .close-btn:hover .bar,
+  .responsive-nav .close:hover .bar {
+    background: #dc2626 !important;
+  }
+
+  /* Mobile Navigation List Container */
+  .responsive-nav .mobile-navigation,
+  .admin-bar .responsive-nav .mobile-navigation,
+  .admin-bar .menu-active .mobile-navigation {
+    display: flex !important;
+    flex-direction: column !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    top: 0 !important;
+    position: relative !important;
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav .primary-menu-list,
+  .responsive-nav .mobile-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    flex: 1 1 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav ul.nav-menu,
+  .responsive-nav ul#mobile-primary-menu {
+    list-style: none !important;
+    padding: 6px 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .responsive-nav ul.nav-menu li {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-bottom: 1px solid #f3f4f6 !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav ul.nav-menu li a {
+    display: block !important;
+    width: 100% !important;
+    padding: 15px 22px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.6px !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    border-left: 4px solid transparent !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav ul.nav-menu li a:hover {
+    background-color: #f8fafc !important;
+    color: #ea580c !important;
+  }
+
+  /* Active Menu Item inside Mobile Drawer */
+  .responsive-nav ul.nav-menu li.current-menu-item > a,
+  .responsive-nav ul.nav-menu li.current_page_item > a {
+    color: #ea580c !important;
+    border-left: 4px solid #ea580c !important;
+    background-color: #fff7ed !important;
+    padding-left: 18px !important;
+  }
+
+  /* SUBMIT JOB button inside Mobile Drawer */
+  .responsive-nav .mobile-menu .btn-wrap {
+    padding: 20px 22px 28px !important;
+    border-top: 1px solid #e5e7eb !important;
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
+    background: #ffffff !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav .mobile-menu .btn-wrap a.btn {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    background: #ea580c !important;
+    background-color: #ea580c !important;
+    color: #ffffff !important;
+    padding: 13px 20px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    border-radius: 4px !important;
+    border: none !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3) !important;
+    line-height: 1.2 !important;
+  }
+
+  .responsive-nav .mobile-menu .btn-wrap a.btn:hover {
+    background: #c2410c !important;
+    background-color: #c2410c !important;
+  }
+
+  /* Dimmed backdrop overlay when drawer is open */
+  body.menu-active::before {
+    content: "" !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+    z-index: 999998 !important;
+    backdrop-filter: blur(2px) !important;
+  }
+}
+
+/* ==========================================================================
    CUSTOM HOMEPAGE SECTIONS (PDS GLOBAL / THEME JOB SCOUT)
    ========================================================================== */
 
@@ -9191,4 +9843,6 @@ RESPONSIVE STYLESHEET
   .custom-newsletter-section .newsletter-submit-btn {
     width: 100% !important;
   }
-}
+}
+
+
