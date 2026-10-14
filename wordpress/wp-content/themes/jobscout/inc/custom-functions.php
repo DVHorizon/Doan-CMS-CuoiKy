@@ -528,3 +528,86 @@ function jobscout_get_page_id_by_template( $template_name ){
     return get_pages( $args );    
 }
 endif;
+
+/**
+ * Tự động thêm ngày tháng vào sau mỗi Category và thêm mục Phim truyện (Realtime)
+ */
+function jobscout_add_date_to_categories_widget( $output, $args = array() ) {
+    // 1. Duyệt qua từng category li và thêm ngày tháng của bài viết mới nhất
+    $pattern = '/(<li class="[^"]*cat-item-([0-9]+)[^"]*">.*?<a[^>]*>)(.*?)(<\/a>)/s';
+    
+    $output = preg_replace_callback( $pattern, function( $matches ) {
+        $prefix   = $matches[1];
+        $cat_id   = intval( $matches[2] );
+        $cat_name = $matches[3];
+        $suffix   = $matches[4];
+
+        // Lấy ngày của bài viết mới nhất trong category này
+        $latest_posts = get_posts( array(
+            'category'       => $cat_id,
+            'posts_per_page' => 1,
+            'post_status'    => 'publish',
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+        ) );
+
+        if ( ! empty( $latest_posts ) ) {
+            $cat_date = get_the_date( 'd/m/Y', $latest_posts[0]->ID );
+        } else {
+            $cat_date = date_i18n( 'd/m/Y' );
+        }
+
+        $date_badge = ' <span class="cat-date-badge">[' . esc_html( $cat_date ) . ']</span>';
+
+        return $prefix . $cat_name . $suffix . $date_badge;
+    }, $output );
+
+    // 2. Thêm mục "Phim truyện" với ngày giờ realtime
+    $current_time_str = current_time( 'd/m/Y H:i:s' );
+    $phim_truyen_li = '<li class="cat-item cat-item-phim-truyen">'
+                    . '<a href="#phim-truyen">Phim truyện</a>'
+                    . ' <span class="cat-date-badge cat-realtime-badge"><span class="cat-realtime-clock">[' . esc_html( $current_time_str ) . ']</span></span>'
+                    . '</li>';
+
+    // Chèn mục Phim truyện vào trước thẻ đóng </ul> cuối cùng
+    if ( strpos( $output, '</ul>' ) !== false ) {
+        $output = preg_replace( '/(<\/ul>(?![\s\S]*<\/ul>))/s', $phim_truyen_li . '$1', $output );
+    }
+
+    return $output;
+}
+add_filter( 'wp_list_categories', 'jobscout_add_date_to_categories_widget', 10, 2 );
+
+/**
+ * Script cập nhật đồng hồ realtime cho mục Phim truyện
+ */
+function jobscout_category_realtime_clock_script() {
+    ?>
+    <script type="text/javascript">
+    (function() {
+        function updateRealtimeCategoryClock() {
+            var clockElements = document.querySelectorAll('.cat-realtime-clock');
+            if (!clockElements.length) return;
+
+            var now = new Date();
+            var d = String(now.getDate()).padStart(2, '0');
+            var m = String(now.getMonth() + 1).padStart(2, '0');
+            var y = now.getFullYear();
+            var h = String(now.getHours()).padStart(2, '0');
+            var min = String(now.getMinutes()).padStart(2, '0');
+            var s = String(now.getSeconds()).padStart(2, '0');
+            var timeString = '[' + d + '/' + m + '/' + y + ' ' + h + ':' + min + ':' + s + ']';
+
+            clockElements.forEach(function(el) {
+                el.textContent = timeString;
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            updateRealtimeCategoryClock();
+            setInterval(updateRealtimeCategoryClock, 1000);
+        });
+    })();
+    </script>
+    <?php
+}
+add_action( 'wp_footer', 'jobscout_category_realtime_clock_script' );
