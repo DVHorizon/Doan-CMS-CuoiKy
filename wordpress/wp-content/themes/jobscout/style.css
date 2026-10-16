@@ -9228,21 +9228,22 @@ RESPONSIVE STYLESHEET
 }
 
 .custom-home-banner .banner-search-box-wrap {
-  max-width: 880px !important;
+  max-width: 920px !important;
   margin: 0 auto !important;
 }
 
 .custom-home-banner .banner-job-search-form {
   display: flex !important;
   flex-direction: row !important;
-  align-items: center !important;
-  background: #ffffff !important;
-  border-radius: 6px !important;
-  padding: 6px !important;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35) !important;
+  align-items: stretch !important;
+  background: transparent !important;
+  border-radius: 4px !important;
+  padding: 0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
   margin: 0 !important;
   width: 100% !important;
   box-sizing: border-box !important;
+  gap: 10px !important;
 }
 
 .custom-home-banner .search-field-group {
@@ -9250,34 +9251,36 @@ RESPONSIVE STYLESHEET
   align-items: center !important;
   position: relative !important;
   box-sizing: border-box !important;
+  background: #ffffff !important;
+  border-radius: 4px !important;
 }
 
 .custom-home-banner .search-field-group.keyword-field {
-  flex: 1 1 55% !important;
-  border-right: 1px solid #e2e8f0 !important;
+  flex: 1 1 54% !important;
   padding: 0 16px !important;
+  border: none !important;
 }
 
 .custom-home-banner .search-field-group.location-field {
-  flex: 1 1 25% !important;
-  border-right: none !important;
+  flex: 1 1 28% !important;
   padding: 0 16px !important;
   position: relative !important;
+  border: none !important;
 }
 
 .custom-home-banner .field-icon {
   display: flex !important;
   align-items: center !important;
-  margin-right: 10px !important;
+  margin-right: 12px !important;
   flex-shrink: 0 !important;
 }
 
 .custom-home-banner .keyword-field input {
   width: 100% !important;
-  height: 48px !important;
+  height: 52px !important;
   border: none !important;
   outline: none !important;
-  font-size: 14.5px !important;
+  font-size: 14px !important;
   color: #1e293b !important;
   background: transparent !important;
   box-shadow: none !important;
@@ -9287,22 +9290,23 @@ RESPONSIVE STYLESHEET
 
 .custom-home-banner .keyword-field input::placeholder {
   color: #94a3b8 !important;
+  font-weight: 400 !important;
 }
 
 .custom-home-banner .location-field select {
   width: 100% !important;
-  height: 48px !important;
+  height: 52px !important;
   border: none !important;
   outline: none !important;
-  font-size: 14.5px !important;
-  color: #334155 !important;
+  font-size: 14px !important;
+  color: #475569 !important;
   background: transparent !important;
   cursor: pointer !important;
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
   appearance: none !important;
   box-shadow: none !important;
-  padding: 0 24px 0 0 !important;
+  padding: 0 28px 0 0 !important;
   margin: 0 !important;
 }
 
@@ -9318,7 +9322,8 @@ RESPONSIVE STYLESHEET
 
 .custom-home-banner .search-submit-group {
   flex: 0 0 auto !important;
-  margin-left: 6px !important;
+  margin: 0 !important;
+  display: flex !important;
 }
 
 .custom-home-banner .banner-search-submit-btn {
@@ -9328,8 +9333,8 @@ RESPONSIVE STYLESHEET
   border-radius: 4px !important;
   font-weight: 700 !important;
   font-size: 14px !important;
-  height: 48px !important;
-  padding: 0 28px !important;
+  height: 52px !important;
+  padding: 0 32px !important;
   cursor: pointer !important;
   text-transform: uppercase !important;
   letter-spacing: 0.8px !important;
@@ -9338,6 +9343,7 @@ RESPONSIVE STYLESHEET
   justify-content: center !important;
   transition: all 0.2s ease !important;
   box-shadow: none !important;
+  white-space: nowrap !important;
 }
 
 .custom-home-banner .banner-search-submit-btn:hover {
@@ -9804,21 +9810,21 @@ RESPONSIVE STYLESHEET
   .custom-home-banner .banner-job-search-form {
     flex-direction: column !important;
     gap: 10px !important;
-    padding: 12px !important;
+    padding: 0 !important;
+    box-shadow: none !important;
   }
 
   .custom-home-banner .search-field-group.keyword-field,
   .custom-home-banner .search-field-group.location-field {
     width: 100% !important;
-    border-right: none !important;
-    border-bottom: 1px solid #e2e8f0 !important;
-    padding: 0 8px 6px 8px !important;
+    border: none !important;
+    padding: 0 16px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
   }
 
   .custom-home-banner .search-submit-group {
     width: 100% !important;
-    margin-left: 0 !important;
-    margin-top: 6px !important;
+    margin: 0 !important;
   }
 
   .custom-home-banner .banner-search-submit-btn {
