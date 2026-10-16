@@ -9815,4 +9815,303 @@ body:has(.custom-news-page) .breadcrumb-wrap {
     }
 }
 
+/* ==========================================================================
+   ALL JOBS PAGE CUSTOM STYLES (DẠNG LƯỚI 2 CỘT & BANNER TRÊN CÙNG)
+   ========================================================================== */
+
+/* Tràn viền 100% chiều rộng và ẩn breadcrumb cho trang Jobs */
+.page-jobs #content.site-content,
+.page-template-page-jobs #content.site-content,
+.page-template-page-jobs-php #content.site-content,
+body:has(.custom-jobs-page) #content.site-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.page-jobs #content.site-content > .container,
+.page-template-page-jobs #content.site-content > .container,
+.page-template-page-jobs-php #content.site-content > .container,
+body:has(.custom-jobs-page) #content.site-content > .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.page-jobs .breadcrumb-wrap,
+.page-template-page-jobs .breadcrumb-wrap,
+.page-template-page-jobs-php .breadcrumb-wrap,
+body:has(.custom-jobs-page) .breadcrumb-wrap {
+    display: none !important;
+}
+
+.custom-jobs-page {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: inherit;
+    background: #f7f8fa;
+    color: #333333;
+}
+
+/* 1. HERO BANNER */
+.jobs-hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 380px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.jobs-hero-banner .banner-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+.jobs-hero-banner .banner-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.jobs-hero-banner .banner-title {
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* 2. MAIN JOBS SECTION */
+.all-jobs-section {
+    padding: 60px 0 80px;
+    background: #f7f8fa;
+}
+
+.all-jobs-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* HEADER BAR: TITLE + DROPDOWN */
+.all-jobs-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.all-jobs-heading {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.all-jobs-select {
+    padding: 8px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #374151;
+    font-size: 13.5px;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.2s ease;
+}
+
+.all-jobs-select:focus {
+    border-color: #ea580c;
+}
+
+/* 3. 2-COLUMN GRID */
+.all-jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+/* 4. INDIVIDUAL JOB CARD */
+.all-jobs-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 24px 26px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.all-jobs-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+    border-color: #d1d5db;
+}
+
+/* CARD TOP */
+.job-card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.job-card-logo {
+    width: 68px;
+    height: 68px;
+    min-width: 68px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.job-card-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.job-card-logo-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: #f9fafb;
+    border-radius: 4px;
+}
+
+.job-card-header-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.job-card-title {
+    font-size: 15.5px;
+    font-weight: 700;
+    line-height: 1.35;
+    text-transform: uppercase;
+    margin: 0 0 4px 0;
+    letter-spacing: 0.3px;
+}
+
+.job-card-title a {
+    color: #1f2937;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.job-card-title a:hover {
+    color: #ea580c;
+}
+
+.job-card-meta-date {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.job-card-badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.job-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    background: #f3f4f6;
+    color: #4b5563;
+    border: 1px solid #e5e7eb;
+    white-space: nowrap;
+}
+
+/* CARD BOTTOM (BULLET POINTS) */
+.job-card-bottom {
+    border-top: 1px solid #f3f4f6;
+    padding-top: 14px;
+}
+
+.job-card-highlights {
+    list-style: disc inside;
+    margin: 0;
+    padding: 0;
+}
+
+.job-card-highlights li {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #4b5563;
+    margin-bottom: 3px;
+}
+
+.job-card-highlights li:last-child {
+    margin-bottom: 0;
+}
+
+/* 5. LOAD MORE BUTTON */
+.all-jobs-loadmore-wrap {
+    text-align: center;
+    margin-top: 45px;
+}
+
+.btn-load-more-jobs {
+    display: inline-block;
+    background: transparent;
+    color: #ea580c;
+    border: 1.5px solid #ea580c;
+    border-radius: 4px;
+    padding: 10px 36px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-load-more-jobs:hover {
+    background: #ea580c;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .all-jobs-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .jobs-hero-banner {
+        min-height: 280px;
+    }
+    .jobs-hero-banner .banner-title {
+        font-size: 26px;
+    }
+}
+
 
