@@ -217,6 +217,23 @@ function jobscout_scripts() {
     wp_enqueue_style( 'owl-carousel', get_template_directory_uri(). '/css' . $build . '/owl.carousel' . $suffix . '.css', array(), '2.3.4' );
     wp_enqueue_style( 'jobscout', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
     
+    // Nạp các file CSS theo module riêng biệt (giúp tránh xung đột Git và dễ quản lý)
+    $custom_css_dir = get_template_directory() . '/css/custom/';
+    $custom_css_uri = get_template_directory_uri() . '/css/custom/';
+
+    if ( file_exists( $custom_css_dir . 'about.css' ) ) {
+        wp_enqueue_style( 'jobscout-custom-about', $custom_css_uri . 'about.css', array( 'jobscout' ), filemtime( $custom_css_dir . 'about.css' ) );
+    }
+    if ( file_exists( $custom_css_dir . 'news.css' ) ) {
+        wp_enqueue_style( 'jobscout-custom-news', $custom_css_uri . 'news.css', array( 'jobscout' ), filemtime( $custom_css_dir . 'news.css' ) );
+    }
+    if ( file_exists( $custom_css_dir . 'news-detail.css' ) ) {
+        wp_enqueue_style( 'jobscout-custom-news-detail', $custom_css_uri . 'news-detail.css', array( 'jobscout' ), filemtime( $custom_css_dir . 'news-detail.css' ) );
+    }
+    if ( file_exists( $custom_css_dir . 'jobs.css' ) ) {
+        wp_enqueue_style( 'jobscout-custom-jobs', $custom_css_uri . 'jobs.css', array( 'jobscout' ), filemtime( $custom_css_dir . 'jobs.css' ) );
+    }
+    
     wp_enqueue_script( 'all', get_template_directory_uri() . '/js' . $build . '/all' . $suffix . '.js', array( 'jquery' ), '5.6.3', true );
     wp_enqueue_script( 'v4-shims', get_template_directory_uri() . '/js' . $build . '/v4-shims' . $suffix . '.js', array( 'jquery', 'all' ), '5.6.3', true );
     wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/js' . $build . '/owl.carousel' . $suffix . '.js', array( 'jquery' ), '2.3.4', true );

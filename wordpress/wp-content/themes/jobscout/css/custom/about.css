@@ -1,0 +1,293 @@
+/* ==========================================================================
+   ABOUT PAGE CUSTOM STYLES & CATEGORY WIDGET
+   ========================================================================== */
+
+/* Fix khoảng cách giữa Header và Hero Banner trên trang About */
+.page-about #content.site-content,
+.page-template-page-about #content.site-content,
+.page-template-page-about-php #content.site-content,
+body:has(.custom-about-page) #content.site-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.page-about #content.site-content > .container,
+.page-template-page-about #content.site-content > .container,
+.page-template-page-about-php #content.site-content > .container,
+body:has(.custom-about-page) #content.site-content > .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    margin: 0 !important;
+}
+
+.page-about .breadcrumb-wrap,
+.page-template-page-about .breadcrumb-wrap,
+.page-template-page-about-php .breadcrumb-wrap,
+body:has(.custom-about-page) .breadcrumb-wrap {
+    display: none !important;
+}
+
+.custom-about-page {
+    width: 100%;
+    overflow-x: hidden;
+    color: #333333;
+    font-family: inherit;
+}
+
+.custom-about-page .about-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.custom-about-page .about-container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* 1. HERO BANNER */
+.about-hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 480px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.about-hero-banner .banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.42);
+    z-index: 1;
+}
+
+.about-hero-banner .banner-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.about-hero-banner .banner-title {
+    color: #ffffff;
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* 2. ABOUT US SECTION */
+.about-us-section {
+    padding: 80px 0 60px;
+    background: #ffffff;
+}
+
+.section-main-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin-bottom: 50px;
+}
+
+.about-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-grid-2col .col-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.about-us-section .content-block {
+    margin-bottom: 25px;
+}
+
+.about-us-section .content-block:last-child {
+    margin-bottom: 0;
+}
+
+.about-us-section .block-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 8px;
+}
+
+.about-us-section p {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #555555;
+    margin: 0 0 6px;
+}
+
+.about-us-section .quote {
+    font-style: italic;
+    font-weight: 500;
+    color: #333333;
+}
+
+/* 3. LĨNH VỰC HOẠT ĐỘNG (SERVICES) */
+.about-services-section {
+    padding: 60px 0 70px;
+    background: #ffffff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.services-highlight-title {
+    color: #e8601c;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+.services-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4f4f4f;
+    margin-bottom: 20px;
+}
+
+.services-desc:last-child {
+    margin-bottom: 0;
+}
+
+/* 4. THÔNG TIN CÔNG TY (COMPANY INFO) */
+.about-company-section {
+    padding: 80px 0;
+    background: #f7f8fa; /* Khối nền xám nhẹ */
+}
+
+.company-info-col {
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.company-info-item {
+    margin-bottom: 25px;
+}
+
+.company-info-item:last-child {
+    margin-bottom: 0;
+}
+
+.company-info-item .info-label {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.company-info-item .info-value {
+    display: block;
+    font-size: 14.5px;
+    color: #555555;
+    line-height: 1.5;
+}
+
+/* RESPONSIVE CHO TABLET & MOBILE */
+@media (max-width: 768px) {
+    .about-hero-banner {
+        min-height: 340px;
+    }
+    
+    .about-hero-banner .banner-title {
+        font-size: 26px;
+    }
+
+    .about-grid-2col {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .reverse-on-mobile {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+/* ==========================================================================
+   WIDGET CATEGORIES WITH DATES & REALTIME BADGE
+   ========================================================================== */
+.widget_categories ul li {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid #edf2f7 !important;
+    font-size: 14.5px !important;
+}
+
+.widget_categories ul li::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 8px !important;
+    height: 8px !important;
+    background-color: #f59e0b !important; /* Chấm màu cam/vàng như mẫu */
+    border-radius: 50% !important;
+    margin-right: 12px !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2) !important;
+}
+
+.widget_categories ul li a {
+    color: #1d72b8 !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    flex: 1 !important;
+    transition: color 0.2s ease !important;
+}
+
+.widget_categories ul li a:hover {
+    color: #e8601c !important;
+}
+
+.widget_categories .cat-date-badge {
+    font-size: 12.5px !important;
+    color: #718096 !important;
+    font-weight: 400 !important;
+    margin-left: 8px !important;
+    white-space: nowrap !important;
+}
+
+/* Mục Phim truyện Realtime */
+.widget_categories ul li.cat-item-phim-truyen a {
+    font-weight: 600 !important;
+}
+
+.widget_categories .cat-realtime-badge .cat-realtime-clock {
+    color: #e8601c !important;
+    font-weight: 600 !important;
+    font-size: 12.5px !important;
+    font-family: Consolas, Monaco, monospace, sans-serif !important;
+    background: #fff7ed !important;
+    padding: 2px 7px !important;
+    border-radius: 4px !important;
+    border: 1px solid #ffedd5 !important;
+    display: inline-block !important;
+}

@@ -1,0 +1,250 @@
+/* ==========================================================================
+   NEWS DETAIL PAGE CUSTOM STYLES (SINGLE POST - 6-news detail.png)
+   ========================================================================== */
+
+/* Tràn viền & ẩn breadcrumbs/sidebar mặc định của theme trên Single Post */
+.single-post #content.site-content,
+body:has(.custom-news-detail-page) #content.site-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.single-post #content.site-content > .container,
+body:has(.custom-news-detail-page) #content.site-content > .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.single-post .breadcrumb-wrap,
+body:has(.custom-news-detail-page) .breadcrumb-wrap,
+.single-post #secondary {
+    display: none !important;
+}
+
+.custom-news-detail-page {
+    width: 100%;
+    overflow-x: hidden;
+    background: #f7f8fa;
+    font-family: inherit;
+    color: #333333;
+    padding-bottom: 0;
+}
+
+.detail-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 1. BREADCRUMB */
+.news-detail-breadcrumb {
+    padding: 25px 0 20px;
+    font-size: 13.5px;
+    color: #888888;
+}
+
+.news-detail-breadcrumb a {
+    color: #555555;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.news-detail-breadcrumb a:hover {
+    color: #e8601c;
+}
+
+.news-detail-breadcrumb .sep {
+    margin: 0 10px;
+    color: #cccccc;
+}
+
+.news-detail-breadcrumb .current {
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+/* 2. POST HEADER CARD */
+.news-detail-header-card {
+    background: #ffffff;
+    padding: 24px 28px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.header-card-left {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-grow: 1;
+}
+
+.detail-thumb {
+    width: 120px;
+    height: 110px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 2px;
+    background: #eee;
+}
+
+.detail-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.detail-info {
+    flex-grow: 1;
+}
+
+.detail-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    margin: 0 0 8px 0;
+    line-height: 1.35;
+    letter-spacing: 0.5px;
+}
+
+.detail-meta {
+    font-size: 13.5px;
+    color: #777777;
+    margin-bottom: 12px;
+}
+
+.detail-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.badge-item {
+    font-size: 12px;
+    color: #4b5563;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    padding: 4px 14px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.badge-item:hover {
+    color: #e8601c;
+    border-color: #e8601c;
+}
+
+.header-card-right .btn-share {
+    background: #ffffff;
+    border: 1.5px solid #222222;
+    color: #222222;
+    padding: 9px 30px;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.header-card-right .btn-share:hover {
+    background: #222222;
+    color: #ffffff;
+}
+
+/* 3. MAIN ARTICLE CONTENT CARD */
+.news-detail-content-card {
+    background: #ffffff;
+    padding: 50px 65px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    margin-bottom: 75px;
+}
+
+.news-detail-content-card .entry-content {
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: #374151;
+}
+
+.news-detail-content-card .entry-content p {
+    margin-bottom: 24px;
+}
+
+.news-detail-content-card .entry-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 32px auto;
+    border-radius: 2px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* 4. NEWEST BLOG ENTRIES (RELATED) */
+.news-detail-related-section {
+    padding-bottom: 85px;
+}
+
+.news-detail-related-section .news-section-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin-bottom: 45px;
+}
+
+/* RESPONSIVE CHO NEWS DETAIL */
+@media (max-width: 850px) {
+    .news-detail-header-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .header-card-left {
+        width: 100%;
+    }
+
+    .header-card-right {
+        width: 100%;
+    }
+
+    .header-card-right .btn-share {
+        width: 100%;
+        text-align: center;
+    }
+
+    .news-detail-content-card {
+        padding: 30px 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-card-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .detail-thumb {
+        width: 100%;
+        height: 180px;
+    }
+
+    .detail-title {
+        font-size: 18px;
+    }
+}
