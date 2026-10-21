@@ -8159,3 +8159,2578 @@ RESPONSIVE STYLESHEET
 .wp-block-social-links {
   flex-wrap: wrap !important;
 }
+
+/* ==========================================================================
+   CUSTOM PLAN DO SEE FOOTER STYLES (Newsletter & Centered Footer)
+   ========================================================================== */
+
+/* 1. Newsletter Section (Exact match with screenshot) */
+.jos-footer-newsletter-section,
+.wp-block-legacy-widget .jos-footer-newsletter-section,
+.widget_jobscout_newsletter_widget {
+  background-color: #ea6b1d !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.jos-footer-newsletter-section {
+  padding: 30px 0;
+}
+
+.jos-newsletter-bar {
+  width: 100%;
+  background-color: #ea6b1d !important;
+  padding: 24px 20px;
+  box-sizing: border-box;
+}
+
+.jos-newsletter-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  box-sizing: border-box;
+}
+
+.jos-newsletter-left {
+  flex: 0 0 auto;
+}
+
+.jos-newsletter-heading {
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  font-size: 21px;
+  font-weight: 700;
+  color: #ffffff !important;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+}
+
+.jos-newsletter-heading span {
+  color: #ffffff !important;
+}
+
+.jos-newsletter-right {
+  flex: 1;
+  max-width: 650px;
+}
+
+.jos-newsletter-form {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 15px !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.jos-newsletter-input-box {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  background-color: #ffffff !important;
+  border-radius: 2px !important;
+  padding: 0 14px !important;
+  height: 44px !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+.jos-newsletter-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: 10px !important;
+  flex-shrink: 0 !important;
+  line-height: 1 !important;
+}
+
+.jos-newsletter-input {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  color: #333333 !important;
+  font-size: 13.5px !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+.jos-newsletter-input::placeholder {
+  color: #999999 !important;
+  font-size: 13.5px !important;
+}
+
+.jos-newsletter-btn {
+  flex: 0 0 auto !important;
+  height: 44px !important;
+  background-color: #ea6b1d !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  padding: 0 24px !important;
+  border-radius: 2px !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
+}
+
+.jos-newsletter-btn:hover {
+  background-color: #ffffff !important;
+  color: #ea6b1d !important;
+  border-color: #ffffff !important;
+}
+
+/* Fix trong khung xem trước của WordPress Admin Widgets */
+.wp-block-legacy-widget .jos-newsletter-bar {
+  border-radius: 4px;
+}
+.wp-block-legacy-widget .jos-newsletter-btn {
+  background-color: #ea6b1d !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 860px) {
+  .jos-newsletter-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .jos-newsletter-right {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .jos-newsletter-form {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .jos-newsletter-input-box {
+    width: 100% !important;
+  }
+
+  .jos-newsletter-btn {
+    width: 100% !important;
+  }
+}
+
+
+
+.jos-brand-footer-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Brand Title / Logo */
+.jos-brand-title-wrap {
+  margin-bottom: 28px;
+}
+
+.jos-brand-link {
+  text-decoration: none !important;
+  display: inline-block;
+}
+
+.jos-brand-name {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111111;
+  letter-spacing: -0.5px;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.jos-footer-logo {
+  max-height: 50px;
+  width: auto;
+  display: block;
+}
+
+/* Menu horizontal */
+.jos-footer-nav-wrap {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.jos-footer-menu {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.jos-footer-menu li {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.jos-footer-menu li a {
+  font-size: 13px;
+  font-weight: 700;
+  color: #222222 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.jos-footer-menu li a:hover {
+  color: #e8631b !important;
+}
+
+/* Social Media Icons (Rounded colors) */
+.jos-social-icons-wrap {
+  margin-top: 8px;
+}
+
+.jos-social-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.jos-social-list li {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.jos-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+.jos-social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  opacity: 0.95;
+}
+
+.jos-social-facebook {
+  background-color: #4a6ea9;
+}
+
+.jos-social-google {
+  background-color: #ea4335;
+}
+
+.jos-social-line {
+  background-color: #00c300;
+}
+
+.jos-social-twitter {
+  background-color: #4da7de;
+}
+
+/* 3. Bottom Black Copyright Bar */
+.site-footer .footer-b {
+  background: #1c1815 !important;
+  padding: 14px 0 !important;
+  border-top: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.site-footer .footer-b .container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.site-footer .footer-b .copyright {
+  text-align: center !important;
+  width: 100% !important;
+  color: #a39a93 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  letter-spacing: 0.2px;
+}
+
+.site-footer .footer-b .copyright span.copyright-text {
+  color: #a39a93 !important;
+}
+
+.site-footer .footer-b a {
+  color: #c4bbb4 !important;
+  text-decoration: none !important;
+}
+
+.site-footer .footer-b a:hover {
+  color: #ffffff !important;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jos-newsletter-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .jos-newsletter-form-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .jos-newsletter-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .jos-input-group {
+    width: 100%;
+  }
+
+  .jos-submit-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .jos-footer-menu {
+    gap: 18px;
+  }
+}
+
+/* ==========================================================================
+   CUSTOM HEADER (STICKY, LOGO + RECRUITING, ACTIVE UNDERLINE, ORANGE CTA)
+   ========================================================================== */
+
+/* 1. Global Sticky Header */
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  background-color: #ffffff !important;
+  z-index: 99999 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  border-bottom: 1px solid #eeeeee !important;
+  transition: all 0.3s ease;
+}
+
+.admin-bar .site-header {
+  top: 32px !important;
+}
+
+@media screen and (max-width: 782px) {
+  .admin-bar .site-header {
+    top: 46px !important;
+  }
+}
+
+/* Hide top secondary bar */
+.site-header .header-t {
+  display: none !important;
+}
+
+/* Base Branding (Logo + Tagline) */
+.site-header .header-main .site-branding {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+}
+
+.site-header .header-main .site-branding .site-title {
+  margin: 0 !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.3px !important;
+}
+
+.site-header .header-main .site-branding .site-title a {
+  color: #111827 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.site-header .header-main .site-branding .site-title a:hover {
+  color: #ea580c !important;
+}
+
+.site-header .header-main .site-branding .site-description,
+.site-header .header-main .site-branding .recruiting-tagline {
+  margin: 3px 0 0 0 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: #4b5563 !important;
+  line-height: 1.2 !important;
+  display: block !important;
+}
+
+.site-header .site-branding.logo-text {
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+/* ==========================================================================
+   2. DESKTOP HEADER (Screen width >= 1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .site-header .header-main {
+    padding: 16px 0 !important;
+    background-color: #ffffff !important;
+  }
+
+  .site-header .header-main > .container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .site-header .header-main .site-branding {
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  .site-header .header-main .site-branding .site-title {
+    font-size: 24px !important;
+  }
+
+  .site-header .header-main .site-branding .site-description,
+  .site-header .header-main .site-branding .recruiting-tagline {
+    font-size: 11px !important;
+    letter-spacing: 2.5px !important;
+  }
+
+  .site-header .site-branding .site-logo img {
+    max-height: 48px !important;
+    width: auto !important;
+    display: block !important;
+  }
+
+  .site-header .header-main .menu-wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 36px !important;
+    width: auto !important;
+    flex: 1 1 auto !important;
+  }
+
+  .site-header .menu-wrap .main-navigation {
+    width: auto !important;
+    display: block !important;
+  }
+
+  .site-header .main-navigation .toggle-btn {
+    display: none !important;
+  }
+
+  .site-header .main-navigation ul.nav-menu,
+  .site-header .main-navigation ul#primary-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 6px !important;
+  }
+
+  .site-header .main-navigation ul li {
+    position: relative !important;
+    display: inline-block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .site-header .main-navigation ul li a {
+    position: relative !important;
+    display: block !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #1f2937 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.6px !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+  }
+
+  .site-header .main-navigation ul li a:hover {
+    color: #111827 !important;
+  }
+
+  /* Active & Hover Underline (Desktop) */
+  .site-header .main-navigation ul li a::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0px !important;
+    left: 16px !important;
+    right: 16px !important;
+    height: 3px !important;
+    background-color: transparent !important;
+    border-radius: 2px !important;
+    transition: background-color 0.25s ease, transform 0.25s ease !important;
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+
+  .site-header .main-navigation ul li:hover > a::after {
+    background-color: #ea580c !important;
+    transform: scaleX(1) !important;
+  }
+
+  .site-header .main-navigation ul li.current-menu-item > a::after,
+  .site-header .main-navigation ul li.current_page_item > a::after,
+  .site-header .main-navigation ul li.current-menu-ancestor > a::after,
+  .site-header .main-navigation ul li.current_page_ancestor > a::after,
+  .site-header .main-navigation ul li.active > a::after {
+    background-color: #ea580c !important;
+    transform: scaleX(1) !important;
+  }
+
+  .site-header .main-navigation ul li.current-menu-item > a,
+  .site-header .main-navigation ul li.current_page_item > a {
+    color: #111827 !important;
+  }
+
+  /* Desktop SUBMIT JOB Button */
+  .site-header .menu-wrap .btn-wrap {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .site-header .menu-wrap .btn-wrap a.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #ea580c !important;
+    background: #ea580c !important;
+    color: #ffffff !important;
+    padding: 12px 24px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    border-radius: 3px !important;
+    border: none !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.28) !important;
+    transition: all 0.25s ease !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+  }
+
+  .site-header .menu-wrap .btn-wrap a.btn:hover {
+    background-color: #c2410c !important;
+    background: #c2410c !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4) !important;
+  }
+}
+
+/* ==========================================================================
+   3. MOBILE & TABLET HEADER (Screen width <= 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .site-header .header-main {
+    padding: 10px 0 !important;
+    background-color: #ffffff !important;
+  }
+
+  .site-header .header-main > .container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* CRITICAL: HIDE horizontal desktop menu on mobile */
+  .site-header .header-main .main-navigation ul,
+  .site-header .header-main .main-navigation ul#primary-menu,
+  .site-header .header-main .main-navigation ul.nav-menu {
+    display: none !important;
+  }
+
+  /* Mobile Branding */
+  .site-header .header-main .site-branding {
+    flex: 1 1 auto !important;
+    max-width: calc(100% - 170px) !important;
+    width: auto !important;
+  }
+
+  .site-header .header-main .site-branding .site-title {
+    font-size: 17px !important;
+    line-height: 1.2 !important;
+  }
+
+  .site-header .header-main .site-branding .site-description,
+  .site-header .header-main .site-branding .recruiting-tagline {
+    font-size: 9px !important;
+    letter-spacing: 1.6px !important;
+    margin-top: 2px !important;
+  }
+
+  .site-header .site-branding .site-logo img {
+    max-height: 34px !important;
+    width: auto !important;
+    display: block !important;
+  }
+
+  /* Mobile Menu Wrap: holds compact Submit button + hamburger toggle */
+  .site-header .header-main .menu-wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  .site-header .menu-wrap .main-navigation {
+    width: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+  }
+
+  /* Compact SUBMIT JOB Button on Mobile Header */
+  .site-header .menu-wrap .btn-wrap {
+    display: block !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+
+  .site-header .menu-wrap .btn-wrap a.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #ea580c !important;
+    background: #ea580c !important;
+    color: #ffffff !important;
+    padding: 7px 11px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-radius: 3px !important;
+    border: none !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25) !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Hamburger Toggle Button */
+  .site-header .main-navigation .toggle-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 6px !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    gap: 4px !important;
+    box-sizing: border-box !important;
+    position: static !important;
+  }
+
+  .site-header .main-navigation .toggle-btn .toggle-bar {
+    display: block !important;
+    width: 18px !important;
+    height: 2px !important;
+    background-color: #1e293b !important;
+    border-radius: 2px !important;
+    position: static !important;
+    margin: 0 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .site-header .main-navigation .toggle-btn:hover {
+    background-color: #f1f5f9 !important;
+  }
+
+  .site-header .main-navigation .toggle-btn:hover .toggle-bar {
+    background-color: #ea580c !important;
+  }
+
+  /* ========================================================================
+     Off-canvas Sliding Navigation Drawer & Admin-bar fixes
+     ======================================================================== */
+  /* Prevent background site from shifting horizontally */
+  body.menu-active .site {
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    transform: none !important;
+  }
+
+  .responsive-nav {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 320px !important;
+    max-width: 86vw !important;
+    height: 100% !important;
+    height: 100vh !important;
+    background: #ffffff !important;
+    z-index: 999999 !important;
+    box-shadow: -6px 0 30px rgba(0, 0, 0, 0.18) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 1 !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .menu-active .responsive-nav {
+    transform: translateX(0) !important;
+  }
+
+  /* Admin-bar compatibility for drawer */
+  .admin-bar .responsive-nav {
+    top: 46px !important;
+    height: calc(100vh - 46px) !important;
+  }
+
+  @media screen and (min-width: 783px) {
+    .admin-bar .responsive-nav {
+      top: 32px !important;
+      height: calc(100vh - 32px) !important;
+    }
+  }
+
+  /* RESET old JobScout relative offsets that caused overlapping */
+  .responsive-nav .nav-top,
+  .admin-bar .responsive-nav .nav-top {
+    top: 0 !important;
+    position: relative !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 16px 20px !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    background: #ffffff !important;
+    flex-shrink: 0 !important;
+    z-index: 5 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .responsive-nav .nav-top .site-branding {
+    flex: 1 1 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .responsive-nav .nav-top .site-branding .site-title {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+
+  .responsive-nav .nav-top .site-branding .site-description,
+  .responsive-nav .nav-top .site-branding .recruiting-tagline {
+    font-size: 9.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.8px !important;
+    color: #4b5563 !important;
+    margin-top: 2px !important;
+    line-height: 1.2 !important;
+  }
+
+  .responsive-nav .nav-top .site-logo img {
+    max-height: 38px !important;
+    width: auto !important;
+    display: block !important;
+  }
+
+  /* Close Button in nav-top */
+  .responsive-nav .close-btn,
+  .responsive-nav .close,
+  .admin-bar .responsive-nav .close-btn,
+  .admin-bar .responsive-nav .close {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    background: #f1f5f9 !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 50% !important;
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    margin: 0 0 0 12px !important;
+    padding: 0 !important;
+    transition: all 0.2s ease !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav .close-btn:hover,
+  .responsive-nav .close:hover {
+    background: #fee2e2 !important;
+    border-color: #fca5a5 !important;
+  }
+
+  .responsive-nav .close-btn .bar,
+  .responsive-nav .close .bar {
+    position: absolute !important;
+    width: 14px !important;
+    height: 2px !important;
+    background: #334155 !important;
+    border-radius: 2px !important;
+    top: 50% !important;
+    left: 50% !important;
+    margin-left: -7px !important;
+    margin-top: -1px !important;
+    transition: background 0.2s ease !important;
+  }
+
+  .responsive-nav .close-btn .bar:first-child,
+  .responsive-nav .close .bar:first-child {
+    transform: rotate(45deg) !important;
+  }
+
+  .responsive-nav .close-btn .bar:last-child,
+  .responsive-nav .close .bar:last-child {
+    transform: rotate(-45deg) !important;
+  }
+
+  .responsive-nav .close-btn:hover .bar,
+  .responsive-nav .close:hover .bar {
+    background: #dc2626 !important;
+  }
+
+  /* Mobile Navigation List Container */
+  .responsive-nav .mobile-navigation,
+  .admin-bar .responsive-nav .mobile-navigation,
+  .admin-bar .menu-active .mobile-navigation {
+    display: flex !important;
+    flex-direction: column !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    top: 0 !important;
+    position: relative !important;
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav .primary-menu-list,
+  .responsive-nav .mobile-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    flex: 1 1 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav ul.nav-menu,
+  .responsive-nav ul#mobile-primary-menu {
+    list-style: none !important;
+    padding: 6px 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .responsive-nav ul.nav-menu li {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-bottom: 1px solid #f3f4f6 !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav ul.nav-menu li a {
+    display: block !important;
+    width: 100% !important;
+    padding: 15px 22px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.6px !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    border-left: 4px solid transparent !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav ul.nav-menu li a:hover {
+    background-color: #f8fafc !important;
+    color: #ea580c !important;
+  }
+
+  /* Active Menu Item inside Mobile Drawer */
+  .responsive-nav ul.nav-menu li.current-menu-item > a,
+  .responsive-nav ul.nav-menu li.current_page_item > a {
+    color: #ea580c !important;
+    border-left: 4px solid #ea580c !important;
+    background-color: #fff7ed !important;
+    padding-left: 18px !important;
+  }
+
+  /* SUBMIT JOB button inside Mobile Drawer */
+  .responsive-nav .mobile-menu .btn-wrap {
+    padding: 20px 22px 28px !important;
+    border-top: 1px solid #e5e7eb !important;
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
+    background: #ffffff !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-nav .mobile-menu .btn-wrap a.btn {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    background: #ea580c !important;
+    background-color: #ea580c !important;
+    color: #ffffff !important;
+    padding: 13px 20px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    border-radius: 4px !important;
+    border: none !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3) !important;
+    line-height: 1.2 !important;
+  }
+
+  .responsive-nav .mobile-menu .btn-wrap a.btn:hover {
+    background: #c2410c !important;
+    background-color: #c2410c !important;
+  }
+
+  /* Dimmed backdrop overlay when drawer is open */
+  body.menu-active::before {
+    content: "" !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+    z-index: 999998 !important;
+    backdrop-filter: blur(2px) !important;
+  }
+}
+
+/* ==========================================================================
+   ABOUT PAGE CUSTOM STYLES
+   ========================================================================== */
+
+/* Fix khoảng cách giữa Header và Hero Banner trên trang About */
+.page-about #content.site-content,
+.page-template-page-about #content.site-content,
+.page-template-page-about-php #content.site-content,
+body:has(.custom-about-page) #content.site-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.page-about #content.site-content > .container,
+.page-template-page-about #content.site-content > .container,
+.page-template-page-about-php #content.site-content > .container,
+body:has(.custom-about-page) #content.site-content > .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    margin: 0 !important;
+}
+
+.page-about .breadcrumb-wrap,
+.page-template-page-about .breadcrumb-wrap,
+.page-template-page-about-php .breadcrumb-wrap,
+body:has(.custom-about-page) .breadcrumb-wrap {
+    display: none !important;
+}
+
+.custom-about-page {
+    width: 100%;
+    overflow-x: hidden;
+    color: #333333;
+    font-family: inherit;
+}
+
+.custom-about-page .about-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.custom-about-page .about-container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* 1. HERO BANNER */
+.about-hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 480px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.about-hero-banner .banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.42);
+    z-index: 1;
+}
+
+.about-hero-banner .banner-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.about-hero-banner .banner-title {
+    color: #ffffff;
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* 2. ABOUT US SECTION */
+.about-us-section {
+    padding: 80px 0 60px;
+    background: #ffffff;
+}
+
+.section-main-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin-bottom: 50px;
+}
+
+.about-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-grid-2col .col-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.about-us-section .content-block {
+    margin-bottom: 25px;
+}
+
+.about-us-section .content-block:last-child {
+    margin-bottom: 0;
+}
+
+.about-us-section .block-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 8px;
+}
+
+.about-us-section p {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #555555;
+    margin: 0 0 6px;
+}
+
+.about-us-section .quote {
+    font-style: italic;
+    font-weight: 500;
+    color: #333333;
+}
+
+/* 3. LĨNH VỰC HOẠT ĐỘNG (SERVICES) */
+.about-services-section {
+    padding: 60px 0 70px;
+    background: #ffffff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.services-highlight-title {
+    color: #e8601c;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+.services-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4f4f4f;
+    margin-bottom: 20px;
+}
+
+.services-desc:last-child {
+    margin-bottom: 0;
+}
+
+/* 4. THÔNG TIN CÔNG TY (COMPANY INFO) */
+.about-company-section {
+    padding: 80px 0;
+    background: #f7f8fa; /* Khối nền xám nhẹ */
+}
+
+.company-info-col {
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.company-info-item {
+    margin-bottom: 25px;
+}
+
+.company-info-item:last-child {
+    margin-bottom: 0;
+}
+
+.company-info-item .info-label {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.company-info-item .info-value {
+    display: block;
+    font-size: 14.5px;
+    color: #555555;
+    line-height: 1.5;
+}
+
+/* RESPONSIVE CHO TABLET & MOBILE */
+@media (max-width: 768px) {
+    .about-hero-banner {
+        min-height: 340px;
+    }
+    
+    .about-hero-banner .banner-title {
+        font-size: 26px;
+    }
+
+    .about-grid-2col {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .reverse-on-mobile {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+/* ==========================================================================
+   WIDGET CATEGORIES WITH DATES & REALTIME BADGE
+   ========================================================================== */
+.widget_categories ul li {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid #edf2f7 !important;
+    font-size: 14.5px !important;
+}
+
+.widget_categories ul li::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 8px !important;
+    height: 8px !important;
+    background-color: #f59e0b !important; /* Chấm màu cam/vàng như mẫu */
+    border-radius: 50% !important;
+    margin-right: 12px !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2) !important;
+}
+
+.widget_categories ul li a {
+    color: #1d72b8 !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    flex: 1 !important;
+    transition: color 0.2s ease !important;
+}
+
+.widget_categories ul li a:hover {
+    color: #e8601c !important;
+}
+
+.widget_categories .cat-date-badge {
+    font-size: 12.5px !important;
+    color: #718096 !important;
+    font-weight: 400 !important;
+    margin-left: 8px !important;
+    white-space: nowrap !important;
+}
+
+/* Mục Phim truyện Realtime */
+.widget_categories ul li.cat-item-phim-truyen a {
+    font-weight: 600 !important;
+}
+
+.widget_categories .cat-realtime-badge .cat-realtime-clock {
+    color: #e8601c !important;
+    font-weight: 600 !important;
+    font-size: 12.5px !important;
+    font-family: Consolas, Monaco, monospace, sans-serif !important;
+    background: #fff7ed !important;
+    padding: 2px 7px !important;
+    border-radius: 4px !important;
+    border: 1px solid #ffedd5 !important;
+    display: inline-block !important;
+}
+
+/* ==========================================================================
+   NEWS PAGE CUSTOM STYLES (DẠNG LƯỚI & BANNER TRÊN CÙNG)
+   ========================================================================== */
+
+/* Tràn viền 100% chiều rộng và ẩn breadcrumb cho trang News */
+.page-news #content.site-content,
+.page-template-page-news #content.site-content,
+.page-template-page-news-php #content.site-content,
+body:has(.custom-news-page) #content.site-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.page-news #content.site-content > .container,
+.page-template-page-news #content.site-content > .container,
+.page-template-page-news-php #content.site-content > .container,
+body:has(.custom-news-page) #content.site-content > .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.page-news .breadcrumb-wrap,
+.page-template-page-news .breadcrumb-wrap,
+.page-template-page-news-php .breadcrumb-wrap,
+body:has(.custom-news-page) .breadcrumb-wrap {
+    display: none !important;
+}
+
+.custom-news-page {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: inherit;
+    background: #f7f8fa;
+}
+
+/* 1. HERO BANNER */
+.news-hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.news-hero-banner .banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(18, 28, 45, 0.55); /* Lớp phủ làm tối ảnh nền thành phố */
+    z-index: 1;
+}
+
+.news-hero-banner .banner-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.news-hero-banner .banner-title {
+    color: #ffffff;
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* 2. KHỐI DANH SÁCH BÀI VIẾT */
+.news-main-section {
+    padding: 70px 0 80px;
+}
+
+.news-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.news-section-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin-bottom: 50px;
+}
+
+/* BỐ CỤC LƯỚI 2 CỘT */
+.news-grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* TỪNG CARD BÀI VIẾT */
+.news-card {
+    background: #ffffff;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    padding:20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.09);
+}
+
+/* CỘT TRÁI: ẢNH ĐẠI DIỆN */
+.news-card-thumb-link {
+    display: block;
+    flex-shrink: 0;
+    width: 220px;
+}
+
+.news-card-thumb {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    overflow: hidden;
+    background: #eee;
+}
+
+.news-card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.news-card:hover .news-card-thumb img {
+    transform: scale(1.05);
+}
+
+/* CỘT PHẢI: NỘI DUNG */
+.news-card-body {
+    padding: 22px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.news-card-title {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.news-card-title a {
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.news-card-title a:hover {
+    color: #e8601c;
+}
+
+.news-card-excerpt {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #666666;
+    margin-bottom: 14px;
+}
+
+.news-card-readmore {
+    color: #e8601c;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    align-self: flex-start;
+    transition: opacity 0.2s;
+}
+
+.news-card-readmore:hover {
+    opacity: 0.85;
+    text-decoration: underline;
+}
+
+/* PHÂN TRANG (PAGINATION) */
+.news-pagination {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.news-pagination .page-numbers {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 4px;
+    background: #ffffff;
+    color: #444;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.news-pagination .page-numbers.current,
+.news-pagination .page-numbers:hover {
+    background: #e8601c;
+    color: #ffffff;
+}
+
+/* 3. KHỐI NEWSLETTER MÀU CAM */
+.news-newsletter-section {
+    background-color: #eb6b2c;
+    padding: 45px 20px;
+    color: #ffffff;
+}
+
+.newsletter-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.newsletter-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+    max-width: 320px;
+    line-height: 1.3;
+}
+
+.newsletter-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+    max-width: 650px;
+}
+
+.newsletter-form .input-group {
+    position: relative;
+    flex: 1;
+}
+
+.newsletter-form .input-group .icon-email {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e8601c;
+    font-size: 16px;
+}
+
+.newsletter-form input[type="email"] {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    background: #ffffff;
+    color: #333333;
+    outline: none;
+}
+
+.newsletter-form .newsletter-submit {
+    background: transparent;
+    color: #ffffff;
+    border: 1.5px solid #ffffff;
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.newsletter-form .newsletter-submit:hover {
+    background: #ffffff;
+    color: #eb6b2c;
+}
+
+/* RESPONSIVE CHO TABLET & MOBILE */
+@media (max-width: 900px) {
+    .news-grid-2col {
+        grid-template-columns: 1fr;
+    }
+    
+    .newsletter-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .newsletter-form {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .news-hero-banner {
+        min-height: 280px;
+    }
+    .news-hero-banner .banner-title {
+        font-size: 26px;
+    }
+    .news-card {
+        flex-direction: column;
+    }
+    .news-card-thumb-link {
+        width: 100%;
+        height: 180px;
+    }
+    .newsletter-form {
+        flex-direction: column;
+        width: 100%;
+    }
+    .newsletter-form .input-group,
+    .newsletter-form .newsletter-submit {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   NEWS DETAIL PAGE CUSTOM STYLES (SINGLE POST - 6-news detail.png)
+   ========================================================================== */
+
+/* Tràn viền & ẩn breadcrumbs/sidebar mặc định của theme trên Single Post */
+.single-post #content.site-content,
+body:has(.custom-news-detail-page) #content.site-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.single-post #content.site-content > .container,
+body:has(.custom-news-detail-page) #content.site-content > .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.single-post .breadcrumb-wrap,
+body:has(.custom-news-detail-page) .breadcrumb-wrap,
+.single-post #secondary {
+    display: none !important;
+}
+
+.custom-news-detail-page {
+    width: 100%;
+    overflow-x: hidden;
+    background: #f7f8fa;
+    font-family: inherit;
+    color: #333333;
+    padding-bottom: 0;
+}
+
+.detail-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 1. BREADCRUMB */
+.news-detail-breadcrumb {
+    padding: 25px 0 20px;
+    font-size: 13.5px;
+    color: #888888;
+}
+
+.news-detail-breadcrumb a {
+    color: #555555;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.news-detail-breadcrumb a:hover {
+    color: #e8601c;
+}
+
+.news-detail-breadcrumb .sep {
+    margin: 0 10px;
+    color: #cccccc;
+}
+
+.news-detail-breadcrumb .current {
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+/* 2. POST HEADER CARD */
+.news-detail-header-card {
+    background: #ffffff;
+    padding: 24px 28px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.header-card-left {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-grow: 1;
+}
+
+.detail-thumb {
+    width: 120px;
+    height: 110px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 2px;
+    background: #eee;
+}
+
+.detail-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.detail-info {
+    flex-grow: 1;
+}
+
+.detail-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    margin: 0 0 8px 0;
+    line-height: 1.35;
+    letter-spacing: 0.5px;
+}
+
+.detail-meta {
+    font-size: 13.5px;
+    color: #777777;
+    margin-bottom: 12px;
+}
+
+.detail-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.badge-item {
+    font-size: 12px;
+    color: #4b5563;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    padding: 4px 14px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.badge-item:hover {
+    color: #e8601c;
+    border-color: #e8601c;
+}
+
+.header-card-right .btn-share {
+    background: #ffffff;
+    border: 1.5px solid #222222;
+    color: #222222;
+    padding: 9px 30px;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.header-card-right .btn-share:hover {
+    background: #222222;
+    color: #ffffff;
+}
+
+/* 3. MAIN ARTICLE CONTENT CARD */
+.news-detail-content-card {
+    background: #ffffff;
+    padding: 50px 65px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    margin-bottom: 75px;
+}
+
+.news-detail-content-card .entry-content {
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: #374151;
+}
+
+.news-detail-content-card .entry-content p {
+    margin-bottom: 24px;
+}
+
+.news-detail-content-card .entry-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 32px auto;
+    border-radius: 2px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* 4. NEWEST BLOG ENTRIES (RELATED) */
+.news-detail-related-section {
+    padding-bottom: 85px;
+}
+
+.news-detail-related-section .news-section-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin-bottom: 45px;
+}
+
+/* RESPONSIVE CHO NEWS DETAIL */
+@media (max-width: 850px) {
+    .news-detail-header-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .header-card-left {
+        width: 100%;
+    }
+
+    .header-card-right {
+        width: 100%;
+    }
+
+    .header-card-right .btn-share {
+        width: 100%;
+        text-align: center;
+    }
+
+    .news-detail-content-card {
+        padding: 30px 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-card-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .detail-thumb {
+        width: 100%;
+        height: 180px;
+    }
+
+    .detail-title {
+        font-size: 18px;
+    }
+}
+
+/* ==========================================================================
+   HOMEPAGE CUSTOM SECTIONS (BANNER, TOP JOBS, CTA, BLOG, NEWSLETTER)
+   ========================================================================== */
+.custom-home-banner {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  padding: 110px 0 120px 0 !important;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-home-banner .banner-container {
+  max-width: 1040px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+.custom-home-banner .banner-main-title {
+  color: #ffffff !important;
+  font-size: 46px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1.2px !important;
+  margin: 0 0 18px 0 !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7) !important;
+  font-family: inherit !important;
+}
+
+.custom-home-banner .banner-main-subtitle {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+  max-width: 860px !important;
+  margin: 0 auto 38px auto !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6) !important;
+  font-weight: 400 !important;
+}
+
+.custom-home-banner .banner-search-box-wrap {
+  max-width: 920px !important;
+  margin: 0 auto !important;
+}
+
+.custom-home-banner .banner-job-search-form {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  background: transparent !important;
+  border-radius: 4px !important;
+  padding: 0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+  margin: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  gap: 10px !important;
+}
+
+.custom-home-banner .search-field-group {
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  background: #ffffff !important;
+  border-radius: 4px !important;
+}
+
+.custom-home-banner .search-field-group.keyword-field {
+  flex: 1 1 54% !important;
+  padding: 0 16px !important;
+  border: none !important;
+}
+
+.custom-home-banner .search-field-group.location-field {
+  flex: 1 1 28% !important;
+  padding: 0 16px !important;
+  position: relative !important;
+  border: none !important;
+}
+
+.custom-home-banner .field-icon {
+  display: flex !important;
+  align-items: center !important;
+  margin-right: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+.custom-home-banner .keyword-field input {
+  width: 100% !important;
+  height: 52px !important;
+  border: none !important;
+  outline: none !important;
+  font-size: 14px !important;
+  color: #1e293b !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.custom-home-banner .keyword-field input::placeholder {
+  color: #94a3b8 !important;
+  font-weight: 400 !important;
+}
+
+.custom-home-banner .location-field select {
+  width: 100% !important;
+  height: 52px !important;
+  border: none !important;
+  outline: none !important;
+  font-size: 14px !important;
+  color: #475569 !important;
+  background: transparent !important;
+  cursor: pointer !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  box-shadow: none !important;
+  padding: 0 28px 0 0 !important;
+  margin: 0 !important;
+}
+
+.custom-home-banner .select-arrow {
+  position: absolute !important;
+  right: 14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.custom-home-banner .search-submit-group {
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  display: flex !important;
+}
+
+.custom-home-banner .banner-search-submit-btn {
+  background-color: #ea6a1b !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  height: 52px !important;
+  padding: 0 32px !important;
+  cursor: pointer !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: none !important;
+  white-space: nowrap !important;
+}
+
+.custom-home-banner .banner-search-submit-btn:hover {
+  background-color: #d3590f !important;
+  color: #ffffff !important;
+}
+
+/* 2. TOP JOBS SECTION */
+.custom-top-jobs-section {
+  padding: 75px 0 85px 0 !important;
+  background-color: #f5f6f8 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-top-jobs-section .top-jobs-container {
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+}
+
+.custom-top-jobs-section .section-heading-title,
+.custom-blog-section .section-heading-title {
+  text-align: center !important;
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  color: #1e293b !important;
+  letter-spacing: 1.2px !important;
+  margin: 0 0 45px 0 !important;
+  line-height: 1.2 !important;
+}
+
+.custom-top-jobs-section .top-jobs-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 26px !important;
+  margin-bottom: 45px !important;
+}
+
+.custom-top-jobs-section .job-card-item {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
+  padding: 24px 26px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.custom-top-jobs-section .job-card-item:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07) !important;
+}
+
+.custom-top-jobs-section .job-card-header {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+  margin-bottom: 16px !important;
+}
+
+.custom-top-jobs-section .company-logo-box {
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px !important;
+  border: 1px solid #edf2f7 !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #fafafa !important;
+  overflow: hidden !important;
+}
+
+.custom-top-jobs-section .company-logo-img {
+  max-width: 90% !important;
+  max-height: 90% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.custom-top-jobs-section .job-info-meta {
+  flex: 1 !important;
+}
+
+.custom-top-jobs-section .job-card-title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  margin: 0 0 6px 0 !important;
+  line-height: 1.35 !important;
+}
+
+.custom-top-jobs-section .job-card-title a {
+  color: #1e293b !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.custom-top-jobs-section .job-card-title a:hover {
+  color: #ea6a1b !important;
+}
+
+.custom-top-jobs-section .job-created-date {
+  font-size: 12px !important;
+  color: #94a3b8 !important;
+  margin-bottom: 10px !important;
+}
+
+.custom-top-jobs-section .job-badges-list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+.custom-top-jobs-section .job-badge {
+  display: inline-block !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: #64748b !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 3px 10px !important;
+  border-radius: 3px !important;
+  line-height: 1.4 !important;
+}
+
+.custom-top-jobs-section .job-card-body {
+  border-top: 1px solid #f1f5f9 !important;
+  padding-top: 14px !important;
+}
+
+.custom-top-jobs-section .job-benefits-list {
+  list-style: disc !important;
+  margin: 0 !important;
+  padding-left: 18px !important;
+  font-size: 13px !important;
+  color: #64748b !important;
+  line-height: 1.7 !important;
+}
+
+.custom-top-jobs-section .job-benefits-list li {
+  margin-bottom: 4px !important;
+}
+
+.custom-top-jobs-section .top-jobs-cta {
+  text-align: center !important;
+  margin-top: 20px !important;
+}
+
+.custom-top-jobs-section .btn-view-more-jobs {
+  display: inline-block !important;
+  border: 1.5px solid #ea6a1b !important;
+  color: #ea6a1b !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  padding: 11px 36px !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  background: transparent !important;
+  letter-spacing: 0.5px !important;
+}
+
+.custom-top-jobs-section .btn-view-more-jobs:hover {
+  background-color: #ea6a1b !important;
+  color: #ffffff !important;
+}
+
+/* 3. CAREER WITH US SECTION */
+.custom-career-section {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  padding: 95px 20px !important;
+  text-align: center !important;
+  color: #ffffff !important;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-career-section .career-container {
+  max-width: 860px !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.custom-career-section .career-section-title {
+  font-size: 34px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  margin: 0 0 24px 0 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+}
+
+.custom-career-section .career-text-block p {
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin: 0 0 20px 0 !important;
+}
+
+.custom-career-section .career-btn-wrap {
+  margin-top: 30px !important;
+}
+
+.custom-career-section .btn-more-about-us {
+  display: inline-block !important;
+  border: 1.5px solid #ffffff !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  padding: 12px 36px !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  background: transparent !important;
+}
+
+.custom-career-section .btn-more-about-us:hover {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+}
+
+/* 4. NEWEST BLOG ENTRIES SECTION */
+.custom-blog-section {
+  padding: 75px 0 85px 0 !important;
+  background-color: #f8fafc !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-blog-section .blog-section-container {
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+}
+
+.custom-blog-section .blog-entries-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 26px !important;
+}
+
+.custom-blog-section .blog-card-item {
+  display: flex !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.custom-blog-section .blog-card-item:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07) !important;
+}
+
+.custom-blog-section .blog-card-thumb-wrap {
+  width: 180px !important;
+  min-width: 180px !important;
+  height: auto !important;
+  min-height: 160px !important;
+  overflow: hidden !important;
+}
+
+.custom-blog-section .blog-card-thumb-wrap a {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.custom-blog-section .blog-card-thumb {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.3s ease !important;
+}
+
+.custom-blog-section .blog-card-item:hover .blog-card-thumb {
+  transform: scale(1.05) !important;
+}
+
+.custom-blog-section .blog-card-content {
+  flex: 1 !important;
+  padding: 20px 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.custom-blog-section .blog-card-title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  margin: 0 0 10px 0 !important;
+  line-height: 1.35 !important;
+}
+
+.custom-blog-section .blog-card-title a {
+  color: #1e293b !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.custom-blog-section .blog-card-title a:hover {
+  color: #ea6a1b !important;
+}
+
+.custom-blog-section .blog-card-excerpt {
+  font-size: 13px !important;
+  color: #64748b !important;
+  line-height: 1.55 !important;
+  margin: 0 0 12px 0 !important;
+}
+
+.custom-blog-section .blog-read-more-link {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #ea6a1b !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  align-self: flex-start !important;
+}
+
+.custom-blog-section .blog-read-more-link:hover {
+  text-decoration: underline !important;
+  color: #d3590f !important;
+}
+
+/* 5. NEWSLETTER SECTION */
+.custom-newsletter-section {
+  background-color: #ea6a1b !important;
+  padding: 36px 0 !important;
+  color: #ffffff !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-newsletter-section .newsletter-container {
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 30px !important;
+  box-sizing: border-box !important;
+}
+
+.custom-newsletter-section .newsletter-text-col {
+  flex: 0 0 auto !important;
+}
+
+.custom-newsletter-section .newsletter-headline {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  margin: 0 !important;
+  color: #ffffff !important;
+  letter-spacing: 0.5px !important;
+}
+
+.custom-newsletter-section .newsletter-form-col {
+  flex: 1 !important;
+  max-width: 620px !important;
+}
+
+.custom-newsletter-section .newsletter-subscribe-form {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.custom-newsletter-section .newsletter-input-group {
+  flex: 1 !important;
+  position: relative !important;
+}
+
+.custom-newsletter-section .newsletter-mail-icon {
+  position: absolute !important;
+  left: 14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  z-index: 2 !important;
+}
+
+.custom-newsletter-section .newsletter-email-input {
+  width: 100% !important;
+  height: 46px !important;
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 0 16px 0 44px !important;
+  font-size: 14px !important;
+  color: #334155 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.custom-newsletter-section .newsletter-submit-btn {
+  background-color: transparent !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.9) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  height: 46px !important;
+  padding: 0 28px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  transition: all 0.2s ease !important;
+}
+
+.custom-newsletter-section .newsletter-submit-btn:hover {
+  background-color: #ffffff !important;
+  color: #ea6a1b !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+  .custom-top-jobs-section .top-jobs-grid,
+  .custom-blog-section .blog-entries-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .custom-newsletter-section .newsletter-container {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .custom-newsletter-section .newsletter-form-col {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-home-banner {
+    padding: 70px 0 80px 0 !important;
+  }
+
+  .custom-home-banner .banner-main-title {
+    font-size: 32px !important;
+  }
+
+  .custom-home-banner .banner-job-search-form {
+    flex-direction: column !important;
+    gap: 10px !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .custom-home-banner .search-field-group.keyword-field,
+  .custom-home-banner .search-field-group.location-field {
+    width: 100% !important;
+    border: none !important;
+    padding: 0 16px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .custom-home-banner .search-submit-group {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .custom-home-banner .banner-search-submit-btn {
+    width: 100% !important;
+  }
+
+  .custom-blog-section .blog-card-item {
+    flex-direction: column !important;
+  }
+
+  .custom-blog-section .blog-card-thumb-wrap {
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 180px !important;
+  }
+
+  .custom-newsletter-section .newsletter-subscribe-form {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .custom-newsletter-section .newsletter-submit-btn {
+    width: 100% !important;
+  }
+}
+
+

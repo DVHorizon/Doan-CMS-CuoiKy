@@ -35,18 +35,26 @@ if( ! function_exists( 'jobscout_responsive_header' ) ) :
  * Responsive Header
 */
 function jobscout_responsive_header(){ 
-    $post_job_label  = get_theme_mod( 'post_job_label', __( 'Post Jobs', 'jobscout' ) );
-    $post_job_url    = get_theme_mod( 'post_job_url', '#' );
+    $post_job_label  = get_theme_mod( 'post_job_label', __( 'SUBMIT JOB', 'jobscout' ) );
+    $post_job_url    = get_theme_mod( 'post_job_url', home_url( '/post-a-job/' ) );
+    if( empty( $post_job_label ) ){
+        $post_job_label = __( 'SUBMIT JOB', 'jobscout' );
+    }
+    if( empty( $post_job_url ) || $post_job_url === '#' ){
+        $post_job_url = home_url( '/post-a-job/' );
+    }
     ?>
     <div class="responsive-nav">
         <div class="nav-top">
             <?php jobscout_site_branding( true ); ?>
+            <button type="button" class="close-btn close" aria-label="<?php esc_attr_e( 'Close', 'jobscout' ); ?>">
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
-
 
         <nav id="mobile-site-navigation" class="main-navigation mobile-navigation">        
             <div class="primary-menu-list main-menu-modal cover-modal" data-modal-target-string=".main-menu-modal">
-                <button class="close close-main-nav-toggle" data-toggle-target=".main-menu-modal" data-toggle-body-class="showing-main-menu-modal" aria-expanded="false" data-set-focus=".main-menu-modal"></button>
                 <div class="mobile-menu" aria-label="<?php esc_attr_e( 'Mobile', 'jobscout' ); ?>">
                     <?php
                         wp_nav_menu( array(
@@ -55,14 +63,6 @@ function jobscout_responsive_header(){
                             'menu_class'     => 'nav-menu main-menu-modal',
                             'container'      => false,
                             'fallback_cb'    => 'jobscout_primary_menu_fallback',
-                        ) );
-
-                        wp_nav_menu( array(
-                            'theme_location' => 'secondary',
-                            'menu_class'     => 'nav-menu',
-                            'menu_id'        => 'secondary-menu',
-                            'container'      => false,
-                            'fallback_cb'    => 'jobscout_secondary_menu_fallback',
                         ) );
                     ?>
                 
@@ -99,7 +99,6 @@ if( ! function_exists( 'jobscout_header' ) ) :
 function jobscout_header(){ 
     ?>
     <header id="masthead" class="site-header header-one" itemscope itemtype="https://schema.org/WPHeader">
-        <?php if( has_nav_menu( 'secondary' ) || current_user_can( 'manage_options' ) ) jobscout_secondary_navigation(); ?>
         <div class="header-main">
             <div class="container">
                 <?php 
@@ -500,6 +499,22 @@ if( ! function_exists( 'jobscout_footer_top' ) ) :
  * Footer Top
 */
 function jobscout_footer_top(){    
+    // 1. Dải Newsletter màu cam
+    if( is_active_sidebar( 'footer-newsletter' ) ){ ?>
+        <div class="jos-footer-newsletter-section">
+            <?php dynamic_sidebar( 'footer-newsletter' ); ?>
+        </div>
+    <?php }
+
+    // 2. Chân trang căn giữa (Brand + Menu + Social)
+    if( is_active_sidebar( 'footer-centered' ) ){ ?>
+        <div class="jos-footer-centered-section">
+            <div class="container">
+                <?php dynamic_sidebar( 'footer-centered' ); ?>
+            </div>
+        </div>
+    <?php }
+
     $footer_sidebars = array( 'footer-one', 'footer-two', 'footer-three', 'footer-four' );
     $active_sidebars = array();
     $sidebar_count   = 0;
