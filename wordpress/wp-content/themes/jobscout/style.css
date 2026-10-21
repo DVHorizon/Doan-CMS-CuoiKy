@@ -10066,5 +10066,671 @@ body:has(.custom-news-detail-page) .breadcrumb-wrap,
     }
 }
 
+/* ==========================================================================
+   HOMEPAGE CUSTOM SECTIONS (BANNER, TOP JOBS, CTA, BLOG, NEWSLETTER)
+   ========================================================================== */
+.custom-home-banner {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  padding: 110px 0 120px 0 !important;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-home-banner .banner-container {
+  max-width: 1040px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+.custom-home-banner .banner-main-title {
+  color: #ffffff !important;
+  font-size: 46px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1.2px !important;
+  margin: 0 0 18px 0 !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7) !important;
+  font-family: inherit !important;
+}
+
+.custom-home-banner .banner-main-subtitle {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+  max-width: 860px !important;
+  margin: 0 auto 38px auto !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6) !important;
+  font-weight: 400 !important;
+}
+
+.custom-home-banner .banner-search-box-wrap {
+  max-width: 920px !important;
+  margin: 0 auto !important;
+}
+
+.custom-home-banner .banner-job-search-form {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  background: transparent !important;
+  border-radius: 4px !important;
+  padding: 0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+  margin: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  gap: 10px !important;
+}
+
+.custom-home-banner .search-field-group {
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  background: #ffffff !important;
+  border-radius: 4px !important;
+}
+
+.custom-home-banner .search-field-group.keyword-field {
+  flex: 1 1 54% !important;
+  padding: 0 16px !important;
+  border: none !important;
+}
+
+.custom-home-banner .search-field-group.location-field {
+  flex: 1 1 28% !important;
+  padding: 0 16px !important;
+  position: relative !important;
+  border: none !important;
+}
+
+.custom-home-banner .field-icon {
+  display: flex !important;
+  align-items: center !important;
+  margin-right: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+.custom-home-banner .keyword-field input {
+  width: 100% !important;
+  height: 52px !important;
+  border: none !important;
+  outline: none !important;
+  font-size: 14px !important;
+  color: #1e293b !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.custom-home-banner .keyword-field input::placeholder {
+  color: #94a3b8 !important;
+  font-weight: 400 !important;
+}
+
+.custom-home-banner .location-field select {
+  width: 100% !important;
+  height: 52px !important;
+  border: none !important;
+  outline: none !important;
+  font-size: 14px !important;
+  color: #475569 !important;
+  background: transparent !important;
+  cursor: pointer !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  box-shadow: none !important;
+  padding: 0 28px 0 0 !important;
+  margin: 0 !important;
+}
+
+.custom-home-banner .select-arrow {
+  position: absolute !important;
+  right: 14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.custom-home-banner .search-submit-group {
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  display: flex !important;
+}
+
+.custom-home-banner .banner-search-submit-btn {
+  background-color: #ea6a1b !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  height: 52px !important;
+  padding: 0 32px !important;
+  cursor: pointer !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: none !important;
+  white-space: nowrap !important;
+}
+
+.custom-home-banner .banner-search-submit-btn:hover {
+  background-color: #d3590f !important;
+  color: #ffffff !important;
+}
+
+/* 2. TOP JOBS SECTION */
+.custom-top-jobs-section {
+  padding: 75px 0 85px 0 !important;
+  background-color: #f5f6f8 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-top-jobs-section .top-jobs-container {
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+}
+
+.custom-top-jobs-section .section-heading-title,
+.custom-blog-section .section-heading-title {
+  text-align: center !important;
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  color: #1e293b !important;
+  letter-spacing: 1.2px !important;
+  margin: 0 0 45px 0 !important;
+  line-height: 1.2 !important;
+}
+
+.custom-top-jobs-section .top-jobs-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 26px !important;
+  margin-bottom: 45px !important;
+}
+
+.custom-top-jobs-section .job-card-item {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
+  padding: 24px 26px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.custom-top-jobs-section .job-card-item:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07) !important;
+}
+
+.custom-top-jobs-section .job-card-header {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+  margin-bottom: 16px !important;
+}
+
+.custom-top-jobs-section .company-logo-box {
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px !important;
+  border: 1px solid #edf2f7 !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #fafafa !important;
+  overflow: hidden !important;
+}
+
+.custom-top-jobs-section .company-logo-img {
+  max-width: 90% !important;
+  max-height: 90% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.custom-top-jobs-section .job-info-meta {
+  flex: 1 !important;
+}
+
+.custom-top-jobs-section .job-card-title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  margin: 0 0 6px 0 !important;
+  line-height: 1.35 !important;
+}
+
+.custom-top-jobs-section .job-card-title a {
+  color: #1e293b !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.custom-top-jobs-section .job-card-title a:hover {
+  color: #ea6a1b !important;
+}
+
+.custom-top-jobs-section .job-created-date {
+  font-size: 12px !important;
+  color: #94a3b8 !important;
+  margin-bottom: 10px !important;
+}
+
+.custom-top-jobs-section .job-badges-list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+.custom-top-jobs-section .job-badge {
+  display: inline-block !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: #64748b !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 3px 10px !important;
+  border-radius: 3px !important;
+  line-height: 1.4 !important;
+}
+
+.custom-top-jobs-section .job-card-body {
+  border-top: 1px solid #f1f5f9 !important;
+  padding-top: 14px !important;
+}
+
+.custom-top-jobs-section .job-benefits-list {
+  list-style: disc !important;
+  margin: 0 !important;
+  padding-left: 18px !important;
+  font-size: 13px !important;
+  color: #64748b !important;
+  line-height: 1.7 !important;
+}
+
+.custom-top-jobs-section .job-benefits-list li {
+  margin-bottom: 4px !important;
+}
+
+.custom-top-jobs-section .top-jobs-cta {
+  text-align: center !important;
+  margin-top: 20px !important;
+}
+
+.custom-top-jobs-section .btn-view-more-jobs {
+  display: inline-block !important;
+  border: 1.5px solid #ea6a1b !important;
+  color: #ea6a1b !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  padding: 11px 36px !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  background: transparent !important;
+  letter-spacing: 0.5px !important;
+}
+
+.custom-top-jobs-section .btn-view-more-jobs:hover {
+  background-color: #ea6a1b !important;
+  color: #ffffff !important;
+}
+
+/* 3. CAREER WITH US SECTION */
+.custom-career-section {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  padding: 95px 20px !important;
+  text-align: center !important;
+  color: #ffffff !important;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-career-section .career-container {
+  max-width: 860px !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.custom-career-section .career-section-title {
+  font-size: 34px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  margin: 0 0 24px 0 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+}
+
+.custom-career-section .career-text-block p {
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin: 0 0 20px 0 !important;
+}
+
+.custom-career-section .career-btn-wrap {
+  margin-top: 30px !important;
+}
+
+.custom-career-section .btn-more-about-us {
+  display: inline-block !important;
+  border: 1.5px solid #ffffff !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  padding: 12px 36px !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  background: transparent !important;
+}
+
+.custom-career-section .btn-more-about-us:hover {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+}
+
+/* 4. NEWEST BLOG ENTRIES SECTION */
+.custom-blog-section {
+  padding: 75px 0 85px 0 !important;
+  background-color: #f8fafc !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-blog-section .blog-section-container {
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+}
+
+.custom-blog-section .blog-entries-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 26px !important;
+}
+
+.custom-blog-section .blog-card-item {
+  display: flex !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.custom-blog-section .blog-card-item:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07) !important;
+}
+
+.custom-blog-section .blog-card-thumb-wrap {
+  width: 180px !important;
+  min-width: 180px !important;
+  height: auto !important;
+  min-height: 160px !important;
+  overflow: hidden !important;
+}
+
+.custom-blog-section .blog-card-thumb-wrap a {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.custom-blog-section .blog-card-thumb {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.3s ease !important;
+}
+
+.custom-blog-section .blog-card-item:hover .blog-card-thumb {
+  transform: scale(1.05) !important;
+}
+
+.custom-blog-section .blog-card-content {
+  flex: 1 !important;
+  padding: 20px 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.custom-blog-section .blog-card-title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  margin: 0 0 10px 0 !important;
+  line-height: 1.35 !important;
+}
+
+.custom-blog-section .blog-card-title a {
+  color: #1e293b !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.custom-blog-section .blog-card-title a:hover {
+  color: #ea6a1b !important;
+}
+
+.custom-blog-section .blog-card-excerpt {
+  font-size: 13px !important;
+  color: #64748b !important;
+  line-height: 1.55 !important;
+  margin: 0 0 12px 0 !important;
+}
+
+.custom-blog-section .blog-read-more-link {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #ea6a1b !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  align-self: flex-start !important;
+}
+
+.custom-blog-section .blog-read-more-link:hover {
+  text-decoration: underline !important;
+  color: #d3590f !important;
+}
+
+/* 5. NEWSLETTER SECTION */
+.custom-newsletter-section {
+  background-color: #ea6a1b !important;
+  padding: 36px 0 !important;
+  color: #ffffff !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.custom-newsletter-section .newsletter-container {
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 30px !important;
+  box-sizing: border-box !important;
+}
+
+.custom-newsletter-section .newsletter-text-col {
+  flex: 0 0 auto !important;
+}
+
+.custom-newsletter-section .newsletter-headline {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  margin: 0 !important;
+  color: #ffffff !important;
+  letter-spacing: 0.5px !important;
+}
+
+.custom-newsletter-section .newsletter-form-col {
+  flex: 1 !important;
+  max-width: 620px !important;
+}
+
+.custom-newsletter-section .newsletter-subscribe-form {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.custom-newsletter-section .newsletter-input-group {
+  flex: 1 !important;
+  position: relative !important;
+}
+
+.custom-newsletter-section .newsletter-mail-icon {
+  position: absolute !important;
+  left: 14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  z-index: 2 !important;
+}
+
+.custom-newsletter-section .newsletter-email-input {
+  width: 100% !important;
+  height: 46px !important;
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 0 16px 0 44px !important;
+  font-size: 14px !important;
+  color: #334155 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.custom-newsletter-section .newsletter-submit-btn {
+  background-color: transparent !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.9) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  height: 46px !important;
+  padding: 0 28px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  transition: all 0.2s ease !important;
+}
+
+.custom-newsletter-section .newsletter-submit-btn:hover {
+  background-color: #ffffff !important;
+  color: #ea6a1b !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+  .custom-top-jobs-section .top-jobs-grid,
+  .custom-blog-section .blog-entries-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .custom-newsletter-section .newsletter-container {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .custom-newsletter-section .newsletter-form-col {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-home-banner {
+    padding: 70px 0 80px 0 !important;
+  }
+
+  .custom-home-banner .banner-main-title {
+    font-size: 32px !important;
+  }
+
+  .custom-home-banner .banner-job-search-form {
+    flex-direction: column !important;
+    gap: 10px !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .custom-home-banner .search-field-group.keyword-field,
+  .custom-home-banner .search-field-group.location-field {
+    width: 100% !important;
+    border: none !important;
+    padding: 0 16px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .custom-home-banner .search-submit-group {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .custom-home-banner .banner-search-submit-btn {
+    width: 100% !important;
+  }
+
+  .custom-blog-section .blog-card-item {
+    flex-direction: column !important;
+  }
+
+  .custom-blog-section .blog-card-thumb-wrap {
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 180px !important;
+  }
+
+  .custom-newsletter-section .newsletter-subscribe-form {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .custom-newsletter-section .newsletter-submit-btn {
+    width: 100% !important;
+  }
+}
 
 
