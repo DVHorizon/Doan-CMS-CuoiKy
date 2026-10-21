@@ -7,8 +7,9 @@
 
 get_header();
 
-$banner_bg = get_template_directory_uri() . '/images/contact-banner-kimono.jpg';
-$news_url  = home_url( '/news/' );
+$banner_bg     = get_template_directory_uri() . '/images/contact-banner-kimono.jpg';
+$posts_page_id = get_option( 'page_for_posts' );
+$blog_url      = $posts_page_id ? get_permalink( $posts_page_id ) : home_url( '/blog/' );
 ?>
 
 <div class="custom-contact-page">
@@ -70,7 +71,7 @@ $news_url  = home_url( '/news/' );
                             Ask a question on our <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-highlight-link">Facebook</a> page
                         </p>
                         <p class="contact-sub-item">
-                            Read our <a href="<?php echo esc_url( $news_url ); ?>" class="contact-highlight-link">blog posts</a> on interview and CV tips
+                            Read our <a href="<?php echo esc_url( $blog_url ); ?>" class="contact-highlight-link">blog posts</a> on interview and CV tips
                         </p>
                     </div>
 
