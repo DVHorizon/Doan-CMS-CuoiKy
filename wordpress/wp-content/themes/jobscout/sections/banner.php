@@ -37,37 +37,69 @@ $search_keywords   = isset( $_GET['search_keywords'] ) ? sanitize_text_field( $_
                         <input type="text" id="search_keywords" name="search_keywords" placeholder="Search for jobs, companies, skills" value="<?php echo esc_attr( $search_keywords ); ?>">
                     </div>
 
-                    <div class="search-field-group location-field search_location">
+                    <div class="search-field-group location-field search_location custom-dropdown-wrap" id="customLocationDropdownWrap">
                         <span class="field-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ea6a1b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
                         </span>
-                        <select id="search_location" name="search_location">
-                            <option value="Tokyo" <?php selected( $selected_location, 'Tokyo' ); ?>>Tokyo</option>
-                            <option value="Ho Chi Minh City" <?php selected( $selected_location, 'Ho Chi Minh City' ); ?>>Ho Chi Minh City</option>
-                            <option value="Ha Noi" <?php selected( $selected_location, 'Ha Noi' ); ?>>Ha Noi</option>
-                            <option value="Kyoto" <?php selected( $selected_location, 'Kyoto' ); ?>>Kyoto</option>
-                            <option value="Osaka" <?php selected( $selected_location, 'Osaka' ); ?>>Osaka</option>
-                            <?php 
-                            if ( ! empty( $location_results ) ) {
-                                $standard_locs = array( 'Tokyo', 'Ho Chi Minh City', 'Ha Noi', 'Kyoto', 'Osaka' );
-                                foreach ( $location_results as $loc ) {
-                                    $loc_name = trim( $loc->location );
-                                    if ( ! empty( $loc_name ) && ! in_array( $loc_name, $standard_locs, true ) ) {
-                                        $selected = ( $selected_location === $loc_name ) ? ' selected' : '';
-                                        echo '<option value="' . esc_attr( $loc_name ) . '"' . $selected . '>' . esc_html( $loc_name ) . '</option>';
-                                    }
-                                }
-                            }
-                            ?>
+
+                        <!-- Native select kept in DOM for form submission and teacher's requirement -->
+                        <select id="search_location" name="search_location" class="hidden-native-select">
+                            <option value="">Khu vực</option>
+                            <?php if ( ! empty( $location_results ) ) : ?>
+                                <?php foreach ( $location_results as $value ) : 
+                                    $loc_name = trim( $value->location );
+                                    if ( empty( $loc_name ) ) continue;
+                                    $selected = ( $selected_location === $loc_name ) ? ' selected' : '';
+                                ?>
+                                    <option value="<?php echo esc_attr( $loc_name ); ?>"<?php echo $selected; ?>>
+                                        <?php echo esc_html( $loc_name ); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </select>
-                        <span class="select-arrow">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#222222" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </span>
+
+                        <!-- Custom select trigger -->
+                        <div class="custom-select-trigger" id="customLocationTrigger" role="button" aria-haspopup="listbox" aria-expanded="false" tabindex="0">
+                            <span class="custom-select-label" id="customLocationLabel">
+                                <?php echo ! empty( $selected_location ) ? esc_html( $selected_location ) : 'Khu vực'; ?>
+                            </span>
+                            <span class="select-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <!-- Custom luxury dropdown menu -->
+                        <div class="custom-select-menu" id="customLocationMenu" role="listbox">
+                            <div class="custom-select-option<?php echo empty( $selected_location ) ? ' is-selected' : ''; ?>" data-value="">
+                                <span class="option-text">Khu vực (Tất cả)</span>
+                                <span class="option-check">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ea6a1b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </span>
+                            </div>
+                            <?php if ( ! empty( $location_results ) ) : ?>
+                                <?php foreach ( $location_results as $value ) : 
+                                    $loc_name = trim( $value->location );
+                                    if ( empty( $loc_name ) ) continue;
+                                    $is_selected = ( $selected_location === $loc_name );
+                                ?>
+                                    <div class="custom-select-option<?php echo $is_selected ? ' is-selected' : ''; ?>" data-value="<?php echo esc_attr( $loc_name ); ?>">
+                                        <span class="option-text"><?php echo esc_html( $loc_name ); ?></span>
+                                        <span class="option-check">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ea6a1b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
                     </div>
 
                     <div class="search-submit-group">
@@ -78,3 +110,77 @@ $search_keywords   = isset( $_GET['search_keywords'] ) ? sanitize_text_field( $_
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var wrap = document.getElementById('customLocationDropdownWrap');
+    if (!wrap) return;
+
+    var trigger = document.getElementById('customLocationTrigger');
+    var label = document.getElementById('customLocationLabel');
+    var nativeSelect = document.getElementById('search_location');
+    var options = wrap.querySelectorAll('.custom-select-option');
+
+    function toggleDropdown(e) {
+        if (e) e.stopPropagation();
+        var isOpen = wrap.classList.contains('is-open');
+        if (isOpen) {
+            closeDropdown();
+        } else {
+            openDropdown();
+        }
+    }
+
+    function openDropdown() {
+        wrap.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDropdown() {
+        wrap.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    trigger.addEventListener('click', toggleDropdown);
+
+    trigger.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleDropdown();
+        } else if (e.key === 'Escape') {
+            closeDropdown();
+        }
+    });
+
+    options.forEach(function(opt) {
+        opt.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var val = opt.getAttribute('data-value');
+            var text = opt.querySelector('.option-text').textContent.trim();
+
+            if (val === '') {
+                label.textContent = 'Khu vực';
+            } else {
+                label.textContent = text;
+            }
+
+            if (nativeSelect) {
+                nativeSelect.value = val;
+                var evt = new Event('change', { bubbles: true });
+                nativeSelect.dispatchEvent(evt);
+            }
+
+            options.forEach(function(o) { o.classList.remove('is-selected'); });
+            opt.classList.add('is-selected');
+
+            closeDropdown();
+        });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!wrap.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+});
+</script>

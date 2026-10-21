@@ -10188,31 +10188,149 @@ body:has(.custom-news-detail-page) .breadcrumb-wrap,
   font-weight: 400 !important;
 }
 
-.custom-home-banner .location-field select {
-  width: 100% !important;
-  height: 48px !important;
-  border: none !important;
-  outline: none !important;
-  font-size: 14.5px !important;
-  color: #334155 !important;
-  background: transparent !important;
-  cursor: pointer !important;
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-  box-shadow: none !important;
-  padding: 0 24px 0 0 !important;
+.custom-home-banner .hidden-native-select {
+  position: absolute !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
   margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.custom-home-banner .custom-dropdown-wrap {
+  cursor: pointer !important;
+  user-select: none !important;
+}
+
+.custom-home-banner .custom-select-trigger {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  outline: none !important;
+  cursor: pointer !important;
+}
+
+.custom-home-banner .custom-select-label {
+  font-size: 14.5px !important;
+  font-weight: 500 !important;
+  color: #1e293b !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-family: inherit !important;
 }
 
 .custom-home-banner .select-arrow {
-  position: absolute !important;
-  right: 14px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  pointer-events: none !important;
   display: flex !important;
   align-items: center !important;
+  justify-content: center !important;
+  margin-left: 10px !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.custom-home-banner .select-arrow svg {
+  transition: stroke 0.2s ease !important;
+}
+
+.custom-home-banner .custom-dropdown-wrap.is-open .select-arrow {
+  transform: rotate(180deg) !important;
+}
+
+.custom-home-banner .custom-dropdown-wrap.is-open .select-arrow svg,
+.custom-home-banner .custom-dropdown-wrap:hover .select-arrow svg {
+  stroke: #ea6a1b !important;
+}
+
+.custom-home-banner .custom-select-menu {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  min-width: 220px !important;
+  background: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22), 0 3px 8px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  padding: 6px 0 !important;
+  max-height: 270px !important;
+  overflow-y: auto !important;
+  z-index: 99999 !important;
+  display: none !important;
+  animation: customDropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes customDropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-home-banner .custom-dropdown-wrap.is-open .custom-select-menu {
+  display: block !important;
+}
+
+.custom-home-banner .custom-select-menu::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.custom-home-banner .custom-select-menu::-webkit-scrollbar-track {
+  background: #f8fafc !important;
+  border-radius: 4px !important;
+}
+
+.custom-home-banner .custom-select-menu::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+  border-radius: 4px !important;
+}
+
+.custom-home-banner .custom-select-menu::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8 !important;
+}
+
+.custom-home-banner .custom-select-option {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 10px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #334155 !important;
+  cursor: pointer !important;
+  transition: all 0.16s ease !important;
+  font-family: inherit !important;
+  line-height: 1.4 !important;
+}
+
+.custom-home-banner .custom-select-option:hover {
+  background: #fff7ed !important;
+  color: #ea6a1b !important;
+  padding-left: 20px !important;
+}
+
+.custom-home-banner .custom-select-option.is-selected {
+  background: #ffedd5 !important;
+  color: #ea6a1b !important;
+  font-weight: 600 !important;
+}
+
+.custom-home-banner .custom-select-option .option-check {
+  display: none !important;
+  align-items: center !important;
+  margin-left: 8px !important;
+}
+
+.custom-home-banner .custom-select-option.is-selected .option-check {
+  display: flex !important;
 }
 
 .custom-home-banner .search-submit-group {
