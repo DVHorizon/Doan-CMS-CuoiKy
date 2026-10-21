@@ -60,8 +60,6 @@ require get_template_directory() . '/inc/customizer/customizer.php';
  */
 require get_template_directory() . '/inc/widgets.php';
 require get_template_directory() . '/inc/custom-footer-widgets.php';
-require get_template_directory() . '/inc/widget-top-jobs.php';
-require get_template_directory() . '/inc/widget-newest-blog.php';
 
 /**
  * Metabox
