@@ -29,13 +29,50 @@ class JobScout_Top_Jobs_Widget extends WP_Widget {
         $cta_btn_text   = ! empty( $instance['cta_btn_text'] ) ? $instance['cta_btn_text'] : 'VIEW MORE JOBS';
         $jobs_page_url  = home_url( '/jobs/' );
 
-        // Query jobs
+        $today = current_time( 'Y-m-d' );
+
+        // Query jobs: Chỉ lấy công việc đã xuất bản (publish) VÀ còn hạn tuyển dụng
         $query_args = array(
             'post_type'      => 'job_listing',
             'post_status'    => array( 'publish' ),
             'posts_per_page' => $number_of_jobs,
             'orderby'        => 'date',
             'order'          => 'DESC',
+            'meta_query'     => array(
+                'relation' => 'AND',
+                // 1. Phải còn hạn tuyển dụng (chưa hết hạn)
+                array(
+                    'relation' => 'OR',
+                    array(
+                        'key'     => '_job_expires',
+                        'value'   => $today,
+                        'compare' => '>=',
+                        'type'    => 'DATE',
+                    ),
+                    array(
+                        'key'     => '_job_expires',
+                        'compare' => 'NOT EXISTS',
+                    ),
+                    array(
+                        'key'     => '_job_expires',
+                        'value'   => '',
+                        'compare' => '=',
+                    ),
+                ),
+                // 2. Chưa bị đánh dấu đã tuyển đủ (_filled != 1)
+                array(
+                    'relation' => 'OR',
+                    array(
+                        'key'     => '_filled',
+                        'value'   => '1',
+                        'compare' => '!=',
+                    ),
+                    array(
+                        'key'     => '_filled',
+                        'compare' => 'NOT EXISTS',
+                    ),
+                ),
+            ),
         );
 
         // Loại trừ bài hiện tại nếu đang xem chi tiết việc làm (dùng cho Other Jobs)
@@ -191,56 +228,21 @@ class JobScout_Top_Jobs_Widget extends WP_Widget {
                         }
                         wp_reset_postdata();
                     } else {
-                        // Dữ liệu mẫu minh họa nếu chưa có job
-                        for ( $i = 0; $i < $number_of_jobs; $i++ ) {
-                            $titles = array(
-                                'HOTEL MANAGER',
-                                'GENERAL MANAGER - LEADING HOTEL CHAIN',
-                                'BANQUET MANAGER',
-                                'BELLMAN',
-                                'CHIEF OPERATING OFFICER HOTEL / RESORT CHAIN',
-                                'LOSS PREVENTION OFFICER'
-                            );
-                            $title = isset( $titles[$i] ) ? $titles[$i] : 'HOTEL MANAGER';
-                            $fallback_svg = $sample_logos[ $logo_keys[ $i % count( $logo_keys ) ] ];
-                            ?>
-                            <div class="job-card-item">
-                                <div class="job-card-header">
-                                    <div class="company-logo-box">
-                                        <div class="company-logo-placeholder">
-                                            <?php echo $fallback_svg; ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="job-info-meta">
-                                        <h3 class="job-card-title">
-                                            <a href="<?php echo esc_url( $jobs_page_url ); ?>"><?php echo esc_html( $title ); ?></a>
-                                        </h3>
-                                        <div class="job-created-date">Created: Oct 20, 2022</div>
-                                        <div class="job-badges-list">
-                                            <span class="job-badge badge-type">Fulltime</span>
-                                            <span class="job-badge badge-cat">Category Name</span>
-                                            <span class="job-badge badge-company">The Sodoh</span>
-                                            <span class="job-badge badge-loc">Ho Chi Minh City</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="job-card-body">
-                                    <ul class="job-benefits-list">
-                                        <li>Be responsible for the effective operational management of the hotel</li>
-                                        <li>Excellent salary, bonuses & recognition activities</li>
-                                        <li>Foreign language allowance (up to 500USD/month)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <?php
-                        }
+                        ?>
+                        <div class="no-jobs-notification" style="grid-column: 1 / -1; text-align: center; padding: 45px 20px; background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 8px; margin: 15px 0 25px 0;">
+                            <p style="font-size: 16px; color: #475569; margin: 0 0 8px 0; font-weight: 600;">
+                                Hiện tại các công việc đã hết hạn nên sẽ không được hiển thị.
+                            </p>
+                            <p style="font-size: 14px; color: #94a3b8; margin: 0;">
+                                Phải thêm công việc mới và còn hạn tuyển dụng thì mới hiển thị ra được.
+                            </p>
+                        </div>
+                        <?php
                     }
                     ?>
                 </div>
 
-                <?php if ( $show_cta_btn ) : ?>
+                <?php if ( $show_cta_btn && $jobs_query->have_posts() ) : ?>
                     <div class="top-jobs-cta">
                         <a href="<?php echo esc_url( $jobs_page_url ); ?>" class="btn-view-more-jobs"><?php echo esc_html( $cta_btn_text ); ?></a>
                     </div>
