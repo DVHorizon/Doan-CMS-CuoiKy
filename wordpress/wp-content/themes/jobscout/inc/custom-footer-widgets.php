@@ -47,10 +47,11 @@ class JobScout_Newsletter_Widget extends WP_Widget {
     }
 
     public function widget( $args, $instance ) {
-        $title       = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Subscribe To Our Newsletter', 'jobscout' );
-        $placeholder = ! empty( $instance['placeholder'] ) ? $instance['placeholder'] : __( 'Input your email address', 'jobscout' );
-        $btn_text    = ! empty( $instance['btn_text'] ) ? $instance['btn_text'] : __( 'SUBSCRIBE', 'jobscout' );
-        $action_url  = ! empty( $instance['action_url'] ) ? esc_url( $instance['action_url'] ) : '#';
+        $title         = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Subscribe To Our Newsletter', 'jobscout' );
+        $placeholder   = ! empty( $instance['placeholder'] ) ? $instance['placeholder'] : __( 'Input your email address', 'jobscout' );
+        $btn_text      = ! empty( $instance['btn_text'] ) ? $instance['btn_text'] : __( 'SUBSCRIBE', 'jobscout' );
+        $action_url    = ! empty( $instance['action_url'] ) ? esc_url( $instance['action_url'] ) : '#';
+        $cf7_shortcode = ! empty( $instance['cf7_shortcode'] ) ? trim( $instance['cf7_shortcode'] ) : '[contact-form-7 id="26f0931" title="Newsletter Footer"]';
 
         echo $args['before_widget'];
         ?>
@@ -111,6 +112,7 @@ class JobScout_Newsletter_Widget extends WP_Widget {
                 height: 44px !important;
                 box-sizing: border-box !important;
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+                position: relative !important;
             }
             .jos-newsletter-icon {
                 display: flex !important;
@@ -161,6 +163,132 @@ class JobScout_Newsletter_Widget extends WP_Widget {
                 color: #ea6b1d !important;
                 border-color: #ffffff !important;
             }
+
+            /* Styling khi nhúng Contact Form 7 vào Footer Newsletter */
+            .jos-newsletter-right .wpcf7 {
+                width: 100% !important;
+            }
+            .jos-newsletter-right .wpcf7 form {
+                margin: 0 !important;
+                width: 100% !important;
+            }
+            .jos-newsletter-right .wpcf7 p {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .jos-newsletter-right .cf7-newsletter-wrap {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 15px !important;
+                width: 100% !important;
+            }
+            .jos-newsletter-right .cf7-input-box {
+                flex: 1 !important;
+                position: relative !important;
+                display: flex !important;
+                align-items: center !important;
+                background: #ffffff !important;
+                border-radius: 2px !important;
+                height: 44px !important;
+                box-sizing: border-box !important;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+                overflow: hidden !important;
+            }
+            .jos-newsletter-right .cf7-input-box .jos-newsletter-icon {
+                position: absolute !important;
+                left: 14px !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                z-index: 2 !important;
+                pointer-events: none !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .jos-newsletter-right .cf7-input-box input[type="email"] {
+                width: 100% !important;
+                height: 44px !important;
+                line-height: 44px !important;
+                padding: 0 14px 0 46px !important;
+                border: none !important;
+                outline: none !important;
+                background: #ffffff !important;
+                font-size: 13.5px !important;
+                color: #333333 !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                box-sizing: border-box !important;
+            }
+            .jos-newsletter-right .wpcf7-form-control-wrap {
+                flex: 1 !important;
+                display: block !important;
+                width: 100% !important;
+                height: 100% !important;
+            }
+            .jos-newsletter-right input[type="submit"] {
+                flex: 0 0 auto !important;
+                height: 44px !important;
+                background-color: #ea6b1d !important;
+                border: 1px solid rgba(255, 255, 255, 0.8) !important;
+                color: #ffffff !important;
+                font-size: 13px !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.5px !important;
+                text-transform: uppercase !important;
+                padding: 0 24px !important;
+                border-radius: 2px !important;
+                cursor: pointer !important;
+                transition: all 0.25s ease !important;
+                white-space: nowrap !important;
+                box-shadow: none !important;
+            }
+            .jos-newsletter-right input[type="submit"]:hover {
+                background-color: #ffffff !important;
+                color: #ea6b1d !important;
+                border-color: #ffffff !important;
+            }
+            /* Trạng thái khi đang gửi thư */
+            .jos-newsletter-right form.submitting input[type="submit"] {
+                opacity: 0.7 !important;
+                cursor: not-allowed !important;
+                background-color: #d15a13 !important;
+            }
+            .jos-newsletter-right .wpcf7-response-output {
+                margin: 12px 0 0 !important;
+                padding: 10px 16px !important;
+                font-size: 13.5px !important;
+                line-height: 1.4 !important;
+                color: #ffffff !important;
+                border-radius: 4px !important;
+                box-sizing: border-box !important;
+            }
+            /* Màu khi gửi thành công */
+            .jos-newsletter-right form.sent .wpcf7-response-output,
+            .jos-newsletter-right .wpcf7-mail-sent-ok {
+                background: #2e7d32 !important;
+                border: 1px solid #81c784 !important;
+                color: #ffffff !important;
+            }
+            /* Màu khi có lỗi */
+            .jos-newsletter-right form.invalid .wpcf7-response-output,
+            .jos-newsletter-right form.failed .wpcf7-response-output {
+                background: #c62828 !important;
+                border: 1px solid #ef5350 !important;
+                color: #ffffff !important;
+            }
+            .jos-newsletter-right .wpcf7-not-valid-tip {
+                color: #fff9c4 !important;
+                font-size: 12px !important;
+                font-weight: 600 !important;
+                margin-top: 5px !important;
+                display: block !important;
+                text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+            }
+            .jos-newsletter-right .wpcf7-spinner {
+                display: none !important;
+            }
+
             @media (max-width: 860px) {
                 .jos-newsletter-inner {
                     flex-direction: column !important;
@@ -171,14 +299,17 @@ class JobScout_Newsletter_Widget extends WP_Widget {
                     width: 100% !important;
                     max-width: 100% !important;
                 }
-                .jos-newsletter-form {
+                .jos-newsletter-form,
+                .jos-newsletter-right .cf7-newsletter-wrap {
                     flex-direction: column !important;
                     gap: 12px !important;
                 }
-                .jos-newsletter-input-box {
+                .jos-newsletter-input-box,
+                .jos-newsletter-right .cf7-input-box {
                     width: 100% !important;
                 }
-                .jos-newsletter-btn {
+                .jos-newsletter-btn,
+                .jos-newsletter-right input[type="submit"] {
                     width: 100% !important;
                 }
             }
@@ -187,46 +318,82 @@ class JobScout_Newsletter_Widget extends WP_Widget {
             <div class="jos-newsletter-inner">
                 <div class="jos-newsletter-left">
                     <div class="jos-newsletter-heading">
-                        <span>Subscribe To</span>
-                        <span>Our Newsletter</span>
+                        <?php 
+                        $title_parts = explode( ' ', $title, 3 );
+                        if ( count( $title_parts ) >= 3 ) {
+                            echo '<span>' . esc_html( $title_parts[0] . ' ' . $title_parts[1] ) . '</span>';
+                            echo '<span>' . esc_html( $title_parts[2] ) . '</span>';
+                        } else {
+                            echo '<span>' . esc_html( $title ) . '</span>';
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="jos-newsletter-right">
-                    <form class="jos-newsletter-form" action="<?php echo esc_url( $action_url ); ?>" method="post" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã đăng ký nhận tin!');">
-                        <div class="jos-newsletter-input-box">
-                            <span class="jos-newsletter-icon">
-                                <svg width="22" height="18" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="1" y="1" width="22" height="18" rx="2" stroke="#e8631b" stroke-width="2"/>
-                                    <path d="M2 3L12 11L22 3" stroke="#e8631b" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </span>
-                            <input type="email" name="EMAIL" required placeholder="<?php echo esc_attr( $placeholder ); ?>" class="jos-newsletter-input" />
-                        </div>
-                        <button type="submit" class="jos-newsletter-btn"><?php echo esc_html( $btn_text ); ?></button>
-                    </form>
+                    <?php if ( ! empty( $cf7_shortcode ) ) : ?>
+                        <?php echo do_shortcode( $cf7_shortcode ); ?>
+                    <?php else : ?>
+                        <form class="jos-newsletter-form" action="<?php echo esc_url( $action_url ); ?>" method="post" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã đăng ký nhận tin!');">
+                            <div class="jos-newsletter-input-box">
+                                <span class="jos-newsletter-icon">
+                                    <svg width="22" height="18" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="1" y="1" width="22" height="18" rx="2" stroke="#e8631b" stroke-width="2"/>
+                                        <path d="M2 3L12 11L22 3" stroke="#e8631b" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+                                <input type="email" name="EMAIL" required placeholder="<?php echo esc_attr( $placeholder ); ?>" class="jos-newsletter-input" />
+                            </div>
+                            <button type="submit" class="jos-newsletter-btn"><?php echo esc_html( $btn_text ); ?></button>
+                        </form>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
+        <script>
+        document.addEventListener('wpcf7beforesubmit', function(e) {
+            var btn = e.target.querySelector('input[type="submit"]');
+            if (btn) {
+                btn.dataset.originalText = btn.value;
+                btn.value = 'ĐANG GỬI...';
+                btn.style.opacity = '0.7';
+                btn.disabled = true;
+            }
+        }, false);
+        document.addEventListener('wpcf7submit', function(e) {
+            var btn = e.target.querySelector('input[type="submit"]');
+            if (btn && btn.dataset.originalText) {
+                btn.value = btn.dataset.originalText;
+                btn.style.opacity = '1';
+                btn.disabled = false;
+            }
+        }, false);
+        </script>
         <?php
         echo $args['after_widget'];
     }
 
     public function form( $instance ) {
-        $title       = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Subscribe To Our Newsletter', 'jobscout' );
-        $placeholder = ! empty( $instance['placeholder'] ) ? $instance['placeholder'] : __( 'Input your email address', 'jobscout' );
-        $btn_text    = ! empty( $instance['btn_text'] ) ? $instance['btn_text'] : __( 'SUBSCRIBE', 'jobscout' );
-        $action_url  = ! empty( $instance['action_url'] ) ? $instance['action_url'] : '';
+        $title         = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Subscribe To Our Newsletter', 'jobscout' );
+        $placeholder   = ! empty( $instance['placeholder'] ) ? $instance['placeholder'] : __( 'Input your email address', 'jobscout' );
+        $btn_text      = ! empty( $instance['btn_text'] ) ? $instance['btn_text'] : __( 'SUBSCRIBE', 'jobscout' );
+        $action_url    = ! empty( $instance['action_url'] ) ? $instance['action_url'] : '';
+        $cf7_shortcode = ! empty( $instance['cf7_shortcode'] ) ? $instance['cf7_shortcode'] : '[contact-form-7 id="26f0931" title="Newsletter Footer"]';
         ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Tiêu đề:', 'jobscout' ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
         </p>
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'placeholder' ) ); ?>"><?php esc_html_e( 'Placeholder ô nhập email:', 'jobscout' ); ?></label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'cf7_shortcode' ) ); ?>"><strong><?php esc_html_e( 'Contact Form 7 Shortcode (Ưu tiên):', 'jobscout' ); ?></strong></label>
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'cf7_shortcode' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'cf7_shortcode' ) ); ?>" type="text" placeholder='[contact-form-7 id="..."]' value="<?php echo esc_attr( $cf7_shortcode ); ?>">
+            <small style="color: #666;"><?php esc_html_e( 'Nếu điền shortcode CF7 vào đây, widget sẽ chạy form của CF7 và gửi email tự động.', 'jobscout' ); ?></small>
+        </p>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'placeholder' ) ); ?>"><?php esc_html_e( 'Placeholder ô nhập email (Form mặc định):', 'jobscout' ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'placeholder' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'placeholder' ) ); ?>" type="text" value="<?php echo esc_attr( $placeholder ); ?>">
         </p>
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'btn_text' ) ); ?>"><?php esc_html_e( 'Chữ nút bấm:', 'jobscout' ); ?></label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'btn_text' ) ); ?>"><?php esc_html_e( 'Chữ nút bấm (Form mặc định):', 'jobscout' ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'btn_text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'btn_text' ) ); ?>" type="text" value="<?php echo esc_attr( $btn_text ); ?>">
         </p>
         <p>
@@ -238,10 +405,11 @@ class JobScout_Newsletter_Widget extends WP_Widget {
 
     public function update( $new_instance, $old_instance ) {
         $instance = array();
-        $instance['title']       = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
-        $instance['placeholder'] = ( ! empty( $new_instance['placeholder'] ) ) ? sanitize_text_field( $new_instance['placeholder'] ) : '';
-        $instance['btn_text']    = ( ! empty( $new_instance['btn_text'] ) ) ? sanitize_text_field( $new_instance['btn_text'] ) : '';
-        $instance['action_url']  = ( ! empty( $new_instance['action_url'] ) ) ? esc_url_raw( $new_instance['action_url'] ) : '';
+        $instance['title']         = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+        $instance['placeholder']   = ( ! empty( $new_instance['placeholder'] ) ) ? sanitize_text_field( $new_instance['placeholder'] ) : '';
+        $instance['btn_text']      = ( ! empty( $new_instance['btn_text'] ) ) ? sanitize_text_field( $new_instance['btn_text'] ) : '';
+        $instance['action_url']    = ( ! empty( $new_instance['action_url'] ) ) ? esc_url_raw( $new_instance['action_url'] ) : '';
+        $instance['cf7_shortcode'] = ( ! empty( $new_instance['cf7_shortcode'] ) ) ? wp_kses_post( $new_instance['cf7_shortcode'] ) : '';
         return $instance;
     }
 }
