@@ -175,6 +175,10 @@ class JobScout_Newsletter_Widget extends WP_Widget {
             .jos-newsletter-right .wpcf7 p {
                 margin: 0 !important;
                 padding: 0 !important;
+                display: contents !important;
+            }
+            .jos-newsletter-right .wpcf7 br {
+                display: none !important;
             }
             .jos-newsletter-right .cf7-newsletter-wrap {
                 display: flex !important;
@@ -187,10 +191,13 @@ class JobScout_Newsletter_Widget extends WP_Widget {
                 flex: 1 !important;
                 position: relative !important;
                 display: flex !important;
+                flex-direction: row !important;
                 align-items: center !important;
                 background: #ffffff !important;
                 border-radius: 2px !important;
                 height: 44px !important;
+                min-height: 44px !important;
+                max-height: 44px !important;
                 box-sizing: border-box !important;
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
                 overflow: hidden !important;
@@ -205,26 +212,44 @@ class JobScout_Newsletter_Widget extends WP_Widget {
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
+                width: 22px !important;
+                height: 18px !important;
+                line-height: 1 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .jos-newsletter-right .wpcf7-form-control-wrap {
+                flex: 1 !important;
+                display: flex !important;
+                align-items: center !important;
+                width: 100% !important;
+                height: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
             .jos-newsletter-right .cf7-input-box input[type="email"] {
                 width: 100% !important;
                 height: 44px !important;
-                line-height: 44px !important;
+                min-height: 44px !important;
+                max-height: 44px !important;
+                line-height: normal !important;
                 padding: 0 14px 0 46px !important;
                 border: none !important;
                 outline: none !important;
-                background: #ffffff !important;
+                background: transparent !important;
                 font-size: 13.5px !important;
+                font-family: inherit !important;
                 color: #333333 !important;
                 box-shadow: none !important;
                 margin: 0 !important;
                 box-sizing: border-box !important;
-            }
-            .jos-newsletter-right .wpcf7-form-control-wrap {
-                flex: 1 !important;
                 display: block !important;
-                width: 100% !important;
-                height: 100% !important;
+            }
+            .jos-newsletter-right .cf7-input-box input[type="email"]::placeholder {
+                color: #888888 !important;
+                font-size: 13.5px !important;
+                line-height: normal !important;
+                opacity: 1 !important;
             }
             .jos-newsletter-right input[type="submit"] {
                 flex: 0 0 auto !important;
@@ -254,39 +279,128 @@ class JobScout_Newsletter_Widget extends WP_Widget {
                 cursor: not-allowed !important;
                 background-color: #d15a13 !important;
             }
-            .jos-newsletter-right .wpcf7-response-output {
-                margin: 12px 0 0 !important;
-                padding: 10px 16px !important;
-                font-size: 13.5px !important;
-                line-height: 1.4 !important;
-                color: #ffffff !important;
-                border-radius: 4px !important;
-                box-sizing: border-box !important;
-            }
-            /* Màu khi gửi thành công */
-            .jos-newsletter-right form.sent .wpcf7-response-output,
-            .jos-newsletter-right .wpcf7-mail-sent-ok {
-                background: #2e7d32 !important;
-                border: 1px solid #81c784 !important;
-                color: #ffffff !important;
-            }
-            /* Màu khi có lỗi */
-            .jos-newsletter-right form.invalid .wpcf7-response-output,
-            .jos-newsletter-right form.failed .wpcf7-response-output {
-                background: #c62828 !important;
-                border: 1px solid #ef5350 !important;
-                color: #ffffff !important;
-            }
+            /* Ẩn hoàn toàn thông báo mặc định của CF7 trong newsletter để KHÔNG vỡ layout */
+            .jos-newsletter-right .wpcf7-response-output,
             .jos-newsletter-right .wpcf7-not-valid-tip {
-                color: #fff9c4 !important;
-                font-size: 12px !important;
-                font-weight: 600 !important;
-                margin-top: 5px !important;
-                display: block !important;
-                text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+                display: none !important;
             }
             .jos-newsletter-right .wpcf7-spinner {
                 display: none !important;
+            }
+
+            /* Modal Popup Thông báo Đăng ký */
+            .jos-nl-modal-overlay {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                background: rgba(0, 0, 0, 0.55) !important;
+                backdrop-filter: blur(3px) !important;
+                -webkit-backdrop-filter: blur(3px) !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                z-index: 999999 !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transition: opacity 0.25s ease, visibility 0.25s ease !important;
+                padding: 16px !important;
+                box-sizing: border-box !important;
+            }
+            .jos-nl-modal-overlay.active {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            .jos-nl-modal-box {
+                background: #ffffff !important;
+                width: 100% !important;
+                max-width: 420px !important;
+                border-radius: 12px !important;
+                padding: 32px 24px 26px !important;
+                box-sizing: border-box !important;
+                text-align: center !important;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22) !important;
+                transform: scale(0.9) translateY(10px) !important;
+                transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+                position: relative !important;
+            }
+            .jos-nl-modal-overlay.active .jos-nl-modal-box {
+                transform: scale(1) translateY(0) !important;
+            }
+            .jos-nl-modal-close {
+                position: absolute !important;
+                top: 12px !important;
+                right: 12px !important;
+                background: #f1f1f1 !important;
+                border: none !important;
+                width: 32px !important;
+                height: 32px !important;
+                border-radius: 50% !important;
+                font-size: 20px !important;
+                line-height: 1 !important;
+                color: #666666 !important;
+                cursor: pointer !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                transition: background 0.2s, color 0.2s !important;
+                padding: 0 !important;
+            }
+            .jos-nl-modal-close:hover {
+                background: #e2e2e2 !important;
+                color: #111111 !important;
+            }
+            .jos-nl-modal-icon {
+                width: 64px !important;
+                height: 64px !important;
+                border-radius: 50% !important;
+                margin: 0 auto 16px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .jos-nl-modal-icon.success {
+                background: #e8f5e9 !important;
+                color: #2e7d32 !important;
+            }
+            .jos-nl-modal-icon.error {
+                background: #ffebee !important;
+                color: #d32f2f !important;
+            }
+            .jos-nl-modal-title {
+                font-size: 20px !important;
+                font-weight: 700 !important;
+                margin: 0 0 10px !important;
+                color: #222222 !important;
+                line-height: 1.3 !important;
+            }
+            .jos-nl-modal-desc {
+                font-size: 14.5px !important;
+                color: #555555 !important;
+                line-height: 1.5 !important;
+                margin: 0 0 24px !important;
+                padding: 0 6px !important;
+            }
+            .jos-nl-modal-btn {
+                background: #ea6b1d !important;
+                color: #ffffff !important;
+                border: none !important;
+                padding: 11px 32px !important;
+                border-radius: 6px !important;
+                font-size: 13.5px !important;
+                font-weight: 700 !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.5px !important;
+                cursor: pointer !important;
+                transition: background 0.25s ease, transform 0.15s !important;
+                min-width: 130px !important;
+                box-shadow: 0 4px 12px rgba(234, 107, 29, 0.3) !important;
+                outline: none !important;
+            }
+            .jos-nl-modal-btn:hover {
+                background: #d15a13 !important;
+                transform: translateY(-1px) !important;
             }
 
             @media (max-width: 860px) {
@@ -333,7 +447,7 @@ class JobScout_Newsletter_Widget extends WP_Widget {
                     <?php if ( ! empty( $cf7_shortcode ) ) : ?>
                         <?php echo do_shortcode( $cf7_shortcode ); ?>
                     <?php else : ?>
-                        <form class="jos-newsletter-form" action="<?php echo esc_url( $action_url ); ?>" method="post" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã đăng ký nhận tin!');">
+                        <form class="jos-newsletter-form" action="<?php echo esc_url( $action_url ); ?>" method="post" onsubmit="event.preventDefault(); openJosNewsletterModal('success', 'Đăng Ký Thành Công!', 'Cảm ơn bạn đã đăng ký nhận bản tin!');">
                             <div class="jos-newsletter-input-box">
                                 <span class="jos-newsletter-icon">
                                     <svg width="22" height="18" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -349,7 +463,65 @@ class JobScout_Newsletter_Widget extends WP_Widget {
                 </div>
             </div>
         </div>
+
+        <!-- Modal Popup Thông Báo Bản Tin -->
+        <div id="josNewsletterModal" class="jos-nl-modal-overlay" role="dialog" aria-modal="true">
+            <div class="jos-nl-modal-box">
+                <button type="button" class="jos-nl-modal-close" onclick="closeJosNewsletterModal()" aria-label="Đóng">&times;</button>
+                <div id="josNlModalIcon" class="jos-nl-modal-icon success">
+                    <!-- SVG icon -->
+                </div>
+                <h3 id="josNlModalTitle" class="jos-nl-modal-title">Đăng Ký Thành Công!</h3>
+                <p id="josNlModalDesc" class="jos-nl-modal-desc">Cảm ơn bạn đã đăng ký nhận bản tin việc làm.</p>
+                <button type="button" class="jos-nl-modal-btn" onclick="closeJosNewsletterModal()">Đóng</button>
+            </div>
+        </div>
+
         <script>
+        function openJosNewsletterModal(type, title, desc) {
+            var modal = document.getElementById('josNewsletterModal');
+            if (!modal) return;
+            var iconBox = document.getElementById('josNlModalIcon');
+            var titleEl = document.getElementById('josNlModalTitle');
+            var descEl  = document.getElementById('josNlModalDesc');
+
+            if (titleEl) titleEl.textContent = title;
+            if (descEl) descEl.textContent = desc;
+
+            if (iconBox) {
+                if (type === 'success') {
+                    iconBox.className = 'jos-nl-modal-icon success';
+                    iconBox.innerHTML = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>';
+                } else {
+                    iconBox.className = 'jos-nl-modal-icon error';
+                    iconBox.innerHTML = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>';
+                }
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeJosNewsletterModal() {
+            var modal = document.getElementById('josNewsletterModal');
+            if (modal) modal.classList.remove('active');
+        }
+
+        // Đóng khi click vào nền mờ bên ngoài
+        document.addEventListener('click', function(e) {
+            var modal = document.getElementById('josNewsletterModal');
+            if (modal && e.target === modal) {
+                closeJosNewsletterModal();
+            }
+        });
+
+        // Đóng khi bấm phím ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeJosNewsletterModal();
+            }
+        });
+
+        // Quản lý trạng thái nút bấm khi submit CF7
         document.addEventListener('wpcf7beforesubmit', function(e) {
             var btn = e.target.querySelector('input[type="submit"]');
             if (btn) {
@@ -359,12 +531,43 @@ class JobScout_Newsletter_Widget extends WP_Widget {
                 btn.disabled = true;
             }
         }, false);
+
+        // Bắt sự kiện hoàn thành gửi form của Contact Form 7
         document.addEventListener('wpcf7submit', function(e) {
-            var btn = e.target.querySelector('input[type="submit"]');
+            var form = e.target;
+            var btn = form.querySelector('input[type="submit"]');
             if (btn && btn.dataset.originalText) {
                 btn.value = btn.dataset.originalText;
                 btn.style.opacity = '1';
                 btn.disabled = false;
+            }
+
+            // Chỉ kích hoạt modal nếu form gửi đi thuộc khối Footer Newsletter
+            if (!form.closest('.jos-newsletter-bar') && !form.closest('.jos-newsletter-right')) {
+                return;
+            }
+
+            var status = e.detail ? e.detail.status : '';
+            var apiMessage = (e.detail && e.detail.apiResponse && e.detail.apiResponse.message) 
+                ? e.detail.apiResponse.message 
+                : '';
+
+            if (status === 'mail_sent') {
+                openJosNewsletterModal(
+                    'success',
+                    'Đăng Ký Thành Công!',
+                    apiMessage || 'Cảm ơn bạn đã đăng ký nhận bản tin việc làm từ Group B Recruiting.'
+                );
+                // Reset form sau khi gửi thành công
+                if (typeof form.reset === 'function') {
+                    form.reset();
+                }
+            } else {
+                openJosNewsletterModal(
+                    'error',
+                    'Chưa Thể Đăng Ký',
+                    apiMessage || 'Vui lòng kiểm tra lại địa chỉ email hoặc thử lại sau.'
+                );
             }
         }, false);
         </script>
