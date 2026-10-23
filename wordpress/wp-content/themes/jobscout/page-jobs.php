@@ -10,16 +10,26 @@
 
 get_header();
 
-// 1. Cấu hình Banner
-$banner_img   = get_theme_mod( 'jobs_banner_image', 'http://wordpress.local/wp-content/uploads/2026/10/images.jpg' );
-$banner_title = get_theme_mod( 'jobs_banner_title', 'CAREER WITH US' );
-$page_title   = get_theme_mod( 'jobs_page_title', 'ALL JOBS' );
+// 1. Cấu hình Banner & Tiêu đề từ Customizer
+$default_banner = get_template_directory_uri() . '/images/contact-banner-kimono.jpg';
+$banner_img     = get_theme_mod( 'jobs_banner_image', 'http://wordpress.local/wp-content/uploads/2026/10/images.jpg' );
+if ( empty( $banner_img ) ) {
+    $banner_img = $default_banner;
+}
+$banner_title   = get_theme_mod( 'jobs_banner_title', 'CAREER WITH US' );
+$page_title     = get_theme_mod( 'jobs_page_title', 'ALL JOBS' );
+$posts_per_page = absint( get_theme_mod( 'jobs_posts_per_page', 12 ) );
+if ( $posts_per_page <= 0 ) {
+    $posts_per_page = 12;
+}
+$load_more_text = get_theme_mod( 'jobs_load_more_text', 'LOAD MORE JOBS' );
+$no_jobs_text   = get_theme_mod( 'jobs_no_jobs_text', __( 'Hiện tại chưa có vị trí tuyển dụng nào khả dụng.', 'jobscout' ) );
 
 // 2. Query danh sách công việc còn hạn
 $jobs_args = array(
     'post_type'      => 'job_listing',
     'post_status'    => 'publish',
-    'posts_per_page' => 12,
+    'posts_per_page' => $posts_per_page,
     'orderby'        => 'date',
     'order'          => 'DESC',
 );
@@ -70,12 +80,12 @@ $jobs_query = new WP_Query( $jobs_args );
                 <!-- NÚT LOAD MORE JOBS -->
                 <div class="all-jobs-loadmore-wrap">
                     <button type="button" id="btn-load-more-jobs" class="btn-load-more-jobs">
-                        LOAD MORE JOBS
+                        <?php echo esc_html( $load_more_text ); ?>
                     </button>
                 </div>
             <?php else : ?>
                 <div class="no-jobs-found">
-                    <p><?php esc_html_e( 'Hiện tại chưa có vị trí tuyển dụng nào khả dụng.', 'jobscout' ); ?></p>
+                    <p><?php echo esc_html( $no_jobs_text ); ?></p>
                 </div>
             <?php endif; ?>
 
