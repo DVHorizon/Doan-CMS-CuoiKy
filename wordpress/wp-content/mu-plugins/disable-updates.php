@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Disable Update Notifications & Checks
- * Description: Vô hiệu hóa kiểm tra và thông báo cập nhật cho Core, Plugins và Themes, ngăn ngừa lỗi kết nối WordPress.org và lỗi headers already sent.
+ * Description: Vô hiệu hóa triệt để kiểm tra và thông báo cập nhật, ngăn ngừa lỗi kết nối WordPress.org và lỗi headers already sent.
  */
 
 // 1. Gỡ bỏ các hook tự động kiểm tra cập nhật trên admin
@@ -24,7 +24,7 @@ remove_action( 'wp_maybe_auto_update', 'wp_maybe_auto_update' );
 remove_action( 'init', 'wp_schedule_update_checks' );
 
 // 2. Trả về cấu trúc transient hợp lệ (giả lập đã kiểm tra và đang ở bản mới nhất)
-// Tránh việc trả về null khiến WordPress coi như chưa kiểm tra và gọi wp_version_check() liên tục mỗi khi tải trang.
+// Tránh việc trả về null khiến WordPress coi như chưa kiểm tra và gọi wp_update_plugins/themes/core liên tục
 add_filter( 'pre_site_transient_update_core', function () {
     global $wp_version;
     return (object) array(
@@ -51,12 +51,20 @@ add_filter( 'pre_site_transient_update_themes', function () {
     );
 } );
 
-// 3. Chặn các request HTTP kiểm tra cập nhật tới api.wordpress.org (tránh timeout / SSL handshake failure)
+// 3. Chỉ chặn các HTTP request kiểm tra cập nhật ngầm (update-check, version-check)
+// Vẫn cho phép tính năng tìm kiếm và cài đặt Plugin mới (api.wordpress.org/plugins/info) hoạt động bình thường
 add_filter( 'pre_http_request', function ( $preempt, $parsed_args, $url ) {
-    if ( is_string( $url ) && strpos( $url, 'api.wordpress.org/core/version-check' ) !== false ) {
+    if ( is_string( $url ) && ( strpos( $url, 'update-check' ) !== false || strpos( $url, 'version-check' ) !== false ) ) {
         return array(
             'headers'  => array(),
-            'body'     => wp_json_encode( array( 'offers' => array(), 'translations' => array() ) ),
+            'body'     => wp_json_encode( array(
+                'offers'       => array(),
+                'translations' => array(),
+                'plugins'      => array(),
+                'themes'       => array(),
+                'no_update'    => array(),
+                'response'     => array(),
+            ) ),
             'response' => array(
                 'code'    => 200,
                 'message' => 'OK',
@@ -68,7 +76,7 @@ add_filter( 'pre_http_request', function ( $preempt, $parsed_args, $url ) {
     return $preempt;
 }, 10, 3 );
 
-// 4. Ép cURL sử dụng IPv4 trong môi trường Docker/Localhost tránh timeout do IPv6 unreachable
+// 4. Ép cURL sử dụng IPv4 trong Docker tránh timeout do IPv6 unreachable
 add_action( 'http_api_curl', function ( $handle ) {
     if ( defined( 'CURLOPT_IPRESOLVE' ) && defined( 'CURL_IPRESOLVE_V4' ) ) {
         curl_setopt( $handle, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );

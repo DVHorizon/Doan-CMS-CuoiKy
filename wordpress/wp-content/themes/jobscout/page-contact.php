@@ -88,7 +88,130 @@ $blog_url      = $posts_page_id ? get_permalink( $posts_page_id ) : home_url( '/
         </div>
     </section>
 
+    <!-- KHỐI 4: FORM LIÊN HỆ CONTACT FORM 7 -->
+    <section class="contact-form-section">
+        <div class="contact-container">
+            <div class="contact-form-header">
+                <h2 class="contact-form-title">GỬI TIN NHẮN CHO CHÚNG TÔI</h2>
+                <p class="contact-form-subtitle">Chúng tôi sẽ phản hồi yêu cầu và thắc mắc của bạn trong vòng 24 giờ làm việc.</p>
+            </div>
+            <div class="contact-cf7-box">
+                <?php 
+                $cf7_shortcode = get_theme_mod( 'contact_cf7_shortcode', '[contact-form-7 id="1120" title="Contact Page Form"]' );
+                echo do_shortcode( $cf7_shortcode ); 
+                ?>
+            </div>
+        </div>
+    </section>
+
 </div>
+
+<style>
+/* CSS Tùy biến Khối Form Liên Hệ */
+.contact-form-section {
+    padding: 60px 0 80px;
+    background-color: #ffffff;
+    border-top: 1px solid #eef2f6;
+}
+.contact-form-section .contact-container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.contact-form-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+.contact-form-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+.contact-form-subtitle {
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+.contact-cf7-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+.contact-cf7-box .contact-form-wrapper p {
+    margin-bottom: 20px;
+}
+.contact-cf7-box label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+}
+.contact-cf7-box .cf7-input,
+.contact-cf7-box .wpcf7-text,
+.contact-cf7-box .wpcf7-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #1e293b;
+    background: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+.contact-cf7-box .cf7-input:focus,
+.contact-cf7-box .wpcf7-text:focus,
+.contact-cf7-box .wpcf7-textarea:focus {
+    border-color: #ea6a1b;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(234, 106, 27, 0.15);
+}
+.contact-cf7-box .cf7-textarea,
+.contact-cf7-box .wpcf7-textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+.contact-cf7-box .cf7-submit-btn,
+.contact-cf7-box input[type="submit"] {
+    background: #ea6a1b;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 40px;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 14px rgba(234, 106, 27, 0.3);
+    display: inline-block;
+    width: 100%;
+}
+.contact-cf7-box .cf7-submit-btn:hover,
+.contact-cf7-box input[type="submit"]:hover {
+    background: #d45a11;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(234, 106, 27, 0.35);
+}
+.contact-cf7-box .wpcf7-response-output {
+    margin: 20px 0 0 !important;
+    padding: 14px 18px !important;
+    border-radius: 6px !important;
+    font-size: 14.5px !important;
+}
+@media (max-width: 640px) {
+    .contact-cf7-box {
+        padding: 24px 18px;
+    }
+}
+</style>
 
 <?php
 get_footer();
