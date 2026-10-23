@@ -99,6 +99,18 @@ $other_count    = absint( get_theme_mod( 'job_single_other_count', 6 ) );
 if ( $other_count <= 0 ) {
     $other_count = 6;
 }
+// 4 Section chính (Left Column) - Lấy từ Post Meta hoặc Customizer
+$meta_overview = get_post_meta( $job_id, '_job_overview', true );
+$final_overview = ! empty( $meta_overview ) ? $meta_overview : $overview_desc;
+
+$meta_skills = get_post_meta( $job_id, '_job_skills', true );
+$final_skills = ! empty( $meta_skills ) ? $meta_skills : $skills_desc;
+
+$meta_love = get_post_meta( $job_id, '_job_love_working_here', true );
+$final_love = ! empty( $meta_love ) ? $meta_love : $love_desc;
+
+$meta_location = get_post_meta( $job_id, '_job_location_desc', true );
+$final_location = ! empty( $meta_location ) ? $meta_location : $location_desc;
 ?>
 
 <article id="post-<?php the_ID(); ?>" class="single-job-detail-container">
@@ -162,15 +174,7 @@ if ( $other_count <= 0 ) {
                 <section class="job-sub-section">
                     <h2 class="job-sub-title"><?php echo esc_html( $overview_title ); ?></h2>
                     <div class="job-sub-desc">
-                        <?php 
-                        $raw_content = get_the_content();
-                        if ( ! empty( $raw_content ) ) {
-                            echo wp_kses_post( wpautop( $raw_content ) );
-                        }
-                        if ( ! empty( $overview_desc ) ) {
-                            echo wp_kses_post( wpautop( $overview_desc ) );
-                        }
-                        ?>
+                        <?php echo wp_kses_post( wpautop( $final_overview ) ); ?>
                     </div>
                 </section>
 
@@ -178,7 +182,7 @@ if ( $other_count <= 0 ) {
                 <section class="job-sub-section">
                     <h2 class="job-sub-title"><?php echo esc_html( $skills_title ); ?></h2>
                     <div class="job-sub-desc">
-                        <?php echo wp_kses_post( wpautop( $skills_desc ) ); ?>
+                        <?php echo wp_kses_post( wpautop( $final_skills ) ); ?>
                     </div>
                 </section>
 
@@ -186,7 +190,7 @@ if ( $other_count <= 0 ) {
                 <section class="job-sub-section">
                     <h2 class="job-sub-title"><?php echo esc_html( $love_title ); ?></h2>
                     <div class="job-sub-desc">
-                        <?php echo wp_kses_post( wpautop( $love_desc ) ); ?>
+                        <?php echo wp_kses_post( wpautop( $final_love ) ); ?>
                     </div>
                 </section>
 
@@ -194,7 +198,7 @@ if ( $other_count <= 0 ) {
                 <section class="job-sub-section">
                     <h2 class="job-sub-title"><?php echo esc_html( $location_title ); ?></h2>
                     <div class="job-sub-desc">
-                        <?php echo wp_kses_post( wpautop( $location_desc ) ); ?>
+                        <?php echo wp_kses_post( wpautop( $final_location ) ); ?>
                     </div>
                 </section>
 
