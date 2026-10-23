@@ -13,6 +13,7 @@ wordpress/wp-content/logs/
 wordpress/wp-content/debug.log
 wordpress/wp-content/cache/
 wordpress/wp-content/upgrade/
+wordpress/wp-content/languages/
 *.log
 
 # Plugin cache & runtime data in uploads
