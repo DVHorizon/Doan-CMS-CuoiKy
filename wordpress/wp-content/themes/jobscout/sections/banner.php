@@ -20,9 +20,9 @@ $search_keywords   = isset( $_GET['search_keywords'] ) ? sanitize_text_field( $_
 <section id="custom-home-banner" class="custom-home-banner" style="background-image: linear-gradient(rgba(10, 20, 30, 0.45), rgba(10, 15, 25, 0.65)), url('<?php echo esc_url( $banner_bg ); ?>');">
     <div class="banner-container">
         <div class="banner-content">
-            <h1 class="banner-main-title"><?php echo esc_html__( 'TÌM CÔNG VIỆC MƠ ƯỚC CỦA BẠN', 'jobscout' ); ?></h1>
+            <h1 class="banner-main-title">FIND YOUR DREAM JOBS</h1>
             <p class="banner-main-subtitle">
-                <?php echo esc_html__( 'Bí quyết đằng sau công ty chúng tôi rất đơn giản: luôn đặt mình vào vị trí của người khác - nhân viên, đối tác hoặc khách hàng. Điều này giúp chúng tôi thấu hiểu nhu cầu và đồng hành cùng sự thành công của bạn.', 'jobscout' ); ?>
+                The secret behind our company is simple: to always put ourselves in the other person's shoes-employee, guest or customer. This allows us to see the world through their eyes, anticipate their needs and better understand their feelings.
             </p>
 
             <div class="banner-search-box-wrap">
@@ -34,42 +34,153 @@ $search_keywords   = isset( $_GET['search_keywords'] ) ? sanitize_text_field( $_
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                         </span>
-                        <input type="text" id="search_keywords" name="search_keywords" placeholder="<?php echo esc_attr__( 'Tìm kiếm công việc, kỹ năng, công ty...', 'jobscout' ); ?>" value="<?php echo esc_attr( $search_keywords ); ?>">
+                        <input type="text" id="search_keywords" name="search_keywords" placeholder="Search for jobs, companies, skills" value="<?php echo esc_attr( $search_keywords ); ?>">
                     </div>
 
-                    <div class="search-field-group location-field search_location">
+                    <div class="search-field-group location-field search_location custom-dropdown-wrap" id="customLocationDropdownWrap">
                         <span class="field-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ea6a1b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
                         </span>
-                        <select id="search_location" name="search_location">
-                            <option value=""><?php echo esc_html__( 'Khu vực', 'jobscout' ); ?></option>
-                            <?php 
-                            if ( ! empty( $location_results ) ) {
-                                foreach ( $location_results as $loc ) {
-                                    $loc_name = trim( $loc->location );
-                                    if ( ! empty( $loc_name ) ) {
-                                        $selected = ( $selected_location === $loc_name ) ? ' selected' : '';
-                                        echo '<option value="' . esc_attr( $loc_name ) . '"' . $selected . '>' . esc_html( $loc_name ) . '</option>';
-                                    }
-                                }
-                            }
-                            ?>
+
+                        <!-- Native select kept in DOM for form submission and teacher's requirement -->
+                        <select id="search_location" name="search_location" class="hidden-native-select">
+                            <option value="">Khu vực</option>
+                            <?php if ( ! empty( $location_results ) ) : ?>
+                                <?php foreach ( $location_results as $value ) : 
+                                    $loc_name = trim( $value->location );
+                                    if ( empty( $loc_name ) ) continue;
+                                    $selected = ( $selected_location === $loc_name ) ? ' selected' : '';
+                                ?>
+                                    <option value="<?php echo esc_attr( $loc_name ); ?>"<?php echo $selected; ?>>
+                                        <?php echo esc_html( $loc_name ); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </select>
-                        <span class="select-arrow">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </span>
+
+                        <!-- Custom select trigger -->
+                        <div class="custom-select-trigger" id="customLocationTrigger" role="button" aria-haspopup="listbox" aria-expanded="false" tabindex="0">
+                            <span class="custom-select-label" id="customLocationLabel">
+                                <?php echo ! empty( $selected_location ) ? esc_html( $selected_location ) : 'Khu vực'; ?>
+                            </span>
+                            <span class="select-arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <!-- Custom luxury dropdown menu -->
+                        <div class="custom-select-menu" id="customLocationMenu" role="listbox">
+                            <div class="custom-select-option<?php echo empty( $selected_location ) ? ' is-selected' : ''; ?>" data-value="">
+                                <span class="option-text">Khu vực (Tất cả)</span>
+                                <span class="option-check">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ea6a1b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </span>
+                            </div>
+                            <?php if ( ! empty( $location_results ) ) : ?>
+                                <?php foreach ( $location_results as $value ) : 
+                                    $loc_name = trim( $value->location );
+                                    if ( empty( $loc_name ) ) continue;
+                                    $is_selected = ( $selected_location === $loc_name );
+                                ?>
+                                    <div class="custom-select-option<?php echo $is_selected ? ' is-selected' : ''; ?>" data-value="<?php echo esc_attr( $loc_name ); ?>">
+                                        <span class="option-text"><?php echo esc_html( $loc_name ); ?></span>
+                                        <span class="option-check">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ea6a1b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
                     </div>
 
                     <div class="search-submit-group">
-                        <button type="submit" class="banner-search-submit-btn"><?php echo esc_html__( 'TÌM VIỆC', 'jobscout' ); ?></button>
+                        <button type="submit" class="banner-search-submit-btn">SEARCH JOB</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var wrap = document.getElementById('customLocationDropdownWrap');
+    if (!wrap) return;
+
+    var trigger = document.getElementById('customLocationTrigger');
+    var label = document.getElementById('customLocationLabel');
+    var nativeSelect = document.getElementById('search_location');
+    var options = wrap.querySelectorAll('.custom-select-option');
+
+    function toggleDropdown(e) {
+        if (e) e.stopPropagation();
+        var isOpen = wrap.classList.contains('is-open');
+        if (isOpen) {
+            closeDropdown();
+        } else {
+            openDropdown();
+        }
+    }
+
+    function openDropdown() {
+        wrap.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDropdown() {
+        wrap.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    trigger.addEventListener('click', toggleDropdown);
+
+    trigger.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleDropdown();
+        } else if (e.key === 'Escape') {
+            closeDropdown();
+        }
+    });
+
+    options.forEach(function(opt) {
+        opt.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var val = opt.getAttribute('data-value');
+            var text = opt.querySelector('.option-text').textContent.trim();
+
+            if (val === '') {
+                label.textContent = 'Khu vực';
+            } else {
+                label.textContent = text;
+            }
+
+            if (nativeSelect) {
+                nativeSelect.value = val;
+                var evt = new Event('change', { bubbles: true });
+                nativeSelect.dispatchEvent(evt);
+            }
+
+            options.forEach(function(o) { o.classList.remove('is-selected'); });
+            opt.classList.add('is-selected');
+
+            closeDropdown();
+        });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!wrap.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+});
+</script>
