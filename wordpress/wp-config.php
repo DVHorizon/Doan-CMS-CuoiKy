@@ -114,13 +114,18 @@ $table_prefix = getenv_docker('WORDPRESS_TABLE_PREFIX', 'wp_');
  * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/
  */
 define( 'WP_DEBUG', !!getenv_docker('WORDPRESS_DEBUG', '') );
+if ( WP_DEBUG ) {
+	define( 'WP_DEBUG_LOG', true );
+	define( 'WP_DEBUG_DISPLAY', false );
+	@ini_set( 'display_errors', 0 );
+}
 
 /* Add any custom values between this line and the "stop editing" line. */
 defined( 'FS_METHOD' ) || define( 'FS_METHOD', 'direct' );
-define( 'WP_HOME', 'http://wordpress.local' );
-define( 'WP_SITEURL', 'http://wordpress.local' );
-define( 'AUTOMATIC_UPDATER_DISABLED', true );
-define( 'WP_AUTO_UPDATE_CORE', false );
+defined( 'WP_HOME' ) || define( 'WP_HOME', 'http://wordpress.local' );
+defined( 'WP_SITEURL' ) || define( 'WP_SITEURL', 'http://wordpress.local' );
+defined( 'AUTOMATIC_UPDATER_DISABLED' ) || define( 'AUTOMATIC_UPDATER_DISABLED', true );
+defined( 'WP_AUTO_UPDATE_CORE' ) || define( 'WP_AUTO_UPDATE_CORE', false );
 
 // If we're behind a proxy server and using HTTPS, we need to alert WordPress of that fact
 // see also https://wordpress.org/support/article/administration-over-ssl/#using-a-reverse-proxy
