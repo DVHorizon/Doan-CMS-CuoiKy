@@ -146,3 +146,17 @@ function jobscout_news_grid_shortcode($atts)
     return ob_get_clean();
 }
 add_shortcode('news_grid', 'jobscout_news_grid_shortcode');
+
+/**
+ * Redirect /news/ to /blog/ to prevent 404
+ */
+function jobscout_redirect_news_to_blog() {
+    $request_uri = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+    if ( $request_uri === 'news' ) {
+        $posts_page_id = get_option( 'page_for_posts' );
+        $target_url    = $posts_page_id ? get_permalink( $posts_page_id ) : home_url( '/blog/' );
+        wp_safe_redirect( $target_url, 301 );
+        exit;
+    }
+}
+add_action( 'template_redirect', 'jobscout_redirect_news_to_blog' );
