@@ -198,6 +198,60 @@ function jobscout_customize_register_job_single_page( $wp_customize ) {
         )
     );
 
+    // Success Modal Title
+    $wp_customize->add_setting(
+        'job_single_success_modal_title',
+        array(
+            'default'           => 'Nộp Hồ Sơ Thành Công!',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_success_modal_title',
+        array(
+            'label'    => __( 'Tiêu đề Popup Thành Công', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'text',
+            'priority' => 47,
+        )
+    );
+
+    // Success Modal Description
+    $wp_customize->add_setting(
+        'job_single_success_modal_desc',
+        array(
+            'default'           => 'Cảm ơn bạn! Hồ sơ ứng tuyển của bạn đã được chuyển tới nhà tuyển dụng. Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất qua email.',
+            'sanitize_callback' => 'sanitize_textarea_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_success_modal_desc',
+        array(
+            'label'    => __( 'Nội dung Popup Thành Công', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'textarea',
+            'priority' => 48,
+        )
+    );
+
+    // Success Modal Button Text
+    $wp_customize->add_setting(
+        'job_single_success_modal_btn',
+        array(
+            'default'           => 'Đã Hiểu / Đóng',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_success_modal_btn',
+        array(
+            'label'    => __( 'Nút đóng Popup Thành Công', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'text',
+            'priority' => 49,
+        )
+    );
+
     /* ==========================================
        1.1 CẤU HÌNH GIAO DIỆN EMAIL THÔNG BÁO (HTML EMAIL)
        ========================================== */

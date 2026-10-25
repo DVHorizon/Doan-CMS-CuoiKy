@@ -66,6 +66,11 @@ $modal_subtitle = get_theme_mod( 'job_single_modal_subtitle', __( 'Vui lòng đi
 $modal_submit   = get_theme_mod( 'job_single_modal_submit_text', __( 'GỬI HỒ SƠ ỨNG TUYỂN', 'jobscout' ) );
 $cf7_form_id    = get_theme_mod( 'job_single_cf7_form_id', '1167' );
 
+// Success Modal
+$success_title  = get_theme_mod( 'job_single_success_modal_title', __( 'Nộp Hồ Sơ Thành Công!', 'jobscout' ) );
+$success_desc   = get_theme_mod( 'job_single_success_modal_desc', __( 'Cảm ơn bạn! Hồ sơ ứng tuyển của bạn đã được chuyển tới nhà tuyển dụng. Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất qua email.', 'jobscout' ) );
+$success_btn    = get_theme_mod( 'job_single_success_modal_btn', __( 'Đã Hiểu / Đóng', 'jobscout' ) );
+
 
 // 4 Section chính (Left Column)
 $default_overview = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus lectus tristique massa gravida vel elementum, mi. Sit scelerisque at amet leo. In volutpat turpis dolor, at. Vivamus volutpat in nunc, porttitor dui. Ut placerat aenean accumsan a, aenean lacus eu. Aliquet urna, habitasse elit lorem id enim quam. Ea varius nulla nullam dignissim massa tempor, massa tortor. Eget auctor nulla maecenas ac tortor.\n\nOrnare faucibus sed vitae dolor eu ea faucibus leo enim. Tincidunt quisque sed netus nibh pharetra. Gravida venenatis, lobortis id mi. Metus, ultrices duis pellentesque aliquet amet cras blandit. Aliquet purus quam laoreet ipsum pretium. Odio quis eu nunc, diam habitant nunc massa sed. Placerat arcu quis est, magna facilisis amet. Dignissim vel adipiscing elit facilisi praesent platea. Nulla posuere feugiat turpis magna etiam. Non nec felis eu praesent cras.";
@@ -372,6 +377,30 @@ $final_location = ! empty( $meta_location ) ? $meta_location : $location_desc;
     </div>
 </div>
 
+<!-- POPUP MODAL THÔNG BÁO GỬI HỒ SƠ THÀNH CÔNG -->
+<div id="job-success-modal" class="job-apply-modal-backdrop job-success-modal-backdrop" aria-hidden="true">
+    <div class="job-apply-modal-card job-success-modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-success-title">
+        <button type="button" class="job-apply-modal-close" id="btn-close-success-modal" aria-label="<?php esc_attr_e( 'Đóng', 'jobscout' ); ?>">&times;</button>
+        
+        <div class="job-success-body">
+            <div class="success-icon-wrap">
+                <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h3 class="modal-success-title" id="modal-success-title"><?php echo esc_html( $success_title ); ?></h3>
+            <p class="modal-success-jobname"><?php the_title(); ?> - <span><?php echo esc_html( $company_name ); ?></span></p>
+            <div class="modal-success-desc">
+                <?php echo wp_kses_post( wpautop( $success_desc ) ); ?>
+            </div>
+            <button type="button" class="btn-success-modal-close" id="btn-done-success-modal">
+                <?php echo esc_html( $success_btn ); ?>
+            </button>
+        </div>
+    </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // 1. Share button copy URL
@@ -403,44 +432,76 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 2. Nút APPLY JOB: Mở Popup Modal nộp hồ sơ hoặc điều hướng
-    const btnApply   = document.getElementById('btn-single-job-apply');
-    const modal      = document.getElementById('job-apply-modal');
-    const btnClose   = document.getElementById('btn-close-apply-modal');
-    const applyForm  = document.getElementById('form-job-application');
-    const responseBox = document.getElementById('apply-form-response');
-    const btnSubmit  = document.getElementById('btn-submit-job-app');
-    const ajaxUrl    = '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>';
+    // 2. Nút APPLY JOB & Các Modal
+    const btnApply       = document.getElementById('btn-single-job-apply');
+    const applyModal     = document.getElementById('job-apply-modal');
+    const btnCloseApply  = document.getElementById('btn-close-apply-modal');
+    const successModal   = document.getElementById('job-success-modal');
+    const btnCloseSuccess = document.getElementById('btn-close-success-modal');
+    const btnDoneSuccess  = document.getElementById('btn-done-success-modal');
+    const applyForm      = document.getElementById('form-job-application');
+    const responseBox    = document.getElementById('apply-form-response');
+    const btnSubmit      = document.getElementById('btn-submit-job-app');
+    const ajaxUrl        = '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>';
 
+    // Mở popup nộp đơn
     if (btnApply) {
         btnApply.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            // Nếu không phải là link website ngoài (bắt đầu bằng http:// hoặc https://)
             if (!href || href.startsWith('#') || href === '#apply-modal' || href === '#job-apply-section') {
                 e.preventDefault();
-                if (modal) {
-                    modal.classList.add('open');
+                if (applyModal) {
+                    applyModal.classList.add('open');
                     document.body.style.overflow = 'hidden';
                 }
             }
         });
     }
 
-    if (btnClose && modal) {
-        btnClose.addEventListener('click', function() {
-            modal.classList.remove('open');
+    // Đóng popup nộp đơn
+    if (btnCloseApply && applyModal) {
+        btnCloseApply.addEventListener('click', function() {
+            applyModal.classList.remove('open');
             document.body.style.overflow = '';
         });
 
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.classList.remove('open');
+        applyModal.addEventListener('click', function(e) {
+            if (e.target === applyModal) {
+                applyModal.classList.remove('open');
                 document.body.style.overflow = '';
             }
         });
     }
 
-    // Xử lý gửi Form nộp CV qua AJAX
+    // Đóng popup thành công
+    function closeSuccessModal() {
+        if (successModal) {
+            successModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    }
+    if (btnCloseSuccess) btnCloseSuccess.addEventListener('click', closeSuccessModal);
+    if (btnDoneSuccess) btnDoneSuccess.addEventListener('click', closeSuccessModal);
+    if (successModal) {
+        successModal.addEventListener('click', function(e) {
+            if (e.target === successModal) {
+                closeSuccessModal();
+            }
+        });
+    }
+
+    // Hàm hiển thị Popup Thành Công
+    function showSuccessModal() {
+        if (applyModal) {
+            applyModal.classList.remove('open');
+        }
+        if (successModal) {
+            successModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    // Xử lý gửi Form Native qua AJAX (nếu không dùng CF7)
     if (applyForm) {
         applyForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -449,7 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const originalBtnText = btnSubmit.innerHTML;
             btnSubmit.disabled = true;
-            btnSubmit.innerHTML = '<?php esc_html_e( "Đang tải hồ sơ lên...", "jobscout" ); ?>';
+            btnSubmit.innerHTML = '<?php esc_html_e( "Đang gửi hồ sơ...", "jobscout" ); ?>';
             responseBox.style.display = 'none';
             responseBox.className = 'apply-form-response';
 
@@ -461,22 +522,13 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(res => res.json())
             .then(data => {
-                responseBox.style.display = 'block';
                 if (data.success) {
-                    responseBox.classList.add('success');
-                    responseBox.innerHTML = '<strong>' + data.data.message + '</strong>';
                     applyForm.reset();
-                    btnSubmit.innerHTML = '<?php esc_html_e( "ĐÃ GỬI THÀNH CÔNG", "jobscout" ); ?>';
-                    setTimeout(function() {
-                        if (modal) {
-                            modal.classList.remove('open');
-                            document.body.style.overflow = '';
-                        }
-                        btnSubmit.disabled = false;
-                        btnSubmit.innerHTML = originalBtnText;
-                        responseBox.style.display = 'none';
-                    }, 3500);
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = originalBtnText;
+                    showSuccessModal();
                 } else {
+                    responseBox.style.display = 'block';
                     responseBox.classList.add('error');
                     responseBox.innerHTML = data.data.message || '<?php esc_html_e( "Có lỗi xảy ra, vui lòng thử lại.", "jobscout" ); ?>';
                     btnSubmit.disabled = false;
@@ -488,11 +540,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 responseBox.classList.add('error');
                 responseBox.innerHTML = '<?php esc_html_e( "Lỗi kết nối máy chủ, vui lòng thử lại.", "jobscout" ); ?>';
                 btnSubmit.disabled = false;
+                btnSubmit.innerHTML = originalBtnText;
             });
         });
     }
 
-    // Tự động điền tiêu đề công việc vào ô [your-job] của Contact Form 7 nếu có
+    // Tự động điền tiêu đề công việc vào ô [your-job] của Contact Form 7
     const jobTitleInput = document.querySelector('.cf7-modal-container input[name="your-job"]');
     if (jobTitleInput) {
         jobTitleInput.value = <?php echo json_encode( get_the_title() . ' (' . $company_name . ')' ); ?>;
@@ -500,12 +553,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Lắng nghe sự kiện gửi thành công của Contact Form 7 (wpcf7mailsent)
     document.addEventListener('wpcf7mailsent', function(event) {
-        setTimeout(function() {
-            if (modal && modal.classList.contains('open')) {
-                modal.classList.remove('open');
-                document.body.style.overflow = '';
-            }
-        }, 3000);
+        // Tắt modal nhập form và mở Modal Thành Công
+        showSuccessModal();
     }, false);
 });
 </script>
