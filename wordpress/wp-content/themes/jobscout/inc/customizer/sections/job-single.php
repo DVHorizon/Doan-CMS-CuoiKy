@@ -248,22 +248,38 @@ function jobscout_customize_register_job_single_page( $wp_customize ) {
             'sanitize_callback' => 'sanitize_email',
         )
     );
-    $wp_customize->add_control(
-        'job_email_recipient',
+    // CF7 Form Selector / Shortcode
+    $wp_customize->add_setting(
+        'job_single_cf7_form_id',
         array(
-            'label'       => __( 'Email nhận hồ sơ mặc định', 'jobscout' ),
-            'description' => __( 'Địa chỉ email sẽ nhận thông báo ứng tuyển (nếu bài đăng công việc dùng email nội bộ/ảo).', 'jobscout' ),
-            'section'     => 'job_single_settings',
-            'type'        => 'email',
-            'priority'    => 49,
+            'default'           => '1167',
+            'sanitize_callback' => 'sanitize_text_field',
         )
     );
-
-
-
-    /* ==========================================
-       2. BỐN PHẦN NỘI DUNG CHÍNH (LEFT COLUMN)
-       ========================================== */
+    
+    // Lấy danh sách các form Contact Form 7 có sẵn
+    $cf7_choices = array( 'none' => __( '-- Không sử dụng CF7 (Dùng form Native) --', 'jobscout' ) );
+    if ( class_exists( 'WPCF7_ContactForm' ) ) {
+        $cf7_posts = get_posts( array( 'post_type' => 'wpcf7_contact_form', 'numberposts' => -1 ) );
+        foreach ( $cf7_posts as $f ) {
+            $cf7_choices[ $f->ID ] = $f->post_title . ' (ID: ' . $f->ID . ')';
+        }
+    }
+    
+    $wp_customize->add_control(
+        'job_single_cf7_form_id',
+        array(
+            'label'       => __( 'Chọn Form Contact Form 7 nộp CV', 'jobscout' ),
+            'description' => __( 'Chọn form trong Contact Form 7 để nhúng vào popup hoặc trang chi tiết. Bạn có thể chỉnh sửa trường nhập, email nhận và giao diện email trực tiếp trong trang quản trị Contact Forms.', 'jobscout' ),
+            'section'     => 'job_single_settings',
+            'type'        => 'select',
+            'choices'     => $cf7_choices,
+            'priority'    => 41,
+        )
+    );
+    /**
+     * 2. BỐN PHẦN NỘI DUNG CHÍNH (LEFT COLUMN)
+     * ========================================== */
     // 2.1 Overview about Company
     $wp_customize->add_setting(
         'job_single_overview_title',

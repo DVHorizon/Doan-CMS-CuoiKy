@@ -64,6 +64,7 @@ $apply_url      = get_theme_mod( 'job_single_apply_url', '#apply-modal' );
 $modal_title    = get_theme_mod( 'job_single_modal_title', __( 'Ứng tuyển công việc', 'jobscout' ) );
 $modal_subtitle = get_theme_mod( 'job_single_modal_subtitle', __( 'Vui lòng điền thông tin và đính kèm CV (PDF, DOC, DOCX tối đa 10MB)', 'jobscout' ) );
 $modal_submit   = get_theme_mod( 'job_single_modal_submit_text', __( 'GỬI HỒ SƠ ỨNG TUYỂN', 'jobscout' ) );
+$cf7_form_id    = get_theme_mod( 'job_single_cf7_form_id', '1167' );
 
 
 // 4 Section chính (Left Column)
@@ -316,48 +317,58 @@ $final_location = ! empty( $meta_location ) ? $meta_location : $location_desc;
             <p class="modal-apply-subtitle"><?php echo esc_html( $modal_subtitle ); ?></p>
         </div>
 
-        <form id="form-job-application" class="job-apply-form" enctype="multipart/form-data">
-            <input type="hidden" name="action" value="submit_job_application" />
-            <input type="hidden" name="job_id" value="<?php echo esc_attr( $job_id ); ?>" />
-            <input type="hidden" name="apply_nonce" value="<?php echo esc_attr( wp_create_nonce( 'jobscout_apply_nonce' ) ); ?>" />
-
-            <div class="apply-form-row">
-                <div class="apply-form-group">
-                    <label for="applicant_name"><?php esc_html_e( 'Họ và tên *', 'jobscout' ); ?></label>
-                    <input type="text" id="applicant_name" name="applicant_name" class="apply-input" placeholder="<?php esc_attr_e( 'Nguyễn Văn A', 'jobscout' ); ?>" required />
-                </div>
-                <div class="apply-form-group">
-                    <label for="applicant_email"><?php esc_html_e( 'Email liên hệ *', 'jobscout' ); ?></label>
-                    <input type="email" id="applicant_email" name="applicant_email" class="apply-input" placeholder="email@domain.com" required />
-                </div>
+        <?php 
+        // Nếu đã chọn Form Contact Form 7 và CF7 đang hoạt động
+        $use_cf7 = ( ! empty( $cf7_form_id ) && 'none' !== $cf7_form_id && function_exists( 'wpcf7' ) );
+        if ( $use_cf7 ) : 
+        ?>
+            <div class="cf7-modal-container">
+                <?php echo do_shortcode( '[contact-form-7 id="' . absint( $cf7_form_id ) . '"]' ); ?>
             </div>
+        <?php else : ?>
+            <form id="form-job-application" class="job-apply-form" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="submit_job_application" />
+                <input type="hidden" name="job_id" value="<?php echo esc_attr( $job_id ); ?>" />
+                <input type="hidden" name="apply_nonce" value="<?php echo esc_attr( wp_create_nonce( 'jobscout_apply_nonce' ) ); ?>" />
 
-            <div class="apply-form-row">
-                <div class="apply-form-group">
-                    <label for="applicant_phone"><?php esc_html_e( 'Số điện thoại', 'jobscout' ); ?></label>
-                    <input type="tel" id="applicant_phone" name="applicant_phone" class="apply-input" placeholder="<?php esc_attr_e( '0987 654 321', 'jobscout' ); ?>" />
-                </div>
-                <div class="apply-form-group">
-                    <label for="applicant_cv"><?php esc_html_e( 'Tải lên CV (PDF, DOC, DOCX) *', 'jobscout' ); ?></label>
-                    <div class="file-upload-wrapper">
-                        <input type="file" id="applicant_cv" name="applicant_cv" class="apply-file-input" accept=".pdf,.doc,.docx" required />
+                <div class="apply-form-row">
+                    <div class="apply-form-group">
+                        <label for="applicant_name"><?php esc_html_e( 'Họ và tên *', 'jobscout' ); ?></label>
+                        <input type="text" id="applicant_name" name="applicant_name" class="apply-input" placeholder="<?php esc_attr_e( 'Nguyễn Văn A', 'jobscout' ); ?>" required />
+                    </div>
+                    <div class="apply-form-group">
+                        <label for="applicant_email"><?php esc_html_e( 'Email liên hệ *', 'jobscout' ); ?></label>
+                        <input type="email" id="applicant_email" name="applicant_email" class="apply-input" placeholder="email@domain.com" required />
                     </div>
                 </div>
-            </div>
 
-            <div class="apply-form-group">
-                <label for="applicant_message"><?php esc_html_e( 'Thư giới thiệu / Lời nhắn cho nhà tuyển dụng', 'jobscout' ); ?></label>
-                <textarea id="applicant_message" name="applicant_message" class="apply-textarea" rows="3" placeholder="<?php esc_attr_e( 'Nêu ngắn gọn lý do bạn phù hợp với vị trí này...', 'jobscout' ); ?>"></textarea>
-            </div>
+                <div class="apply-form-row">
+                    <div class="apply-form-group">
+                        <label for="applicant_phone"><?php esc_html_e( 'Số điện thoại', 'jobscout' ); ?></label>
+                        <input type="tel" id="applicant_phone" name="applicant_phone" class="apply-input" placeholder="<?php esc_attr_e( '0987 654 321', 'jobscout' ); ?>" />
+                    </div>
+                    <div class="apply-form-group">
+                        <label for="applicant_cv"><?php esc_html_e( 'Tải lên CV (PDF, DOC, DOCX) *', 'jobscout' ); ?></label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="applicant_cv" name="applicant_cv" class="apply-file-input" accept=".pdf,.doc,.docx" required />
+                        </div>
+                    </div>
+                </div>
 
-            <div id="apply-form-response" class="apply-form-response" style="display:none;"></div>
+                <div class="apply-form-group">
+                    <label for="applicant_message"><?php esc_html_e( 'Thư giới thiệu / Lời nhắn cho nhà tuyển dụng', 'jobscout' ); ?></label>
+                    <textarea id="applicant_message" name="applicant_message" class="apply-textarea" rows="3" placeholder="<?php esc_attr_e( 'Nêu ngắn gọn lý do bạn phù hợp với vị trí này...', 'jobscout' ); ?>"></textarea>
+                </div>
 
-            <div class="apply-form-footer">
-                <button type="submit" id="btn-submit-job-app" class="btn-submit-apply">
-                    <?php echo esc_html( $modal_submit ); ?>
-                </button>
-            </div>
-        </form>
+                <div id="apply-form-response" class="apply-form-response" style="display:none;"></div>
+
+                <div class="apply-form-footer">
+                    <button type="submit" id="btn-submit-job-app" class="btn-submit-apply">
+                        <?php echo esc_html( $modal_submit ); ?>
+                    </button>
+                </div>
+            </form>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -479,6 +490,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 btnSubmit.innerHTML = originalBtnText;
             });
         });
+    // Tự động điền tiêu đề công việc vào ô [your-job] của Contact Form 7 nếu có
+    const jobTitleInput = document.querySelector('.cf7-modal-container input[name="your-job"]');
+    if (jobTitleInput) {
+        jobTitleInput.value = <?php echo json_encode( get_the_title() . ' (' . $company_name . ')' ); ?>;
     }
+
+    // Lắng nghe sự kiện gửi thành công của Contact Form 7 (wpcf7mailsent)
+    document.addEventListener('wpcf7mailsent', function(event) {
+        setTimeout(function() {
+            if (modal && modal.classList.contains('open')) {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }, 3000);
+    }, false);
 });
 </script>

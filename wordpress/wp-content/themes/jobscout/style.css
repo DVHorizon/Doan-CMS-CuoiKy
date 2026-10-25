@@ -12047,3 +12047,111 @@ body.page-contact-2 #content.site-content > .container {
   opacity: 0.65;
   cursor: not-allowed;
 }
+
+/* ========================================================
+   CONTACT FORM 7 STYLES IN JOB APPLY MODAL
+   ======================================================== */
+.cf7-modal-container .wpcf7 form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cf7-modal-container .wpcf7-form-control-wrap {
+  display: block;
+  width: 100%;
+}
+
+.cf7-modal-container input[type="text"],
+.cf7-modal-container input[type="email"],
+.cf7-modal-container input[type="tel"],
+.cf7-modal-container input[type="url"],
+.cf7-modal-container textarea {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #1f2937;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.cf7-modal-container input[type="text"]:focus,
+.cf7-modal-container input[type="email"]:focus,
+.cf7-modal-container input[type="tel"]:focus,
+.cf7-modal-container textarea:focus {
+  border-color: #ea580c;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
+}
+
+.cf7-modal-container input[type="file"] {
+  width: 100%;
+  background: #f9fafb;
+  border: 1px dashed #d1d5db;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #4b5563;
+  box-sizing: border-box;
+}
+
+.cf7-modal-container input[type="file"]:hover {
+  border-color: #ea580c;
+}
+
+.cf7-modal-container input[type="submit"],
+.cf7-modal-container .wpcf7-submit {
+  width: 100%;
+  background: #ea580c !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 13px 20px !important;
+  border-radius: 6px !important;
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25) !important;
+  transition: all 0.2s ease !important;
+  text-transform: uppercase;
+}
+
+.cf7-modal-container input[type="submit"]:hover,
+.cf7-modal-container .wpcf7-submit:hover {
+  background: #c2410c !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35) !important;
+}
+
+.cf7-modal-container .wpcf7-not-valid-tip {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.cf7-modal-container .wpcf7-response-output {
+  margin: 10px 0 0 0 !important;
+  padding: 12px 16px !important;
+  border-radius: 6px !important;
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+  box-sizing: border-box;
+}
+
+.cf7-modal-container .wpcf7-mail-sent-ok {
+  background: #ecfdf5 !important;
+  color: #065f46 !important;
+  border: 1px solid #a7f3d0 !important;
+}
+
+.cf7-modal-container .wpcf7-validation-errors,
+.cf7-modal-container .wpcf7-mail-sent-ng {
+  background: #fef2f2 !important;
+  color: #991b1b !important;
+  border: 1px solid #fecaca !important;
+}
+
