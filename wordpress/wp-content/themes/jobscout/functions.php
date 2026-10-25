@@ -160,3 +160,61 @@ function jobscout_redirect_news_to_blog() {
     }
 }
 add_action( 'template_redirect', 'jobscout_redirect_news_to_blog' );
+
+/**
+ * AJAX Load More Jobs cho trang All Jobs
+ */
+function jobscout_ajax_load_more_jobs() {
+    $paged = isset( $_POST['page'] ) ? absint( $_POST['page'] ) : 2;
+    $posts_per_page = absint( get_theme_mod( 'jobs_posts_per_page', 12 ) );
+    if ( $posts_per_page <= 0 ) {
+        $posts_per_page = 12;
+    }
+
+    $sort = isset( $_POST['sort'] ) ? sanitize_text_field( $_POST['sort'] ) : 'latest';
+
+    $args = array(
+        'post_type'      => 'job_listing',
+        'post_status'    => 'publish',
+        'posts_per_page' => $posts_per_page,
+        'paged'          => $paged,
+        'orderby'        => 'date',
+        'order'          => ( $sort === 'oldest' ) ? 'ASC' : 'DESC',
+    );
+
+    if ( in_array( $sort, array( 'full-time', 'part-time', 'freelance', 'internship' ), true ) ) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'job_listing_type',
+                'field'    => 'slug',
+                'terms'    => $sort,
+            ),
+        );
+    }
+
+    $query = new WP_Query( $args );
+
+    if ( $query->have_posts() ) {
+        ob_start();
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            get_template_part( 'template-parts/content', 'job-card' );
+        }
+        $html = ob_get_clean();
+        wp_reset_postdata();
+
+        wp_send_json_success( array(
+            'html'      => $html,
+            'max_pages' => $query->max_num_pages,
+            'current'   => $paged,
+            'has_more'  => ( $paged < $query->max_num_pages ),
+        ) );
+    } else {
+        wp_send_json_error( array(
+            'message' => 'No more jobs found.',
+        ) );
+    }
+}
+add_action( 'wp_ajax_load_more_jobs', 'jobscout_ajax_load_more_jobs' );
+add_action( 'wp_ajax_nopriv_load_more_jobs', 'jobscout_ajax_load_more_jobs' );
+
