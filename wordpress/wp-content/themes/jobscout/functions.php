@@ -218,3 +218,179 @@ function jobscout_ajax_load_more_jobs() {
 add_action( 'wp_ajax_load_more_jobs', 'jobscout_ajax_load_more_jobs' );
 add_action( 'wp_ajax_nopriv_load_more_jobs', 'jobscout_ajax_load_more_jobs' );
 
+/**
+ * Xử lý nộp hồ sơ ứng tuyển kèm CV qua AJAX
+ */
+function jobscout_ajax_submit_job_application() {
+    check_ajax_referer( 'jobscout_apply_nonce', 'apply_nonce' );
+
+    $job_id    = isset( $_POST['job_id'] ) ? absint( $_POST['job_id'] ) : 0;
+    $full_name = isset( $_POST['applicant_name'] ) ? sanitize_text_field( $_POST['applicant_name'] ) : '';
+    $email     = isset( $_POST['applicant_email'] ) ? sanitize_email( $_POST['applicant_email'] ) : '';
+    $phone     = isset( $_POST['applicant_phone'] ) ? sanitize_text_field( $_POST['applicant_phone'] ) : '';
+    $message   = isset( $_POST['applicant_message'] ) ? sanitize_textarea_field( $_POST['applicant_message'] ) : '';
+
+    if ( empty( $full_name ) || empty( $email ) || ! is_email( $email ) ) {
+        wp_send_json_error( array( 'message' => __( 'Vui lòng nhập họ tên và email hợp lệ.', 'jobscout' ) ) );
+    }
+
+    $cv_url  = '';
+    $cv_path = '';
+
+    // Xử lý upload file CV
+    if ( ! empty( $_FILES['applicant_cv']['name'] ) ) {
+        $allowed_types = array( 'pdf', 'doc', 'docx' );
+        $file_info     = pathinfo( $_FILES['applicant_cv']['name'] );
+        $extension     = strtolower( $file_info['extension'] ?? '' );
+
+        if ( ! in_array( $extension, $allowed_types, true ) ) {
+            wp_send_json_error( array( 'message' => __( 'Định dạng CV không được hỗ trợ. Vui lòng tải lên file PDF, DOC hoặc DOCX.', 'jobscout' ) ) );
+        }
+
+        // Tối đa 10MB
+        if ( $_FILES['applicant_cv']['size'] > 10 * 1024 * 1024 ) {
+            wp_send_json_error( array( 'message' => __( 'Kích thước file vượt quá 10MB.', 'jobscout' ) ) );
+        }
+
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        $uploaded = wp_handle_upload( $_FILES['applicant_cv'], array( 'test_form' => false ) );
+
+        if ( isset( $uploaded['error'] ) ) {
+            wp_send_json_error( array( 'message' => $uploaded['error'] ) );
+        }
+
+        $cv_url  = $uploaded['url'] ?? '';
+        $cv_path = $uploaded['file'] ?? '';
+    }
+
+    // Lấy thông tin bài đăng công việc và email nhận hồ sơ
+    $job_title = $job_id ? get_the_title( $job_id ) : __( 'Việc làm chung', 'jobscout' );
+    $company   = $job_id ? get_post_meta( $job_id, '_company_name', true ) : '';
+    
+    // Email nhận hồ sơ: nếu là domain ảo .local thì gửi về email admin/customizer để tránh lỗi bounce DNS của Gmail
+    $target_email = $job_id ? get_post_meta( $job_id, '_application', true ) : '';
+    $fallback_admin = get_theme_mod( 'job_email_recipient', get_option( 'admin_email', 'nhanbao410@gmail.com' ) );
+    
+    if ( empty( $target_email ) || ! is_email( $target_email ) || str_ends_with( strtolower( $target_email ), '.local' ) ) {
+        $target_email = $fallback_admin;
+    }
+
+    // Các thiết lập màu sắc & tiêu đề từ Customizer
+    $brand_color = get_theme_mod( 'job_email_primary_color', '#ea580c' );
+    $brand_title = get_theme_mod( 'job_email_brand_title', 'CAREERHUB - THÔNG BÁO ỨNG TUYỂN MỚI' );
+    $site_name   = get_bloginfo( 'name' );
+
+    // Gửi email thông báo cho nhà tuyển dụng
+    $subject = sprintf( '[Ứng tuyển mới] %s ứng tuyển vị trí %s', $full_name, $job_title );
+    $headers = array( 'Content-Type: text/html; charset=UTF-8' );
+    if ( is_email( $email ) ) {
+        $headers[] = 'Reply-To: ' . $full_name . ' <' . $email . '>';
+    }
+
+    // Giao diện Email HTML cao cấp, màu sắc hiện đại
+    $body = '<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f3f4f6; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; background-color: #f3f4f6; padding: 40px 15px;">
+        <tr>
+            <td align="center">
+                <!-- MAIN CONTAINER -->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.06); border: 1px solid #e5e7eb;">
+                    
+                    <!-- HEADER BANNER -->
+                    <tr>
+                        <td align="center" style="background: linear-gradient(135deg, ' . esc_attr( $brand_color ) . ' 0%, #c2410c 100%); padding: 32px 25px;">
+                            <div style="color: rgba(255,255,255,0.85); font-size: 11.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px;">' . esc_html( $site_name ) . '</div>
+                            <h1 style="color: #ffffff; margin: 0; font-size: 21px; font-weight: 700; line-height: 1.3;">' . esc_html( $brand_title ) . '</h1>
+                        </td>
+                    </tr>
+
+                    <!-- JOB HIGHLIGHT CARD -->
+                    <tr>
+                        <td style="padding: 24px 30px 10px 30px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fff7ed; border: 1px solid #ffedd5; border-radius: 8px; padding: 16px 20px;">
+                                <tr>
+                                    <td>
+                                        <div style="font-size: 12px; font-weight: 600; color: ' . esc_attr( $brand_color ) . '; text-transform: uppercase; margin-bottom: 4px;">Vị trí tuyển dụng:</div>
+                                        <div style="font-size: 17px; font-weight: 700; color: #111827;">' . esc_html( $job_title ) . '</div>
+                                        ' . ( $company ? '<div style="font-size: 13.5px; color: #4b5563; margin-top: 2px;">Công ty: <strong>' . esc_html( $company ) . '</strong></div>' : '' ) . '
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- APPLICANT INFO TABLE -->
+                    <tr>
+                        <td style="padding: 15px 30px 25px 30px;">
+                            <h2 style="font-size: 15px; font-weight: 700; color: #1f2937; margin: 0 0 14px 0; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px;">Hồ sơ ứng viên:</h2>
+                            
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-size: 14px; line-height: 1.6; color: #374151;">
+                                <tr>
+                                    <td width="130" style="padding: 8px 0; color: #6b7280; font-weight: 600;">Họ và tên:</td>
+                                    <td style="padding: 8px 0; color: #111827; font-weight: 700;">' . esc_html( $full_name ) . '</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px 0; color: #6b7280; font-weight: 600;">Email liên hệ:</td>
+                                    <td style="padding: 8px 0;"><a href="mailto:' . esc_attr( $email ) . '" style="color: ' . esc_attr( $brand_color ) . '; text-decoration: none; font-weight: 600;">' . esc_html( $email ) . '</a></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px 0; color: #6b7280; font-weight: 600;">Số điện thoại:</td>
+                                    <td style="padding: 8px 0; color: #111827;">' . ( ! empty( $phone ) ? esc_html( $phone ) : '<em style="color:#9ca3af;">(Chưa cung cấp)</em>' ) . '</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px 0; color: #6b7280; font-weight: 600;">Thời gian nộp:</td>
+                                    <td style="padding: 8px 0; color: #6b7280;">' . current_time( 'd/m/Y - H:i:s' ) . '</td>
+                                </tr>
+                            </table>
+
+                            ' . ( ! empty( $message ) ? '
+                            <div style="margin-top: 18px; padding: 14px 18px; background-color: #f9fafb; border-left: 4px solid ' . esc_attr( $brand_color ) . '; border-radius: 4px;">
+                                <div style="font-size: 12.5px; font-weight: 600; color: #6b7280; margin-bottom: 4px;">Thư giới thiệu từ ứng viên:</div>
+                                <div style="font-size: 13.5px; color: #1f2937; line-height: 1.6;">' . nl2br( esc_html( $message ) ) . '</div>
+                            </div>' : '' ) . '
+
+                            ' . ( ! empty( $cv_url ) ? '
+                            <!-- CV DOWNLOAD CTA -->
+                            <div style="margin-top: 25px; text-align: center; padding: 18px; background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px;">
+                                <div style="font-size: 13px; color: #475569; margin-bottom: 12px;">Đã đính kèm tệp hồ sơ năng lực (CV) trong email này:</div>
+                                <a href="' . esc_url( $cv_url ) . '" target="_blank" style="display: inline-block; background-color: ' . esc_attr( $brand_color ) . '; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 13.5px; padding: 12px 28px; border-radius: 6px; box-shadow: 0 2px 6px rgba(234, 88, 12, 0.3);">
+                                    📥 Xem & Tải Xuống File CV
+                                </a>
+                            </div>' : '' ) . '
+                        </td>
+                    </tr>
+
+                    <!-- FOOTER -->
+                    <tr>
+                        <td align="center" style="background-color: #f9fafb; border-top: 1px solid #e5e7eb; padding: 18px 25px; font-size: 12px; color: #9ca3af;">
+                            Thông báo tự động từ hệ thống website tuyển dụng <strong>' . esc_html( $site_name ) . '</strong>.<br/>
+                            Bạn nhận được thư này vì là người phụ trách tiếp nhận hồ sơ tuyển dụng.
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>';
+
+    $attachments = ( ! empty( $cv_path ) && file_exists( $cv_path ) ) ? array( $cv_path ) : array();
+
+    @wp_mail( $target_email, $subject, $body, $headers, $attachments );
+
+    wp_send_json_success( array(
+        'message' => __( 'Chúc mừng! Hồ sơ của bạn đã được gửi thành công đến nhà tuyển dụng.', 'jobscout' ),
+        'cv_url'  => $cv_url,
+    ) );
+}
+add_action( 'wp_ajax_submit_job_application', 'jobscout_ajax_submit_job_application' );
+add_action( 'wp_ajax_nopriv_submit_job_application', 'jobscout_ajax_submit_job_application' );
+
+
+

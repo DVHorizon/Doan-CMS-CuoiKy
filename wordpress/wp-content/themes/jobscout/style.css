@@ -11834,5 +11834,446 @@ body.page-contact-2 #content.site-content > .container {
   }
 }
 
+/* ==========================================================
+   POPUP MODAL NỘP HỒ SƠ ỨNG TUYỂN (APPLY JOB & CV UPLOAD)
+   ========================================================== */
+.job-apply-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(17, 24, 39, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
 
+.job-apply-modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.job-apply-modal-card {
+  background: #ffffff;
+  border-radius: 12px;
+  max-width: 620px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 36px 32px 30px 32px;
+  position: relative;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  transform: translateY(20px) scale(0.97);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.job-apply-modal-backdrop.open .job-apply-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.job-apply-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 30px;
+  line-height: 1;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.job-apply-modal-close:hover {
+  color: #111827;
+}
+
+.job-apply-modal-header {
+  margin-bottom: 24px;
+}
+
+.modal-apply-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px 0;
+}
+
+.modal-apply-jobname {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #ea580c;
+  margin: 0 0 6px 0;
+}
+
+.modal-apply-jobname span {
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.modal-apply-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.job-apply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.apply-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 560px) {
+  .apply-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.apply-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.apply-form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.apply-input,
+.apply-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13.5px;
+  color: #111827;
+  background: #ffffff;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.apply-input:focus,
+.apply-textarea:focus {
+  outline: none;
+  border-color: #ea580c;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
+}
+
+.file-upload-wrapper {
+  background: #f9fafb;
+  border: 1px dashed #d1d5db;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.file-upload-wrapper:hover {
+  border-color: #ea580c;
+}
+
+.apply-file-input {
+  font-size: 12.5px;
+  color: #4b5563;
+  width: 100%;
+}
+
+.apply-form-response {
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.apply-form-response.success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.apply-form-response.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.apply-form-footer {
+  margin-top: 10px;
+}
+
+.btn-submit-apply {
+  width: 100%;
+  background: #ea580c;
+  color: #ffffff;
+  border: none;
+  padding: 13px 20px;
+  border-radius: 6px;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-submit-apply:hover:not(:disabled) {
+  background: #c2410c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
+}
+
+.btn-submit-apply:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ========================================================
+   CONTACT FORM 7 STYLES IN JOB APPLY MODAL
+   ======================================================== */
+.cf7-modal-container .wpcf7 form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cf7-modal-container .wpcf7-form-control-wrap {
+  display: block;
+  width: 100%;
+}
+
+.cf7-modal-container input[type="text"],
+.cf7-modal-container input[type="email"],
+.cf7-modal-container input[type="tel"],
+.cf7-modal-container input[type="url"],
+.cf7-modal-container textarea {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #1f2937;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.cf7-modal-container input[type="text"]:focus,
+.cf7-modal-container input[type="email"]:focus,
+.cf7-modal-container input[type="tel"]:focus,
+.cf7-modal-container textarea:focus {
+  border-color: #ea580c;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
+}
+
+.cf7-modal-container input[type="file"] {
+  width: 100%;
+  background: #f9fafb;
+  border: 1px dashed #d1d5db;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #4b5563;
+  box-sizing: border-box;
+}
+
+.cf7-modal-container input[type="file"]:hover {
+  border-color: #ea580c;
+}
+
+.cf7-modal-container input[type="submit"],
+.cf7-modal-container .wpcf7-submit {
+  width: 100%;
+  background: #ea580c !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 13px 20px !important;
+  border-radius: 6px !important;
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25) !important;
+  transition: all 0.2s ease !important;
+  text-transform: uppercase;
+}
+
+.cf7-modal-container input[type="submit"]:hover,
+.cf7-modal-container .wpcf7-submit:hover {
+  background: #c2410c !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35) !important;
+}
+
+.cf7-modal-container .wpcf7-not-valid-tip {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.cf7-modal-container .wpcf7-response-output {
+  margin: 10px 0 0 0 !important;
+  padding: 12px 16px !important;
+  border-radius: 6px !important;
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+  box-sizing: border-box;
+}
+
+.cf7-modal-container .wpcf7-mail-sent-ok {
+  background: #ecfdf5 !important;
+  color: #065f46 !important;
+  border: 1px solid #a7f3d0 !important;
+}
+
+.cf7-modal-container .wpcf7-validation-errors,
+.cf7-modal-container .wpcf7-mail-sent-ng {
+  background: #fef2f2 !important;
+  color: #991b1b !important;
+  border: 1px solid #fecaca !important;
+}
+
+/* Completely hide Contact Form 7 Ajax Spinner circle */
+.cf7-modal-container .wpcf7-spinner,
+.wpcf7-spinner {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ========================================================
+   SUCCESS MODAL POPUP STYLES
+   ======================================================== */
+.job-success-modal-card {
+  max-width: 460px !important;
+  padding: 38px 30px 32px 30px !important;
+  text-align: center;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22) !important;
+}
+
+.job-success-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success-icon-wrap {
+  width: 76px;
+  height: 76px;
+  background: #fff7ed;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 2px solid #fed7aa;
+  animation: popInSuccess 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.success-icon-wrap svg {
+  stroke: #ea580c;
+}
+
+@keyframes popInSuccess {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-success-title {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #111827 !important;
+  margin: 0 0 8px 0 !important;
+  line-height: 1.3 !important;
+}
+
+.modal-success-jobname {
+  font-size: 14px;
+  color: #ea580c;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+.modal-success-jobname span {
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.modal-success-desc {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 26px;
+}
+
+.modal-success-desc p {
+  margin: 0;
+}
+
+.btn-success-modal-close,
+button.btn-success-modal-close {
+  width: 100%;
+  max-width: 240px;
+  background: #ea580c !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 13px 26px !important;
+  border-radius: 6px !important;
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px !important;
+  cursor: pointer !important;
+  box-shadow: 0 3px 8px rgba(234, 88, 12, 0.28) !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+}
+
+.btn-success-modal-close:hover,
+.btn-success-modal-close:focus,
+button.btn-success-modal-close:hover,
+button.btn-success-modal-close:focus {
+  background: #c2410c !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(234, 88, 12, 0.4) !important;
+  outline: none !important;
+}
+
+.btn-success-modal-close:active,
+button.btn-success-modal-close:active {
+  transform: translateY(0);
+}
 

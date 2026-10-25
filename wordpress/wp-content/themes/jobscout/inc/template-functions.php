@@ -190,11 +190,11 @@ function jobscout_content_start(){
             if( is_singular( 'job_listing' ) ){
                 global $post;
                 $banner_image   = get_header_image();
-                $show_banner    = get_theme_mod( 'ed_job_banner', true );
+                $show_banner    = get_theme_mod( 'ed_job_banner', false );
 
                 if( $banner_image && $show_banner ){
-                    $banner_style = 'background-image: url(' . esc_url( $banner_image ) . '); background-size: cover;';
-                    echo '<header class="entry-header" style="'. esc_attr( $banner_style ) .'"></header>';
+                    $banner_style = 'background-image: url(' . esc_url( $banner_image ) . '); background-size: cover; height: 350px;';
+                    echo '<header class="entry-header single-job-top-banner" style="'. esc_attr( $banner_style ) .'"></header>';
                 }
             } 
         ?>

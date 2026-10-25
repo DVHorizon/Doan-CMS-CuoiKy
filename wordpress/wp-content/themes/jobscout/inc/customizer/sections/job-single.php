@@ -20,6 +20,27 @@ function jobscout_customize_register_job_single_page( $wp_customize ) {
     );
 
     /* ==========================================
+       0. HIỂN THỊ BANNER ĐẦU TRANG (HEADER BANNER)
+       ========================================== */
+    $wp_customize->add_setting(
+        'ed_job_banner',
+        array(
+            'default'           => false,
+            'sanitize_callback' => 'jobscout_sanitize_checkbox',
+        )
+    );
+    $wp_customize->add_control(
+        'ed_job_banner',
+        array(
+            'label'       => __( 'Bật Banner hình ảnh cô gái ở đầu trang chi tiết', 'jobscout' ),
+            'description' => __( 'Tắt tùy chọn này để trang chi tiết bắt đầu ngay từ Breadcrumbs và thông tin việc làm, không bị ảnh banner lớn che khuất.', 'jobscout' ),
+            'section'     => 'job_single_settings',
+            'type'        => 'checkbox',
+            'priority'    => 5,
+        )
+    );
+
+    /* ==========================================
        1. BREADCRUMBS & NÚT HÀNH ĐỘNG
        ========================================== */
     $wp_customize->add_setting(
@@ -129,23 +150,211 @@ function jobscout_customize_register_job_single_page( $wp_customize ) {
     $wp_customize->add_setting(
         'job_single_apply_url',
         array(
-            'default'           => '#job-apply-section',
-            'sanitize_callback' => 'esc_url_raw',
+            'default'           => '#apply-modal',
+            'sanitize_callback' => 'sanitize_text_field',
         )
     );
     $wp_customize->add_control(
         'job_single_apply_url',
         array(
-            'label'       => __( 'Link Nút APPLY JOB (Để #job-apply-section nếu muốn cuộn xuống form)', 'jobscout' ),
+            'label'       => __( 'Hành động nút APPLY JOB (Mặc định: #apply-modal để mở popup nộp CV)', 'jobscout' ),
+            'description' => __( 'Nhập #apply-modal để mở popup nộp hồ sơ kèm upload CV, hoặc nhập đường dẫn URL/email khác.', 'jobscout' ),
             'section'     => 'job_single_settings',
             'type'        => 'text',
             'priority'    => 40,
         )
     );
 
+    // Apply Modal Title
+    $wp_customize->add_setting(
+        'job_single_modal_title',
+        array(
+            'default'           => 'Ứng tuyển công việc',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_modal_title',
+        array(
+            'label'    => __( 'Tiêu đề Popup Nộp Hồ Sơ', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'text',
+            'priority' => 42,
+        )
+    );
+
+    // Apply Modal Subtitle
+    $wp_customize->add_setting(
+        'job_single_modal_subtitle',
+        array(
+            'default'           => 'Vui lòng điền thông tin và đính kèm CV (PDF, DOC, DOCX tối đa 10MB)',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_modal_subtitle',
+        array(
+            'label'    => __( 'Mô tả hướng dẫn trong Popup', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'text',
+            'priority' => 44,
+        )
+    );
+
+    // Apply Modal Submit Button
+    $wp_customize->add_setting(
+        'job_single_modal_submit_text',
+        array(
+            'default'           => 'GỬI HỒ SƠ ỨNG TUYỂN',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_modal_submit_text',
+        array(
+            'label'    => __( 'Nút gửi trong Popup', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'text',
+            'priority' => 46,
+        )
+    );
+
+    // Success Modal Title
+    $wp_customize->add_setting(
+        'job_single_success_modal_title',
+        array(
+            'default'           => 'Nộp Hồ Sơ Thành Công!',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_success_modal_title',
+        array(
+            'label'    => __( 'Tiêu đề Popup Thành Công', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'text',
+            'priority' => 47,
+        )
+    );
+
+    // Success Modal Description
+    $wp_customize->add_setting(
+        'job_single_success_modal_desc',
+        array(
+            'default'           => 'Cảm ơn bạn! Hồ sơ ứng tuyển của bạn đã được chuyển tới nhà tuyển dụng. Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất qua email.',
+            'sanitize_callback' => 'sanitize_textarea_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_success_modal_desc',
+        array(
+            'label'    => __( 'Nội dung Popup Thành Công', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'textarea',
+            'priority' => 48,
+        )
+    );
+
+    // Success Modal Button Text
+    $wp_customize->add_setting(
+        'job_single_success_modal_btn',
+        array(
+            'default'           => 'Đã Hiểu / Đóng',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_success_modal_btn',
+        array(
+            'label'    => __( 'Nút đóng Popup Thành Công', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'text',
+            'priority' => 49,
+        )
+    );
+
     /* ==========================================
-       2. BỐN PHẦN NỘI DUNG CHÍNH (LEFT COLUMN)
+       1.1 CẤU HÌNH GIAO DIỆN EMAIL THÔNG BÁO (HTML EMAIL)
        ========================================== */
+    // Email Header Color
+    $wp_customize->add_setting(
+        'job_email_primary_color',
+        array(
+            'default'           => '#ea580c',
+            'sanitize_callback' => 'sanitize_hex_color',
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'job_email_primary_color',
+            array(
+                'label'       => __( 'Màu sắc chủ đạo Email thông báo', 'jobscout' ),
+                'description' => __( 'Tùy chỉnh màu header và nút bấm trong email gửi đến nhà tuyển dụng.', 'jobscout' ),
+                'section'     => 'job_single_settings',
+                'priority'    => 47,
+            )
+        )
+    );
+
+    // Email Header Brand Title
+    $wp_customize->add_setting(
+        'job_email_brand_title',
+        array(
+            'default'           => 'CAREERHUB - THÔNG BÁO ỨNG TUYỂN MỚI',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_email_brand_title',
+        array(
+            'label'       => __( 'Tiêu đề Banner trong Email', 'jobscout' ),
+            'section'     => 'job_single_settings',
+            'type'        => 'text',
+            'priority'    => 48,
+        )
+    );
+
+    // Default Recipient Email
+    $wp_customize->add_setting(
+        'job_email_recipient',
+        array(
+            'default'           => 'nhanbao410@gmail.com',
+            'sanitize_callback' => 'sanitize_email',
+        )
+    );
+    // CF7 Form Selector / Shortcode
+    $wp_customize->add_setting(
+        'job_single_cf7_form_id',
+        array(
+            'default'           => '1167',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    
+    // Lấy danh sách các form Contact Form 7 có sẵn
+    $cf7_choices = array( 'none' => __( '-- Không sử dụng CF7 (Dùng form Native) --', 'jobscout' ) );
+    if ( class_exists( 'WPCF7_ContactForm' ) ) {
+        $cf7_posts = get_posts( array( 'post_type' => 'wpcf7_contact_form', 'numberposts' => -1 ) );
+        foreach ( $cf7_posts as $f ) {
+            $cf7_choices[ $f->ID ] = $f->post_title . ' (ID: ' . $f->ID . ')';
+        }
+    }
+    
+    $wp_customize->add_control(
+        'job_single_cf7_form_id',
+        array(
+            'label'       => __( 'Chọn Form Contact Form 7 nộp CV', 'jobscout' ),
+            'description' => __( 'Chọn form trong Contact Form 7 để nhúng vào popup hoặc trang chi tiết. Bạn có thể chỉnh sửa trường nhập, email nhận và giao diện email trực tiếp trong trang quản trị Contact Forms.', 'jobscout' ),
+            'section'     => 'job_single_settings',
+            'type'        => 'select',
+            'choices'     => $cf7_choices,
+            'priority'    => 41,
+        )
+    );
+    /**
+     * 2. BỐN PHẦN NỘI DUNG CHÍNH (LEFT COLUMN)
+     * ========================================== */
     // 2.1 Overview about Company
     $wp_customize->add_setting(
         'job_single_overview_title',
