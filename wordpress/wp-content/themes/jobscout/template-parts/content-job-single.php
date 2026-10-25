@@ -415,7 +415,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (btnApply) {
         btnApply.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href === '#apply-modal' || href === '#job-apply-section' || href === '#') {
+            // Nếu không phải là link website ngoài (bắt đầu bằng http:// hoặc https://)
+            if (!href || href.startsWith('#') || href === '#apply-modal' || href === '#job-apply-section') {
                 e.preventDefault();
                 if (modal) {
                     modal.classList.add('open');
@@ -487,9 +488,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 responseBox.classList.add('error');
                 responseBox.innerHTML = '<?php esc_html_e( "Lỗi kết nối máy chủ, vui lòng thử lại.", "jobscout" ); ?>';
                 btnSubmit.disabled = false;
-                btnSubmit.innerHTML = originalBtnText;
             });
         });
+    }
+
     // Tự động điền tiêu đề công việc vào ô [your-job] của Contact Form 7 nếu có
     const jobTitleInput = document.querySelector('.cf7-modal-container input[name="your-job"]');
     if (jobTitleInput) {
