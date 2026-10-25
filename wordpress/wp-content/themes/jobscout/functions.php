@@ -218,3 +218,88 @@ function jobscout_ajax_load_more_jobs() {
 add_action( 'wp_ajax_load_more_jobs', 'jobscout_ajax_load_more_jobs' );
 add_action( 'wp_ajax_nopriv_load_more_jobs', 'jobscout_ajax_load_more_jobs' );
 
+/**
+ * Xử lý nộp hồ sơ ứng tuyển kèm CV qua AJAX
+ */
+function jobscout_ajax_submit_job_application() {
+    check_ajax_referer( 'jobscout_apply_nonce', 'apply_nonce' );
+
+    $job_id    = isset( $_POST['job_id'] ) ? absint( $_POST['job_id'] ) : 0;
+    $full_name = isset( $_POST['applicant_name'] ) ? sanitize_text_field( $_POST['applicant_name'] ) : '';
+    $email     = isset( $_POST['applicant_email'] ) ? sanitize_email( $_POST['applicant_email'] ) : '';
+    $phone     = isset( $_POST['applicant_phone'] ) ? sanitize_text_field( $_POST['applicant_phone'] ) : '';
+    $message   = isset( $_POST['applicant_message'] ) ? sanitize_textarea_field( $_POST['applicant_message'] ) : '';
+
+    if ( empty( $full_name ) || empty( $email ) || ! is_email( $email ) ) {
+        wp_send_json_error( array( 'message' => __( 'Vui lòng nhập họ tên và email hợp lệ.', 'jobscout' ) ) );
+    }
+
+    $cv_url  = '';
+    $cv_path = '';
+
+    // Xử lý upload file CV
+    if ( ! empty( $_FILES['applicant_cv']['name'] ) ) {
+        $allowed_types = array( 'pdf', 'doc', 'docx' );
+        $file_info     = pathinfo( $_FILES['applicant_cv']['name'] );
+        $extension     = strtolower( $file_info['extension'] ?? '' );
+
+        if ( ! in_array( $extension, $allowed_types, true ) ) {
+            wp_send_json_error( array( 'message' => __( 'Định dạng CV không được hỗ trợ. Vui lòng tải lên file PDF, DOC hoặc DOCX.', 'jobscout' ) ) );
+        }
+
+        // Tối đa 10MB
+        if ( $_FILES['applicant_cv']['size'] > 10 * 1024 * 1024 ) {
+            wp_send_json_error( array( 'message' => __( 'Kích thước file vượt quá 10MB.', 'jobscout' ) ) );
+        }
+
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        $uploaded = wp_handle_upload( $_FILES['applicant_cv'], array( 'test_form' => false ) );
+
+        if ( isset( $uploaded['error'] ) ) {
+            wp_send_json_error( array( 'message' => $uploaded['error'] ) );
+        }
+
+        $cv_url  = $uploaded['url'] ?? '';
+        $cv_path = $uploaded['file'] ?? '';
+    }
+
+    // Lấy thông tin bài đăng công việc và email nhận hồ sơ
+    $job_title = $job_id ? get_the_title( $job_id ) : __( 'Việc làm chung', 'jobscout' );
+    $company   = $job_id ? get_post_meta( $job_id, '_company_name', true ) : '';
+    $target_email = $job_id ? get_post_meta( $job_id, '_application', true ) : '';
+    if ( empty( $target_email ) || ! is_email( $target_email ) ) {
+        $target_email = get_option( 'admin_email' );
+    }
+
+    // Gửi email thông báo cho nhà tuyển dụng
+    $subject = sprintf( '[Ứng tuyển mới] %s - %s', $full_name, $job_title );
+    $headers = array( 'Content-Type: text/html; charset=UTF-8' );
+    if ( is_email( $email ) ) {
+        $headers[] = 'Reply-To: ' . $full_name . ' <' . $email . '>';
+    }
+
+    $body  = "<h2>Thông tin ứng viên mới nộp hồ sơ:</h2>";
+    $body .= "<p><strong>Vị trí ứng tuyển:</strong> " . esc_html( $job_title ) . ( $company ? " (" . esc_html( $company ) . ")" : "" ) . "</p>";
+    $body .= "<p><strong>Họ và tên:</strong> " . esc_html( $full_name ) . "</p>";
+    $body .= "<p><strong>Email:</strong> " . esc_html( $email ) . "</p>";
+    $body .= "<p><strong>Số điện thoại:</strong> " . esc_html( $phone ) . "</p>";
+    if ( ! empty( $message ) ) {
+        $body .= "<p><strong>Lời nhắn:</strong><br/>" . nl2br( esc_html( $message ) ) . "</p>";
+    }
+    if ( ! empty( $cv_url ) ) {
+        $body .= "<p><strong>File CV đính kèm:</strong> <a href='" . esc_url( $cv_url ) . "' target='_blank'>Xem và tải xuống CV</a></p>";
+    }
+
+    $attachments = ( ! empty( $cv_path ) && file_exists( $cv_path ) ) ? array( $cv_path ) : array();
+
+    @wp_mail( $target_email, $subject, $body, $headers, $attachments );
+
+    wp_send_json_success( array(
+        'message' => __( 'Chúc mừng! Hồ sơ của bạn đã được gửi thành công đến nhà tuyển dụng.', 'jobscout' ),
+        'cv_url'  => $cv_url,
+    ) );
+}
+add_action( 'wp_ajax_submit_job_application', 'jobscout_ajax_submit_job_application' );
+add_action( 'wp_ajax_nopriv_submit_job_application', 'jobscout_ajax_submit_job_application' );
+
+

@@ -60,7 +60,11 @@ $bc_detail      = get_theme_mod( 'job_single_breadcrumb_detail', 'Job Detail' );
 
 $share_text     = get_theme_mod( 'job_single_share_text', 'SHARE' );
 $apply_text     = get_theme_mod( 'job_single_apply_text', 'APPLY JOB' );
-$apply_url      = get_theme_mod( 'job_single_apply_url', '#job-apply-section' );
+$apply_url      = get_theme_mod( 'job_single_apply_url', '#apply-modal' );
+$modal_title    = get_theme_mod( 'job_single_modal_title', __( 'Ứng tuyển công việc', 'jobscout' ) );
+$modal_subtitle = get_theme_mod( 'job_single_modal_subtitle', __( 'Vui lòng điền thông tin và đính kèm CV (PDF, DOC, DOCX tối đa 10MB)', 'jobscout' ) );
+$modal_submit   = get_theme_mod( 'job_single_modal_submit_text', __( 'GỬI HỒ SƠ ỨNG TUYỂN', 'jobscout' ) );
+
 
 // 4 Section chính (Left Column)
 $default_overview = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus lectus tristique massa gravida vel elementum, mi. Sit scelerisque at amet leo. In volutpat turpis dolor, at. Vivamus volutpat in nunc, porttitor dui. Ut placerat aenean accumsan a, aenean lacus eu. Aliquet urna, habitasse elit lorem id enim quam. Ea varius nulla nullam dignissim massa tempor, massa tortor. Eget auctor nulla maecenas ac tortor.\n\nOrnare faucibus sed vitae dolor eu ea faucibus leo enim. Tincidunt quisque sed netus nibh pharetra. Gravida venenatis, lobortis id mi. Metus, ultrices duis pellentesque aliquet amet cras blandit. Aliquet purus quam laoreet ipsum pretium. Odio quis eu nunc, diam habitant nunc massa sed. Placerat arcu quis est, magna facilisis amet. Dignissim vel adipiscing elit facilisi praesent platea. Nulla posuere feugiat turpis magna etiam. Non nec felis eu praesent cras.";
@@ -301,6 +305,62 @@ $final_location = ! empty( $meta_location ) ? $meta_location : $location_desc;
     <span><?php esc_html_e( 'Đã sao chép liên kết vào bộ nhớ tạm!', 'jobscout' ); ?></span>
 </div>
 
+<!-- POPUP MODAL NỘP HỒ SƠ ỨNG TUYỂN KÈM CV -->
+<div id="job-apply-modal" class="job-apply-modal-backdrop" aria-hidden="true">
+    <div class="job-apply-modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-apply-title">
+        <button type="button" class="job-apply-modal-close" id="btn-close-apply-modal" aria-label="<?php esc_attr_e( 'Đóng', 'jobscout' ); ?>">&times;</button>
+        
+        <div class="job-apply-modal-header">
+            <h3 class="modal-apply-title" id="modal-apply-title"><?php echo esc_html( $modal_title ); ?></h3>
+            <p class="modal-apply-jobname"><?php the_title(); ?> - <span><?php echo esc_html( $company_name ); ?></span></p>
+            <p class="modal-apply-subtitle"><?php echo esc_html( $modal_subtitle ); ?></p>
+        </div>
+
+        <form id="form-job-application" class="job-apply-form" enctype="multipart/form-data">
+            <input type="hidden" name="action" value="submit_job_application" />
+            <input type="hidden" name="job_id" value="<?php echo esc_attr( $job_id ); ?>" />
+            <input type="hidden" name="apply_nonce" value="<?php echo esc_attr( wp_create_nonce( 'jobscout_apply_nonce' ) ); ?>" />
+
+            <div class="apply-form-row">
+                <div class="apply-form-group">
+                    <label for="applicant_name"><?php esc_html_e( 'Họ và tên *', 'jobscout' ); ?></label>
+                    <input type="text" id="applicant_name" name="applicant_name" class="apply-input" placeholder="<?php esc_attr_e( 'Nguyễn Văn A', 'jobscout' ); ?>" required />
+                </div>
+                <div class="apply-form-group">
+                    <label for="applicant_email"><?php esc_html_e( 'Email liên hệ *', 'jobscout' ); ?></label>
+                    <input type="email" id="applicant_email" name="applicant_email" class="apply-input" placeholder="email@domain.com" required />
+                </div>
+            </div>
+
+            <div class="apply-form-row">
+                <div class="apply-form-group">
+                    <label for="applicant_phone"><?php esc_html_e( 'Số điện thoại', 'jobscout' ); ?></label>
+                    <input type="tel" id="applicant_phone" name="applicant_phone" class="apply-input" placeholder="<?php esc_attr_e( '0987 654 321', 'jobscout' ); ?>" />
+                </div>
+                <div class="apply-form-group">
+                    <label for="applicant_cv"><?php esc_html_e( 'Tải lên CV (PDF, DOC, DOCX) *', 'jobscout' ); ?></label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="applicant_cv" name="applicant_cv" class="apply-file-input" accept=".pdf,.doc,.docx" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="apply-form-group">
+                <label for="applicant_message"><?php esc_html_e( 'Thư giới thiệu / Lời nhắn cho nhà tuyển dụng', 'jobscout' ); ?></label>
+                <textarea id="applicant_message" name="applicant_message" class="apply-textarea" rows="3" placeholder="<?php esc_attr_e( 'Nêu ngắn gọn lý do bạn phù hợp với vị trí này...', 'jobscout' ); ?>"></textarea>
+            </div>
+
+            <div id="apply-form-response" class="apply-form-response" style="display:none;"></div>
+
+            <div class="apply-form-footer">
+                <button type="submit" id="btn-submit-job-app" class="btn-submit-apply">
+                    <?php echo esc_html( $modal_submit ); ?>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // 1. Share button copy URL
@@ -332,18 +392,92 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 2. Smooth scroll to Apply Section if #job-apply-section
-    const btnApply = document.getElementById('btn-single-job-apply');
+    // 2. Nút APPLY JOB: Mở Popup Modal nộp hồ sơ hoặc điều hướng
+    const btnApply   = document.getElementById('btn-single-job-apply');
+    const modal      = document.getElementById('job-apply-modal');
+    const btnClose   = document.getElementById('btn-close-apply-modal');
+    const applyForm  = document.getElementById('form-job-application');
+    const responseBox = document.getElementById('apply-form-response');
+    const btnSubmit  = document.getElementById('btn-submit-job-app');
+    const ajaxUrl    = '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>';
+
     if (btnApply) {
         btnApply.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href === '#job-apply-section') {
-                const target = document.getElementById('job-apply-section');
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (href === '#apply-modal' || href === '#job-apply-section' || href === '#') {
+                e.preventDefault();
+                if (modal) {
+                    modal.classList.add('open');
+                    document.body.style.overflow = 'hidden';
                 }
             }
+        });
+    }
+
+    if (btnClose && modal) {
+        btnClose.addEventListener('click', function() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // Xử lý gửi Form nộp CV qua AJAX
+    if (applyForm) {
+        applyForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (!btnSubmit || !responseBox) return;
+
+            const originalBtnText = btnSubmit.innerHTML;
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<?php esc_html_e( "Đang tải hồ sơ lên...", "jobscout" ); ?>';
+            responseBox.style.display = 'none';
+            responseBox.className = 'apply-form-response';
+
+            const formData = new FormData(applyForm);
+
+            fetch(ajaxUrl, {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                responseBox.style.display = 'block';
+                if (data.success) {
+                    responseBox.classList.add('success');
+                    responseBox.innerHTML = '<strong>' + data.data.message + '</strong>';
+                    applyForm.reset();
+                    btnSubmit.innerHTML = '<?php esc_html_e( "ĐÃ GỬI THÀNH CÔNG", "jobscout" ); ?>';
+                    setTimeout(function() {
+                        if (modal) {
+                            modal.classList.remove('open');
+                            document.body.style.overflow = '';
+                        }
+                        btnSubmit.disabled = false;
+                        btnSubmit.innerHTML = originalBtnText;
+                        responseBox.style.display = 'none';
+                    }, 3500);
+                } else {
+                    responseBox.classList.add('error');
+                    responseBox.innerHTML = data.data.message || '<?php esc_html_e( "Có lỗi xảy ra, vui lòng thử lại.", "jobscout" ); ?>';
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = originalBtnText;
+                }
+            })
+            .catch(err => {
+                responseBox.style.display = 'block';
+                responseBox.classList.add('error');
+                responseBox.innerHTML = '<?php esc_html_e( "Lỗi kết nối máy chủ, vui lòng thử lại.", "jobscout" ); ?>';
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = originalBtnText;
+            });
         });
     }
 });

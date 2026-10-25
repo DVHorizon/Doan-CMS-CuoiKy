@@ -99,7 +99,7 @@ CREATE TABLE `wp_actionscheduler_claims` (
   `date_created_gmt` datetime DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`claim_id`),
   KEY `date_created_gmt` (`date_created_gmt`)
-) ENGINE=InnoDB AUTO_INCREMENT=303 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=316 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -695,7 +695,7 @@ CREATE TABLE `wp_options` (
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`),
   KEY `autoload` (`autoload`)
-) ENGINE=InnoDB AUTO_INCREMENT=1480 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -705,7 +705,7 @@ CREATE TABLE `wp_options` (
 LOCK TABLES `wp_options` WRITE;
 /*!40000 ALTER TABLE `wp_options` DISABLE KEYS */;
 INSERT INTO `wp_options` VALUES
-(1,'cron','a:21:{i:1792934587;a:1:{s:10:\"newsletter\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"newsletter\";s:4:\"args\";a:0:{}s:8:\"interval\";i:300;}}}i:1792934616;a:1:{s:26:\"action_scheduler_run_queue\";a:1:{s:32:\"0d04ed39571b55704c122d726248bbac\";a:3:{s:8:\"schedule\";s:12:\"every_minute\";s:4:\"args\";a:1:{i:0;s:7:\"WP Cron\";}s:8:\"interval\";i:60;}}}i:1792935517;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1792935522;a:1:{s:21:\"wp_update_user_counts\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1792935595;a:1:{s:24:\"eb_cleanup_stuck_ai_jobs\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1792937117;a:2:{s:34:\"job_manager_check_for_expired_jobs\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}s:39:\"job_manager_promoted_jobs_status_update\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1792939109;a:1:{s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1792940909;a:1:{s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1792942709;a:1:{s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1792972800;a:2:{s:28:\"wpforms_email_summaries_cron\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:2:{s:8:\"schedule\";b:0;s:4:\"args\";a:0:{}}}s:33:\"wpforms_weekly_entries_count_cron\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:2:{s:8:\"schedule\";b:0;s:4:\"args\";a:0:{}}}}i:1792978717;a:2:{s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:41:\"wp_privacy_personal_data_cleanup_requests\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1792978722;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1792978729;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1792983917;a:2:{s:31:\"job_manager_delete_old_previews\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:31:\"job_manager_email_daily_notices\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1792985995;a:1:{s:18:\"eb_cleanup_ai_jobs\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1792999363;a:1:{s:17:\"newsletter_update\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1793151695;a:1:{s:30:\"wp_delete_temp_updater_backups\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}}i:1793168563;a:1:{s:16:\"newsletter_clean\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}}i:1793237917;a:1:{s:30:\"wp_site_health_scheduled_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}}i:1793243117;a:1:{s:42:\"job_manager_usage_tracking_send_usage_data\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:36:\"job_manager_usage_tracking_two_weeks\";s:4:\"args\";a:0:{}s:8:\"interval\";i:1296000;}}}s:7:\"version\";i:2;}','on'),
+(1,'cron','a:20:{i:1792936236;a:1:{s:26:\"action_scheduler_run_queue\";a:1:{s:32:\"0d04ed39571b55704c122d726248bbac\";a:3:{s:8:\"schedule\";s:12:\"every_minute\";s:4:\"args\";a:1:{i:0;s:7:\"WP Cron\";}s:8:\"interval\";i:60;}}}i:1792936387;a:1:{s:10:\"newsletter\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"newsletter\";s:4:\"args\";a:0:{}s:8:\"interval\";i:300;}}}i:1792937117;a:2:{s:34:\"job_manager_check_for_expired_jobs\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}s:39:\"job_manager_promoted_jobs_status_update\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1792939109;a:1:{s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1792939117;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1792939195;a:1:{s:24:\"eb_cleanup_stuck_ai_jobs\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1792940909;a:1:{s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1792942709;a:1:{s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1792972800;a:2:{s:28:\"wpforms_email_summaries_cron\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:2:{s:8:\"schedule\";b:0;s:4:\"args\";a:0:{}}}s:33:\"wpforms_weekly_entries_count_cron\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:2:{s:8:\"schedule\";b:0;s:4:\"args\";a:0:{}}}}i:1792978717;a:2:{s:32:\"recovery_mode_clean_expired_keys\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:41:\"wp_privacy_personal_data_cleanup_requests\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1792978722;a:3:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:21:\"wp_update_user_counts\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1792978729;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1792983917;a:2:{s:31:\"job_manager_delete_old_previews\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:31:\"job_manager_email_daily_notices\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1792985995;a:1:{s:18:\"eb_cleanup_ai_jobs\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1792999363;a:1:{s:17:\"newsletter_update\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1793151695;a:1:{s:30:\"wp_delete_temp_updater_backups\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}}i:1793168563;a:1:{s:16:\"newsletter_clean\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}}i:1793237917;a:1:{s:30:\"wp_site_health_scheduled_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"weekly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:604800;}}}i:1793243117;a:1:{s:42:\"job_manager_usage_tracking_send_usage_data\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:36:\"job_manager_usage_tracking_two_weeks\";s:4:\"args\";a:0:{}s:8:\"interval\";i:1296000;}}}s:7:\"version\";i:2;}','on'),
 (2,'siteurl','http://wordpress.local','on'),
 (3,'home','http://wordpress.local','on'),
 (4,'blogname','CareerHub','on'),
@@ -990,7 +990,7 @@ INSERT INTO `wp_options` VALUES
 (798,'wp_mail_smtp','a:23:{s:4:\"mail\";a:6:{s:10:\"from_email\";s:20:\"nhanbao410@gmail.com\";s:9:\"from_name\";s:7:\"GROUP B\";s:6:\"mailer\";s:4:\"smtp\";s:11:\"return_path\";b:1;s:16:\"from_email_force\";b:1;s:15:\"from_name_force\";b:0;}s:4:\"smtp\";a:7:{s:7:\"autotls\";b:1;s:4:\"auth\";b:1;s:4:\"host\";s:14:\"smtp.gmail.com\";s:4:\"port\";i:587;s:10:\"encryption\";s:3:\"tls\";s:4:\"user\";s:20:\"nhanbao410@gmail.com\";s:4:\"pass\";s:80:\"1kJfXTwiLub2a/0Aq9+84ngTOjjQdXHMXhf5072zIcrd6CGUcaAPzScwUlo6sblyfllz9fPfhJv/28g=\";}s:7:\"general\";a:1:{s:29:\"summary_report_email_disabled\";b:0;}s:9:\"sendlayer\";a:4:{s:7:\"api_key\";s:0:\"\";s:13:\"quick_connect\";b:0;s:16:\"is_shared_domain\";b:0;s:13:\"sender_domain\";s:0:\"\";}s:7:\"smtpcom\";a:2:{s:7:\"api_key\";s:0:\"\";s:7:\"channel\";s:0:\"\";}s:10:\"sendinblue\";a:2:{s:7:\"api_key\";s:0:\"\";s:6:\"domain\";s:0:\"\";}s:10:\"mailersend\";a:2:{s:7:\"api_key\";s:0:\"\";s:12:\"has_pro_plan\";b:0;}s:7:\"mailgun\";a:3:{s:7:\"api_key\";s:0:\"\";s:6:\"domain\";s:0:\"\";s:6:\"region\";s:2:\"US\";}s:7:\"mailjet\";a:2:{s:7:\"api_key\";s:0:\"\";s:10:\"secret_key\";s:0:\"\";}s:6:\"resend\";a:1:{s:7:\"api_key\";s:0:\"\";}s:8:\"sendgrid\";a:2:{s:7:\"api_key\";s:0:\"\";s:6:\"domain\";s:0:\"\";}s:7:\"smtp2go\";a:1:{s:7:\"api_key\";s:0:\"\";}s:9:\"sparkpost\";a:2:{s:7:\"api_key\";s:0:\"\";s:6:\"region\";s:2:\"US\";}s:8:\"postmark\";a:2:{s:16:\"server_api_token\";s:0:\"\";s:14:\"message_stream\";s:0:\"\";}s:8:\"mandrill\";a:1:{s:7:\"api_key\";s:0:\"\";}s:9:\"amazonses\";a:3:{s:9:\"client_id\";s:0:\"\";s:13:\"client_secret\";s:0:\"\";s:6:\"region\";s:9:\"us-east-1\";}s:12:\"elasticemail\";a:1:{s:7:\"api_key\";s:0:\"\";}s:5:\"gmail\";a:8:{s:9:\"client_id\";s:0:\"\";s:13:\"client_secret\";s:0:\"\";s:12:\"access_token\";a:0:{}s:13:\"refresh_token\";s:0:\"\";s:12:\"user_details\";a:1:{s:5:\"email\";s:0:\"\";}s:23:\"one_click_setup_enabled\";b:0;s:27:\"one_click_setup_credentials\";a:2:{s:3:\"key\";s:0:\"\";s:5:\"token\";s:0:\"\";}s:28:\"one_click_setup_user_details\";a:1:{s:5:\"email\";s:0:\"\";}}s:7:\"outlook\";a:8:{s:9:\"client_id\";s:0:\"\";s:13:\"client_secret\";s:0:\"\";s:12:\"access_token\";a:0:{}s:13:\"refresh_token\";s:0:\"\";s:12:\"user_details\";a:1:{s:5:\"email\";s:0:\"\";}s:23:\"one_click_setup_enabled\";b:0;s:27:\"one_click_setup_credentials\";a:3:{s:12:\"access_token\";s:0:\"\";s:13:\"refresh_token\";s:0:\"\";s:7:\"expires\";s:0:\"\";}s:28:\"one_click_setup_user_details\";a:1:{s:5:\"email\";s:0:\"\";}}s:4:\"zoho\";a:6:{s:9:\"client_id\";s:0:\"\";s:13:\"client_secret\";s:0:\"\";s:6:\"domain\";s:3:\"com\";s:12:\"access_token\";a:0:{}s:13:\"refresh_token\";s:0:\"\";s:12:\"user_details\";a:1:{s:5:\"email\";s:0:\"\";}}s:4:\"logs\";a:5:{s:7:\"enabled\";b:0;s:17:\"log_email_content\";b:0;s:16:\"save_attachments\";b:0;s:19:\"open_email_tracking\";b:0;s:19:\"click_link_tracking\";b:0;}s:11:\"alert_email\";a:2:{s:7:\"enabled\";b:0;s:11:\"connections\";a:0:{}}s:7:\"license\";a:5:{s:3:\"key\";s:0:\"\";s:10:\"is_expired\";b:0;s:11:\"is_disabled\";b:0;s:10:\"is_invalid\";b:0;s:16:\"is_limit_reached\";b:0;}}','off'),
 (799,'wp_mail_smtp_activated_time','1792552257','off'),
 (800,'wp_mail_smtp_activated','a:1:{s:4:\"lite\";i:1792552257;}','auto'),
-(806,'action_scheduler_lock_async-request-runner','6ade02740c7151.06253240|1792934576','no'),
+(806,'action_scheduler_lock_async-request-runner','6ade08f17c0436.38192168|1792936237','no'),
 (809,'wp_mail_smtp_migration_version','5','on'),
 (810,'wp_mail_smtp_debug_events_db_version','1','on'),
 (811,'wp_mail_smtp_recommendations_migration_version','1','on'),
@@ -1055,7 +1055,7 @@ INSERT INTO `wp_options` VALUES
 (964,'newsletter_profile','a:1:{s:4:\"text\";s:0:\"\";}','auto'),
 (965,'newsletter_subscription','a:3:{s:17:\"subscription_text\";s:0:\"\";s:14:\"confirmed_text\";s:0:\"\";s:17:\"confirmation_text\";s:0:\"\";}','auto'),
 (966,'newsletter_version','9.4.8','auto'),
-(970,'newsletter_diagnostic_cron_calls','a:100:{i:0;i:1792720030;i:1;i:1792720125;i:2;i:1792720151;i:3;i:1792720246;i:4;i:1792720272;i:5;i:1792720403;i:6;i:1792720440;i:7;i:1792720524;i:8;i:1792720642;i:9;i:1792720764;i:10;i:1792720883;i:11;i:1792721447;i:12;i:1792721513;i:13;i:1792721540;i:14;i:1792721618;i:15;i:1792721665;i:16;i:1792721760;i:17;i:1792721881;i:18;i:1792722001;i:19;i:1792722063;i:20;i:1792722122;i:21;i:1792722186;i:22;i:1792722244;i:23;i:1792722364;i:24;i:1792723043;i:25;i:1792723045;i:26;i:1792723144;i:27;i:1792723210;i:28;i:1792723269;i:29;i:1792723330;i:30;i:1792723432;i:31;i:1792723437;i:32;i:1792723506;i:33;i:1792723620;i:34;i:1792723682;i:35;i:1792723750;i:36;i:1792723810;i:37;i:1792723862;i:38;i:1792723992;i:39;i:1792724113;i:40;i:1792724234;i:41;i:1792724355;i:42;i:1792724547;i:43;i:1792724951;i:44;i:1792725814;i:45;i:1792725984;i:46;i:1792726154;i:47;i:1792726178;i:48;i:1792726179;i:49;i:1792726247;i:50;i:1792726297;i:51;i:1792726358;i:52;i:1792726390;i:53;i:1792726525;i:54;i:1792726540;i:55;i:1792726671;i:56;i:1792726737;i:57;i:1792726792;i:58;i:1792726913;i:59;i:1792727034;i:60;i:1792727155;i:61;i:1792727286;i:62;i:1792727441;i:63;i:1792727497;i:64;i:1792727570;i:65;i:1792727590;i:66;i:1792727620;i:67;i:1792727727;i:68;i:1792727739;i:69;i:1792727833;i:70;i:1792727968;i:71;i:1792728089;i:72;i:1792728210;i:73;i:1792728331;i:74;i:1792729760;i:75;i:1792932836;i:76;i:1792932881;i:77;i:1792932936;i:78;i:1792932999;i:79;i:1792933106;i:80;i:1792933136;i:81;i:1792933237;i:82;i:1792933401;i:83;i:1792933526;i:84;i:1792933579;i:85;i:1792933644;i:86;i:1792933658;i:87;i:1792933715;i:88;i:1792933793;i:89;i:1792933913;i:90;i:1792933957;i:91;i:1792934008;i:92;i:1792934029;i:93;i:1792934143;i:94;i:1792934203;i:95;i:1792934261;i:96;i:1792934289;i:97;i:1792934381;i:98;i:1792934530;i:99;i:1792934563;}','off'),
+(970,'newsletter_diagnostic_cron_calls','a:100:{i:0;i:1792721540;i:1;i:1792721618;i:2;i:1792721665;i:3;i:1792721760;i:4;i:1792721881;i:5;i:1792722001;i:6;i:1792722063;i:7;i:1792722122;i:8;i:1792722186;i:9;i:1792722244;i:10;i:1792722364;i:11;i:1792723043;i:12;i:1792723045;i:13;i:1792723144;i:14;i:1792723210;i:15;i:1792723269;i:16;i:1792723330;i:17;i:1792723432;i:18;i:1792723437;i:19;i:1792723506;i:20;i:1792723620;i:21;i:1792723682;i:22;i:1792723750;i:23;i:1792723810;i:24;i:1792723862;i:25;i:1792723992;i:26;i:1792724113;i:27;i:1792724234;i:28;i:1792724355;i:29;i:1792724547;i:30;i:1792724951;i:31;i:1792725814;i:32;i:1792725984;i:33;i:1792726154;i:34;i:1792726178;i:35;i:1792726179;i:36;i:1792726247;i:37;i:1792726297;i:38;i:1792726358;i:39;i:1792726390;i:40;i:1792726525;i:41;i:1792726540;i:42;i:1792726671;i:43;i:1792726737;i:44;i:1792726792;i:45;i:1792726913;i:46;i:1792727034;i:47;i:1792727155;i:48;i:1792727286;i:49;i:1792727441;i:50;i:1792727497;i:51;i:1792727570;i:52;i:1792727590;i:53;i:1792727620;i:54;i:1792727727;i:55;i:1792727739;i:56;i:1792727833;i:57;i:1792727968;i:58;i:1792728089;i:59;i:1792728210;i:60;i:1792728331;i:61;i:1792729760;i:62;i:1792932836;i:63;i:1792932881;i:64;i:1792932936;i:65;i:1792932999;i:66;i:1792933106;i:67;i:1792933136;i:68;i:1792933237;i:69;i:1792933401;i:70;i:1792933526;i:71;i:1792933579;i:72;i:1792933644;i:73;i:1792933658;i:74;i:1792933715;i:75;i:1792933793;i:76;i:1792933913;i:77;i:1792933957;i:78;i:1792934008;i:79;i:1792934029;i:80;i:1792934143;i:81;i:1792934203;i:82;i:1792934261;i:83;i:1792934289;i:84;i:1792934381;i:85;i:1792934530;i:86;i:1792934563;i:87;i:1792934650;i:88;i:1792934770;i:89;i:1792934893;i:90;i:1792934973;i:91;i:1792934989;i:92;i:1792935412;i:93;i:1792935572;i:94;i:1792935604;i:95;i:1792935725;i:96;i:1792935846;i:97;i:1792935936;i:98;i:1792936057;i:99;i:1792936179;}','off'),
 (971,'newsletter_main','a:21:{s:11:\"return_path\";s:0:\"\";s:8:\"reply_to\";s:0:\"\";s:12:\"sender_email\";s:26:\"newsletter@wordpress.local\";s:11:\"sender_name\";s:7:\"GROUP B\";s:6:\"editor\";i:0;s:13:\"scheduler_max\";i:100;s:10:\"send_delay\";i:0;s:9:\"phpmailer\";i:0;s:5:\"debug\";i:0;s:5:\"track\";i:1;s:3:\"css\";s:0:\"\";s:12:\"css_disabled\";i:0;s:2:\"ip\";s:0:\"\";s:4:\"page\";i:1118;s:19:\"disable_cron_notice\";i:0;s:13:\"do_shortcodes\";i:1;s:5:\"links\";s:4:\"ajax\";s:8:\"schedule\";i:0;s:14:\"schedule_hours\";a:0:{}s:18:\"autorecovery_delay\";s:2:\"20\";s:14:\"tracking_links\";s:0:\"\";}','on'),
 (976,'newsletter_system_warnings','a:5:{s:7:\"updated\";i:1792714923;s:6:\"cached\";b:0;s:6:\"status\";i:0;s:9:\"scheduler\";i:1;s:5:\"total\";i:1;}','off'),
 (977,'newsletter_news_updated','1792650931','off'),
@@ -1078,8 +1078,6 @@ INSERT INTO `wp_options` VALUES
 (1284,'action_scheduler_migration_status','complete','auto'),
 (1412,'_transient_timeout_as_is_ensure_recurring_actions_scheduled','1792936434','off'),
 (1413,'_transient_as_is_ensure_recurring_actions_scheduled','1','off'),
-(1414,'_site_transient_timeout_wp_theme_files_patterns-cd0d817edc33e860eea56d5d56975aa9','1792934634','off'),
-(1415,'_site_transient_wp_theme_files_patterns-cd0d817edc33e860eea56d5d56975aa9','a:2:{s:7:\"version\";s:5:\"1.1.9\";s:8:\"patterns\";a:0:{}}','off'),
 (1420,'_transient_timeout_wpjmcom_b7f3032dda823a9809b579f2bc5788dc','1793019284','off'),
 (1421,'_transient_wpjmcom_b7f3032dda823a9809b579f2bc5788dc','a:2:{s:8:\"_fetched\";i:1792932884;s:12:\"_remote_data\";a:1:{s:7:\"notices\";a:1:{s:18:\"core-bundle-addons\";a:8:{s:4:\"type\";s:9:\"site-wide\";s:5:\"level\";s:4:\"info\";s:4:\"icon\";N;s:7:\"heading\";s:37:\"Do you need multiple core extensions?\";s:7:\"message\";s:81:\"Get all of the core extensions together for one low price — from $159 per year.\";s:7:\"actions\";a:1:{i:0;a:4:{s:5:\"label\";s:10:\"Learn more\";s:3:\"url\";s:107:\"https://wpjobmanager.com/add-ons/bundle/?utm_source=plugin_wpjm&utm_medium=add-ons&utm_campaign=core-bundle\";s:7:\"primary\";b:1;s:6:\"target\";s:6:\"_blank\";}}s:10:\"conditions\";a:1:{i:0;a:2:{s:4:\"type\";s:7:\"screens\";s:7:\"screens\";a:2:{i:0;s:35:\"job_listing_page_job-manager-addons\";i:1;s:40:\"job_listing_page_job-manager-marketplace\";}}}s:11:\"dismissible\";b:0;}}}}','off'),
 (1422,'_transient_timeout_action_scheduler_last_pastdue_actions_check','1792954484','off'),
@@ -1092,12 +1090,16 @@ INSERT INTO `wp_options` VALUES
 (1432,'_transient_jm_promote-jobs-template_en_US','\n				<style>\n					.promote-job-modal {\n						display: flex;\n						gap: 40px;\n						width: 820px;\n						max-width: 70vw;\n						padding: 30px 80px 50px 80px;\n					}\n					.promote-job-modal-column-left,\n					.promote-job-modal-column-right {\n						flex: 1;\n					}\n					img.promote-jobs-image {\n						display: block;\n						width: 100%;\n					}\n					h2.promote-jobs-heading {\n						font-size: 39px;\n						font-weight: 400;\n						line-height: 105%;\n						margin: 0 0 24px;\n					}\n					.promote-job-modal-column-left {\n						display: flex;\n						justify-content: space-between;\n						flex-direction: column;\n					}\n					.promote-list {\n						margin: 0 0 24px;\n						padding: 0;\n						list-style: none;\n					}\n					li.promote-list-item {\n						background: url(\"data:image/svg+xml,<svg width=\\\"24\\\" height=\\\"24\\\" viewBox=\\\"0 0 24 24\\\" fill=\\\"none\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\"><mask id=\\\"mask0_20018663_2259\\\" style=\\\"mask-type:luminance\\\" maskUnits=\\\"userSpaceOnUse\\\" x=\\\"3\\\" y=\\\"5\\\" width=\\\"18\\\" height=\\\"14\\\"><path d=\\\"M8.75685 15.9L4.57746 11.7L3.18433 13.1L8.75685 18.7L20.698 6.69999L19.3049 5.29999L8.75685 15.9Z\\\" fill=\\\"white\\\"/></mask><g mask=\\\"url%28%23mask0_20018663_2259%29\\\"><rect width=\\\"23.8823\\\" height=\\\"24\\\" fill=\\\"%232270B1\\\"/></g></svg>\") no-repeat 0 -3px;\n						font-size: 14px;\n						list-style: none;\n						padding-left: 32px;\n						margin: 12px 0;\n					}\n					.promote-buttons-group .button {\n						padding: 10px 16px;\n						border-radius: 2px;\n						margin-right: 18px;\n						border: 0;\n					}\n					.promote-buttons-group .button-primary {\n						background: #2270b1;\n						color: #fff;\n					}\n					.promote-buttons-group .button-secondary {\n						background: #fff;\n						color: #2270B1;\n						border: 1px solid #2270B1;\n					}\n					@media screen and (max-width: 1000px) {\n						.promote-job-modal-column-right {\n							display: none;\n						}\n					}\n					@media screen and (max-width: 782px) {\n						.promote-job-modal {\n							padding: 0px 25px 25px;\n						}\n					}\n				</style>\n				<div class=\"promote-job-modal\">\n					<div class=\"promote-job-modal-column-left\">\n						<div class=\"promote-job-modal-features\">\n							<h2 class=\"promote-jobs-heading\">\n								Promote your job on our partner network\n							</h2>\n\n							<ul class=\"promote-list\">\n								<li class=\"promote-list-item\">Post jobs to over 25,000 job sites</li>\n								<li class=\"promote-list-item\">Powered by JobTarget.com</li>\n							</ul>\n						</div>\n\n						<slot name=\"buttons\" class=\"promote-buttons-group\">\n							An error occured loading the promote feature.\n							<a class=\"promote-button button button-secondary\" target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://wpjobmanager.com/jobtarget?utm_source=plugin_wpjm&utm_medium=promote-dialog&utm_campaign=promoted-jobs\">Learn More</a>\n						</slot>\n					</div>\n					<div class=\"promote-job-modal-column-right\">\n						<img class=\"promote-jobs-image\" src=\"https://wpjobmanager.com/wp-content/uploads/2023/07/promoted-jobs-right.png\" alt=\"Reach thousands of potential applicants with one job post.\" />\n					</div>\n				</div>\n			','off'),
 (1445,'_transient_timeout_wpjm_u_2dd40f57ee65e5c28dbd0a4decad79c4','1793020046','off'),
 (1446,'_transient_wpjm_u_2dd40f57ee65e5c28dbd0a4decad79c4','1','off'),
-(1460,'_transient_timeout_newsletter_topbar','1792934834','off'),
-(1461,'_transient_newsletter_topbar','a:3:{s:5:\"count\";s:1:\"0\";s:5:\"total\";N;s:4:\"sent\";N;}','off'),
-(1465,'_transient_timeout_wpjm_rl_269e6c9cb28db04d1f0a5fbd76f2519e','1792934443','off'),
-(1466,'_transient_wpjm_rl_269e6c9cb28db04d1f0a5fbd76f2519e','a:2:{s:5:\"count\";i:1;s:5:\"start\";i:1792934383;}','off'),
 (1468,'_transient_jm_get_job_listing_category-transient-version','1792934562','on'),
-(1478,'job_listing_category_children','a:0:{}','auto');
+(1478,'job_listing_category_children','a:0:{}','auto'),
+(1480,'_site_transient_timeout_wp_theme_files_patterns-cd0d817edc33e860eea56d5d56975aa9','1792936436','off'),
+(1481,'_site_transient_wp_theme_files_patterns-cd0d817edc33e860eea56d5d56975aa9','a:2:{s:7:\"version\";s:5:\"1.1.9\";s:8:\"patterns\";a:0:{}}','off'),
+(1491,'_transient_timeout_wpjm_u_0a69c09ad3f7c6f07e41126d256f7fe5','1793021390','off'),
+(1492,'_transient_wpjm_u_0a69c09ad3f7c6f07e41126d256f7fe5','1','off'),
+(1493,'_transient_timeout_newsletter_topbar','1792936010','off'),
+(1494,'_transient_newsletter_topbar','a:3:{s:5:\"count\";s:1:\"0\";s:5:\"total\";N;s:4:\"sent\";N;}','off'),
+(1497,'_transient_timeout_wpjm_rl_269e6c9cb28db04d1f0a5fbd76f2519e','1792935632','off'),
+(1498,'_transient_wpjm_rl_269e6c9cb28db04d1f0a5fbd76f2519e','a:2:{s:5:\"count\";i:1;s:5:\"start\";i:1792935572;}','off');
 /*!40000 ALTER TABLE `wp_options` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1116,7 +1118,7 @@ CREATE TABLE `wp_postmeta` (
   PRIMARY KEY (`meta_id`),
   KEY `post_id` (`post_id`),
   KEY `meta_key` (`meta_key`(191))
-) ENGINE=InnoDB AUTO_INCREMENT=1984 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2015 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2949,7 +2951,33 @@ INSERT INTO `wp_postmeta` VALUES
 (1980,1166,'_job_overview','Văn phòng Tổng Giám đốc FPT Software - Nơi điều phối các chiến lược vươn tầm thế giới của công ty công nghệ số 1.'),
 (1981,1166,'_job_skills','Kỹ năng quản trị thời gian, bảo mật thông tin tuyệt đối, tiếng Anh IELTS 7.5+ hoặc tiếng Nhật N2+.'),
 (1982,1166,'_job_love_working_here','- Cơ hội học hỏi tư duy quản trị trực tiếp từ các lãnh đạo cấp cao nhất.\n- Môi trường làm việc năng động, nhiều cơ hội công tác quốc tế.'),
-(1983,1166,'_job_location_desc','FPT Tower, Cầu Giấy, Hà Nội.');
+(1983,1166,'_job_location_desc','FPT Tower, Cầu Giấy, Hà Nội.'),
+(1984,1113,'_application','careers@careerhub.local'),
+(1985,1061,'_application','careers@careerhub.local'),
+(1986,1062,'_application','careers@careerhub.local'),
+(1987,1063,'_application','careers@careerhub.local'),
+(1988,1064,'_application','careers@careerhub.local'),
+(1989,1065,'_application','careers@careerhub.local'),
+(1990,1066,'_application','careers@careerhub.local'),
+(1991,1067,'_application','careers@careerhub.local'),
+(1992,1068,'_application','careers@careerhub.local'),
+(1993,1069,'_application','careers@careerhub.local'),
+(1994,1070,'_application','careers@careerhub.local'),
+(1995,1071,'_application','careers@careerhub.local'),
+(1996,1072,'_application','careers@careerhub.local'),
+(1997,1073,'_application','careers@careerhub.local'),
+(1998,1074,'_application','careers@careerhub.local'),
+(1999,1075,'_application','careers@careerhub.local'),
+(2000,1076,'_application','careers@careerhub.local'),
+(2001,1077,'_application','careers@careerhub.local'),
+(2002,1078,'_application','careers@careerhub.local'),
+(2003,1079,'_application','careers@careerhub.local'),
+(2004,1080,'_application','careers@careerhub.local'),
+(2005,1081,'_application','careers@careerhub.local'),
+(2006,1082,'_application','careers@careerhub.local'),
+(2007,1083,'_application','careers@careerhub.local'),
+(2008,1084,'_application','careers@careerhub.local'),
+(2009,1085,'_application','careers@careerhub.local');
 /*!40000 ALTER TABLE `wp_postmeta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4190,7 +4218,7 @@ CREATE TABLE `wp_wpjm_stats` (
   `count` bigint(20) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_wpjm_stats_name_date_group_post_id` (`name`,`date`,`group`,`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4231,10 +4259,12 @@ INSERT INTO `wp_wpjm_stats` VALUES
 (61,'2026-10-23',1085,'job_view_unique','',1),
 (66,'2026-10-23',1077,'job_view','',2),
 (67,'2026-10-23',1077,'job_view_unique','',1),
-(71,'2026-10-25',16,'search_view','',8),
+(71,'2026-10-25',16,'search_view','',10),
 (72,'2026-10-25',16,'search_view_unique','',1),
 (75,'2026-10-25',1145,'job_view','',1),
-(76,'2026-10-25',1145,'job_view_unique','',1);
+(76,'2026-10-25',1145,'job_view_unique','',1),
+(83,'2026-10-25',1066,'job_view','',1),
+(84,'2026-10-25',1066,'job_view_unique','',1);
 /*!40000 ALTER TABLE `wp_wpjm_stats` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4298,4 +4328,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-25 13:23:00
+-- Dump completed on 2026-10-25 13:50:30

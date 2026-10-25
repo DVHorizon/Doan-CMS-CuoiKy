@@ -129,19 +129,75 @@ function jobscout_customize_register_job_single_page( $wp_customize ) {
     $wp_customize->add_setting(
         'job_single_apply_url',
         array(
-            'default'           => '#job-apply-section',
-            'sanitize_callback' => 'esc_url_raw',
+            'default'           => '#apply-modal',
+            'sanitize_callback' => 'sanitize_text_field',
         )
     );
     $wp_customize->add_control(
         'job_single_apply_url',
         array(
-            'label'       => __( 'Link Nút APPLY JOB (Để #job-apply-section nếu muốn cuộn xuống form)', 'jobscout' ),
+            'label'       => __( 'Hành động nút APPLY JOB (Mặc định: #apply-modal để mở popup nộp CV)', 'jobscout' ),
+            'description' => __( 'Nhập #apply-modal để mở popup nộp hồ sơ kèm upload CV, hoặc nhập đường dẫn URL/email khác.', 'jobscout' ),
             'section'     => 'job_single_settings',
             'type'        => 'text',
             'priority'    => 40,
         )
     );
+
+    // Apply Modal Title
+    $wp_customize->add_setting(
+        'job_single_modal_title',
+        array(
+            'default'           => 'Ứng tuyển công việc',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_modal_title',
+        array(
+            'label'    => __( 'Tiêu đề Popup Nộp Hồ Sơ', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'text',
+            'priority' => 42,
+        )
+    );
+
+    // Apply Modal Subtitle
+    $wp_customize->add_setting(
+        'job_single_modal_subtitle',
+        array(
+            'default'           => 'Vui lòng điền thông tin và đính kèm CV (PDF, DOC, DOCX tối đa 10MB)',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_modal_subtitle',
+        array(
+            'label'    => __( 'Mô tả hướng dẫn trong Popup', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'text',
+            'priority' => 44,
+        )
+    );
+
+    // Apply Modal Submit Button
+    $wp_customize->add_setting(
+        'job_single_modal_submit_text',
+        array(
+            'default'           => 'GỬI HỒ SƠ ỨNG TUYỂN',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_single_modal_submit_text',
+        array(
+            'label'    => __( 'Nút gửi trong Popup', 'jobscout' ),
+            'section'  => 'job_single_settings',
+            'type'     => 'text',
+            'priority' => 46,
+        )
+    );
+
 
     /* ==========================================
        2. BỐN PHẦN NỘI DUNG CHÍNH (LEFT COLUMN)
