@@ -198,6 +198,68 @@ function jobscout_customize_register_job_single_page( $wp_customize ) {
         )
     );
 
+    /* ==========================================
+       1.1 CẤU HÌNH GIAO DIỆN EMAIL THÔNG BÁO (HTML EMAIL)
+       ========================================== */
+    // Email Header Color
+    $wp_customize->add_setting(
+        'job_email_primary_color',
+        array(
+            'default'           => '#ea580c',
+            'sanitize_callback' => 'sanitize_hex_color',
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'job_email_primary_color',
+            array(
+                'label'       => __( 'Màu sắc chủ đạo Email thông báo', 'jobscout' ),
+                'description' => __( 'Tùy chỉnh màu header và nút bấm trong email gửi đến nhà tuyển dụng.', 'jobscout' ),
+                'section'     => 'job_single_settings',
+                'priority'    => 47,
+            )
+        )
+    );
+
+    // Email Header Brand Title
+    $wp_customize->add_setting(
+        'job_email_brand_title',
+        array(
+            'default'           => 'CAREERHUB - THÔNG BÁO ỨNG TUYỂN MỚI',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+    $wp_customize->add_control(
+        'job_email_brand_title',
+        array(
+            'label'       => __( 'Tiêu đề Banner trong Email', 'jobscout' ),
+            'section'     => 'job_single_settings',
+            'type'        => 'text',
+            'priority'    => 48,
+        )
+    );
+
+    // Default Recipient Email
+    $wp_customize->add_setting(
+        'job_email_recipient',
+        array(
+            'default'           => 'nhanbao410@gmail.com',
+            'sanitize_callback' => 'sanitize_email',
+        )
+    );
+    $wp_customize->add_control(
+        'job_email_recipient',
+        array(
+            'label'       => __( 'Email nhận hồ sơ mặc định', 'jobscout' ),
+            'description' => __( 'Địa chỉ email sẽ nhận thông báo ứng tuyển (nếu bài đăng công việc dùng email nội bộ/ảo).', 'jobscout' ),
+            'section'     => 'job_single_settings',
+            'type'        => 'email',
+            'priority'    => 49,
+        )
+    );
+
+
 
     /* ==========================================
        2. BỐN PHẦN NỘI DUNG CHÍNH (LEFT COLUMN)
