@@ -20,6 +20,27 @@ function jobscout_customize_register_job_single_page( $wp_customize ) {
     );
 
     /* ==========================================
+       0. HIỂN THỊ BANNER ĐẦU TRANG (HEADER BANNER)
+       ========================================== */
+    $wp_customize->add_setting(
+        'ed_job_banner',
+        array(
+            'default'           => false,
+            'sanitize_callback' => 'jobscout_sanitize_checkbox',
+        )
+    );
+    $wp_customize->add_control(
+        'ed_job_banner',
+        array(
+            'label'       => __( 'Bật Banner hình ảnh cô gái ở đầu trang chi tiết', 'jobscout' ),
+            'description' => __( 'Tắt tùy chọn này để trang chi tiết bắt đầu ngay từ Breadcrumbs và thông tin việc làm, không bị ảnh banner lớn che khuất.', 'jobscout' ),
+            'section'     => 'job_single_settings',
+            'type'        => 'checkbox',
+            'priority'    => 5,
+        )
+    );
+
+    /* ==========================================
        1. BREADCRUMBS & NÚT HÀNH ĐỘNG
        ========================================== */
     $wp_customize->add_setting(
