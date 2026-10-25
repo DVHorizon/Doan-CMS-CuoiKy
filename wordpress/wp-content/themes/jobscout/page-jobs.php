@@ -78,11 +78,21 @@ $jobs_query = new WP_Query( $jobs_args );
                 </div>
 
                 <!-- NÚT LOAD MORE JOBS -->
-                <div class="all-jobs-loadmore-wrap">
-                    <button type="button" id="btn-load-more-jobs" class="btn-load-more-jobs">
-                        <?php echo esc_html( $load_more_text ); ?>
-                    </button>
-                </div>
+                <?php if ( $jobs_query->max_num_pages > 1 ) : ?>
+                    <div class="all-jobs-loadmore-wrap">
+                        <button type="button" id="btn-load-more-jobs" class="btn-load-more-jobs" 
+                                data-page="1" 
+                                data-max-pages="<?php echo esc_attr( $jobs_query->max_num_pages ); ?>">
+                            <?php echo esc_html( $load_more_text ); ?>
+                        </button>
+                    </div>
+                <?php else : ?>
+                    <div class="all-jobs-loadmore-wrap">
+                        <button type="button" id="btn-load-more-jobs" class="btn-load-more-jobs" style="opacity:0.6; cursor:default;" disabled>
+                            ALL JOBS LOADED
+                        </button>
+                    </div>
+                <?php endif; ?>
             <?php else : ?>
                 <div class="no-jobs-found">
                     <p><?php echo esc_html( $no_jobs_text ); ?></p>
@@ -99,56 +109,122 @@ document.addEventListener('DOMContentLoaded', function() {
     const sortSelect = document.getElementById('all-jobs-sort-select');
     const jobsGrid   = document.getElementById('all-jobs-grid');
     const loadMoreBtn = document.getElementById('btn-load-more-jobs');
+    const ajaxUrl    = '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>';
 
     if (!jobsGrid) return;
 
-    // Lọc theo dropdown Sort/Filter
+    // Lọc và tải lại danh sách theo tiêu chí Sort/Filter
     if (sortSelect) {
         sortSelect.addEventListener('change', function() {
             const val = this.value;
-            const cards = Array.from(jobsGrid.querySelectorAll('.all-jobs-card'));
+            if (!loadMoreBtn) return;
 
-            if (val === 'latest') {
-                cards.forEach(c => c.style.display = 'flex');
-            } else if (val === 'oldest') {
-                cards.reverse().forEach(c => {
-                    jobsGrid.appendChild(c);
-                    c.style.display = 'flex';
-                });
-            } else if (val === 'full-time' || val === 'part-time') {
-                cards.forEach(c => {
-                    const type = c.getAttribute('data-job-type') || '';
-                    if (type.includes(val)) {
-                        c.style.display = 'flex';
+            loadMoreBtn.disabled = true;
+            loadMoreBtn.innerHTML = '<span>Loading...</span>';
+
+            const formData = new FormData();
+            formData.append('action', 'load_more_jobs');
+            formData.append('page', 1);
+            formData.append('sort', val);
+
+            fetch(ajaxUrl, {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    jobsGrid.innerHTML = data.data.html;
+                    loadMoreBtn.setAttribute('data-page', '1');
+                    loadMoreBtn.setAttribute('data-max-pages', data.data.max_pages);
+
+                    if (data.data.has_more) {
+                        loadMoreBtn.disabled = false;
+                        loadMoreBtn.style.opacity = '1';
+                        loadMoreBtn.innerHTML = '<?php echo esc_js( $load_more_text ); ?>';
                     } else {
-                        c.style.display = 'none';
+                        loadMoreBtn.disabled = true;
+                        loadMoreBtn.style.opacity = '0.6';
+                        loadMoreBtn.innerHTML = 'ALL JOBS LOADED';
                     }
-                });
-            }
+                } else {
+                    jobsGrid.innerHTML = '<div class="no-jobs-found"><p><?php echo esc_js( $no_jobs_text ); ?></p></div>';
+                    loadMoreBtn.disabled = true;
+                    loadMoreBtn.style.opacity = '0.6';
+                    loadMoreBtn.innerHTML = 'ALL JOBS LOADED';
+                }
+            })
+            .catch(() => {
+                loadMoreBtn.disabled = false;
+                loadMoreBtn.innerHTML = '<?php echo esc_js( $load_more_text ); ?>';
+            });
         });
     }
 
-    // Nút Load More Jobs hiệu ứng mượt
+    // Nút Load More Jobs tải tiếp các trang sau qua AJAX
     if (loadMoreBtn) {
-        let loaded = false;
         loadMoreBtn.addEventListener('click', function() {
-            this.innerHTML = '<span>Loading...</span>';
-            setTimeout(() => {
-                // Nhân bản hoặc hiển thị thêm các việc
-                const cards = jobsGrid.querySelectorAll('.all-jobs-card');
-                cards.forEach(c => {
-                    const clone = c.cloneNode(true);
-                    clone.style.opacity = '0';
-                    jobsGrid.appendChild(clone);
-                    setTimeout(() => {
-                        clone.style.transition = 'opacity 0.4s ease';
-                        clone.style.opacity = '1';
-                    }, 50);
-                });
+            const currentPage = parseInt(this.getAttribute('data-page') || '1', 10);
+            const maxPages = parseInt(this.getAttribute('data-max-pages') || '1', 10);
+            const nextPage = currentPage + 1;
+            const sortVal = sortSelect ? sortSelect.value : 'latest';
+
+            if (nextPage > maxPages) {
                 this.innerHTML = 'ALL JOBS LOADED';
                 this.style.opacity = '0.6';
                 this.disabled = true;
-            }, 600);
+                return;
+            }
+
+            const originalText = this.innerHTML;
+            this.innerHTML = '<span>Loading...</span>';
+            this.disabled = true;
+
+            const formData = new FormData();
+            formData.append('action', 'load_more_jobs');
+            formData.append('page', nextPage);
+            formData.append('sort', sortVal);
+
+            fetch(ajaxUrl, {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.data.html) {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data.data.html;
+                    const newCards = Array.from(tempDiv.children);
+
+                    newCards.forEach(card => {
+                        card.style.opacity = '0';
+                        jobsGrid.appendChild(card);
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.4s ease';
+                            card.style.opacity = '1';
+                        }, 50);
+                    });
+
+                    this.setAttribute('data-page', nextPage);
+
+                    if (data.data.has_more) {
+                        this.disabled = false;
+                        this.innerHTML = '<?php echo esc_js( $load_more_text ); ?>';
+                    } else {
+                        this.innerHTML = 'ALL JOBS LOADED';
+                        this.style.opacity = '0.6';
+                        this.disabled = true;
+                    }
+                } else {
+                    this.innerHTML = 'ALL JOBS LOADED';
+                    this.style.opacity = '0.6';
+                    this.disabled = true;
+                }
+            })
+            .catch(() => {
+                this.disabled = false;
+                this.innerHTML = originalText;
+            });
         });
     }
 });
