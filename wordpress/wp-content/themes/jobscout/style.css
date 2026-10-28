@@ -8174,13 +8174,13 @@ RESPONSIVE STYLESHEET
 }
 
 .jos-footer-newsletter-section {
-  padding: 30px 0;
+  padding: 0 !important;
 }
 
 .jos-newsletter-bar {
   width: 100%;
   background-color: #ea6b1d !important;
-  padding: 24px 20px;
+  padding: 16px 20px !important;
   box-sizing: border-box;
 }
 
@@ -8330,7 +8330,10 @@ RESPONSIVE STYLESHEET
   }
 }
 
-
+.jos-footer-centered-section {
+  background-color: #f7f7f7 !important;
+  padding: 24px 20px 20px !important;
+}
 
 .jos-brand-footer-wrap {
   display: flex;
@@ -8343,7 +8346,7 @@ RESPONSIVE STYLESHEET
 
 /* Brand Title / Logo */
 .jos-brand-title-wrap {
-  margin-bottom: 28px;
+  margin-bottom: 14px !important;
 }
 
 .jos-brand-link {
@@ -8352,23 +8355,23 @@ RESPONSIVE STYLESHEET
 }
 
 .jos-brand-name {
-  font-size: 26px;
+  font-size: 22px !important;
   font-weight: 800;
   color: #111111;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
   display: inline-block;
   line-height: 1.2;
 }
 
 .jos-footer-logo {
-  max-height: 50px;
+  max-height: 40px !important;
   width: auto;
   display: block;
 }
 
 /* Menu horizontal */
 .jos-footer-nav-wrap {
-  margin-bottom: 30px;
+  margin-bottom: 16px !important;
   width: 100%;
 }
 
