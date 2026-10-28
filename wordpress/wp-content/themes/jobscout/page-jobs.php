@@ -25,7 +25,11 @@ if ( $posts_per_page <= 0 ) {
 $load_more_text = get_theme_mod( 'jobs_load_more_text', 'LOAD MORE JOBS' );
 $no_jobs_text   = get_theme_mod( 'jobs_no_jobs_text', __( 'Hiện tại chưa có vị trí tuyển dụng nào khả dụng.', 'jobscout' ) );
 
-// 2. Query danh sách công việc còn hạn
+// 2. Nhận tham số tìm kiếm từ Banner trang chủ (GET)
+$search_keywords = isset( $_GET['search_keywords'] ) ? sanitize_text_field( wp_unslash( $_GET['search_keywords'] ) ) : '';
+$search_location = isset( $_GET['search_location'] ) ? sanitize_text_field( wp_unslash( $_GET['search_location'] ) ) : '';
+
+// Query danh sách công việc còn hạn
 $jobs_args = array(
     'post_type'      => 'job_listing',
     'post_status'    => 'publish',
@@ -33,6 +37,20 @@ $jobs_args = array(
     'orderby'        => 'date',
     'order'          => 'DESC',
 );
+
+if ( ! empty( $search_keywords ) ) {
+    $jobs_args['s'] = $search_keywords;
+}
+
+if ( ! empty( $search_location ) ) {
+    $jobs_args['meta_query'] = array(
+        array(
+            'key'     => '_job_location',
+            'value'   => $search_location,
+            'compare' => 'LIKE',
+        ),
+    );
+}
 
 $jobs_query = new WP_Query( $jobs_args );
 ?>
@@ -53,7 +71,21 @@ $jobs_query = new WP_Query( $jobs_args );
             
             <!-- HEADER BAR: TITLE + SORT DROPDOWN -->
             <div class="all-jobs-header-bar">
-                <h2 class="all-jobs-heading"><?php echo esc_html( $page_title ); ?></h2>
+                <div>
+                    <h2 class="all-jobs-heading"><?php echo esc_html( $page_title ); ?></h2>
+                    <?php if ( ! empty( $search_keywords ) || ! empty( $search_location ) ) : ?>
+                        <div class="search-filter-active-bar" style="margin-top: 6px; font-size: 14px; color: #64748b; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                            <span>Kết quả tìm kiếm:</span>
+                            <?php if ( ! empty( $search_keywords ) ) : ?>
+                                <span style="background: #e2e8f0; color: #1e293b; padding: 2px 10px; border-radius: 999px; font-weight: 500;">Từ khóa: "<?php echo esc_html( $search_keywords ); ?>"</span>
+                            <?php endif; ?>
+                            <?php if ( ! empty( $search_location ) ) : ?>
+                                <span style="background: #e2e8f0; color: #1e293b; padding: 2px 10px; border-radius: 999px; font-weight: 500;">Khu vực: "<?php echo esc_html( $search_location ); ?>"</span>
+                            <?php endif; ?>
+                            <a href="<?php echo esc_url( home_url( '/jobs/' ) ); ?>" style="color: #ea6a1b; text-decoration: underline; font-size: 13px; margin-left: 4px;">✕ Xóa bộ lọc</a>
+                        </div>
+                    <?php endif; ?>
+                </div>
                 
                 <div class="all-jobs-filter-wrap">
                     <select id="all-jobs-sort-select" class="all-jobs-select">
@@ -126,6 +158,8 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('action', 'load_more_jobs');
             formData.append('page', 1);
             formData.append('sort', val);
+            formData.append('search_keywords', <?php echo json_encode( $search_keywords ); ?>);
+            formData.append('search_location', <?php echo json_encode( $search_location ); ?>);
 
             fetch(ajaxUrl, {
                 method: 'POST',
@@ -184,6 +218,8 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('action', 'load_more_jobs');
             formData.append('page', nextPage);
             formData.append('sort', sortVal);
+            formData.append('search_keywords', <?php echo json_encode( $search_keywords ); ?>);
+            formData.append('search_location', <?php echo json_encode( $search_location ); ?>);
 
             fetch(ajaxUrl, {
                 method: 'POST',

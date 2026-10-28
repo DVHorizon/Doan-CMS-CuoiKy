@@ -172,6 +172,8 @@ function jobscout_ajax_load_more_jobs() {
     }
 
     $sort = isset( $_POST['sort'] ) ? sanitize_text_field( $_POST['sort'] ) : 'latest';
+    $search_keywords = isset( $_POST['search_keywords'] ) ? sanitize_text_field( wp_unslash( $_POST['search_keywords'] ) ) : '';
+    $search_location = isset( $_POST['search_location'] ) ? sanitize_text_field( wp_unslash( $_POST['search_location'] ) ) : '';
 
     $args = array(
         'post_type'      => 'job_listing',
@@ -181,6 +183,20 @@ function jobscout_ajax_load_more_jobs() {
         'orderby'        => 'date',
         'order'          => ( $sort === 'oldest' ) ? 'ASC' : 'DESC',
     );
+
+    if ( ! empty( $search_keywords ) ) {
+        $args['s'] = $search_keywords;
+    }
+
+    if ( ! empty( $search_location ) ) {
+        $args['meta_query'] = array(
+            array(
+                'key'     => '_job_location',
+                'value'   => $search_location,
+                'compare' => 'LIKE',
+            ),
+        );
+    }
 
     if ( in_array( $sort, array( 'full-time', 'part-time', 'freelance', 'internship' ), true ) ) {
         $args['tax_query'] = array(
