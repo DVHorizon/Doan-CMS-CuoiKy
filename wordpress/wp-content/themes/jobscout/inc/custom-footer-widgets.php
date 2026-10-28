@@ -56,12 +56,26 @@ class JobScout_Newsletter_Widget extends WP_Widget {
         echo $args['before_widget'];
         ?>
         <style>
+            .jos-footer-newsletter-section {
+                padding: 0 !important;
+                margin: 0 !important;
+                background-color: #ea6b1d !important;
+            }
+            .jos-footer-newsletter-section .widget,
+            .jos-footer-newsletter-section .custom-footer-widget,
+            .jos-footer-newsletter-section .widget_jobscout_newsletter_widget,
+            .widget_jobscout_newsletter_widget {
+                margin: 0 !important;
+                padding: 0 !important;
+                background-color: #ea6b1d !important;
+            }
             .jos-newsletter-bar {
                 background-color: #ea6b1d !important;
-                padding: 24px 20px !important;
+                padding: 16px 20px !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
-                border-radius: 4px;
+                border-radius: 0 !important;
+                margin: 0 !important;
             }
             .jos-newsletter-inner {
                 max-width: 1140px !important;
@@ -644,10 +658,16 @@ class JobScout_Brand_Social_Widget extends WP_Widget {
         <style>
             .jos-footer-centered-section {
                 background-color: #f7f7f7 !important;
-                padding: 48px 20px 40px !important;
+                padding: 24px 20px 20px !important;
                 text-align: center !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
+                margin: 0 !important;
+            }
+            .jos-footer-centered-section .widget,
+            .jos-footer-centered-section .footer-centered-widget {
+                margin: 0 !important;
+                padding: 0 !important;
             }
             .jos-brand-footer-wrap {
                 display: flex !important;
@@ -659,28 +679,28 @@ class JobScout_Brand_Social_Widget extends WP_Widget {
                 box-sizing: border-box !important;
             }
             .jos-brand-title-wrap {
-                margin-bottom: 24px !important;
+                margin-bottom: 14px !important;
             }
             .jos-brand-link {
                 text-decoration: none !important;
                 display: inline-block !important;
             }
             .jos-brand-name {
-                font-size: 24px !important;
+                font-size: 22px !important;
                 font-weight: 800 !important;
                 color: #111111 !important;
-                letter-spacing: -0.5px !important;
+                letter-spacing: -0.4px !important;
                 display: inline-block !important;
                 line-height: 1.2 !important;
             }
             .jos-footer-logo {
-                max-height: 48px !important;
+                max-height: 40px !important;
                 width: auto !important;
                 display: block !important;
                 margin: 0 auto !important;
             }
             .jos-footer-nav-wrap {
-                margin-bottom: 26px !important;
+                margin-bottom: 16px !important;
                 width: 100% !important;
             }
             .jos-footer-menu {
