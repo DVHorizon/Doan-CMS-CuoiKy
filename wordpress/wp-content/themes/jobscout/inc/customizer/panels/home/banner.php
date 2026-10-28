@@ -42,9 +42,9 @@ function jobscout_customize_register_frontpage_banner( $wp_customize ) {
     $wp_customize->add_setting(
         'banner_title',
         array(
-            'default'           => __( 'Aim Higher, Dream Bigger', 'jobscout' ),
+            'default'           => __( 'FIND YOUR DREAM JOBS', 'jobscout' ),
             'sanitize_callback' => 'sanitize_text_field',
-            'transport'         => 'postMessage'
+            'transport'         => 'refresh'
         )
     );
     
@@ -54,37 +54,89 @@ function jobscout_customize_register_frontpage_banner( $wp_customize ) {
             'label'           => __( 'Title', 'jobscout' ),
             'section'         => 'header_image',
             'type'            => 'text',
+            'priority'        => 10
         )
     );
-    
-    $wp_customize->selective_refresh->add_partial( 'banner_title', array(
-        'selector' => '.site-banner .banner-caption h2.title',
-        'render_callback' => 'jobscout_get_banner_title',
-    ) );
     
     /** Sub Title */
     $wp_customize->add_setting(
         'banner_subtitle',
         array(
-            'default'           => __( 'Each month, more than 7 million JobScout turn to website in their search for work, making over 160,000 applications every day.', 'jobscout' ),
+            'default'           => __( "The secret behind our company is simple: to always put ourselves in the other person's shoes-employee, guest or customer. This allows us to see the world through their eyes, anticipate their needs and better understand their feelings.", 'jobscout' ),
             'sanitize_callback' => 'wp_kses_post',
-            'transport'         => 'postMessage'
+            'transport'         => 'refresh'
         )
     );
     
     $wp_customize->add_control(
         'banner_subtitle',
         array(
-            'label'           => __( 'Sub Title', 'jobscout' ),
+            'label'           => __( 'Sub Title / Description', 'jobscout' ),
             'section'         => 'header_image',
             'type'            => 'textarea',
+            'priority'        => 15
         )
     );
-    
-    $wp_customize->selective_refresh->add_partial( 'banner_subtitle', array(
-        'selector'        => '.site-banner .banner-caption .description',
-        'render_callback' => 'jobscout_get_banner_sub_title',
-    ) );
+
+    /** Search Keywords Placeholder */
+    $wp_customize->add_setting(
+        'banner_search_placeholder',
+        array(
+            'default'           => __( 'Search for jobs, companies, skills', 'jobscout' ),
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'refresh'
+        )
+    );
+
+    $wp_customize->add_control(
+        'banner_search_placeholder',
+        array(
+            'label'           => __( 'Search Keywords Placeholder', 'jobscout' ),
+            'section'         => 'header_image',
+            'type'            => 'text',
+            'priority'        => 20
+        )
+    );
+
+    /** Location Dropdown Label */
+    $wp_customize->add_setting(
+        'banner_search_location_label',
+        array(
+            'default'           => __( 'Khu vực', 'jobscout' ),
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'refresh'
+        )
+    );
+
+    $wp_customize->add_control(
+        'banner_search_location_label',
+        array(
+            'label'           => __( 'Location Dropdown Label', 'jobscout' ),
+            'section'         => 'header_image',
+            'type'            => 'text',
+            'priority'        => 25
+        )
+    );
+
+    /** Search Button Text */
+    $wp_customize->add_setting(
+        'banner_search_btn_label',
+        array(
+            'default'           => __( 'SEARCH JOB', 'jobscout' ),
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'refresh'
+        )
+    );
+
+    $wp_customize->add_control(
+        'banner_search_btn_label',
+        array(
+            'label'           => __( 'Search Button Label', 'jobscout' ),
+            'section'         => 'header_image',
+            'type'            => 'text',
+            'priority'        => 30
+        )
+    );
     
 }
 endif;
