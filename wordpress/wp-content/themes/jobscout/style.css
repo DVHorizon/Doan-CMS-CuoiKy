@@ -12316,8 +12316,46 @@ button.btn-success-modal-close:active {
 }
 
 /* ==========================================================================
-   TRIỆT TIÊU DẢI TRẮNG PHÍA TRÊN & DƯỚI NEWSLETTER VÀ BRAND FOOTER
+   TRIỆT TIÊU KHOẢNG TRẮNG DƯ TRÊN TRANG CHỦ (CAREER WITH US & NEWSLETTER)
    ========================================================================== */
+
+/* 1. Triệt tiêu dải trắng phía trên CAREER WITH US */
+.widget_jobscout_top_jobs_widget,
+.widget-top-jobs,
+.custom-top-jobs-section,
+.custom-top-jobs-section .top-jobs-cta {
+  margin-bottom: 0 !important;
+}
+
+.custom-top-jobs-section {
+  padding-bottom: 60px !important;
+}
+
+#custom-career-section,
+.custom-career-section {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: none !important;
+}
+
+/* Khóa trường hợp có thẻ bọc hoặc element trung gian giữa Top Jobs và Career */
+.custom-top-jobs-section + #custom-career-section,
+.custom-top-jobs-section + .custom-career-section,
+.widget_jobscout_top_jobs_widget + #custom-career-section,
+.widget_jobscout_top_jobs_widget + .custom-career-section {
+  margin-top: 0 !important;
+}
+
+/* 2. Triệt tiêu dải trắng phía trên và phía dưới NEWEST BLOG ENTRIES */
+.widget_jobscout_newest_blog_widget,
+.widget-newest-blog,
+.custom-blog-section {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: none !important;
+}
+
+/* 3. Triệt tiêu dải trắng phía trên và dưới NEWSLETTER & FOOTER */
 .site-content {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
@@ -12327,14 +12365,6 @@ button.btn-success-modal-close:active {
 .site-footer {
   margin-top: 0 !important;
   padding-top: 0 !important;
-}
-
-.custom-career-section,
-#custom-career-section,
-.custom-blog-section,
-.widget-newest-blog,
-.widget_jobscout_newest_blog_widget {
-  margin-bottom: 0 !important;
 }
 
 .jos-footer-newsletter-section,
@@ -12348,3 +12378,11 @@ button.btn-success-modal-close:active {
   background-color: #ea6b1d !important;
 }
 
+/* Đảm bảo tất cả widget nằm trong các section trang chủ không bị dính margin 60px mặc định của theme */
+.home .widget,
+.front-page .widget,
+body.home .widget,
+.home section,
+.front-page section {
+  margin-bottom: 0 !important;
+}
