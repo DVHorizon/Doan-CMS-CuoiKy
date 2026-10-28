@@ -13,7 +13,7 @@ function jobscout_customize_register_contact_page( $wp_customize ) {
         'contact_page_settings',
         array(
             'title'      => __( 'Contact Page Settings (Trang Liên Hệ)', 'jobscout' ),
-            'priority'   => 155,
+            'priority'   => 35,
             'capability' => 'edit_theme_options',
         )
     );
@@ -240,7 +240,7 @@ function jobscout_customize_register_contact_page( $wp_customize ) {
     $wp_customize->add_setting(
         'contact_fb_text',
         array(
-            'default'           => 'Ask a question on our Facebook page',
+            'default'           => 'Ask a question on our',
             'sanitize_callback' => 'sanitize_text_field',
         )
     );
