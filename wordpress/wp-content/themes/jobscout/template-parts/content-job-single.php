@@ -109,18 +109,36 @@ $other_count    = absint( get_theme_mod( 'job_single_other_count', 6 ) );
 if ( $other_count <= 0 ) {
     $other_count = 6;
 }
-// 4 Section chính (Left Column) - Lấy từ Post Meta hoặc Customizer
+// 4 Section chính (Left Column) - Ưu tiên nội dung từ Customizer khi có chỉnh sửa hoặc đang xem trong Customizer
+$is_customizer_preview = is_customize_preview();
+
 $meta_overview = get_post_meta( $job_id, '_job_overview', true );
-$final_overview = ! empty( $meta_overview ) ? $meta_overview : $overview_desc;
+if ( $is_customizer_preview ) {
+    $final_overview = ! empty( $overview_desc ) ? $overview_desc : $meta_overview;
+} else {
+    $final_overview = ! empty( $overview_desc ) ? $overview_desc : ( ! empty( $meta_overview ) ? $meta_overview : $default_overview );
+}
 
 $meta_skills = get_post_meta( $job_id, '_job_skills', true );
-$final_skills = ! empty( $meta_skills ) ? $meta_skills : $skills_desc;
+if ( $is_customizer_preview ) {
+    $final_skills = ! empty( $skills_desc ) ? $skills_desc : $meta_skills;
+} else {
+    $final_skills = ! empty( $skills_desc ) ? $skills_desc : ( ! empty( $meta_skills ) ? $meta_skills : $default_skills );
+}
 
 $meta_love = get_post_meta( $job_id, '_job_love_working_here', true );
-$final_love = ! empty( $meta_love ) ? $meta_love : $love_desc;
+if ( $is_customizer_preview ) {
+    $final_love = ! empty( $love_desc ) ? $love_desc : $meta_love;
+} else {
+    $final_love = ! empty( $love_desc ) ? $love_desc : ( ! empty( $meta_love ) ? $meta_love : $default_love );
+}
 
 $meta_location = get_post_meta( $job_id, '_job_location_desc', true );
-$final_location = ! empty( $meta_location ) ? $meta_location : $location_desc;
+if ( $is_customizer_preview ) {
+    $final_location = ! empty( $location_desc ) ? $location_desc : $meta_location;
+} else {
+    $final_location = ! empty( $location_desc ) ? $location_desc : ( ! empty( $meta_location ) ? $meta_location : $default_location );
+}
 ?>
 
 <article id="post-<?php the_ID(); ?>" class="single-job-detail-container">
