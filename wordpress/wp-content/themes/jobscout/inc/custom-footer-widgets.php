@@ -58,13 +58,23 @@ class JobScout_Newsletter_Widget extends WP_Widget {
         <style>
             .jos-footer-newsletter-section {
                 padding: 0 !important;
+                margin: 0 !important;
+                background-color: #ea6b1d !important;
+                width: 100% !important;
+            }
+            .jos-footer-newsletter-section .widget,
+            .jos-footer-newsletter-section .custom-footer-widget {
+                margin: 0 !important;
+                padding: 0 !important;
+                background: transparent !important;
             }
             .jos-newsletter-bar {
                 background-color: #ea6b1d !important;
                 padding: 16px 20px !important;
                 width: 100% !important;
+                margin: 0 !important;
                 box-sizing: border-box !important;
-                border-radius: 0;
+                border-radius: 0 !important;
             }
             .jos-newsletter-inner {
                 max-width: 1140px !important;
@@ -648,9 +658,19 @@ class JobScout_Brand_Social_Widget extends WP_Widget {
             .jos-footer-centered-section {
                 background-color: #f7f7f7 !important;
                 padding: 24px 20px 20px !important;
+                margin: 0 !important;
                 text-align: center !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
+            }
+            .jos-footer-centered-section .container {
+                padding: 0 !important;
+            }
+            .jos-footer-centered-section .widget,
+            .jos-footer-centered-section .footer-centered-widget {
+                margin: 0 !important;
+                padding: 0 !important;
+                background: transparent !important;
             }
             .jos-brand-footer-wrap {
                 display: flex !important;
