@@ -8167,32 +8167,27 @@ RESPONSIVE STYLESHEET
 /* 1. Newsletter Section (Exact match with screenshot) */
 .jos-footer-newsletter-section,
 .wp-block-legacy-widget .jos-footer-newsletter-section,
-.widget_jobscout_newsletter_widget {
+.widget_jobscout_newsletter_widget,
+.jos-footer-newsletter-section .custom-footer-widget {
   background-color: #ea6b1d !important;
   width: 100%;
   box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .jos-footer-newsletter-section {
   padding: 0 !important;
   margin: 0 !important;
-  background-color: #ea6b1d !important;
-  width: 100% !important;
-}
-
-.jos-footer-newsletter-section .widget,
-.jos-footer-newsletter-section .custom-footer-widget {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: transparent !important;
 }
 
 .jos-newsletter-bar {
   width: 100%;
   background-color: #ea6b1d !important;
   padding: 16px 20px !important;
-  margin: 0 !important;
   box-sizing: border-box;
+  margin: 0 !important;
+  border-radius: 0 !important;
 }
 
 .jos-newsletter-inner {
@@ -8345,18 +8340,12 @@ RESPONSIVE STYLESHEET
   background-color: #f7f7f7 !important;
   padding: 24px 20px 20px !important;
   margin: 0 !important;
-  width: 100% !important;
-}
-
-.jos-footer-centered-section .container {
-  padding: 0 !important;
 }
 
 .jos-footer-centered-section .widget,
 .jos-footer-centered-section .footer-centered-widget {
   margin: 0 !important;
   padding: 0 !important;
-  background: transparent !important;
 }
 
 .jos-brand-footer-wrap {
