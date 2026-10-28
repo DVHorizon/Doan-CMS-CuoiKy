@@ -5,8 +5,21 @@
  * @package JobScout
  */
 
-$banner_bg = get_template_directory_uri() . '/images/home-banner-pagoda.jpg';
-$jobs_page_url = home_url( '/jobs/' );
+$ed_banner = get_theme_mod( 'ed_banner_section', true );
+if ( ! $ed_banner ) {
+    return;
+}
+
+$header_image       = get_header_image();
+$banner_bg          = ! empty( $header_image ) ? $header_image : get_template_directory_uri() . '/images/home-banner-pagoda.jpg';
+$jobs_page_url      = home_url( '/jobs/' );
+
+// Dynamic Customizer Settings
+$banner_title       = get_theme_mod( 'banner_title', 'FIND YOUR DREAM JOBS' );
+$banner_subtitle    = get_theme_mod( 'banner_subtitle', "The secret behind our company is simple: to always put ourselves in the other person's shoes-employee, guest or customer. This allows us to see the world through their eyes, anticipate their needs and better understand their feelings." );
+$search_placeholder = get_theme_mod( 'banner_search_placeholder', 'Search for jobs, companies, skills' );
+$location_label     = get_theme_mod( 'banner_search_location_label', 'Khu vực' );
+$search_btn_label   = get_theme_mod( 'banner_search_btn_label', 'SEARCH JOB' );
 
 // Query distinct locations according to teacher's requirement
 global $wpdb;
@@ -20,10 +33,15 @@ $search_keywords   = isset( $_GET['search_keywords'] ) ? sanitize_text_field( $_
 <section id="custom-home-banner" class="custom-home-banner" style="background-image: linear-gradient(rgba(10, 20, 30, 0.45), rgba(10, 15, 25, 0.65)), url('<?php echo esc_url( $banner_bg ); ?>');">
     <div class="banner-container">
         <div class="banner-content">
-            <h1 class="banner-main-title">FIND YOUR DREAM JOBS</h1>
-            <p class="banner-main-subtitle">
-                The secret behind our company is simple: to always put ourselves in the other person's shoes-employee, guest or customer. This allows us to see the world through their eyes, anticipate their needs and better understand their feelings.
-            </p>
+            <?php if ( ! empty( $banner_title ) ) : ?>
+                <h1 class="banner-main-title"><?php echo esc_html( $banner_title ); ?></h1>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $banner_subtitle ) ) : ?>
+                <p class="banner-main-subtitle">
+                    <?php echo wp_kses_post( $banner_subtitle ); ?>
+                </p>
+            <?php endif; ?>
 
             <div class="banner-search-box-wrap">
                 <form class="banner-job-search-form" method="GET" action="<?php echo esc_url( $jobs_page_url ); ?>">
@@ -34,7 +52,7 @@ $search_keywords   = isset( $_GET['search_keywords'] ) ? sanitize_text_field( $_
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                         </span>
-                        <input type="text" id="search_keywords" name="search_keywords" placeholder="Search for jobs, companies, skills" value="<?php echo esc_attr( $search_keywords ); ?>">
+                        <input type="text" id="search_keywords" name="search_keywords" placeholder="<?php echo esc_attr( $search_placeholder ); ?>" value="<?php echo esc_attr( $search_keywords ); ?>">
                     </div>
 
                     <div class="search-field-group location-field search_location custom-dropdown-wrap" id="customLocationDropdownWrap">
@@ -47,7 +65,7 @@ $search_keywords   = isset( $_GET['search_keywords'] ) ? sanitize_text_field( $_
 
                         <!-- Native select kept in DOM for form submission and teacher's requirement -->
                         <select id="search_location" name="search_location" class="hidden-native-select">
-                            <option value="">Khu vực</option>
+                            <option value=""><?php echo esc_html( $location_label ); ?></option>
                             <?php if ( ! empty( $location_results ) ) : ?>
                                 <?php foreach ( $location_results as $value ) : 
                                     $loc_name = trim( $value->location );
@@ -64,7 +82,7 @@ $search_keywords   = isset( $_GET['search_keywords'] ) ? sanitize_text_field( $_
                         <!-- Custom select trigger -->
                         <div class="custom-select-trigger" id="customLocationTrigger" role="button" aria-haspopup="listbox" aria-expanded="false" tabindex="0">
                             <span class="custom-select-label" id="customLocationLabel">
-                                <?php echo ! empty( $selected_location ) ? esc_html( $selected_location ) : 'Khu vực'; ?>
+                                <?php echo ! empty( $selected_location ) ? esc_html( $selected_location ) : esc_html( $location_label ); ?>
                             </span>
                             <span class="select-arrow">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -76,7 +94,7 @@ $search_keywords   = isset( $_GET['search_keywords'] ) ? sanitize_text_field( $_
                         <!-- Custom luxury dropdown menu -->
                         <div class="custom-select-menu" id="customLocationMenu" role="listbox">
                             <div class="custom-select-option<?php echo empty( $selected_location ) ? ' is-selected' : ''; ?>" data-value="">
-                                <span class="option-text">Khu vực (Tất cả)</span>
+                                <span class="option-text"><?php echo esc_html( $location_label ); ?> (Tất cả)</span>
                                 <span class="option-check">
                                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ea6a1b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
                                         <polyline points="20 6 9 17 4 12"></polyline>
@@ -103,7 +121,7 @@ $search_keywords   = isset( $_GET['search_keywords'] ) ? sanitize_text_field( $_
                     </div>
 
                     <div class="search-submit-group">
-                        <button type="submit" class="banner-search-submit-btn">SEARCH JOB</button>
+                        <button type="submit" class="banner-search-submit-btn"><?php echo esc_html( $search_btn_label ); ?></button>
                     </div>
                 </form>
             </div>
@@ -159,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var text = opt.querySelector('.option-text').textContent.trim();
 
             if (val === '') {
-                label.textContent = 'Khu vực';
+                label.textContent = <?php echo json_encode( $location_label ); ?>;
             } else {
                 label.textContent = text;
             }
