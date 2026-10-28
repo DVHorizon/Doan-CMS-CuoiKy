@@ -18,8 +18,15 @@ global $post;
 // 1. Logo & Tên công ty
 $company_name = get_post_meta( get_the_ID(), '_company_name', true );
 if ( empty( $company_name ) ) {
-    $company_name = 'PLAN DO SEE';
+    $company_terms = wp_get_post_terms( get_the_ID(), 'companies' );
+    if ( ! empty( $company_terms ) && ! is_wp_error( $company_terms ) ) {
+        $company_name = $company_terms[0]->name;
+    }
 }
+if ( empty( $company_name ) ) {
+    $company_name = 'Plan Do See';
+}
+$company_name = wp_specialchars_decode( $company_name, ENT_QUOTES );
 
 $company_logo_url = '';
 if ( function_exists( 'get_the_company_logo' ) ) {
@@ -111,9 +118,10 @@ if ( count( $bullet_points ) < 3 ) {
                 Created: <?php echo get_the_date( 'M d, Y' ); ?>
             </div>
 
+            <!-- 4. Danh mục / 5. Tên công ty / 6. Khu vực tuyển dụng -->
             <div class="job-card-badges-row">
-                <span class="job-badge job-badge-type"><?php echo esc_html( $job_type_label ); ?></span>
                 <span class="job-badge job-badge-cat"><?php echo esc_html( $job_category_label ); ?></span>
+                <span class="job-badge job-badge-company"><?php echo esc_html( $company_name ); ?></span>
                 <span class="job-badge job-badge-loc"><?php echo esc_html( $job_location ); ?></span>
             </div>
         </div>
