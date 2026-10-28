@@ -4,7 +4,7 @@
  * Description: Vô hiệu hóa triệt để kiểm tra và thông báo cập nhật, ngăn ngừa lỗi kết nối WordPress.org và lỗi headers already sent.
  */
 
-// 1. Gỡ bỏ các hook tự động kiểm tra cập nhật
+// 1. Gỡ bỏ các hook tự động kiểm tra cập nhật trên admin
 remove_action( 'admin_init', '_maybe_update_core' );
 remove_action( 'admin_init', '_maybe_update_plugins' );
 remove_action( 'admin_init', '_maybe_update_themes' );
@@ -16,14 +16,15 @@ remove_action( 'load-themes.php', 'wp_update_themes' );
 remove_action( 'load-update.php', 'wp_update_themes' );
 remove_action( 'load-update-core.php', 'wp_update_themes' );
 
+// Gỡ bỏ các cron kiểm tra cập nhật định kỳ
 remove_action( 'wp_version_check', 'wp_version_check' );
 remove_action( 'wp_update_plugins', 'wp_update_plugins' );
 remove_action( 'wp_update_themes', 'wp_update_themes' );
 remove_action( 'wp_maybe_auto_update', 'wp_maybe_auto_update' );
 remove_action( 'init', 'wp_schedule_update_checks' );
 
-// 2. Trả về transient giả lập "đã kiểm tra xong" (last_checked = time())
-// Tránh việc trả về null khiến WordPress tưởng chưa kiểm tra và gọi wp_update_plugins/themes/core liên tục
+// 2. Trả về cấu trúc transient hợp lệ (giả lập đã kiểm tra và đang ở bản mới nhất)
+// Tránh việc trả về null khiến WordPress coi như chưa kiểm tra và gọi wp_update_plugins/themes/core liên tục
 add_filter( 'pre_site_transient_update_core', function () {
     global $wp_version;
     return (object) array(
@@ -75,7 +76,7 @@ add_filter( 'pre_http_request', function ( $preempt, $parsed_args, $url ) {
     return $preempt;
 }, 10, 3 );
 
-// 4. Ép cURL sử dụng IPv4 trong Docker tránh timeout IPv6
+// 4. Ép cURL sử dụng IPv4 trong Docker tránh timeout do IPv6 unreachable
 add_action( 'http_api_curl', function ( $handle ) {
     if ( defined( 'CURLOPT_IPRESOLVE' ) && defined( 'CURL_IPRESOLVE_V4' ) ) {
         curl_setopt( $handle, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );

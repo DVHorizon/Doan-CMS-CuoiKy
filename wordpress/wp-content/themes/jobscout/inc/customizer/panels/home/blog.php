@@ -43,83 +43,46 @@ function jobscout_customize_register_frontpage_blog( $wp_customize ){
     $wp_customize->add_setting(
         'blog_section_title',
         array(
-            'default'           => __( 'Latest Articles', 'jobscout' ),
+            'default'           => __( 'NEWEST BLOG ENTRIES', 'jobscout' ),
             'sanitize_callback' => 'sanitize_text_field',
-            'transport'         => 'postMessage'
+            'transport'         => 'refresh'
         )
     );
     
     $wp_customize->add_control(
         'blog_section_title',
         array(
-            'section' => 'blog_section',
-            'label'   => __( 'Blog Title', 'jobscout' ),
-            'type'    => 'text',
+            'section'     => 'blog_section',
+            'label'       => __( 'Tiêu đề khối bài viết (Blog Title)', 'jobscout' ),
+            'description' => __( 'Tiêu đề hiển thị phía trên danh sách bài viết blog.', 'jobscout' ),
+            'type'        => 'text',
         )
     );
 
-    /** Selective refresh for blog title. */
-    $wp_customize->selective_refresh->add_partial( 'blog_section_title', array(
-        'selector'            => '.article-section .container h2.section-title',
-        'render_callback'     => 'jobscout_get_blog_section_title',
-        'container_inclusive' => false,
-        'fallback_refresh'    => true,
-    ) );
-
-    /** Blog description */
+    /** Number of Posts */
     $wp_customize->add_setting(
-        'blog_section_subtitle',
+        'blog_section_number_posts',
         array(
-            'default'           => __( 'We will help you find it. We are your first step to becoming everything you want to be.', 'jobscout' ),
-            'sanitize_callback' => 'wp_kses_post',
-            'transport'         => 'postMessage'
+            'default'           => 4,
+            'sanitize_callback' => 'absint',
+            'transport'         => 'refresh',
         )
     );
     
     $wp_customize->add_control(
-        'blog_section_subtitle',
+        'blog_section_number_posts',
         array(
-            'section' => 'blog_section',
-            'label'   => __( 'Blog Description', 'jobscout' ),
-            'type'    => 'text',
-        )
-    ); 
-
-    /** Selective refresh for blog description. */
-    $wp_customize->selective_refresh->add_partial( 'blog_section_subtitle', array(
-        'selector'            => '.article-section .container .section-desc',
-        'render_callback'     => 'jobscout_get_blog_section_description',
-        'container_inclusive' => false,
-        'fallback_refresh'    => true,
-    ) );
-    
-    
-    /** View All Label */
-    $wp_customize->add_setting(
-        'blog_view_all',
-        array(
-            'default'           => __( 'Browse All', 'jobscout' ),
-            'sanitize_callback' => 'sanitize_text_field',
-            'transport'         => 'postMessage'
+            'section'     => 'blog_section',
+            'label'       => __( 'Số lượng bài viết hiển thị', 'jobscout' ),
+            'description' => __( 'Nhập số lượng bài viết muốn hiển thị dạng lưới (VD: 2, 4, 6...).', 'jobscout' ),
+            'type'        => 'number',
+            'input_attrs' => array(
+                'min'  => 1,
+                'max'  => 30,
+                'step' => 1,
+            ),
         )
     );
-    
-    $wp_customize->add_control(
-        'blog_view_all',
-        array(
-            'label'           => __( 'View All Label', 'jobscout' ),
-            'section'         => 'blog_section',
-            'type'            => 'text',
-            'active_callback' => 'jobscout_blog_view_all_ac'
-        )
-    );
-    
-    $wp_customize->selective_refresh->add_partial( 'blog_view_all', array(
-        'selector'            => '.article-section .btn-wrap .btn',
-        'render_callback'     => 'jobscout_get_blog_view_all_btn',
-        'container_inclusive' => false,
-        'fallback_refresh'    => true,
-    ) ); 
     /** Blog Section Ends */  
 
 }

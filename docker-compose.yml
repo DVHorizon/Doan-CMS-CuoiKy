@@ -36,9 +36,9 @@ services:
       WORDPRESS_TABLE_PREFIX: wp_
       WORDPRESS_DEBUG: 1
       WORDPRESS_CONFIG_EXTRA: |
-        define('FS_METHOD', 'direct');
-        define('AUTOMATIC_UPDATER_DISABLED', true);
-        define('WP_AUTO_UPDATE_CORE', false);
+        defined('FS_METHOD') || define('FS_METHOD', 'direct');
+        defined('AUTOMATIC_UPDATER_DISABLED') || define('AUTOMATIC_UPDATER_DISABLED', true);
+        defined('WP_AUTO_UPDATE_CORE') || define('WP_AUTO_UPDATE_CORE', false);
     volumes:
       - ./wordpress:/var/www/html
       - ./docker/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini

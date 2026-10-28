@@ -322,61 +322,7 @@ function jobscout_customize_register_contact_page( $wp_customize ) {
         )
     );
 
-    /* ==========================================
-       5. CONTACT FORM SECTION (KHỐI FORM)
-       ========================================== */
-    $wp_customize->add_setting(
-        'contact_form_title',
-        array(
-            'default'           => 'GỬI TIN NHẮN CHO CHÚNG TÔI',
-            'sanitize_callback' => 'sanitize_text_field',
-        )
-    );
-    $wp_customize->add_control(
-        'contact_form_title',
-        array(
-            'label'       => __( '[Khối 4] Tiêu đề Form liên hệ', 'jobscout' ),
-            'section'     => 'contact_page_settings',
-            'type'        => 'text',
-            'priority'    => 95,
-        )
-    );
-
-    $wp_customize->add_setting(
-        'contact_form_subtitle',
-        array(
-            'default'           => 'Chúng tôi sẽ phản hồi yêu cầu và thắc mắc của bạn trong vòng 24 giờ làm việc.',
-            'sanitize_callback' => 'wp_kses_post',
-        )
-    );
-    $wp_customize->add_control(
-        'contact_form_subtitle',
-        array(
-            'label'       => __( '[Khối 4] Mô tả phụ dưới tiêu đề Form', 'jobscout' ),
-            'section'     => 'contact_page_settings',
-            'type'        => 'textarea',
-            'priority'    => 100,
-        )
-    );
-
-    $wp_customize->add_setting(
-        'contact_cf7_shortcode',
-        array(
-            'default'           => '[contact-form-7 id="1120" title="Contact Page Form"]',
-            'sanitize_callback' => 'sanitize_text_field',
-        )
-    );
-    $wp_customize->add_control(
-        'contact_cf7_shortcode',
-        array(
-            'label'       => __( '[Khối 4] Shortcode Contact Form 7', 'jobscout' ),
-            'description' => __( 'Nhập shortcode form (VD: [contact-form-7 id="1120" title="Contact Page Form"])', 'jobscout' ),
-            'section'     => 'contact_page_settings',
-            'type'        => 'text',
-            'priority'    => 105,
-        )
-    );
-
 }
 endif;
 add_action( 'customize_register', 'jobscout_customize_register_contact_page' );
+

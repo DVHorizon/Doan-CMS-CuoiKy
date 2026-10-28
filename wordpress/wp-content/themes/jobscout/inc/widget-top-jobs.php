@@ -205,11 +205,10 @@ class JobScout_Top_Jobs_Widget extends WP_Widget {
                                         </h3>
                                         <!-- 3/ Ngày tạo -->
                                         <div class="job-created-date">Created: <?php echo esc_html( $created_date ); ?></div>
-                                        <!-- 4, 5, 6/ Nhãn: Loại hình - Danh mục - Công ty - Khu vực -->
+                                        <!-- 4, 6/ Nhãn: Loại hình - Danh mục - Khu vực -->
                                         <div class="job-badges-list">
                                             <span class="job-badge badge-type"><?php echo esc_html( $job_type_label ); ?></span>
                                             <span class="job-badge badge-cat"><?php echo esc_html( $category_label ); ?></span>
-                                            <span class="job-badge badge-company"><?php echo esc_html( $company_name ); ?></span>
                                             <span class="job-badge badge-loc"><?php echo esc_html( $job_location ); ?></span>
                                         </div>
                                     </div>

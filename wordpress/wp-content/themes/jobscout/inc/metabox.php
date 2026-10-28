@@ -127,3 +127,85 @@ function jobscout_save_sidebar_layout( $post_id ){
     }           
 }
 add_action( 'save_post' , 'jobscout_save_sidebar_layout' );
+
+/**
+ * Metabox for Job Detail Sections (4 phần mô tả chi tiết công việc)
+ */
+function jobscout_add_job_detail_sections_box() {
+    add_meta_box(
+        'jobscout_job_sections_meta',
+        __( 'Nội dung chi tiết 4 phần (Job Detail Sections)', 'jobscout' ),
+        'jobscout_job_sections_meta_callback',
+        'job_listing',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'jobscout_add_job_detail_sections_box' );
+
+function jobscout_job_sections_meta_callback( $post ) {
+    wp_nonce_field( 'jobscout_job_sections_nonce_action', 'jobscout_job_sections_nonce' );
+
+    $overview = get_post_meta( $post->ID, '_job_overview', true );
+    $skills   = get_post_meta( $post->ID, '_job_skills', true );
+    $love     = get_post_meta( $post->ID, '_job_love_working_here', true );
+    $location = get_post_meta( $post->ID, '_job_location_desc', true );
+    ?>
+    <style>
+        .job-meta-field { margin-bottom: 20px; }
+        .job-meta-field label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: #1e293b; }
+        .job-meta-field textarea { width: 100%; min-height: 110px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 13.5px; line-height: 1.6; }
+        .job-meta-field .desc { font-size: 12px; color: #64748b; margin-top: 4px; font-style: italic; }
+    </style>
+    <div class="job-meta-field">
+        <label for="_job_overview"><?php esc_html_e( '1. Overview about Company (Mô tả công ty)', 'jobscout' ); ?></label>
+        <textarea id="_job_overview" name="_job_overview" rows="5"><?php echo esc_textarea( $overview ); ?></textarea>
+        <p class="desc"><?php esc_html_e( 'Nếu để trống, hệ thống sẽ tự động dùng nội dung cấu hình trong Giao diện -> Tùy biến (Customize).', 'jobscout' ); ?></p>
+    </div>
+
+    <div class="job-meta-field">
+        <label for="_job_skills"><?php esc_html_e( '2. Our Key Skills (Kỹ năng yêu cầu)', 'jobscout' ); ?></label>
+        <textarea id="_job_skills" name="_job_skills" rows="4"><?php echo esc_textarea( $skills ); ?></textarea>
+        <p class="desc"><?php esc_html_e( 'Nếu để trống, hệ thống sẽ tự động dùng nội dung cấu hình trong Giao diện -> Tùy biến (Customize).', 'jobscout' ); ?></p>
+    </div>
+
+    <div class="job-meta-field">
+        <label for="_job_love_working_here"><?php esc_html_e( '3. Why You\'ll Love Working Here (Tại sao bạn thích làm việc ở đây / Chế độ đãi ngộ)', 'jobscout' ); ?></label>
+        <textarea id="_job_love_working_here" name="_job_love_working_here" rows="5"><?php echo esc_textarea( $love ); ?></textarea>
+        <p class="desc"><?php esc_html_e( 'Nếu để trống, hệ thống sẽ tự động dùng nội dung cấu hình trong Giao diện -> Tùy biến (Customize).', 'jobscout' ); ?></p>
+    </div>
+
+    <div class="job-meta-field">
+        <label for="_job_location_desc"><?php esc_html_e( '4. Location (Mô tả vị trí làm việc)', 'jobscout' ); ?></label>
+        <textarea id="_job_location_desc" name="_job_location_desc" rows="4"><?php echo esc_textarea( $location ); ?></textarea>
+        <p class="desc"><?php esc_html_e( 'Nếu để trống, hệ thống sẽ tự động dùng nội dung cấu hình trong Giao diện -> Tùy biến (Customize).', 'jobscout' ); ?></p>
+    </div>
+    <?php
+}
+
+function jobscout_save_job_sections_meta( $post_id ) {
+    if ( ! isset( $_POST['jobscout_job_sections_nonce'] ) || ! wp_verify_nonce( $_POST['jobscout_job_sections_nonce'], 'jobscout_job_sections_nonce_action' ) ) {
+        return;
+    }
+
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+
+    $fields = array( '_job_overview', '_job_skills', '_job_love_working_here', '_job_location_desc' );
+    foreach ( $fields as $field ) {
+        if ( isset( $_POST[ $field ] ) ) {
+            $val = wp_kses_post( wp_unslash( $_POST[ $field ] ) );
+            if ( ! empty( trim( $val ) ) ) {
+                update_post_meta( $post_id, $field, $val );
+            } else {
+                delete_post_meta( $post_id, $field );
+            }
+        }
+    }
+}
+add_action( 'save_post_job_listing', 'jobscout_save_job_sections_meta' );
