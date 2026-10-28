@@ -12315,3 +12315,36 @@ button.btn-success-modal-close:active {
   transform: translateY(0);
 }
 
+/* ==========================================================================
+   TRIỆT TIÊU DẢI TRẮNG PHÍA TRÊN & DƯỚI NEWSLETTER VÀ BRAND FOOTER
+   ========================================================================== */
+.site-content {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#colophon.site-footer,
+.site-footer {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.custom-career-section,
+#custom-career-section,
+.custom-blog-section,
+.widget-newest-blog,
+.widget_jobscout_newest_blog_widget {
+  margin-bottom: 0 !important;
+}
+
+.jos-footer-newsletter-section,
+.wp-block-legacy-widget .jos-footer-newsletter-section,
+.widget_jobscout_newsletter_widget,
+.jos-footer-newsletter-section .custom-footer-widget {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  background-color: #ea6b1d !important;
+}
+
