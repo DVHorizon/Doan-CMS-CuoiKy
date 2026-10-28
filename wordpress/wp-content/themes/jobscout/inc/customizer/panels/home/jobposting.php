@@ -45,9 +45,9 @@ function jobscout_customize_register_frontpage_job_posting( $wp_customize ){
     $wp_customize->add_setting(
         'job_posting_section_title',
         array(
-            'default'           => __( 'Job Posting', 'jobscout' ),
+            'default'           => __( 'TOP JOBS', 'jobscout' ),
             'sanitize_callback' => 'sanitize_text_field',
-            'transport'         => 'postMessage'
+            'transport'         => 'refresh'
         )
     );
     
@@ -55,15 +55,54 @@ function jobscout_customize_register_frontpage_job_posting( $wp_customize ){
         'job_posting_section_title',
         array(
             'section' => 'job_posting_section',
-            'label'   => __( 'Job Posting Title', 'jobscout' ),
+            'label'   => __( 'Tiêu đề khối (Heading / Title)', 'jobscout' ),
             'type'    => 'text',
         )
     );
 
-    $wp_customize->selective_refresh->add_partial( 'job_posting_section_title', array(
-        'selector' => '.top-job-section .container h2.section-title',
-        'render_callback' => 'jobscout_get_job_posting_section_title',
-    ) );
+    /** Number of Jobs */
+    $wp_customize->add_setting(
+        'job_posting_number_of_jobs',
+        array(
+            'default'           => 6,
+            'sanitize_callback' => 'absint',
+            'transport'         => 'refresh',
+        )
+    );
+    
+    $wp_customize->add_control(
+        'job_posting_number_of_jobs',
+        array(
+            'section'     => 'job_posting_section',
+            'label'       => __( 'Số lượng công việc hiển thị', 'jobscout' ),
+            'description' => __( 'Nhập số lượng công việc muốn hiển thị ở khối này (VD: 4, 6, 8...).', 'jobscout' ),
+            'type'        => 'number',
+            'input_attrs' => array(
+                'min'  => 1,
+                'max'  => 30,
+                'step' => 1,
+            ),
+        )
+    );
+
+    /** CTA Button Text */
+    $wp_customize->add_setting(
+        'job_posting_cta_btn_text',
+        array(
+            'default'           => __( 'VIEW MORE JOBS', 'jobscout' ),
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'refresh',
+        )
+    );
+    
+    $wp_customize->add_control(
+        'job_posting_cta_btn_text',
+        array(
+            'section' => 'job_posting_section',
+            'label'   => __( 'Chữ trên nút Xem thêm (Button Text)', 'jobscout' ),
+            'type'    => 'text',
+        )
+    );
 
     if( ! $wpjob_manager_activated ){
         $wp_customize->add_setting(
