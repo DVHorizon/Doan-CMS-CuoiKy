@@ -421,35 +421,182 @@ if ( $is_customizer_preview && ! empty( $location_desc ) && empty( $meta_locatio
     </div>
 </div>
 
+
+<!-- POPUP MODAL CHIA SẺ CÔNG VIỆC -->
+<div id="job-share-modal" class="job-apply-modal-backdrop job-share-modal-backdrop" aria-hidden="true">
+    <div class="job-apply-modal-card job-share-modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-share-title">
+        <button type="button" class="job-apply-modal-close" id="btn-close-share-modal" aria-label="<?php esc_attr_e( 'Đóng', 'jobscout' ); ?>">&times;</button>
+        
+        <div class="job-share-modal-header">
+            <div class="share-icon-badge">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#ea580c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+            </div>
+            <h3 class="modal-share-title" id="modal-share-title"><?php esc_html_e( 'Chia sẻ cơ hội việc làm', 'jobscout' ); ?></h3>
+            <p class="modal-share-jobname"><?php the_title(); ?> - <span><?php echo esc_html( $company_name ); ?></span></p>
+        </div>
+
+        <div class="share-social-grid">
+            <a href="#" class="share-social-btn btn-share-fb" id="share-btn-fb" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                <span>Facebook</span>
+            </a>
+            <a href="#" class="share-social-btn btn-share-linkedin" id="share-btn-linkedin" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span>LinkedIn</span>
+            </a>
+            <a href="#" class="share-social-btn btn-share-twitter" id="share-btn-twitter" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                <span>Twitter / X</span>
+            </a>
+            <a href="#" class="share-social-btn btn-share-email" id="share-btn-email">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Email</span>
+            </a>
+        </div>
+
+        <div class="share-copy-section">
+            <label class="share-copy-label" for="share-job-url-input"><?php esc_html_e( 'Hoặc sao chép đường dẫn liên kết:', 'jobscout' ); ?></label>
+            <div class="share-copy-box">
+                <input type="text" id="share-job-url-input" class="share-url-input" readonly value="" />
+                <button type="button" class="btn-copy-share-modal" id="btn-copy-share-modal">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span><?php esc_html_e( 'Sao chép', 'jobscout' ); ?></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Share button copy URL
-    const btnShare = document.getElementById('btn-single-job-share');
-    const toast    = document.getElementById('job-share-toast');
-    
-    if (btnShare && toast) {
+    // 1. POPUP MODAL CHIA SẺ CÔNG VIỆC (SHARE)
+    const btnShare       = document.getElementById('btn-single-job-share');
+    const shareModal     = document.getElementById('job-share-modal');
+    const btnCloseShare  = document.getElementById('btn-close-share-modal');
+    const shareUrlInput  = document.getElementById('share-job-url-input');
+    const btnCopyShare   = document.getElementById('btn-copy-share-modal');
+    const toast          = document.getElementById('job-share-toast');
+
+    const shareBtnFb       = document.getElementById('share-btn-fb');
+    const shareBtnLinkedin = document.getElementById('share-btn-linkedin');
+    const shareBtnTwitter  = document.getElementById('share-btn-twitter');
+    const shareBtnEmail    = document.getElementById('share-btn-email');
+
+    function openShareModal() {
+        const shareUrl = window.location.href;
+        const pageTitle = document.title;
+
+        if (shareUrlInput) shareUrlInput.value = shareUrl;
+
+        if (shareBtnFb) {
+            shareBtnFb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl);
+        }
+        if (shareBtnLinkedin) {
+            shareBtnLinkedin.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl);
+        }
+        if (shareBtnTwitter) {
+            shareBtnTwitter.href = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(shareUrl) + '&text=' + encodeURIComponent(pageTitle);
+        }
+        if (shareBtnEmail) {
+            shareBtnEmail.href = 'mailto:?subject=' + encodeURIComponent(pageTitle) + '&body=' + encodeURIComponent(shareUrl);
+        }
+
+        if (shareModal) {
+            shareModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            if (shareUrlInput) {
+                setTimeout(function() {
+                    shareUrlInput.select();
+                }, 100);
+            }
+        }
+    }
+
+    function closeShareModal() {
+        if (shareModal) {
+            shareModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (btnShare) {
         btnShare.addEventListener('click', function(e) {
             e.preventDefault();
-            const shareUrl = window.location.href;
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(shareUrl).then(showToast);
-            } else {
-                const tempInput = document.createElement('input');
-                tempInput.value = shareUrl;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-                showToast();
+            openShareModal();
+        });
+    }
+
+    if (btnCloseShare) btnCloseShare.addEventListener('click', closeShareModal);
+
+    if (shareModal) {
+        shareModal.addEventListener('click', function(e) {
+            if (e.target === shareModal) {
+                closeShareModal();
             }
         });
+    }
 
-        function showToast() {
-            toast.classList.add('show');
-            setTimeout(function() {
-                toast.classList.remove('show');
-            }, 3000);
+    function triggerCopy(textToCopy, callback) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(textToCopy).then(callback).catch(function() {
+                fallbackCopy(textToCopy, callback);
+            });
+        } else {
+            fallbackCopy(textToCopy, callback);
         }
+    }
+
+    function fallbackCopy(textToCopy, callback) {
+        const temp = document.createElement('input');
+        temp.value = textToCopy;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        if (callback) callback();
+    }
+
+    if (btnCopyShare) {
+        btnCopyShare.addEventListener('click', function(e) {
+            e.preventDefault();
+            const shareUrl = shareUrlInput ? shareUrlInput.value : window.location.href;
+            triggerCopy(shareUrl, function() {
+                const span = btnCopyShare.querySelector('span');
+                const origText = span ? span.textContent : 'Sao chép';
+                btnCopyShare.classList.add('copied');
+                if (span) span.textContent = '<?php esc_html_e( "Đã chép!", "jobscout" ); ?>';
+
+                if (toast) {
+                    toast.classList.add('show');
+                    setTimeout(function() {
+                        toast.classList.remove('show');
+                    }, 3000);
+                }
+
+                setTimeout(function() {
+                    btnCopyShare.classList.remove('copied');
+                    if (span) span.textContent = origText;
+                }, 2500);
+            });
+        });
     }
 
     // 2. Nút APPLY JOB & Các Modal
@@ -509,6 +656,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Đóng tất cả modal khi nhấn ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' || e.keyCode === 27) {
+            if (shareModal && shareModal.classList.contains('open')) closeShareModal();
+            if (applyModal && applyModal.classList.contains('open')) {
+                applyModal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+            if (successModal && successModal.classList.contains('open')) closeSuccessModal();
+        }
+    });
 
     // Hàm hiển thị Popup Thành Công
     function showSuccessModal() {
