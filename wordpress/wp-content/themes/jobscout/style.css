@@ -11908,7 +11908,7 @@ body.page-contact-2 #content.site-content > .container {
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  padding: 36px 32px 30px 32px;
+  padding: 26px 30px 22px 30px;
   position: relative;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
@@ -11939,7 +11939,7 @@ body.page-contact-2 #content.site-content > .container {
 }
 
 .job-apply-modal-header {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .modal-apply-title {
@@ -12089,6 +12089,21 @@ body.page-contact-2 #content.site-content > .container {
 /* ========================================================
    CONTACT FORM 7 STYLES IN JOB APPLY MODAL
    ======================================================== */
+.cf7-modal-container p {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: contents !important;
+}
+
+.cf7-modal-container br {
+  display: none !important;
+}
+
+.cf-req {
+  color: #ea580c !important;
+  font-weight: 700;
+  margin-left: 2px;
+}
 .cf7-modal-container .wpcf7 form {
   display: flex;
   flex-direction: column;
@@ -12385,4 +12400,166 @@ body.home .widget,
 .home section,
 .front-page section {
   margin-bottom: 0 !important;
+}
+
+/* ========================================================
+   JOB SHARE MODAL STYLES
+   ======================================================== */
+.job-share-modal-card {
+  max-width: 500px !important;
+  padding: 28px 26px 24px 26px !important;
+  text-align: center;
+}
+
+.job-share-modal-header {
+  margin-bottom: 20px;
+}
+
+.share-icon-badge {
+  width: 52px;
+  height: 52px;
+  background: #fff7ed;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px auto;
+  border: 1px solid #ffedd5;
+}
+
+.modal-share-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px 0;
+}
+
+.modal-share-jobname {
+  font-size: 13.5px;
+  color: #ea580c;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.modal-share-jobname span {
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.share-social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+@media (max-width: 480px) {
+  .share-social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.share-social-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 8px;
+  border-radius: 8px;
+  text-decoration: none !important;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #ffffff !important;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.share-social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0.95;
+}
+
+.btn-share-fb {
+  background: #1877f2;
+}
+
+.btn-share-linkedin {
+  background: #0a66c2;
+}
+
+.btn-share-twitter {
+  background: #0f1419;
+}
+
+.btn-share-email {
+  background: #475569;
+}
+
+.share-copy-section {
+  text-align: left;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+}
+
+.share-copy-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 8px;
+}
+
+.share-copy-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 4px 4px 4px 12px;
+  transition: border-color 0.2s ease;
+}
+
+.share-copy-box:focus-within {
+  border-color: #ea580c;
+  background: #ffffff;
+}
+
+.share-url-input {
+  flex: 1;
+  border: none !important;
+  background: transparent !important;
+  font-size: 13px !important;
+  color: #334155 !important;
+  padding: 6px 0 !important;
+  outline: none !important;
+  font-family: inherit;
+  box-shadow: none !important;
+}
+
+.btn-copy-share-modal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ea580c;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-copy-share-modal:hover {
+  background: #c2410c;
+}
+
+.btn-copy-share-modal.copied {
+  background: #10b981 !important;
 }

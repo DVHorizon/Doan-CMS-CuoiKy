@@ -69,6 +69,11 @@ require get_template_directory() . '/inc/widget-newest-blog.php';
 require get_template_directory() . '/inc/metabox.php';
 
 /**
+ * SEO & Social Share (Open Graph) Meta Box
+ */
+require get_template_directory() . '/inc/seo-metabox.php';
+
+/**
  * Getting Started
  */
 require get_template_directory() . '/inc/dashboard/dashboard.php';
