@@ -14,8 +14,15 @@ $job_id = get_the_ID();
 // Tên & Logo công ty
 $company_name = get_post_meta( $job_id, '_company_name', true );
 if ( empty( $company_name ) ) {
-    $company_name = 'PLAN DO SEE';
+    $company_terms = wp_get_post_terms( $job_id, 'companies' );
+    if ( ! empty( $company_terms ) && ! is_wp_error( $company_terms ) ) {
+        $company_name = $company_terms[0]->name;
+    }
 }
+if ( empty( $company_name ) ) {
+    $company_name = 'Plan Do See';
+}
+$company_name = wp_specialchars_decode( $company_name, ENT_QUOTES );
 
 $company_logo_url = '';
 if ( function_exists( 'get_the_company_logo' ) ) {
@@ -109,18 +116,36 @@ $other_count    = absint( get_theme_mod( 'job_single_other_count', 6 ) );
 if ( $other_count <= 0 ) {
     $other_count = 6;
 }
-// 4 Section chính (Left Column) - Lấy từ Post Meta hoặc Customizer
+// 4 Section chính (Left Column) - Ưu tiên dữ liệu thực tế của từng bài Job Listing, Customizer làm fallback
+$is_customizer_preview = is_customize_preview();
+
 $meta_overview = get_post_meta( $job_id, '_job_overview', true );
-$final_overview = ! empty( $meta_overview ) ? $meta_overview : $overview_desc;
+if ( $is_customizer_preview && ! empty( $overview_desc ) && empty( $meta_overview ) ) {
+    $final_overview = $overview_desc;
+} else {
+    $final_overview = ! empty( $meta_overview ) ? $meta_overview : ( ! empty( $overview_desc ) ? $overview_desc : $default_overview );
+}
 
 $meta_skills = get_post_meta( $job_id, '_job_skills', true );
-$final_skills = ! empty( $meta_skills ) ? $meta_skills : $skills_desc;
+if ( $is_customizer_preview && ! empty( $skills_desc ) && empty( $meta_skills ) ) {
+    $final_skills = $skills_desc;
+} else {
+    $final_skills = ! empty( $meta_skills ) ? $meta_skills : ( ! empty( $skills_desc ) ? $skills_desc : $default_skills );
+}
 
 $meta_love = get_post_meta( $job_id, '_job_love_working_here', true );
-$final_love = ! empty( $meta_love ) ? $meta_love : $love_desc;
+if ( $is_customizer_preview && ! empty( $love_desc ) && empty( $meta_love ) ) {
+    $final_love = $love_desc;
+} else {
+    $final_love = ! empty( $meta_love ) ? $meta_love : ( ! empty( $love_desc ) ? $love_desc : $default_love );
+}
 
 $meta_location = get_post_meta( $job_id, '_job_location_desc', true );
-$final_location = ! empty( $meta_location ) ? $meta_location : $location_desc;
+if ( $is_customizer_preview && ! empty( $location_desc ) && empty( $meta_location ) ) {
+    $final_location = $location_desc;
+} else {
+    $final_location = ! empty( $meta_location ) ? $meta_location : ( ! empty( $location_desc ) ? $location_desc : $default_location );
+}
 ?>
 
 <article id="post-<?php the_ID(); ?>" class="single-job-detail-container">
@@ -155,9 +180,10 @@ $final_location = ! empty( $meta_location ) ? $meta_location : $location_desc;
                 <div class="single-job-created-date">
                     <?php echo esc_html( sprintf( __( 'Created: %s', 'jobscout' ), $job_created_date ) ); ?>
                 </div>
+                <!-- 4. Danh mục / 5. Tên công ty / 6. Khu vực tuyển dụng -->
                 <div class="single-job-badges-row">
-                    <span class="job-badge badge-type"><?php echo esc_html( $job_type_label ); ?></span>
                     <span class="job-badge badge-category"><?php echo esc_html( $job_category_label ); ?></span>
+                    <span class="job-badge badge-company"><?php echo esc_html( $company_name ); ?></span>
                     <span class="job-badge badge-location"><?php echo esc_html( $job_location ); ?></span>
                 </div>
             </div>
@@ -212,15 +238,9 @@ $final_location = ! empty( $meta_location ) ? $meta_location : $location_desc;
                     </div>
                 </section>
 
-                <!-- JOB APPLICATION HOOK / FORM -->
-                <div id="job-apply-section" class="job-application-wrapper">
-                    <?php
-                    // Hỗ trợ chức năng Apply chuẩn của WP Job Manager nếu có
-                    if ( candidates_can_apply() ) {
-                        get_job_manager_template( 'job-application.php' );
-                    }
-                    ?>
-                </div>
+                <?php
+                // Nút Apply Job đã được đặt ở header card mở Popup Modal Apply kèm tải CV
+                ?>
 
             </div>
         </div>
