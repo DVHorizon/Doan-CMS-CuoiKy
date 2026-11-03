@@ -18,6 +18,37 @@ function jobscout_customize_register_about_page( $wp_customize ) {
         )
     );
 
+        /* ==========================================
+       0. SẮP XẾP THỨ TỰ CÁC KHỐI (REORDER)
+       ========================================== */
+    $wp_customize->add_setting(
+        'about_sections_order',
+        array(
+            'default'           => array( 'banner', 'about-us', 'services', 'company-info' ),
+            'sanitize_callback' => 'jobscout_sanitize_sortable_sections',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        new JobScout_Sortable_Sections_Control(
+            $wp_customize,
+            'about_sections_order',
+            array(
+                'label'       => __( 'Sắp xếp thứ tự các khối Trang About', 'jobscout' ),
+                'description' => __( 'Dùng chuột kéo thả để hoán đổi vị trí giữa các khối trên trang Giới thiệu:', 'jobscout' ),
+                'section'     => 'about_page_settings',
+                'priority'    => 1,
+                'choices'     => array(
+                    'banner'       => __( 'Khối 1: Hero Banner Phố Cổ', 'jobscout' ),
+                    'about-us'     => __( 'Khối 2: About Us (Vision, Mission, Core Value)', 'jobscout' ),
+                    'services'     => __( 'Khối 3: Lĩnh vực hoạt động (Services)', 'jobscout' ),
+                    'company-info' => __( 'Khối 4: Thông tin công ty (Established, Capital...)', 'jobscout' ),
+                ),
+            )
+        )
+    );
+
     /* ==========================================
        1. BANNER SECTION
        ========================================== */

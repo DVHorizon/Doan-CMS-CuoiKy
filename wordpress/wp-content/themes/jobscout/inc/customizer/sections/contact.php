@@ -18,6 +18,36 @@ function jobscout_customize_register_contact_page( $wp_customize ) {
         )
     );
 
+        /* ==========================================
+       0. SẮP XẾP THỨ TỰ CÁC KHỐI (REORDER)
+       ========================================== */
+    $wp_customize->add_setting(
+        'contact_sections_order',
+        array(
+            'default'           => array( 'banner', 'headquarters', 'two-columns' ),
+            'sanitize_callback' => 'jobscout_sanitize_sortable_sections',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        new JobScout_Sortable_Sections_Control(
+            $wp_customize,
+            'contact_sections_order',
+            array(
+                'label'       => __( 'Sắp xếp thứ tự các khối Trang Liên Hệ', 'jobscout' ),
+                'description' => __( 'Dùng chuột kéo thả để hoán đổi vị trí giữa các khối trên trang Liên hệ:', 'jobscout' ),
+                'section'     => 'contact_page_settings',
+                'priority'    => 1,
+                'choices'     => array(
+                    'banner'       => __( 'Khối 1: Hero Banner (CONTACT US)', 'jobscout' ),
+                    'headquarters' => __( 'Khối 2: Địa chỉ trụ sở chính (Headquarters)', 'jobscout' ),
+                    'two-columns'  => __( 'Khối 3: Thông tin liên hệ 2 cột (Employers & Jobseekers)', 'jobscout' ),
+                ),
+            )
+        )
+    );
+
     /* ==========================================
        1. HERO BANNER
        ========================================== */
