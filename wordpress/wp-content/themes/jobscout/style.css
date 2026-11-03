@@ -12277,3 +12277,332 @@ button.btn-success-modal-close:active {
   transform: translateY(0);
 }
 
+/* ========================================================
+   CHUẨN HÓA MÀU SẮC & GIAO DIỆN FORM SUBMIT JOB (POST A JOB)
+   ======================================================== */
+.job-manager-form {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 35px 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 50px;
+}
+
+.job-manager-form h2 {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  border-bottom: 2px solid #f1f5f9 !important;
+  padding-bottom: 12px !important;
+  margin-top: 35px !important;
+  margin-bottom: 25px !important;
+}
+
+.job-manager-form fieldset {
+  border: none;
+  padding: 0;
+  margin-bottom: 22px;
+}
+
+.job-manager-form fieldset label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+.job-manager-form fieldset .field input[type="text"],
+.job-manager-form fieldset .field input[type="email"],
+.job-manager-form fieldset .field input[type="url"],
+.job-manager-form fieldset .field select,
+.job-manager-form fieldset .field textarea {
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  font-size: 14px !important;
+  color: #1e293b !important;
+  transition: all 0.2s ease !important;
+  width: 100% !important;
+}
+
+.job-manager-form fieldset .field input:focus,
+.job-manager-form fieldset .field select:focus,
+.job-manager-form fieldset .field textarea:focus {
+  border-color: #ea580c !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15) !important;
+  outline: none !important;
+}
+
+/* Nút Submit / Preview / Save Draft chuẩn màu cam thương hiệu */
+.job-manager-form input[type="submit"],
+.job-manager-form button[type="submit"],
+.job-manager-form .button,
+.job-manager-form input[name="submit_job"],
+.job-manager-form input.button {
+  background: #ea580c !important;
+  border-color: #ea580c !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  padding: 12px 28px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.job-manager-form input[type="submit"]:hover,
+.job-manager-form button[type="submit"]:hover,
+.job-manager-form .button:hover,
+.job-manager-form input[name="submit_job"]:hover,
+.job-manager-form input.button:hover {
+  background: #c2410c !important;
+  border-color: #c2410c !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35) !important;
+}
+
+/* Nút Lưu nháp (Save Draft) nền phụ hài hòa */
+.job-manager-form input[name="save_draft"],
+.job-manager-form .button.secondary.save_draft {
+  background: #64748b !important;
+  border-color: #64748b !important;
+  box-shadow: none !important;
+  margin-left: 10px !important;
+}
+
+.job-manager-form input[name="save_draft"]:hover,
+.job-manager-form .button.secondary.save_draft:hover {
+  background: #475569 !important;
+  border-color: #475569 !important;
+}
+
+/* Link chỉnh sửa và đăng nhập */
+.job-manager-form .account-sign-in a.button,
+.job-manager-form a {
+  color: #ea580c !important;
+}
+
+.job-manager-form .account-sign-in a.button:hover,
+.job-manager-form a:hover {
+  color: #c2410c !important;
+}
+
+/* ========================================================
+   CHUẨN HÓA GIAO DIỆN FORM ĐĂNG TUYỂN DỤNG (POST A JOB)
+   ======================================================== */
+.page-id-14 #primary.content-area,
+.post-type-archive-job_listing #primary.content-area {
+  max-width: 900px;
+  margin: 40px auto;
+  float: none;
+  background: #ffffff;
+  padding: 40px 48px;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid #edf2f7;
+}
+
+.page-id-14 .entry-header {
+  margin-bottom: 30px;
+  border-bottom: 2px solid #ea580c;
+  padding-bottom: 15px;
+}
+
+.page-id-14 .entry-header .entry-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Thẻ Form và các fieldset */
+.job-manager-form fieldset {
+  margin-bottom: 24px;
+  border: none;
+  padding: 0;
+}
+
+.job-manager-form fieldset label {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.job-manager-form fieldset label small {
+  color: #9ca3af;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.job-manager-form fieldset .field input[type="text"],
+.job-manager-form fieldset .field input[type="email"],
+.job-manager-form fieldset .field input[type="url"],
+.job-manager-form fieldset .field select,
+.job-manager-form fieldset .field textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  font-size: 14px;
+  color: #111827;
+  transition: all 0.2s ease;
+  outline: none;
+  box-shadow: none;
+}
+
+.job-manager-form fieldset .field input:focus,
+.job-manager-form fieldset .field select:focus,
+.job-manager-form fieldset .field textarea:focus {
+  border-color: #ea580c !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15) !important;
+}
+
+.job-manager-form fieldset small.description {
+  display: block;
+  font-size: 12.5px;
+  color: #6b7280;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* Tiêu đề mục Company Details */
+.site-main .entry-content .job-manager-form h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ea580c;
+  margin-top: 40px;
+  margin-bottom: 22px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ffedd5;
+  text-transform: uppercase;
+}
+
+/* Khung thông báo tài khoản nếu có */
+.job-manager-form fieldset.fieldset-logged_in,
+.job-manager-form fieldset.fieldset-login_required {
+  background: #fff7ed;
+  border: 1px solid #ffedd5;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 25px;
+}
+
+.job-manager-form fieldset.fieldset-logged_in .field,
+.job-manager-form fieldset.fieldset-login_required .field {
+  color: #9a3412;
+  font-size: 14px;
+}
+
+.job-manager-form fieldset.fieldset-login_required a.button {
+  background-color: #ea580c !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 8px 18px !important;
+  font-weight: 600 !important;
+  margin-right: 12px !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  box-shadow: 0 2px 4px rgba(234, 88, 12, 0.2) !important;
+}
+
+.job-manager-form fieldset.fieldset-login_required a.button:hover {
+  background-color: #c2410c !important;
+}
+
+/* Nút bấm Preview và Save Draft */
+.job-manager-form p input[type="submit"].button {
+  background-color: #ea580c !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 14px 32px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-right: 12px !important;
+}
+
+.job-manager-form p input[type="submit"].button:hover {
+  background-color: #c2410c !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.4) !important;
+}
+
+.job-manager-form p input[type="submit"].button.secondary,
+.job-manager-form p input[type="submit"].button.save_draft {
+  background-color: #f3f4f6 !important;
+  color: #4b5563 !important;
+  border: 1px solid #d1d5db !important;
+  box-shadow: none !important;
+}
+
+.job-manager-form p input[type="submit"].button.secondary:hover,
+.job-manager-form p input[type="submit"].button.save_draft:hover {
+  background-color: #e5e7eb !important;
+  color: #1f2937 !important;
+}
+
+/* Nút chọn file Upload Logo */
+.job-manager-form input[type="file"] {
+  font-size: 13.5px;
+  color: #4b5563;
+  padding: 8px 0;
+}
+
+/* Chuẩn hóa nút chọn file Upload Logo */
+.job-manager-form .job-manager-uploaded-files {
+  margin-bottom: 12px;
+}
+
+.job-manager-form input[type="file"] {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  padding: 10px 14px;
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.job-manager-form input[type="file"]:hover {
+  border-color: #ea580c;
+  background-color: #fff7ed;
+}
+
+.job-manager-form input[type="file"]::file-selector-button {
+  background-color: #ea580c;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.job-manager-form input[type="file"]::file-selector-button:hover {
+  background-color: #c2410c;
+}
