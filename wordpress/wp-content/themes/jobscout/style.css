@@ -10317,6 +10317,123 @@ body:has(.custom-news-detail-page) .breadcrumb-wrap,
     color: #ffffff;
 }
 
+/* --- MENU CHIA SẺ (SHARE DROPDOWN) --- */
+.share-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.share-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 50;
+    min-width: 230px;
+    padding: 8px 0;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.share-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Mũi tên nhỏ phía trên menu */
+.share-menu::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    right: 28px;
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    transform: rotate(45deg);
+    box-shadow: -2px -2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.share-menu .share-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 9px 18px;
+    background: none;
+    border: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.share-menu .share-item:hover {
+    background: #f3f4f6;
+    color: #111111;
+}
+
+.share-menu .share-item[hidden] {
+    display: none;
+}
+
+.share-menu .share-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 14px;
+    background: #6b7280;
+}
+
+/* Màu thương hiệu từng nền tảng */
+.share-facebook .share-icon  { background: #1877f2; }
+.share-twitter .share-icon   { background: #000000; }
+.share-linkedin .share-icon  { background: #0a66c2; }
+.share-telegram .share-icon  { background: #229ed9; }
+.share-whatsapp .share-icon  { background: #25d366; }
+.share-pinterest .share-icon { background: #e60023; }
+.share-email .share-icon     { background: #ea4335; }
+.share-copy .share-icon      { background: #e8601c; }
+.share-native .share-icon    { background: #4b5563; }
+
+.share-menu .share-copy.is-copied {
+    color: #16a34a;
+}
+
+.share-menu .share-copy.is-copied .share-icon {
+    background: #16a34a;
+}
+
+@media (max-width: 850px) {
+    .share-wrapper {
+        display: block;
+        width: 100%;
+    }
+
+    .share-menu {
+        left: 0;
+        right: 0;
+        min-width: 0;
+    }
+
+    .share-menu::before {
+        right: 50%;
+        margin-right: -6px;
+    }
+}
+
 /* 3. MAIN ARTICLE CONTENT CARD */
 .news-detail-content-card {
     background: #ffffff;
