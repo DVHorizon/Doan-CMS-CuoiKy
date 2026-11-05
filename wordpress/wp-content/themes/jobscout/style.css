@@ -8856,31 +8856,9 @@ RESPONSIVE STYLESHEET
     margin: 0 !important;
   }
 
-  /* Compact SUBMIT JOB Button on Mobile Header */
+  /* Hide SUBMIT JOB button on outer Mobile Header (keep inside Hamburger Drawer only) */
   .site-header .menu-wrap .btn-wrap {
-    display: block !important;
-    width: auto !important;
-    margin: 0 !important;
-  }
-
-  .site-header .menu-wrap .btn-wrap a.btn {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background-color: #ea580c !important;
-    background: #ea580c !important;
-    color: #ffffff !important;
-    padding: 7px 11px !important;
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    border-radius: 3px !important;
-    border: none !important;
-    text-decoration: none !important;
-    box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25) !important;
-    white-space: nowrap !important;
-    line-height: 1.2 !important;
+    display: none !important;
   }
 
   /* Hamburger Toggle Button */
@@ -13008,4 +12986,166 @@ body.home .widget,
 
 .job-manager-form input[type="file"]::file-selector-button:hover {
   background-color: #c2410c;
+}
+
+
+/* ========================================================
+   RESPONSIVE DESIGN CHO TRANG SUBMIT JOB & JOB DASHBOARD
+   ======================================================== */
+@media screen and (max-width: 991px) {
+  .page-id-14 #primary.content-area,
+  .post-type-archive-job_listing #primary.content-area {
+    max-width: 100%;
+    margin: 25px auto;
+    padding: 30px 24px;
+    border-radius: 10px;
+  }
+
+  .job-manager-form {
+    padding: 25px 20px;
+  }
+
+  .page-id-14 .entry-header .entry-title {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page-id-14 #primary.content-area,
+  .post-type-archive-job_listing #primary.content-area {
+    margin: 15px auto;
+    padding: 20px 16px;
+    border-radius: 8px;
+    box-shadow: none;
+    border: 1px solid #e2e8f0;
+  }
+
+  .job-manager-form {
+    padding: 20px 14px;
+    border-radius: 8px;
+  }
+
+  .page-id-14 .entry-header {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+
+  .page-id-14 .entry-header .entry-title {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .site-main .entry-content .job-manager-form h2,
+  .job-manager-form h2 {
+    font-size: 17px !important;
+    margin-top: 25px !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* Fieldsets & Inputs co giãn tối đa */
+  .job-manager-form fieldset {
+    margin-bottom: 18px;
+  }
+
+  .job-manager-form fieldset label {
+    font-size: 13.5px;
+    margin-bottom: 6px;
+  }
+
+  .job-manager-form fieldset .field input[type="text"],
+  .job-manager-form fieldset .field input[type="email"],
+  .job-manager-form fieldset .field input[type="url"],
+  .job-manager-form fieldset .field select,
+  .job-manager-form fieldset .field textarea {
+    padding: 10px 12px !important;
+    font-size: 13.5px !important;
+  }
+
+  /* Nút Upload Logo full width trên mobile */
+  .job-manager-form input[type="file"] {
+    max-width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .job-manager-form input[type="file"]::file-selector-button {
+    padding: 7px 12px;
+    font-size: 12.5px;
+    margin-right: 8px;
+  }
+
+  /* Nút bấm hành động Submit / Preview / Save Draft chuyển thành full-width block */
+  .job-manager-form p:has(input[type="submit"]),
+  .job-manager-form form#job_preview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .job-manager-form p input[type="submit"].button,
+  .job-manager-form input[type="submit"],
+  .job-manager-form button[type="submit"],
+  .job-manager-form .button,
+  .job-manager-form input[name="submit_job"],
+  .job-manager-form input.button {
+    width: 100% !important;
+    margin: 6px 0 !important;
+    text-align: center !important;
+    padding: 13px 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  .job-manager-form input[name="save_draft"],
+  .job-manager-form .button.secondary.save_draft {
+    margin-left: 0 !important;
+  }
+
+  /* Khung thông báo đăng nhập mobile */
+  .job-manager-form fieldset.fieldset-logged_in,
+  .job-manager-form fieldset.fieldset-login_required {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .job-manager-form fieldset.fieldset-login_required a.button {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 10px !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Responsive Job Preview Header & Buttons */
+  #job_preview .job_listing_preview_title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  #job_preview .job_listing_preview_title input[type="submit"] {
+    width: 100%;
+    margin-bottom: 6px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page-id-14 #primary.content-area {
+    padding: 16px 12px;
+  }
+
+  .job-manager-form {
+    padding: 16px 10px;
+    border: none;
+    box-shadow: none;
+  }
+
+  .page-id-14 .entry-header .entry-title {
+    font-size: 18px;
+  }
+
+  .job-manager-form fieldset label small {
+    display: inline-block;
+    margin-top: 2px;
+  }
 }
