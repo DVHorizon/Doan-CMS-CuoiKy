@@ -178,7 +178,7 @@ function jobscout_ajax_load_more_jobs() {
 
     $sort = isset( $_POST['sort'] ) ? sanitize_text_field( $_POST['sort'] ) : 'latest';
     $search_keywords = isset( $_POST['search_keywords'] ) ? sanitize_text_field( wp_unslash( $_POST['search_keywords'] ) ) : '';
-    $search_location = isset( $_POST['search_location'] ) ? sanitize_text_field( wp_unslash( $_POST['search_location'] ) ) : '';
+    $search_location = isset( $_POST['search_location'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['search_location'] ) ), " .\t\n\r\0\x0B" ) : '';
 
     $args = array(
         'post_type'      => 'job_listing',
