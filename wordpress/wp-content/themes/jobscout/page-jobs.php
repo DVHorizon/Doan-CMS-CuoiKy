@@ -27,7 +27,7 @@ $no_jobs_text   = get_theme_mod( 'jobs_no_jobs_text', __( 'Hiện tại chưa c�
 
 // 2. Nhận tham số tìm kiếm từ Banner trang chủ (GET)
 $search_keywords = isset( $_GET['search_keywords'] ) ? sanitize_text_field( wp_unslash( $_GET['search_keywords'] ) ) : '';
-$search_location = isset( $_GET['search_location'] ) ? sanitize_text_field( wp_unslash( $_GET['search_location'] ) ) : '';
+$search_location = isset( $_GET['search_location'] ) ? trim( sanitize_text_field( wp_unslash( $_GET['search_location'] ) ), " .\t\n\r\0\x0B" ) : '';
 
 // Query danh sách công việc còn hạn
 $jobs_args = array(
