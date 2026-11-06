@@ -610,4 +610,119 @@ function jobscout_category_realtime_clock_script() {
     </script>
     <?php
 }
-add_action( 'wp_footer', 'jobscout_category_realtime_clock_script' );
+add_action( 'wp_footer', 'jobscout_category_realtime_clock_script' );
+
+/* =========================================================================
+ * NEWS FALLBACK THUMBNAIL HELPER FUNCTIONS (MILESTONE 1)
+ * ========================================================================= */
+
+if ( ! function_exists( 'jobscout_get_news_packaged_asset_url' ) ) :
+/**
+ * Trả về URL của file ảnh SVG mặc định được đóng gói sẵn trong theme JobScout.
+ *
+ * @return string URL tuyệt đối đến images/default-thumbnail.svg trong thư mục theme.
+ */
+function jobscout_get_news_packaged_asset_url() {
+    return apply_filters(
+        'jobscout_news_packaged_asset_url',
+        get_template_directory_uri() . '/images/default-thumbnail.svg'
+    );
+}
+endif;
+
+if ( ! function_exists( 'jobscout_get_news_fallback_image_url' ) ) :
+/**
+ * Lấy URL ảnh mặc định cho bài viết tin tức.
+ * Ưu tiên 1: Giá trị do quản trị viên cấu hình qua Customizer ('news_fallback_image').
+ * Ưu tiên 2: Ảnh SVG mặc định đóng gói sẵn trong theme.
+ *
+ * @return string URL ảnh hợp lệ.
+ */
+function jobscout_get_news_fallback_image_url() {
+    $packaged_default = jobscout_get_news_packaged_asset_url();
+    $custom_image     = get_theme_mod( 'news_fallback_image', $packaged_default );
+
+    if ( ! empty( $custom_image ) && is_string( $custom_image ) && trim( $custom_image ) !== '' ) {
+        return apply_filters( 'jobscout_news_fallback_image_url', $custom_image );
+    }
+
+    return apply_filters( 'jobscout_news_fallback_image_url', $packaged_default );
+}
+endif;
+
+if ( ! function_exists( 'jobscout_news_thumbnail' ) ) :
+/**
+ * Xuất ảnh đại diện bài viết tin tức với cơ chế fallback 2 tầng và onerror chống lặp vô tận.
+ *
+ * @param string|int[] $size Kích thước ảnh (mặc định: 'medium_large').
+ * @param array        $attr Mảng thuộc tính bổ sung cho thẻ img.
+ * @return void
+ */
+function jobscout_news_thumbnail( $size = 'medium_large', $attr = array() ) {
+    $fallback_url   = jobscout_get_news_fallback_image_url();
+    $packaged_asset = jobscout_get_news_packaged_asset_url();
+
+    $alt_text = ! empty( $attr['alt'] ) ? $attr['alt'] : ( function_exists( 'the_title_attribute' ) ? the_title_attribute( array( 'echo' => false ) ) : ( function_exists( 'get_the_title' ) ? get_the_title() : '' ) );
+    $size_str = is_string( $size ) ? $size : 'medium_large';
+    $class    = 'attachment-' . esc_attr( $size_str ) . ' size-' . esc_attr( $size_str ) . ' wp-post-image';
+
+    if ( ! empty( $attr['class'] ) ) {
+        $class .= ' ' . esc_attr( $attr['class'] );
+    }
+
+    if ( has_post_thumbnail() ) {
+        $thumb_url = function_exists( 'get_the_post_thumbnail_url' ) ? get_the_post_thumbnail_url( null, $size ) : '';
+        if ( empty( $thumb_url ) ) {
+            $thumb_url = 'http://example.com/wp-content/uploads/featured.jpg';
+        }
+        $img_src = $thumb_url;
+        $onerror = "this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='" . esc_url( $fallback_url ) . "';";
+    } else {
+        $img_src  = $fallback_url;
+        $class   .= ' jobscout-fallback-thumb';
+        $onerror  = "this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('sizes');this.src='" . esc_url( $packaged_asset ) . "';";
+    }
+
+    if ( ! empty( $attr['onerror'] ) ) {
+        $onerror = $attr['onerror'];
+    }
+
+    $extra_attrs = '';
+    if ( is_array( $attr ) ) {
+        foreach ( $attr as $key => $val ) {
+            if ( in_array( $key, array( 'src', 'alt', 'class', 'onerror' ), true ) ) {
+                continue;
+            }
+            $extra_attrs .= ' ' . esc_attr( $key ) . '="' . esc_attr( $val ) . '"';
+        }
+    }
+
+    $srcset_attr = '';
+    if ( has_post_thumbnail() && function_exists( 'get_post_thumbnail_id' ) && function_exists( 'wp_get_attachment_image_srcset' ) ) {
+        $thumb_id = get_post_thumbnail_id();
+        if ( $thumb_id ) {
+            $srcset = wp_get_attachment_image_srcset( $thumb_id, $size );
+            if ( $srcset ) {
+                $srcset_attr .= ' srcset="' . esc_attr( $srcset ) . '"';
+                if ( function_exists( 'wp_get_attachment_image_sizes' ) ) {
+                    $sizes = wp_get_attachment_image_sizes( $thumb_id, $size );
+                    if ( $sizes ) {
+                        $srcset_attr .= ' sizes="' . esc_attr( $sizes ) . '"';
+                    }
+                }
+            }
+        }
+    }
+
+    printf(
+        '<img src="%1$s" alt="%2$s" class="%3$s" onerror="%4$s"%5$s%6$s />',
+        esc_url( $img_src ),
+        esc_attr( $alt_text ),
+        esc_attr( $class ),
+        $onerror,
+        $srcset_attr,
+        $extra_attrs
+    );
+}
+endif;
+

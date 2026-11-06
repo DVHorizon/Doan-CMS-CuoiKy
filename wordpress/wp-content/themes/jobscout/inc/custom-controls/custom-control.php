@@ -16,11 +16,13 @@ function jobscout_register_custom_controls( $wp_customize ){
     require_once get_template_directory() . '/inc/custom-controls/slider/class-slider-control.php';
     require_once get_template_directory() . '/inc/custom-controls/toggle/class-toggle-control.php';
     require_once get_template_directory() . '/inc/custom-controls/class-sortable-sections-control.php';    
+    require_once get_template_directory() . '/inc/custom-controls/sortable/class-sortable-control.php';
             
     // Register the control type.
     $wp_customize->register_control_type( 'JobScout_Radio_Image_Control' );
     $wp_customize->register_control_type( 'JobScout_Slider_Control' );
     $wp_customize->register_control_type( 'JobScout_Toggle_Control' );
+    $wp_customize->register_control_type( 'JobScout_Sortable_Control' );
 }
 endif;
 add_action( 'customize_register', 'jobscout_register_custom_controls' );

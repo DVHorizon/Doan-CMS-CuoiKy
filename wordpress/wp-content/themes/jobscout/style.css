@@ -10165,9 +10165,11 @@ body:has(.custom-news-detail-page) .breadcrumb-wrap,
 }
 
 .detail-container {
+    width: 100%;
     max-width: 1140px;
     margin: 0 auto;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
 /* 1. BREADCRUMB */
@@ -10199,6 +10201,8 @@ body:has(.custom-news-detail-page) .breadcrumb-wrap,
 
 /* 2. POST HEADER CARD */
 .news-detail-header-card {
+    width: 100%;
+    box-sizing: border-box;
     background: #ffffff;
     padding: 24px 28px;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
@@ -10414,8 +10418,10 @@ body:has(.custom-news-detail-page) .breadcrumb-wrap,
 
 /* 3. MAIN ARTICLE CONTENT CARD */
 .news-detail-content-card {
+    width: 100%;
+    box-sizing: border-box;
     background: #ffffff;
-    padding: 50px 65px;
+    padding: 36px 28px;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
     border-radius: 2px;
     margin-bottom: 75px;
@@ -10458,6 +10464,7 @@ body:has(.custom-news-detail-page) .breadcrumb-wrap,
 /* RESPONSIVE CHO NEWS DETAIL */
 @media (max-width: 850px) {
     .news-detail-header-card {
+        padding: 20px 24px;
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
@@ -13149,3 +13156,19 @@ body.home .widget,
     margin-top: 2px;
   }
 }
+
+/* ==========================================================
+   NEWS DETAIL SHORT DESCRIPTION (50 CHARACTERS ITALIC)
+   ========================================================== */
+.news-detail-description {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 24px 0;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid #e5e7eb;
+    font-style: italic;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
