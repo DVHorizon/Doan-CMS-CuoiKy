@@ -19,6 +19,35 @@ function jobscout_customize_register_news_page( $wp_customize ) {
     );
 
     /* ==========================================
+       0. SẮP XẾP THỨ TỰ CÁC KHỐI (REORDER)
+       ========================================== */
+    $wp_customize->add_setting(
+        'news_sections_order',
+        array(
+            'default'           => array( 'banner', 'news-list' ),
+            'sanitize_callback' => 'jobscout_sanitize_sortable_sections',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        new JobScout_Sortable_Sections_Control(
+            $wp_customize,
+            'news_sections_order',
+            array(
+                'label'       => __( 'Sắp xếp thứ tự các khối Trang News', 'jobscout' ),
+                'description' => __( 'Dùng chuột kéo thả để hoán đổi vị trí giữa các khối trên trang Tin tức:', 'jobscout' ),
+                'section'     => 'news_page_settings',
+                'priority'    => 1,
+                'choices'     => array(
+                    'banner'    => __( 'Khối 1: Hero Banner PDS News', 'jobscout' ),
+                    'news-list' => __( 'Khối 2: Danh sách bài viết & Phân trang', 'jobscout' ),
+                ),
+            )
+        )
+    );
+
+    /* ==========================================
        1. BANNER SECTION
        ========================================== */
     // Banner Image

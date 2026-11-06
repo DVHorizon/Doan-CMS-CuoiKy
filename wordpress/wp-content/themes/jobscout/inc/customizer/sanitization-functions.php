@@ -26,3 +26,14 @@ function jobscout_sanitize_radio( $input, $setting ) {
 	// If the input is a valid key, return it; otherwise, return the default.
 	return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
 }
+
+function jobscout_sanitize_sortable_sections( $input ) {
+    if ( is_array( $input ) ) {
+        return array_map( 'sanitize_key', $input );
+    }
+    $decoded = json_decode( (string) $input, true );
+    if ( is_array( $decoded ) ) {
+        return array_map( 'sanitize_key', $decoded );
+    }
+    return array();
+}

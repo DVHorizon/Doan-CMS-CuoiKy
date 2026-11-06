@@ -14,7 +14,8 @@ function jobscout_register_custom_controls( $wp_customize ){
     require_once get_template_directory() . '/inc/custom-controls/note/class-note-control.php';
     require_once get_template_directory() . '/inc/custom-controls/radioimg/class-radio-image-control.php';
     require_once get_template_directory() . '/inc/custom-controls/slider/class-slider-control.php';
-    require_once get_template_directory() . '/inc/custom-controls/toggle/class-toggle-control.php';    
+    require_once get_template_directory() . '/inc/custom-controls/toggle/class-toggle-control.php';
+    require_once get_template_directory() . '/inc/custom-controls/class-sortable-sections-control.php';    
             
     // Register the control type.
     $wp_customize->register_control_type( 'JobScout_Radio_Image_Control' );
