@@ -17,13 +17,20 @@ $no_jobs_text   = get_theme_mod( 'jobs_no_jobs_text', __( 'Hiện tại chưa c�
 $search_keywords = isset( $_GET['search_keywords'] ) ? sanitize_text_field( wp_unslash( $_GET['search_keywords'] ) ) : '';
 $search_location = isset( $_GET['search_location'] ) ? trim( sanitize_text_field( wp_unslash( $_GET['search_location'] ) ), " .\t\n\r\0\x0B" ) : '';
 
-// Query danh sách công việc còn hạn
+// Query danh sách công việc còn hạn trong khoảng từ tháng 10 đến ngày 06 tháng 11
 $jobs_args = array(
     'post_type'      => 'job_listing',
     'post_status'    => 'publish',
     'posts_per_page' => $posts_per_page,
     'orderby'        => 'date',
     'order'          => 'DESC',
+    'date_query'     => array(
+        array(
+            'after'     => '2026-10-01 00:00:00',
+            'before'    => '2026-11-06 23:59:59',
+            'inclusive' => true,
+        ),
+    ),
 );
 
 if ( ! empty( $search_keywords ) ) {

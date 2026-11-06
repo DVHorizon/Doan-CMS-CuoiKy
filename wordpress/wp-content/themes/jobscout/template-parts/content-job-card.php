@@ -114,7 +114,7 @@ if ( count( $bullet_points ) < 3 ) {
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
             </h3>
 
-            <!-- 1. Tên công ty / 2. Lĩnh vực (Danh mục) / 3. Khu vực (Location) -->
+            <!-- 1. Tên công ty / 2. Lĩnh vực (ở giữa) / 3. Khu vực (qua phải) -->
             <div class="job-card-badges-row">
                 <span class="job-badge job-badge-company"><?php echo esc_html( $company_name ); ?></span>
                 <span class="job-badge job-badge-cat"><?php echo esc_html( $job_category_label ); ?></span>

@@ -187,6 +187,13 @@ function jobscout_ajax_load_more_jobs() {
         'paged'          => $paged,
         'orderby'        => 'date',
         'order'          => ( $sort === 'oldest' ) ? 'ASC' : 'DESC',
+        'date_query'     => array(
+            array(
+                'after'     => '2026-10-01 00:00:00',
+                'before'    => '2026-11-06 23:59:59',
+                'inclusive' => true,
+            ),
+        ),
     );
 
     if ( ! empty( $search_keywords ) ) {
