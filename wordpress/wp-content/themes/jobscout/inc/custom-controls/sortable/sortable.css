@@ -1,0 +1,80 @@
+/**
+ * JobScout Sortable Customizer Control Styles
+ *
+ * @package JobScout
+ */
+
+.jobscout-sortable-control-wrapper {
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+.jobscout-sortable-list {
+    margin: 10px 0 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.jobscout-sortable-item {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    cursor: grab;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    user-select: none;
+}
+
+.jobscout-sortable-item:hover {
+    border-color: #2271b1;
+    box-shadow: 0 1px 3px rgba(34, 113, 177, 0.2);
+}
+
+.jobscout-sortable-item:active {
+    cursor: grabbing;
+}
+
+.jobscout-sortable-item.ui-sortable-helper {
+    background: #f6f7f7;
+    border-color: #2271b1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.jobscout-sortable-item .sort-handle,
+.jobscout-sortable-item .dashicons-menu {
+    color: #787c82;
+    margin-right: 10px;
+    cursor: grab;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.jobscout-sortable-item:hover .sort-handle,
+.jobscout-sortable-item:hover .dashicons-menu {
+    color: #2271b1;
+}
+
+.jobscout-sortable-item .jobscout-sortable-title {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c3338;
+}
+
+.jobscout-sortable-placeholder {
+    background: #f0f6fc;
+    border: 1px dashed #2271b1;
+    border-radius: 4px;
+    height: 42px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+}

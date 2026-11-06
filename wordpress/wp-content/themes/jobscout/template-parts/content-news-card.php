@@ -6,12 +6,7 @@
 <article class="news-card">
     <a href="<?php the_permalink(); ?>" class="news-card-thumb-link">
         <div class="news-card-thumb">
-            <?php if (has_post_thumbnail()): ?>
-                <?php the_post_thumbnail('medium_large', array('alt' => get_the_title())); ?>
-            <?php else: ?>
-                <img src="<?php echo esc_url(get_template_directory_uri() . '/images/banner-image.jpg'); ?>"
-                    alt="<?php the_title_attribute(); ?>">
-            <?php endif; ?>
+            <?php jobscout_news_thumbnail( 'medium_large' ); ?>
         </div>
     </a>
 

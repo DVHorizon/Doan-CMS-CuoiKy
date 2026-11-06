@@ -984,3 +984,108 @@ function jobscout_breadcrumbs_cb(){
         echo '</div><!-- .crumbs -->';              
 }
 endif;
+
+if ( ! function_exists( 'jobscout_get_news_sections_order' ) ) :
+/**
+ * Returns ordered array of News page sections.
+ *
+ * @return array
+ */
+function jobscout_get_news_sections_order() {
+    $default_order = array( 'banner', 'grid', 'newsletter' );
+    $saved         = get_theme_mod( 'news_sections_order', 'banner,grid,newsletter' );
+
+    if ( empty( $saved ) ) {
+        return apply_filters( 'jobscout_news_sections_order', $default_order );
+    }
+
+    $raw = array();
+    if ( is_array( $saved ) ) {
+        $raw = $saved;
+    } elseif ( is_string( $saved ) ) {
+        $trimmed = trim( $saved );
+        if ( strpos( $trimmed, '[' ) === 0 ) {
+            $decoded = json_decode( $trimmed, true );
+            $raw     = is_array( $decoded ) ? $decoded : explode( ',', $trimmed );
+        } else {
+            $raw = explode( ',', $trimmed );
+        }
+    } else {
+        return apply_filters( 'jobscout_news_sections_order', $default_order );
+    }
+
+    $valid   = array( 'banner', 'grid', 'newsletter' );
+    $ordered = array();
+
+    foreach ( (array) $raw as $item ) {
+        if ( ! is_scalar( $item ) ) {
+            continue;
+        }
+        $key = sanitize_key( trim( (string) $item ) );
+        if ( in_array( $key, $valid, true ) && ! in_array( $key, $ordered, true ) ) {
+            $ordered[] = $key;
+        }
+    }
+
+    foreach ( $valid as $key ) {
+        if ( ! in_array( $key, $ordered, true ) ) {
+            $ordered[] = $key;
+        }
+    }
+
+    return apply_filters( 'jobscout_news_sections_order', $ordered );
+}
+endif;
+
+if ( ! function_exists( 'jobscout_get_news_detail_sections_order' ) ) :
+/**
+ * Returns ordered array of News Detail page sections.
+ *
+ * @return array
+ */
+function jobscout_get_news_detail_sections_order() {
+    $default_order = array( 'breadcrumb', 'header', 'description', 'content', 'related' );
+    $saved         = get_theme_mod( 'news_detail_sections_order', 'breadcrumb,header,description,content,related' );
+
+    if ( empty( $saved ) ) {
+        return apply_filters( 'jobscout_news_detail_sections_order', $default_order );
+    }
+
+    $raw = array();
+    if ( is_array( $saved ) ) {
+        $raw = $saved;
+    } elseif ( is_string( $saved ) ) {
+        $trimmed = trim( $saved );
+        if ( strpos( $trimmed, '[' ) === 0 ) {
+            $decoded = json_decode( $trimmed, true );
+            $raw     = is_array( $decoded ) ? $decoded : explode( ',', $trimmed );
+        } else {
+            $raw = explode( ',', $trimmed );
+        }
+    } else {
+        return apply_filters( 'jobscout_news_detail_sections_order', $default_order );
+    }
+
+    $valid   = array( 'breadcrumb', 'header', 'description', 'content', 'related' );
+    $ordered = array();
+
+    foreach ( (array) $raw as $item ) {
+        if ( ! is_scalar( $item ) ) {
+            continue;
+        }
+        $key = sanitize_key( trim( (string) $item ) );
+        if ( in_array( $key, $valid, true ) && ! in_array( $key, $ordered, true ) ) {
+            $ordered[] = $key;
+        }
+    }
+
+    foreach ( $valid as $key ) {
+        if ( ! in_array( $key, $ordered, true ) ) {
+            $ordered[] = $key;
+        }
+    }
+
+    return apply_filters( 'jobscout_news_detail_sections_order', $ordered );
+}
+endif;
+
