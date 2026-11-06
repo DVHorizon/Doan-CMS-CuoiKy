@@ -16,39 +16,39 @@
 global $post;
 
 // 1. Logo & Tên công ty
-$company_name = get_post_meta( get_the_ID(), '_company_name', true );
-if ( empty( $company_name ) ) {
-    $company_terms = wp_get_post_terms( get_the_ID(), 'companies' );
-    if ( ! empty( $company_terms ) && ! is_wp_error( $company_terms ) ) {
+$company_name = get_post_meta(get_the_ID(), '_company_name', true);
+if (empty($company_name)) {
+    $company_terms = wp_get_post_terms(get_the_ID(), 'companies');
+    if (!empty($company_terms) && !is_wp_error($company_terms)) {
         $company_name = $company_terms[0]->name;
     }
 }
-if ( empty( $company_name ) ) {
+if (empty($company_name)) {
     $company_name = 'Plan Do See';
 }
-$company_name = wp_specialchars_decode( $company_name, ENT_QUOTES );
+$company_name = wp_specialchars_decode($company_name, ENT_QUOTES);
 
 $company_logo_url = '';
-if ( function_exists( 'get_the_company_logo' ) ) {
-    $company_logo_url = get_the_company_logo( get_the_ID(), 'thumbnail' );
+if (function_exists('get_the_company_logo')) {
+    $company_logo_url = get_the_company_logo(get_the_ID(), 'thumbnail');
 }
-if ( empty( $company_logo_url ) && has_post_thumbnail() ) {
-    $company_logo_url = get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' );
+if (empty($company_logo_url) && has_post_thumbnail()) {
+    $company_logo_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
 }
-if ( empty( $company_logo_url ) ) {
-    $raw_meta_logo = get_post_meta( get_the_ID(), '_company_logo', true );
-    if ( ! empty( $raw_meta_logo ) ) {
-        $company_logo_url = is_numeric( $raw_meta_logo ) ? wp_get_attachment_image_url( $raw_meta_logo, 'thumbnail' ) : $raw_meta_logo;
+if (empty($company_logo_url)) {
+    $raw_meta_logo = get_post_meta(get_the_ID(), '_company_logo', true);
+    if (!empty($raw_meta_logo)) {
+        $company_logo_url = is_numeric($raw_meta_logo) ? wp_get_attachment_image_url($raw_meta_logo, 'thumbnail') : $raw_meta_logo;
     }
 }
 
 // 2. Loại công việc (Fulltime, Part-time...)
 $job_types = wpjm_get_the_job_types();
-$job_type_label = ! empty( $job_types ) ? $job_types[0]->name : 'Fulltime';
+$job_type_label = !empty($job_types) ? $job_types[0]->name : 'Fulltime';
 
 // 3. Danh mục công việc
-$categories = get_the_terms( get_the_ID(), 'job_listing_category' );
-if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
+$categories = get_the_terms(get_the_ID(), 'job_listing_category');
+if (!empty($categories) && !is_wp_error($categories)) {
     $job_category_label = $categories[0]->name;
 } else {
     // Fallback nếu chưa gán category
@@ -56,52 +56,54 @@ if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
 }
 
 // 4. Khu vực tuyển dụng
-$job_location = get_post_meta( get_the_ID(), '_job_location', true );
-if ( empty( $job_location ) ) {
+$job_location = get_post_meta(get_the_ID(), '_job_location', true);
+if (empty($job_location)) {
     $job_location = 'Ho Chi Minh City';
 }
 
 // 5. Mô tả ngắn (3 gạch đầu dòng)
-$raw_desc = ! empty( $post->post_excerpt ) ? $post->post_excerpt : $post->post_content;
+$raw_desc = !empty($post->post_excerpt) ? $post->post_excerpt : $post->post_content;
 $bullet_points = array();
 
-if ( ! empty( $raw_desc ) ) {
+if (!empty($raw_desc)) {
     // Tách theo dòng nếu người dùng nhập xuống dòng
-    $clean_text = strip_shortcodes( $raw_desc );
-    $clean_text = wp_strip_all_tags( $clean_text );
-    $lines = preg_split( '/\r\n|\r|\n/', trim( $clean_text ) );
-    foreach ( $lines as $line ) {
-        $clean_line = trim( ltrim( trim( $line ), "-*• \t\n\r\0\x0B" ) );
-        if ( ! empty( $clean_line ) ) {
+    $clean_text = strip_shortcodes($raw_desc);
+    $clean_text = wp_strip_all_tags($clean_text);
+    $lines = preg_split('/\r\n|\r|\n/', trim($clean_text));
+    foreach ($lines as $line) {
+        $clean_line = trim(ltrim(trim($line), "-*• \t\n\r\0\x0B"));
+        if (!empty($clean_line)) {
             $bullet_points[] = $clean_line;
         }
-        if ( count( $bullet_points ) >= 3 ) break;
+        if (count($bullet_points) >= 3)
+            break;
     }
 }
 
 // Fallback 3 bullet points chuẩn theo ảnh mẫu
-if ( count( $bullet_points ) < 3 ) {
+if (count($bullet_points) < 3) {
     $defaults = array(
         'Be responsible for the effective operational management of the hotel',
         'Excellent salary bonuses & recognition activities',
         'Foreign language allowance (up to 500USD/month)'
     );
-    while ( count( $bullet_points ) < 3 ) {
-        $bullet_points[] = $defaults[ count( $bullet_points ) ];
+    while (count($bullet_points) < 3) {
+        $bullet_points[] = $defaults[count($bullet_points)];
     }
 }
 ?>
 
-<article class="all-jobs-card" data-job-type="<?php echo esc_attr( sanitize_title( $job_type_label ) ); ?>">
+<article class="all-jobs-card" data-job-type="<?php echo esc_attr(sanitize_title($job_type_label)); ?>">
     <!-- KHỐI TRÊN: LOGO + TIÊU ĐỀ + NGÀY + BADGES -->
     <div class="job-card-top">
         <div class="job-card-logo">
-            <?php if ( ! empty( $company_logo_url ) ) : ?>
-                <img src="<?php echo esc_url( $company_logo_url ); ?>" alt="<?php echo esc_attr( $company_name ); ?>" />
-            <?php else : ?>
+            <?php if (!empty($company_logo_url)): ?>
+                <img src="<?php echo esc_url($company_logo_url); ?>" alt="<?php echo esc_attr($company_name); ?>" />
+            <?php else: ?>
                 <!-- Icon fallback logo công ty thanh lịch -->
                 <div class="job-card-logo-fallback">
-                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#6b7280" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                     </svg>
@@ -116,14 +118,16 @@ if ( count( $bullet_points ) < 3 ) {
 
             <!-- 1. Tên công ty / 2. Lĩnh vực (ở giữa) / 3. Khu vực (qua phải) -->
             <div class="job-card-badges-row">
-                <span class="job-badge job-badge-company"><?php echo esc_html( $company_name ); ?></span>
-                <span class="job-badge job-badge-cat"><?php echo esc_html( $job_category_label ); ?></span>
-                <span class="job-badge job-badge-loc"><?php echo esc_html( $job_location ); ?></span>
+                <span class="job-badge job-badge-loc"><?php echo esc_html($job_location); ?></span>
+                 <span class="job-badge job-badge-cat"><?php echo esc_html($job_category_label); ?></span>
+                <span class="job-badge job-badge-company"><?php echo esc_html($company_name); ?></span>
+               
+
             </div>
 
             <!-- Ngày tạo ở dưới các badge -->
             <div class="job-card-meta-date">
-                Created: <?php echo get_the_date( 'M d, Y' ); ?>
+                Created: <?php echo get_the_date('M d, Y'); ?>
             </div>
         </div>
     </div>
@@ -131,8 +135,8 @@ if ( count( $bullet_points ) < 3 ) {
     <!-- KHỐI DƯỚI: 3 GẠCH ĐẦU DÒNG MÔ TẢ NGẮN -->
     <div class="job-card-bottom">
         <ul class="job-card-highlights">
-            <?php foreach ( $bullet_points as $point ) : ?>
-                <li><?php echo esc_html( $point ); ?></li>
+            <?php foreach ($bullet_points as $point): ?>
+                <li><?php echo esc_html($point); ?></li>
             <?php endforeach; ?>
         </ul>
     </div>
