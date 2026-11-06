@@ -20,6 +20,35 @@ function jobscout_customize_register_jobs_page( $wp_customize ) {
     );
 
     /* ==========================================
+       0. SẮP XẾP THỨ TỰ CÁC KHỐI (REORDER)
+       ========================================== */
+    $wp_customize->add_setting(
+        'jobs_sections_order',
+        array(
+            'default'           => array( 'banner', 'jobs-grid' ),
+            'sanitize_callback' => 'jobscout_sanitize_sortable_sections',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        new JobScout_Sortable_Sections_Control(
+            $wp_customize,
+            'jobs_sections_order',
+            array(
+                'label'       => __( 'Sắp xếp thứ tự các khối Trang Jobs', 'jobscout' ),
+                'description' => __( 'Dùng chuột kéo thả để hoán đổi vị trí giữa các khối trên trang Việc làm:', 'jobscout' ),
+                'section'     => 'jobs_page_settings',
+                'priority'    => 1,
+                'choices'     => array(
+                    'banner'    => __( 'Khối 1: Hero Banner Career With Us', 'jobscout' ),
+                    'jobs-grid' => __( 'Khối 2: Bộ lọc & Lưới danh sách việc làm', 'jobscout' ),
+                ),
+            )
+        )
+    );
+
+    /* ==========================================
        1. HERO BANNER
        ========================================== */
     // Banner Image
