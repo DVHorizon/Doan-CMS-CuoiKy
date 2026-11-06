@@ -20,7 +20,7 @@ if( $post_slug ){
 
 global $wpdb;
 $table = $wpdb->prefix . 'postmeta';
-$sql = "SELECT DISTINCT SUBSTRING_INDEX(`meta_value`, ',', -1) as location FROM `{$table}` WHERE `meta_key` LIKE '%location%' AND `meta_value` != '' ORDER BY location";
+$sql = "SELECT DISTINCT `meta_value` as location FROM `{$table}` WHERE `meta_key` = '_job_location' AND `meta_value` != '' ORDER BY location";
 $data = $wpdb->get_results( $wpdb->prepare( $sql ) );
 $selected_location = isset( $_GET['search_location'] ) ? sanitize_text_field( $_GET['search_location'] ) : '';
 $search_keywords   = isset( $_GET['search_keywords'] ) ? sanitize_text_field( $_GET['search_keywords'] ) : '';
