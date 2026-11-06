@@ -10041,17 +10041,17 @@ body:has(.custom-jobs-page) .breadcrumb-wrap {
     color: #ea580c;
 }
 
-.job-card-meta-date {
-    font-size: 12px;
-    color: #9ca3af;
-    margin-bottom: 8px;
-    font-weight: 400;
-}
-
 .job-card-badges-row {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    margin-bottom: 6px;
+}
+
+.job-card-meta-date {
+    font-size: 12px;
+    color: #9ca3af;
+    font-weight: 400;
 }
 
 .job-badge {
